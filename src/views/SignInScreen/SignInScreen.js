@@ -10,7 +10,6 @@ import {
 import Logo from '../../../assets/images/Logo_1.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
 import {useNavigation} from '@react-navigation/native';
 
 const SignInScreen = () => {
@@ -62,13 +61,12 @@ const SignInScreen = () => {
           type="TERTIARY"
         />
 
-        <SocialSignInButtons />
 
-        <CustomButton
+        {/* <CustomButton
           text="Don't have an account? Create one"
           onPress={onSignUpPress}
           type="TERTIARY"
-        />
+        /> */}
       </View>
     </ScrollView>
   );
