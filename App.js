@@ -110,7 +110,7 @@
  const styles = StyleSheet.create({
    root: {
      flex: 1,
-     backgroundColor: '#F9FB1C',
+     backgroundColor: '#F1F11C',
    },
  });
  
