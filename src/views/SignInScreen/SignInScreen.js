@@ -53,7 +53,7 @@ const SignInScreen = () => {
           secureTextEntry
         />
 
-        <CustomButton text="Sign In" onPress={onSignInPressed} />
+
 
         <CustomButton
           text="Forgot password?"

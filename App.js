@@ -98,8 +98,12 @@
  import React from 'react';
  import {SafeAreaView, StyleSheet, Text} from 'react-native';
  import Navigation from './src/navigation';
+ import SplashScreen from  "react-native-splash-screen";
  
  const App = () => {
+  React.useEffect(() => {
+    SplashScreen.hide();
+  });
    return (
      <SafeAreaView style={styles.root}>
        <Navigation />
