@@ -7,6 +7,7 @@ import {
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
+import Logo from '../../../assets/images/Logo_1.png';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
@@ -34,11 +35,11 @@ const SignInScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        {/* <Image
+        <Image
           source={Logo}
           style={[styles.logo, {height: height * 0.3}]}
           resizeMode="contain"
-        /> */}
+        />
 
         <CustomInput
           placeholder="Username"
