@@ -36,14 +36,8 @@ const styles = StyleSheet.create({
 
   container_PRIMARY: {
 
-<<<<<<< HEAD
-    width: 319,
-    height: 54,  
-    top: 124,    
-=======
     width: 300,
     height: 54,    
->>>>>>> 156ce00d8488cb10525c95836a61f6080838c91b
     backgroundColor: "#213571",
     borderRadius: 10,
     paddingVertical: 10,

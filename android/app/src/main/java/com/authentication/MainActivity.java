@@ -4,11 +4,8 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import android.os.Bundle;
-<<<<<<< HEAD
-=======
 import org.devio.rn.splashscreen.SplashScreen;
 // import com.cboy.rn.splashscreen.SplashScreen;
->>>>>>> 156ce00d8488cb10525c95836a61f6080838c91b
 
 public class MainActivity extends ReactActivity {
 
@@ -22,11 +19,6 @@ public class MainActivity extends ReactActivity {
   }
 
   @Override
-<<<<<<< HEAD
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(null);
-  }
-=======
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.show(this);  // here
         super.onCreate(savedInstanceState);
@@ -36,7 +28,6 @@ public class MainActivity extends ReactActivity {
   // protected void onCreate(Bundle savedInstanceState) {
   //   super.onCreate(null);
   // }
->>>>>>> 156ce00d8488cb10525c95836a61f6080838c91b
   /**
    * Returns the instance of the {@link ReactActivityDelegate}. There the RootView is created and
    * you can specify the rendered you wish to use (Fabric or the older renderer).
