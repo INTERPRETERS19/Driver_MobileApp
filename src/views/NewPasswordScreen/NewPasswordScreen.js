@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
+
 import {useNavigation} from '@react-navigation/native';
 
 const NewPasswordScreen = () => {
@@ -12,7 +12,7 @@ const NewPasswordScreen = () => {
   const navigation = useNavigation();
 
   const onSubmitPressed = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Dashboard');
   };
 
   const onSignInPress = () => {
