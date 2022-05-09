@@ -19,6 +19,11 @@ target 'Authentication' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+<<<<<<< HEAD
+=======
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+>>>>>>> 156ce00d8488cb10525c95836a61f6080838c91b
   target 'AuthenticationTests' do
     inherit! :complete
     # Pods for testing

@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     width: '100%',
+<<<<<<< HEAD
 
     borderColor: '#e8e8e8',
     borderWidth: 1,
@@ -26,6 +27,14 @@ const styles = StyleSheet.create({
 
     paddingHorizontal: 10,
     marginVertical: 5,
+=======
+    fontFamily:"poppins",
+    borderColor: '#e8e8e8',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginVertical: 7,
+>>>>>>> 156ce00d8488cb10525c95836a61f6080838c91b
   },
   input: {},
 });
