@@ -7,3 +7,5 @@ npm i react-native-vector-icons
 npm install @react-native-community/checkbox --save
 
 npm i react-native-splash-screen --save
+
+npm install @react-navigation/bottom-tabs
