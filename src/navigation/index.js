@@ -9,6 +9,8 @@ import ForgotPasswordScreen from '../views/ForgotPasswordScreen';
 import NewPasswordScreen from '../views/NewPasswordScreen';
 import Dashboard from '../views/Dashboard';
 
+
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -24,7 +26,9 @@ const Navigation = () => {
        
       </Stack.Navigator>
     </NavigationContainer>
+    
   );
-};
 
+
+  }
 export default Navigation;
