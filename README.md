@@ -30,10 +30,10 @@ pull the changes from main
 Push branch from local to remote
 >git push origin branch_name
 
-merge pull main
+merge pull main(stay change made branch)
+>git merge repository_name
+
 change master branch name to main
-
-
 >git branch --move master main
 
 
