@@ -5,9 +5,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import SignInScreen from '../views/SignInScreen';
 import ConfirmEmailScreen from '../views/ConfirmEmailScreen';
-import ForgotPasswordScreen from '../views/ForgotPasswordScreen';
 import NewPasswordScreen from '../views/NewPasswordScreen';
 import Dashboard from '../views/Dashboard';
+import ForgotPassword from '../views/ForgotPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,10 +18,9 @@ const Navigation = () => {
       <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
         <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
-        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
 
-       
       </Stack.Navigator>
     </NavigationContainer>
   );
