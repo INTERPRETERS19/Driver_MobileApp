@@ -10,18 +10,26 @@ const Dashboard = () => {
   const widthAndHeight = 185
   const series = [173, 321, 123, 789]
   const sliceColor = ['#C3E4F5','#599AC6','#D8E6F5','#213571',]
-      
+
+  const onMenuPressed = () => {
+    navigation.navigate('Menu');
+  };
+  const onSettingsPressed = () => {
+    navigation.navigate('Settings');
+  };  
+  
+
   return (
     <View style={styles.root}>
-    <Text style = {styles.welcome}>Welcome</Text>
-       <Text style = {styles.nameD}>Eren Jeager,</Text>
-        <Text style={styles.text}>Dashboard</Text>
-        <View style={styles.icon}>   
-            <Icon name="md-menu-sharp" size={40} color="#000000" />
-          </View>
-          <View style={styles.iconSettings}>   
-            <Icon name="settings-sharp" size={35} color="#000000" />
-          </View>
+      <Text style = {styles.welcome}>Welcome</Text>
+         <Text style = {styles.nameD}>Eren Jeager,</Text>
+         <Text style={styles.text}>Dashboard</Text>
+         <View style={styles.icon}>   
+            <Icon name="md-menu-sharp" size={40} color="#000000" onPress={onMenuPressed} />
+         </View>
+         <View style={styles.iconSettings}>   
+            <Icon name="settings-sharp" size={35} color="#000000" onPress={onSettingsPressed}  />
+         </View>
 
           <View style={styles.box}>
   
@@ -37,9 +45,6 @@ const Dashboard = () => {
           <View style={styles. buttonContainer5}>   
           </View>
           <View style={styles.container}>
-          {/* <Text style={styles.title}>Basic</Text>
-          
-          /> */}
           <PieChart
             widthAndHeight={widthAndHeight}
             series={series}
