@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     padding: 25,
+
     marginVertical: 5,
     alignItems: 'center',
     borderRadius: 5,
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
     height: 54,    
     backgroundColor: "#213571",
     borderRadius: 10,
+
     paddingVertical: 10,
     paddingHorizontal: 12,
     alignSelf: "center",
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: 'bold',
     color: 'white',
-    fontFamily: 'Poppins',
+    fontFamily: 'Roboto-Medium',
     fontSize: 17,
     lineHeight: 26,
     textAlign: "center",

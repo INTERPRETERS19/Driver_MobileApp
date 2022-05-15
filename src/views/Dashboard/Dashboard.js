@@ -2,7 +2,6 @@ import React from 'react';
 import {View, Text,StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import PieChart from 'react-native-pie-chart';
 
 const Dashboard = () => {
@@ -49,6 +48,7 @@ const Dashboard = () => {
             coverRadius={0.45}
             coverFill={'#FFF'}
           />
+      
         </View>
           </View>
      
