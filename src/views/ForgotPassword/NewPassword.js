@@ -15,28 +15,20 @@ import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 
-
-
-
-
-const SignInScreen = () => {
-  const [username, setUsername] = useState('');
+const NewPassword = () => {
+  //const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isSelected, setSelection] = useState(false);
+  //const [isSelected, setSelection] = useState(false);
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
-  const onSignInPressed = () => {
-    navigation.navigate('Dashboard');
+const onChangePressed = () => {
+    navigation.navigate('SignIn');
   };
-  const onForgotPasswordPressed = () => {
-    navigation.navigate('OTP');
-  };
-
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-   
+
         {/* <Image
           source={Logo}
           style={[styles.logo, {height: height * 0.3}]}
@@ -45,55 +37,37 @@ const SignInScreen = () => {
         <View style={{marginTop: 160}}>
           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
     color: COLORS.dark}}>
-            Welcome!
+            New Password
           </Text>
-          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "center", color: COLORS.light}}>
-            Sign in to your account to continue
+
+          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "left", color: '#656363', marginTop: 50, marginBottom: 20, marginLeft: 10, marginRight: 10, backgroundColor: '#D2F3C6'}}>
+            Please create a new password that you don't use on any other site
           </Text>
         </View>
 
          <View style={styles.root}>
         <CustomInput
-          placeholder="Username"
-          value={username}
-          setValue={setUsername}
-        />
-        <CustomInput
-          placeholder="Password"
+          placeholder="Create New Password"
           value={password}
           setValue={setPassword}
           secureTextEntry
         />
-        </View> 
-        <View style={styles.container}>
-       <View style={styles.checkboxContainer}>
-         <CheckBox
-           value={isSelected}
-           onValueChange={setSelection}
-           style={styles.checkbox}
-           
-         />
-               <Text style={{marginTop:5,fontFamily: 'Poppins',fontSize: 14,fontWeight: 'bold', textAlign: "center", color: COLORS.dark}}>
-            Remember me
-          </Text>
-        </View>
-  
-     </View>
-        {/* <Text style={{fontFamily: 'Poppins',fontSize: 15, fontWeight: 'bold', textAlign: "left",marginLeft:40, color: COLORS.light}}>
-          Remember me
-          </Text> */}
-         <View style={{marginTop: 20}}>
-        <CustomButton
-         text="Sign In" 
-         onPress={onSignInPressed}     
-         />
-        <CustomButton
-          text="Forgot password?"
-          onPress={onForgotPasswordPressed}
-          type="TERTIARY"
+
+        <CustomInput
+          placeholder="Confirm your Password"
+          value={password}
+          setValue={setPassword}
+          secureTextEntry
         />
-        </View> 
-        
+        </View>
+
+         <View style={{marginTop: 20}}>
+         <CustomButton
+         text="Change"
+         onPress={onChangePressed}
+         />
+         </View>
+
     </ScrollView>
   );
 };
@@ -126,4 +100,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default SignInScreen;
+export default NewPassword;

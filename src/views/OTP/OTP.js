@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-//import RadioForm from 'react-native-simple-radio-button';
-import CheckBox from '@react-native-community/checkbox';
 import {
   View,
   Text,
@@ -16,17 +14,19 @@ import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 
 
+const OTP = () => {
 
+  //const [username, setUsername] = useState('');
+  //const [password, setPassword] = useState('');
+  //const [isSelected, setSelection] = useState(false);
 
-
-const ForgotPassword = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [isSelected, setSelection] = useState(false);
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
-  const onSignInPressed = () => {
+const onVerifyPressed = () => {
+    navigation.navigate('NewPassword');
+  };
+const onBacktoMyAccountPressed = () => {
     navigation.navigate('SignIn');
   };
 
@@ -41,36 +41,26 @@ const ForgotPassword = () => {
         <View style={{marginTop: 160}}>
           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
     color: COLORS.dark}}>
-            New Password
+            Confirm OTP
           </Text>
 
-          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "left", color: '#656363', marginTop: 50, marginBottom: 20, marginLeft: 10, marginRight: 10, backgroundColor: '#D2F3C6'}}>
-            Please create a new password that you don't use on any other site
+          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "center", color: '#656363', marginTop: 50, marginBottom: 20, marginLeft: 10, marginRight: 10, backgroundColor: '#D2F3C6'}}>
+            Enter OTP we just sent to your mobile number: +94******134
           </Text>
-        </View>
-
-         <View style={styles.root}>
-        <CustomInput
-          placeholder="Create New Password"
-          value={username}
-          setValue={setUsername}
-        />
-
-        <CustomInput
-          placeholder="Confirm your Password"
-          value={password}
-          setValue={setPassword}
-          secureTextEntry
-        />
         </View>
 
          <View style={{marginTop: 20}}>
-        <CustomButton
-         text="Change"
-         onPress={onSignInPressed}
+         <CustomButton
+         text="Verify"
+         onPress={onVerifyPressed}
          />
 
-        </View>
+         <CustomButton
+                  text="Back to my Account"
+                  onPress={onBacktoMyAccountPressed}
+                  type="TERTIARY"
+                  />
+         </View>
 
     </ScrollView>
   );
@@ -86,6 +76,7 @@ const styles = StyleSheet.create({
   //   maxWidth: 300,
   //   maxHeight: 200,
   // },
+
   container: {
         flex: 1,
         alignItems: "flex-start",
@@ -104,4 +95,4 @@ const styles = StyleSheet.create({
       },
 });
 
-export default ForgotPassword;
+export default OTP;
