@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-//import RadioForm from 'react-native-simple-radio-button';
 import CheckBox from '@react-native-community/checkbox';
 import {
   View,
@@ -9,16 +8,13 @@ import {
   ScrollView,
 
 } from 'react-native';
-//import Logo from '../../../assets/images/Logo_1.png';
 import CustomInput from '../../components/CustomInput';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 
 const NewPassword = () => {
-  //const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  //const [isSelected, setSelection] = useState(false);
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
@@ -77,24 +73,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-  // logo: {
-  //   width: '70%',
-  //   maxWidth: 300,
-  //   maxHeight: 200,
-  // },
+
   container: {
         flex: 1,
         alignItems: "flex-start",
       marginLeft:25,
         justifyContent: "center",
       },
-      checkboxContainer: {
-        flexDirection: "row",
-        marginBottom: 20,
-      },
-      checkbox: {
-        alignSelf: "center",
-      },
+
       label: {
         margin: 8,
       },

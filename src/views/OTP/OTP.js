@@ -7,7 +7,6 @@ import {
   ScrollView,
 
 } from 'react-native';
-//import Logo from '../../../assets/images/Logo_1.png';
 import CustomInput from '../../components/CustomInput';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
@@ -15,10 +14,6 @@ import {useNavigation} from '@react-navigation/native';
 
 
 const OTP = () => {
-
-  //const [username, setUsername] = useState('');
-  //const [password, setPassword] = useState('');
-  //const [isSelected, setSelection] = useState(false);
 
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
@@ -33,11 +28,6 @@ const onBacktoMyAccountPressed = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
 
-        {/* <Image
-          source={Logo}
-          style={[styles.logo, {height: height * 0.3}]}
-          resizeMode="contain"
-        /> */}
         <View style={{marginTop: 160}}>
           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
     color: COLORS.dark}}>
@@ -71,11 +61,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-  // logo: {
-  //   width: '70%',
-  //   maxWidth: 300,
-  //   maxHeight: 200,
-  // },
 
   container: {
         flex: 1,
