@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
-
 import PieChart from 'react-native-pie-chart';
 
 const Dashboard = () => {
@@ -26,6 +25,12 @@ const Dashboard = () => {
 
   return (
     <View style={styles.root}>
+
+    <ImageBackground 
+    source={require('../../../assets/img1.jpg')}
+    style={{   width: '100%',
+        height: '100%'}}>
+ 
          <View style={[styles.topbar ]}>
              <Icon name="md-menu-sharp" size={40} color="#000000"   onPress={onMenuPressed} />
              <Icon name="settings-sharp" size={35} color="#000000"   onPress={onSettingsPressed}/>
@@ -39,7 +44,7 @@ const Dashboard = () => {
          <View style={[styles.dashboard]}>
              <Text style={styles.dashboardTitle}>Dashboard</Text>
          </View>
-
+       
         <View style={[styles.infoPanel]}>
             <View style={[styles.infoPanelCol]}>
                 <DashButtons
@@ -78,6 +83,7 @@ const Dashboard = () => {
 
         </View>
 
+
         <View style={[styles.pieChartPanel]}>
         <View style = {[styles.Pie1]}>
              <PieChart
@@ -90,13 +96,14 @@ const Dashboard = () => {
               />
               </View>
             <View style = {[styles.Pie]}>
-              <Text style={styles.PieName}><Icon name="square" size={15} color=""/> Delivered Shipments</Text>
+              <Text style={styles.PieName}><Icon name="square" size={15} color="#7E7D7D"/> Delivered Shipments</Text>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#213571"/> Pending Deliveries</Text>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#C3E4F5"/> Re-Scheduled</Text>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#000000"/> Return Shipments</Text>
             </View>
            
         </View>
+        </ImageBackground>
     </View>
   );
 };
@@ -106,16 +113,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topbar: {
-    flex: 1,
-    padding: 20,
+    flex: 0.8,
+    padding:20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom:0,
   },
   welcomeBar: {
-    flex: 1,
+    flex: 0.5,
     paddingLeft:20,
-    paddingBottom:0,
+    paddingBottom:15,
   },
   welcome: {
     fontFamily: 'Roboto-Regular',
@@ -173,12 +180,13 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   pieChartPanel: {
-    flex: 3,
+    flex: 2.5,
     padding:20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     },
+    
 });
 
 export default Dashboard;
