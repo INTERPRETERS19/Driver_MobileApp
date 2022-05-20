@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {ImageBackground} from 'react-native';
 //import RadioForm from 'react-native-simple-radio-button';
 import CheckBox from '@react-native-community/checkbox';
 import {
@@ -33,8 +34,12 @@ const SignInScreen = () => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-   
+    <ImageBackground 
+    source={require('../../../assets/img1.jpg')}
+    style={{   width: '100%',
+        height: '100%'}}>
         <View style={{marginTop: 160}}>
+       
           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
     color: COLORS.dark}}>
             Welcome!
@@ -82,7 +87,7 @@ const SignInScreen = () => {
           type="TERTIARY"
         />
         </View> 
-        
+        </ImageBackground>
     </ScrollView>
   );
 };
