@@ -11,6 +11,7 @@ import Collections from '../views/Collections/Collections';
 import Settings from '../views/Settings/Settings';
 import Menu from '../shared/Menu';
 
+
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -75,6 +76,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="Dashboard" component={DashboardTabScreen} />
         <Stack.Screen name="Shipments" component={OutForDelivery} />
@@ -82,6 +84,7 @@ const Navigation = () => {
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
+
       </Stack.Navigator>
       {/* <BottomNavigator /> */}
     </NavigationContainer>
