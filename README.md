@@ -36,5 +36,6 @@ merge pull main(stay change made branch)
 change master branch name to main
 >git branch --move master main
 
-
+Remove origin
+>git remote rm origin
 
