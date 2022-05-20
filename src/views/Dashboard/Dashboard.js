@@ -15,7 +15,7 @@ const Dashboard = () => {
 //#213571
 //#000000
 //#7E7D7D
-//colors
+//colo
   const onMenuPressed = () => {
     navigation.navigate('Settings');
   };
