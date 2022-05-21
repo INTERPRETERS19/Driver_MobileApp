@@ -8,6 +8,7 @@ import ConfirmEmailScreen from '../views/ConfirmEmailScreen';
 import Dashboard from '../views/Dashboard';
 import NewPassword from '../views/ForgotPassword';
 import OTP from '../views/OTP';
+import ResetSuccess from '../views/ResetSuccess';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ const Navigation = () => {
         <Stack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} />
         <Stack.Screen name="NewPassword" component={NewPassword} />
         <Stack.Screen name="OTP" component={OTP}/>
+        <Stack.Screen name="ResetSuccess" component={ResetSuccess}/>
 
       </Stack.Navigator>
     </NavigationContainer>

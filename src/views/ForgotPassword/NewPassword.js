@@ -19,24 +19,31 @@ const NewPassword = () => {
   const navigation = useNavigation();
 
 const onChangePressed = () => {
-    navigation.navigate('SignIn');
+    navigation.navigate('ResetSuccess');
   };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
 
-        {/* <Image
-          source={Logo}
-          style={[styles.logo, {height: height * 0.3}]}
-          resizeMode="contain"
-        /> */}
         <View style={{marginTop: 160}}>
           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
     color: COLORS.dark}}>
             New Password
           </Text>
 
-          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "left", color: '#656363', marginTop: 50, marginBottom: 20, marginLeft: 10, marginRight: 10, backgroundColor: '#D2F3C6'}}>
+          <Text style={{fontFamily: 'Poppins',
+                        fontSize: 17,
+                        fontWeight: 'bold',
+                        textAlign: "left",
+                        color: '#656363',
+                        marginTop: 50,
+                        marginBottom: 20,
+                        marginLeft: 15,
+                        marginRight: 15,
+                        backgroundColor: '#D2F3C6',
+                        borderRadius: 9,
+                        paddingHorizontal: 20,
+                        paddingVertical: 17,}}>
             Please create a new password that you don't use on any other site
           </Text>
         </View>
