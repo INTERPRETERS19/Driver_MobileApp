@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {ImageBackground} from 'react-native';
 //import RadioForm from 'react-native-simple-radio-button';
 import CheckBox from '@react-native-community/checkbox';
 import {
@@ -10,10 +9,13 @@ import {
   ScrollView,
 
 } from 'react-native';
+//import Logo from '../../../assets/images/Logo_1.png';
 import CustomInput from '../../components/CustomInput';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
+
+
 
 
 
@@ -28,18 +30,19 @@ const SignInScreen = () => {
     navigation.navigate('Dashboard');
   };
   const onForgotPasswordPressed = () => {
-    navigation.navigate('OTP');
+    navigation.navigate('ForgotPassword');
   };
 
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-    <ImageBackground 
-    source={require('../../../assets/img1.jpg')}
-    style={{   width: '100%',
-        height: '100%'}}>
+
+        {/* <Image
+          source={Logo}
+          style={[styles.logo, {height: height * 0.3}]}
+          resizeMode="contain"
+        /> */}
         <View style={{marginTop: 160}}>
-       
           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
     color: COLORS.dark}}>
             Welcome!
@@ -61,33 +64,33 @@ const SignInScreen = () => {
           setValue={setPassword}
           secureTextEntry
         />
-        </View> 
+        </View>
         <View style={styles.container}>
        <View style={styles.checkboxContainer}>
          <CheckBox
            value={isSelected}
            onValueChange={setSelection}
            style={styles.checkbox}
-           
+
          />
-               <Text style={{marginTop:5,fontFamily: 'Poppins',fontSize: 14,fontWeight: 'bold', textAlign: "center", color: COLORS.dark}}>
-            Remember me
-          </Text>
         </View>
-  
+
      </View>
+        {/* <Text style={{fontFamily: 'Poppins',fontSize: 15, fontWeight: 'bold', textAlign: "left",marginLeft:40, color: COLORS.light}}>
+          Remember me
+          </Text> */}
          <View style={{marginTop: 20}}>
         <CustomButton
-         text="Sign In" 
-         onPress={onSignInPressed}     
+         text="Sign In"
+         onPress={onSignInPressed}
          />
         <CustomButton
           text="Forgot password?"
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
         />
-        </View> 
-        </ImageBackground>
+        </View>
+
     </ScrollView>
   );
 };
@@ -97,7 +100,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-
+  // logo: {
+  //   width: '70%',
+  //   maxWidth: 300,
+  //   maxHeight: 200,
+  // },
   container: {
         flex: 1,
         alignItems: "flex-start",

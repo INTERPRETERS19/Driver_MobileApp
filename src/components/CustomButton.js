@@ -35,15 +35,14 @@ const styles = StyleSheet.create({
   },
 
   container_PRIMARY: {
-
     width: 300,
     height: 54,    
+    //backgroundColor: "#ff3571",
     backgroundColor: "#213571",
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
     alignSelf: "center",
-   
   },
 
   container_SECONDARY: {
@@ -53,11 +52,10 @@ const styles = StyleSheet.create({
 
   container_TERTIARY: {},
 
-  
   text: {
     fontWeight: 'bold',
     color: 'white',
-    fontFamily: 'Poppins',
+    fontFamily: 'Roboto-Medium',
     fontSize: 17,
     lineHeight: 26,
     textAlign: "center",
@@ -73,3 +71,4 @@ const styles = StyleSheet.create({
 });
 
 export default CustomButton;
+
