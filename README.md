@@ -14,6 +14,8 @@ npm install @react-navigation/native
 
 npm install @react-native-community/checkbox
 
+npm install @react-navigation/drawer 
+
 #git commands
 
 Clonning
