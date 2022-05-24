@@ -28,7 +28,7 @@ const SignInScreen = () => {
     navigation.navigate('Dashboard');
   };
   const onForgotPasswordPressed = () => {
-    navigation.navigate('ForgotPassword');
+    navigation.navigate('OTP');
   };
 
 

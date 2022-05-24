@@ -10,6 +10,9 @@ import OutForDelivery from '../views/Shipments/OutForDelivery';
 import Collections from '../views/Collections/Collections';
 import Settings from '../views/Settings/Settings';
 import Menu from '../shared/Menu';
+import NewPassword from '../views/ForgotPassword';
+import OTP from '../views/OTP';
+import ResetSuccess from '../views/ResetSuccess';
 
 
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
@@ -70,6 +73,7 @@ const DashboardTabScreen = () => {
   );
 };
 
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -83,7 +87,10 @@ const Navigation = () => {
         <Stack.Screen name="Collections" component={Collections} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Menu" component={Menu} />
-        <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
+        <Stack.Screen name="NewPassword" component={NewPassword} />
+        <Stack.Screen name="OTP" component={OTP}/>
+        <Stack.Screen name="ResetSuccess" component={ResetSuccess}/>
+
 
       </Stack.Navigator>
       {/* <BottomNavigator /> */}
