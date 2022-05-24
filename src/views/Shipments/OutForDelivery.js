@@ -1,17 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {List, ListItem} from 'react-native-elements';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-import DashButtons from '../../components/DashButtons';
-import PieChart from 'react-native-pie-chart';
-
 const OutForDelivery = () => {
   const navigation = useNavigation();
-  const widthAndHeight = 180;
-  const series = [12, 10, 15, 28];
-  const sliceColor = ['#C3E4F5', '#7E7D7D', '#000', '#213571'];
-  //colors
   //#C3E4F5
   //#213571
   //#000000
@@ -43,8 +37,8 @@ const OutForDelivery = () => {
             onPress={onSettingsPressed}
           />
         </View>
-        <View style={[styles.dashboard]}>
-          <Text style={styles.dashboardTitle}>Out For Delivery</Text>
+        <View style={[styles.OutForDelivery]}>
+          <Text style={styles.OutForDeliveryTitle}>Out For Delivery</Text>
         </View>
       </ImageBackground>
     </View>
@@ -56,7 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topbar: {
-    flex: 0.8,
+    flex: 0.2,
     padding: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -79,10 +73,10 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     color: '#000000',
   },
-  dashboard: {
+  OutForDelivery: {
     flex: 0.5,
   },
-  dashboardTitle: {
+  OutForDeliveryTitle: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
