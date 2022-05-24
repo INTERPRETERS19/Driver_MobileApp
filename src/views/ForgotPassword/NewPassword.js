@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import CheckBox from '@react-native-community/checkbox';
+import {Image} from 'react-native' ;
 import {
+ImageBackground,
   View,
   Text,
   StyleSheet,
   useWindowDimensions,
   ScrollView,
-
 } from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import COLORS from '../../components/colors';
@@ -22,10 +22,18 @@ const onChangePressed = () => {
     navigation.navigate('ResetSuccess');
   };
 
-  return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+ return (
+<ImageBackground
+          source={require('../../../assets/img1.jpg')}
+          style={{ flex: 1,
+
+            height: '100%',
+            }}
+        >
+<ScrollView showsVerticalScrollIndicator={false}>
 
         <View style={{marginTop: 160}}>
+
           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
     color: COLORS.dark}}>
             New Password
@@ -71,7 +79,8 @@ const onChangePressed = () => {
          />
          </View>
 
-    </ScrollView>
+</ScrollView>
+    </ImageBackground >
   );
 };
 
@@ -83,14 +92,15 @@ const styles = StyleSheet.create({
 
   container: {
         flex: 1,
-        alignItems: "flex-start",
-      marginLeft:25,
+        alignItems: "center",
+      //marginLeft:25,
         justifyContent: "center",
       },
 
       label: {
         margin: 8,
       },
+
 });
 
 export default NewPassword;
