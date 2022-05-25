@@ -14,6 +14,8 @@ npm install @react-navigation/native
 
 npm install @react-native-community/checkbox
 
+npm install @react-navigation/drawer 
+
 #git commands
 
 Clonning
@@ -36,5 +38,6 @@ merge pull main(stay change made branch)
 change master branch name to main
 >git branch --move master main
 
-
+Remove origin
+>git remote rm origin
 

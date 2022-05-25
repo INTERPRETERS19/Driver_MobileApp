@@ -28,7 +28,7 @@ const SignInScreen = () => {
     navigation.navigate('Dashboard');
   };
   const onForgotPasswordPressed = () => {
-    navigation.navigate('ForgotPassword');
+    navigation.navigate('OTP');
   };
 
 
@@ -38,7 +38,10 @@ const SignInScreen = () => {
     style={{   width: '100%',
         height: '100%'}}>
     <ScrollView showsVerticalScrollIndicator={false}>
-
+    <ImageBackground 
+    source={require('../../../assets/img1.jpg')}
+    style={{   width: '100%',
+        height: '100%'}}>
         <View style={{marginTop: 160}}>
        
           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
@@ -88,7 +91,7 @@ const SignInScreen = () => {
           type="TERTIARY"
         />
         </View> 
- 
+        </ImageBackground>
     </ScrollView>
     </ImageBackground>
   );

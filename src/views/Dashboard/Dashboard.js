@@ -17,10 +17,10 @@ const Dashboard = () => {
 //#7E7D7D
 //colo
   const onMenuPressed = () => {
-    navigation.navigate('Settings');
+    navigation.navigate('Menu');
   };
   const onSettingsPressed = () => {
-    navigation.navigate('Menu');
+    navigation.navigate('Settings');
   };
 
   return (
