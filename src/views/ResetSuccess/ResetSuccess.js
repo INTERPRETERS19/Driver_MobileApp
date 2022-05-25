@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Image} from 'react-native' ;
 import {
+ImageBackground,
   View,
   Text,
   StyleSheet,
@@ -23,7 +24,14 @@ const onBacktoAccountPressed = () => {
   };
 
 return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ImageBackground
+              source={require('../../../assets/img1.jpg')}
+              style={{ flex: 1,
+
+                height: '100%',
+                }}
+            >
+            <ScrollView showsVerticalScrollIndicator={false}>
 
     <View style={styles.container}>
         <Image
@@ -36,9 +44,13 @@ return (
                 source={require('./successimg.png')} />
     </View>
 
+        <View style={{backgroundColor: '#DFEEF5',marginLeft: 15, marginTop: 35,
+                                              marginRight: 15,
+                                              borderRadius: 20,
+                                              paddingHorizontal: 20,
+                                              paddingVertical: 17}}>
         <View>
-
-           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
+           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold',marginTop: -30, textAlign: "center",
                color: COLORS.dark}}>
                      {'\n'}  Password Reset{'\n'}Successful
                        {'\n'}
@@ -50,14 +62,16 @@ return (
           </Text>
         </View>
 
-         <View style={{marginTop: 20}}>
+         <View style={{marginTop: 15}}>
          <CustomButton
          text="Back to my Account"
          onPress={onBacktoAccountPressed}
          />
          </View>
+         </View>
 
     </ScrollView>
+    </ImageBackground>
   );
 };
 

@@ -18,17 +18,21 @@ const Dashboard = () => {
   //#7E7D7D
 
   const onMenuPressed = () => {
-    navigation.navigate('Settings');
+    navigation.navigate('Menu');
   };
   const onSettingsPressed = () => {
-    navigation.navigate('Menu');
+    navigation.navigate('Settings');
   };
 
   return (
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{
+          width: '100%',
+          height: '100%',
+        }}>
         <View style={[styles.topbar]}>
           <Icon
             name="md-menu-sharp"

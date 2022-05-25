@@ -7,6 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+// eslint-disable-next-line no-unused-vars
 import {List, ListItem} from 'react-native-elements';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,7 +17,7 @@ const OutForDelivery = () => {
   //#213571
   //#000000
   //#7E7D7D
-  const [Items, setItems] = useState([
+  const [Items] = useState([
     {key: 1, item: '001854'},
     {key: 2, item: '741541'},
     {key: 3, item: '638524'},
@@ -38,6 +39,7 @@ const OutForDelivery = () => {
       <ScrollView>
         <ImageBackground
           source={require('../../../assets/backCrop.png')}
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{width: '100%', height: '70%'}}>
           <View style={[styles.topbar]}>
             <Icon
