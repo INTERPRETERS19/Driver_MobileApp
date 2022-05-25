@@ -1,5 +1,11 @@
-import React from 'react';
-import {View, Text, StyleSheet, ImageBackground} from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  ScrollView,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {List, ListItem} from 'react-native-elements';
 
@@ -10,6 +16,15 @@ const OutForDelivery = () => {
   //#213571
   //#000000
   //#7E7D7D
+  const [Items, setItems] = useState([
+    {key: 1, item: '001854'},
+    {key: 2, item: '741541'},
+    {key: 3, item: '638524'},
+    {key: 4, item: '096471'},
+    {key: 5, item: '631901'},
+    {key: 6, item: '001854'},
+    {key: 7, item: '741541'},
+  ]);
 
   const onMenuPressed = () => {
     navigation.navigate('Settings');
@@ -20,27 +35,41 @@ const OutForDelivery = () => {
 
   return (
     <View style={styles.root}>
-      <ImageBackground
-        source={require('../../../assets/backCrop.png')}
-        style={{width: '100%', height: '70%'}}>
-        <View style={[styles.topbar]}>
-          <Icon
-            name="md-menu-sharp"
-            size={40}
-            color="#000000"
-            onPress={onMenuPressed}
-          />
-          <Icon
-            name="settings-sharp"
-            size={35}
-            color="#000000"
-            onPress={onSettingsPressed}
-          />
-        </View>
-        <View style={[styles.OutForDelivery]}>
-          <Text style={styles.OutForDeliveryTitle}>Out For Delivery</Text>
-        </View>
-      </ImageBackground>
+      <ScrollView>
+        <ImageBackground
+          source={require('../../../assets/backCrop.png')}
+          style={{width: '100%', height: '70%'}}>
+          <View style={[styles.topbar]}>
+            <Icon
+              name="md-menu-sharp"
+              size={40}
+              color="#000000"
+              onPress={onMenuPressed}
+            />
+            <Icon
+              name="settings-sharp"
+              size={35}
+              color="#000000"
+              onPress={onSettingsPressed}
+            />
+          </View>
+          <View style={[styles.OutForDelivery]}>
+            <Text style={styles.OutForDeliveryTitle}>Out For Delivery</Text>
+          </View>
+          <View>
+            <Text style={styles.ShipementText}>Shipment ID</Text>
+          </View>
+          <View>
+            {Items.map(object => {
+              return (
+                <View style={styles.item} key={object.key}>
+                  <Text style={styles.Itemtext}>{object.item}</Text>
+                </View>
+              );
+            })}
+          </View>
+        </ImageBackground>
+      </ScrollView>
     </View>
   );
 };
@@ -92,6 +121,36 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     justifyContent: 'center',
+  },
+  ShipementText: {
+    marginLeft: 25,
+    marginBottom: 14,
+    marginTop: 89,
+    fontFamily: 'Montserrat-Medium',
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: '#000000',
+  },
+  Itemtext: {
+    fontFamily: 'Montserrat-Medium',
+    fontStyle: 'normal',
+    color: '#000000',
+    textAlign: 'left',
+    marginLeft: 5,
+  },
+  item: {
+    backgroundColor: '#E4EDF6',
+    justifyContent: 'center',
+    margin: 8,
+    container: 8,
+    marginLeft: 25,
+    marginRight: 25,
+    height: 38,
+    borderColor: '#e8e8e8',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginVertical: 5,
   },
 });
 
