@@ -91,7 +91,7 @@ const Navigation = () => {
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="NewPassword" component={NewPasswordScreen} />
+        <Stack.Screen name="ChangedPassword" component={NewPasswordScreen} />
         <Stack.Screen name="Help" component={Help} />
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Terms" component={Terms} />

@@ -10,7 +10,7 @@ const Settings = () => {
     navigation.navigate('SignIn');
   };
   const pressedNewPassword = () => {
-    navigation.navigate('NewPassword');
+    navigation.navigate('ChangedPassword');
   };
   const pressedAbout = () => {
     navigation.navigate('About');
