@@ -7,7 +7,6 @@ import {
   ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-// eslint-disable-next-line no-unused-vars
 import {List, ListItem} from 'react-native-elements';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -17,14 +16,14 @@ const OutForDelivery = () => {
   //#213571
   //#000000
   //#7E7D7D
-  const [Items] = useState([
-    {key: 1, item: '001854'},
-    {key: 2, item: '741541'},
-    {key: 3, item: '638524'},
-    {key: 4, item: '096471'},
-    {key: 5, item: '631901'},
-    {key: 6, item: '001854'},
-    {key: 7, item: '741541'},
+  const [Items, setItems] = useState([
+    {key: 1, item: '001854', name: '>'},
+    {key: 2, item: '741541', name: '>'},
+    {key: 3, item: '638524', name: '>'},
+    {key: 4, item: '096471', name: '>'},
+    {key: 5, item: '631901', name: '>'},
+    {key: 6, item: '001854', name: '>'},
+    {key: 7, item: '741541', name: '>'},
   ]);
 
   const onMenuPressed = () => {
@@ -39,7 +38,6 @@ const OutForDelivery = () => {
       <ScrollView>
         <ImageBackground
           source={require('../../../assets/backCrop.png')}
-          // eslint-disable-next-line react-native/no-inline-styles
           style={{width: '100%', height: '70%'}}>
           <View style={[styles.topbar]}>
             <Icon
@@ -66,6 +64,13 @@ const OutForDelivery = () => {
               return (
                 <View style={styles.item} key={object.key}>
                   <Text style={styles.Itemtext}>{object.item}</Text>
+                  <Icon
+                    style={styles.Itemtext}
+                    name="external-link"
+                    size={20}
+                    color="#000000"
+                    onPress={object.name}
+                  />
                 </View>
               );
             })}
@@ -139,10 +144,12 @@ const styles = StyleSheet.create({
     color: '#000000',
     textAlign: 'left',
     marginLeft: 5,
+    marginTop: 8,
   },
   item: {
     backgroundColor: '#E4EDF6',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     margin: 8,
     container: 8,
     marginLeft: 25,

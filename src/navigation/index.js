@@ -32,7 +32,9 @@ const DashboardTabScreen = () => {
       initialRouteName="Dashboard"
       activeColor="white"
       inactiveColor="#8e999e"
+      // eslint-disable-next-line react-native/no-inline-styles
       barStyle={{padding: 10, backgroundColor: '#213571'}}
+      // eslint-disable-next-line react-native/no-inline-styles
       labelStyle={{fontSize: 12}}>
       <Tab.Screen
         name="Dashboard"
