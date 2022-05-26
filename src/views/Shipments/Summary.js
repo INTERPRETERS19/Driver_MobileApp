@@ -8,30 +8,36 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {List, ListItem} from 'react-native-elements';
+import COLORS from '../../components/colors';
 
 import Icon from 'react-native-vector-icons/Ionicons';
-const RescheduledShipment = () => {
+import CustomInput from '../../components/CustomInput';
+const Summary = () => {
   const navigation = useNavigation();
   //#C3E4F5
   //#213571
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    {key: 1, item: '001854', name: '>'},
-    {key: 2, item: '741541', name: '>'},
-    {key: 3, item: '638524', name: '>'},
-    {key: 4, item: '096471', name: '>'},
-    {key: 5, item: '631901', name: '>'},
-    {key: 6, item: '001854', name: '>'},
-    {key: 7, item: '741541', name: '>'},
+    {key: 1, item: '001854',address: 'Atchuvely', name: ' '},
+    {key: 2, item: '741541',address: 'Atchuvely', name: ' '},
+    {key: 3, item: '638524',address: 'Atchuvely', name: ' '},
+    {key: 4, item: '096471',address: 'Atchuvely', name: ' '},
+    {key: 5, item: '631901',address: 'Atchuvely', name: ' '},
+    {key: 6, item: '001854',address: 'Atchuvely', name: ' '},
+    {key: 7, item: '741541',address: 'Atchuvely', name: ' '},
   ]);
 
   const onMenuPressed = () => {
-    navigation.navigate('Settings');
-  };
-  const onSettingsPressed = () => {
     navigation.navigate('Menu');
   };
+  const onSettingsPressed = () => {
+    navigation.navigate('Settings');
+  };
+  const onArrowPressed = () => {
+    navigation.navigate('PrivacyPolicy');
+  };
+
 
   return (
     <View style={styles.root}>
@@ -53,10 +59,8 @@ const RescheduledShipment = () => {
               onPress={onSettingsPressed}
             />
           </View>
-          <View style={[styles.RescheduledShipment]}>
-            <Text style={styles.RescheduledShipmentTitle}>
-              Out For Delivery
-            </Text>
+          <View style={[styles.Summary]}>
+            <Text style={styles.SummaryTitle}>Out For Delivery</Text>
           </View>
           <View>
             <Text style={styles.ShipementText}>Shipment ID</Text>
@@ -66,12 +70,13 @@ const RescheduledShipment = () => {
               return (
                 <View style={styles.item} key={object.key}>
                   <Text style={styles.Itemtext}>{object.item}</Text>
+                  <Text style={styles.Itemtext}>{object.address}</Text>
                   <Icon
                     style={styles.Itemtext}
                     name="arrow-up-sharp"
                     size={20}
                     color="#000000"
-                    onPress={object.name}
+                    onPress={onArrowPressed}
                   />
                 </View>
               );
@@ -111,10 +116,10 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     color: '#000000',
   },
-  RescheduledShipment: {
+  Summary: {
     flex: 0.5,
   },
-  RescheduledShipmentTitle: {
+  SummaryTitle: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
@@ -149,7 +154,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   item: {
-    backgroundColor: '#E4EDF6',
+    backgroundColor: '#C3E4F5',
     flexDirection: 'row',
     justifyContent: 'space-between',
     margin: 8,
@@ -157,11 +162,12 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     marginRight: 25,
     height: 38,
-    borderColor: '#e8e8e8',
+    borderColor:'#C3E4F5',
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 10,
     marginVertical: 5,
   },
 });
-export default RescheduledShipment;
+
+export default Summary;
