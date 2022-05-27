@@ -32,7 +32,8 @@ const DrawerNav = () => {
     headerShown: false
   }}>
       <Drawer.Screen name = "Dashboard" component={Dashboard} />
-       <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
+       <Drawer.Screen name="Out For Delivery" component={OutForDelivery} />
+       <Drawer.Screen name="Collections" component={Collections} />
       <Drawer.Screen name="Settings" component={Settings} />
     </Drawer.Navigator>
   );
@@ -124,7 +125,6 @@ const Navigation = () => {
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Terms" component={Terms} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-
         <Stack.Screen name="NewPassword" component={NewPassword} />
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />

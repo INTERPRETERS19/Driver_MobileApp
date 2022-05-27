@@ -17,7 +17,7 @@ const Dashboard = () => {
 //#213571
 //#000000
 //#7E7D7D
-//colo
+//colors
   const onMenuPressed = () => {
     navigation.openDrawer();
   };
