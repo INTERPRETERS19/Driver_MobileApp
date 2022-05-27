@@ -1,10 +1,9 @@
 import React from 'react';
 //import {View, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
-
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SignInScreen from '../views/SignInScreen/SignInScreen';
 import NewPasswordScreen from '../views/Settings/NewPasswordScreen';
 import Dashboard from '../views/Dashboard/Dashboard';
@@ -107,8 +106,6 @@ const DashboardTabScreen = () => {
   );
 };
 
-;
-
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -131,6 +128,7 @@ const Navigation = () => {
         <Stack.Screen name="NewPassword" component={NewPassword} />
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
+
       </Stack.Navigator>
       {/* <BottomNavigator /> */}
     </NavigationContainer>

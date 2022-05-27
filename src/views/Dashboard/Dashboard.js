@@ -12,13 +12,8 @@ const Dashboard = () => {
   const widthAndHeight = 180;
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000','#213571'];
-//colors
-//#C3E4F5
-//#213571
-//#000000
-//#7E7D7D
-//colo
-  const onMenuPressed = () => {
+
+nMenuPressed = () => {
     navigation.openDrawer();
   };
   const onSettingsPressed = () => {
@@ -28,11 +23,11 @@ const Dashboard = () => {
   return (
     <View style={styles.root}>
 
-    <ImageBackground 
+    <ImageBackground
     source={require('../../../assets/img1.jpg')}
     style={{   width: '100%',
         height: '100%'}}>
- 
+
          <View style={[styles.topbar ]}>
              <Icon name="md-menu-sharp" size={35} color="#000000"   onPress={onMenuPressed} />
              <Icon name="settings-sharp" size={30} color="#000000"   onPress={onSettingsPressed}/>
@@ -46,20 +41,20 @@ const Dashboard = () => {
          <View style={[styles.dashboard]}>
              <Text style={styles.dashboardTitle}>Dashboard</Text>
          </View>
-       
+
         <View style={[styles.infoPanel]}>
             <View style={[styles.infoPanelCol]}>
                 <DashButtons
-                  text="Delivered Shipments" 
+                  text="Delivered Shipments"
                   onPress={onMenuPressed}
-                  type = "1"     
+                  type = "1"
                 />
                 <DashButtons
-                     text="Re-Scheduled Shipments" 
+                     text="Re-Scheduled Shipments"
                   onPress={onMenuPressed}
-                  type = "3"     
+                  type = "3"
                 />
-        
+
             </View>
 
             <View style={[styles.infoPanelCol]}>
@@ -103,7 +98,7 @@ const Dashboard = () => {
               <Text style={styles.PieName}><Icon name="square" size={15} color="#C3E4F5"/> Re-Scheduled</Text>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#000000"/> Return Shipments</Text>
             </View>
-           
+
         </View>
         </ImageBackground>
     </View>
@@ -185,14 +180,14 @@ const styles = StyleSheet.create({
     flex: 2.5,
     padding:20,
     paddingTop:20,
-   
+
 
     paddingBottom:0,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     },
-    
+
 });
 
 export default Dashboard;
