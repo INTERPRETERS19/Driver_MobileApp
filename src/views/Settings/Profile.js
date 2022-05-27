@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Image} from 'react-native' ;
+import Icon from 'react-native-vector-icons/Ionicons';
 import {
 ImageBackground,
   View,
@@ -18,8 +19,8 @@ const Profile = () => {
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
-//const onBacktoAccountPressed = () => {
-//    navigation.navigate('SignIn');
+//const onYourProfilePressed = () => {
+//    navigation.navigate('Settings');
 //  };
 
 return (
@@ -33,11 +34,29 @@ return (
             >
             <ScrollView showsVerticalScrollIndicator={false}>
 
+<View style={styles.container}>
+          <Text style={{marginTop:60, fontFamily:'Roboto', fontSize: 25, color:'#FFFFFF'}}>
+            Your Profile
+          </Text>
 
+                 <Image
+                          style={{ display: "flex",
+                                     flex: 1,
+                                    resizeMode: "contain",
+                                    height: 165,
+                                    width:165,
+                                    marginTop: 55,
+                                    marginBottom:35,
+                                    borderRadius: 100,
+                                    overflow: 'hidden',
+                                    borderWidth: 3,
+                                    borderColor: 'white',
+                                   }}
+                         source={require('../../../assets/profile.jpg')} />
+</View>
 
         <View style={{backgroundColor: '#FFFFFF',
-                                              marginTop:350,
-
+                                             marginBottom:0,
                                               borderRadius: 20,
                                               paddingHorizontal: 20,
                                               paddingVertical: 17}}>
@@ -75,6 +94,8 @@ return (
                                 </Text>
          </View>
 
+
+
     </ScrollView>
     </ImageBackground>
   );
@@ -89,11 +110,9 @@ const styles = StyleSheet.create({
   container: {
         display: "flex",
         flex: 1,
-        alignItems: "justify",
-//      marginLeft:25,
-        justifyContent: "justify",
         borderRadius: 0,
-
+        justifyContent: "center",
+            alignItems: "center",
       },
 
       Label:{flex:1,
