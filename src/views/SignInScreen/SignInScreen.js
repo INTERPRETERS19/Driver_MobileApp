@@ -33,6 +33,10 @@ const SignInScreen = () => {
 
 
   return (
+    <ImageBackground 
+    source={require('../../../assets/img1.jpg')}
+    style={{   width: '100%',
+        height: '100%'}}>
     <ScrollView showsVerticalScrollIndicator={false}>
     <ImageBackground 
     source={require('../../../assets/img1.jpg')}
@@ -89,6 +93,7 @@ const SignInScreen = () => {
         </View> 
         </ImageBackground>
     </ScrollView>
+    </ImageBackground>
   );
 };
 

@@ -1,11 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
-
 
 const Dashboard = () => {
   const navigation = useNavigation();
@@ -17,12 +15,12 @@ const Dashboard = () => {
 //#213571
 //#000000
 //#7E7D7D
-
+//colo
   const onMenuPressed = () => {
-    navigation.navigate('Settings');
+    navigation.navigate('Menu');
   };
   const onSettingsPressed = () => {
-    navigation.navigate('Menu');
+    navigation.navigate('Settings');
   };
 
   return (
