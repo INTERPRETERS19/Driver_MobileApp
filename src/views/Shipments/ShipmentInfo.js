@@ -12,7 +12,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Dropdown} from 'react-native-material-dropdown';
 
 
-const OutForDelivery = () => {
+const ShipmentInfo = () => {
  
   const onDonePressed = () => {
     navigation.navigate('Dashboard');
@@ -97,4 +97,4 @@ const styles = StyleSheet.create({
     }
 
 });
-export default OutForDelivery;
+export default ShipmentInfo ;
