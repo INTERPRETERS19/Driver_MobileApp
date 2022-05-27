@@ -12,20 +12,7 @@ const Dashboard = () => {
   const widthAndHeight = 180;
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000','#213571'];
-//colors
-//#C3E4F5
-//#213571
-//#000000
-//#7E7D7D
-//colors
-//Heeloooo World
-//colors
-//#C3E4F5
-//#213571
-//#000000
-//#7E7D7D
-//colors
-//Heeloooo World
+
 nMenuPressed = () => {
     navigation.openDrawer();
   };
