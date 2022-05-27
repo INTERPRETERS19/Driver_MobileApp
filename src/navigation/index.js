@@ -23,6 +23,7 @@ import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import About from '../views/Shipments/ShipmentInfo';
 const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {
@@ -128,6 +129,7 @@ const Navigation = () => {
         <Stack.Screen name="NewPassword" component={NewPassword} />
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
+        <Stack.Screen name="ShipmentInfo" component={ShipmentInfo} />
       </Stack.Navigator>
       {/* <BottomNavigator /> */}
     </NavigationContainer>
