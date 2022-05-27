@@ -4,10 +4,10 @@ import { ImageBackground, StyleSheet, Text, View } from "react-native";
 
 const Menu = () => (
   <View style={styles.container}>
-    <ImageBackground 
-    source={require('../../../assets/backCrop.png')}
-    style={{width:'100%', height:'70%'}}>
-    </ImageBackground>
+      <ImageBackground 
+    source={require('../../../assets/img1.jpg')}
+    style={{   width: '100%',
+        height: '100%'}}></ImageBackground>
   </View>
 );
 
