@@ -7,11 +7,10 @@ import {
   ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {List, ListItem} from 'react-native-elements';
-import COLORS from '../../components/colors';
 
-import Icon from 'react-native-vector-icons/Ionicons';
-import CustomInput from '../../components/CustomInput';
+import Icon2 from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/AntDesign';
+
 const OutForDelivery = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -45,13 +44,13 @@ const OutForDelivery = () => {
           source={require('../../../assets/backCrop.png')}
           style={{width: '100%', height: '70%'}}>
           <View style={[styles.topbar]}>
-            <Icon
+            <Icon2
               name="md-menu-sharp"
               size={40}
               color="#000000"
               onPress={onMenuPressed}
             />
-            <Icon
+            <Icon2
               name="settings-sharp"
               size={35}
               color="#000000"
@@ -71,7 +70,7 @@ const OutForDelivery = () => {
                   <Text style={styles.Itemtext}>{object.item}</Text>
                   <Icon
                     style={styles.Itemtext}
-                    name="arrow-forward"
+                    name="right"
                     size={20}
                     color="#000000"
                     onPress={onArrowPressed}
