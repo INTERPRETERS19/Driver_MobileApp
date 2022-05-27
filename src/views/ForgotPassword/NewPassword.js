@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import React, {useState} from 'react'
 import {
   ImageBackground,
   View,
@@ -82,7 +83,6 @@ const NewPassword = () => {
             onPress={onChangePressed}
           />
         </View>
-
       </ScrollView>
     </ImageBackground >
   );
