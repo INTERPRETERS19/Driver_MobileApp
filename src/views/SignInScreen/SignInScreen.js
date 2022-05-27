@@ -29,35 +29,22 @@ const SignInScreen = () => {
   };
 
   return (
-    <ImageBackground
-      source={require('../../../assets/img1.jpg')}
-      style={{width: '100%', height: '100%'}}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <ImageBackground
-          source={require('../../../assets/img1.jpg')}
-          style={{width: '100%', height: '100%'}}>
-          <View style={{marginTop: 160}}>
-            <Text
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: 29,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                color: COLORS.dark,
-              }}>
-              Welcome!
-            </Text>
-            <Text
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: 17,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                color: COLORS.light,
-              }}>
-              Sign in to your account to continue
-            </Text>
-          </View>
+    <ImageBackground 
+    source={require('../../../assets/img1.jpg')}
+    style={{   width: '100%',
+        height: '100%'}}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+   
+        <View style={{marginTop: 160}}>
+       
+          <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
+    color: COLORS.dark}}>
+            Welcome!
+          </Text>
+          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "center", color: COLORS.light}}>
+            Sign in to your account to continue
+          </Text>
+        </View>
 
           <View style={styles.root}>
             <CustomInput
@@ -100,8 +87,7 @@ const SignInScreen = () => {
               type="TERTIARY"
             />
           </View>
-        </ImageBackground>
-      </ScrollView>
+    </ScrollView>
     </ImageBackground>
   );
 };

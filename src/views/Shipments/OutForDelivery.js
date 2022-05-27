@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import Icon2 from 'react-native-vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Icon2 from 'react-native-vector-icons/AntDesign';
 
 const OutForDelivery = () => {
   const navigation = useNavigation();
@@ -45,13 +45,13 @@ const OutForDelivery = () => {
           source={require('../../../assets/backCrop.png')}
           style={{width: '100%', height: '70%'}}>
           <View style={[styles.topbar]}>
-            <Icon2
+            <Icon
               name="md-menu-sharp"
               size={40}
               color="#000000"
               onPress={onMenuPressed}
             />
-            <Icon2
+            <Icon
               name="settings-sharp"
               size={35}
               color="#000000"
@@ -69,7 +69,7 @@ const OutForDelivery = () => {
               return (
                 <View style={styles.item} key={object.key}>
                   <Text style={styles.Itemtext}>{object.item}</Text>
-                  <Icon
+                  <Icon2
                     style={styles.Itemtext}
                     name="right"
                     size={20}

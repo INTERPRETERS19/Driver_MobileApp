@@ -24,19 +24,6 @@ import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
-const DrawerNav = () => {
-  return (
-    <Drawer.Navigator
-      initialRouteName="Dashboard"
-      screenOptions={{
-        headerShown: false,
-      }}>
-      <Drawer.Screen name="Dashboard" component={Dashboard} />
-      <Drawer.Screen name="Out For Delivery" component={OutForDelivery} />
-      <Drawer.Screen name="Settings" component={Settings} />
-    </Drawer.Navigator>
-  );
-};
 
 const Tab = createMaterialBottomTabNavigator();
 
