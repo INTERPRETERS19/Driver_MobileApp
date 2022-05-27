@@ -10,12 +10,16 @@ import OutForDelivery from '../views/Shipments/OutForDelivery';
 import Collections from '../views/Collections/Collections';
 import Settings from '../views/Settings/Settings';
 import Menu from '../shared/Menu';
+
 import Profile from '../views/Settings/Profile';
 import PrivacyPolicy from '../views/Settings/PrivacyPolicy';
 import Help from '../views/Settings/Help';
 import Terms from '../views/Settings/Terms';
 import About from '../views/Settings/About';
 
+import NewPassword from '../views/ForgotPassword/NewPassword';
+import OTP from '../views/OTP/OTP';
+import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 
 
 
@@ -77,6 +81,7 @@ const DashboardTabScreen = () => {
   );
 };
 
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -90,12 +95,19 @@ const Navigation = () => {
         <Stack.Screen name="Collections" component={Collections} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Menu" component={Menu} />
+
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="ChangedPassword" component={NewPasswordScreen} />
         <Stack.Screen name="Help" component={Help} />
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Terms" component={Terms} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+
+        <Stack.Screen name="NewPassword" component={NewPassword} />
+        <Stack.Screen name="OTP" component={OTP} />
+        <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
+
+
 
       </Stack.Navigator>
       {/* <BottomNavigator /> */}
