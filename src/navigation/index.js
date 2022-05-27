@@ -1,12 +1,9 @@
 import React from 'react';
 //import {View, Text} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import SignInScreen from '../views/SignInScreen/SignInScreen';
 import NewPasswordScreen from '../views/Settings/NewPasswordScreen';
