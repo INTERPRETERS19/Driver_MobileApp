@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Image} from 'react-native' ;
 import {
 ImageBackground,
   View,
@@ -80,7 +79,7 @@ const onChangePressed = () => {
          </View>
 
 </ScrollView>
-    </ImageBackground >
+    </ImageBackground>
   );
 };
 
