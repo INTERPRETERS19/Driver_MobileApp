@@ -23,7 +23,7 @@ import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import About from '../views/Shipments/ShipmentInfo';
+import ShipmentInfo from '../views/Shipments/ShipmentInfo';
 const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {

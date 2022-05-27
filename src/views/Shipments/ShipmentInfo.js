@@ -9,15 +9,14 @@ import {
 
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
-import {Dropdown} from 'react-native-material-dropdown';
 
 
 const ShipmentInfo = () => {
- 
+  const navigation = useNavigation();
   const onDonePressed = () => {
     navigation.navigate('Dashboard');
   };
-  const navigation = useNavigation();
+  
 
   return (
     <View style={styles.body}>
@@ -31,7 +30,7 @@ const ShipmentInfo = () => {
 <ScrollView showsVerticalScrollIndicator={false}>
 <View style={styles.content}>
       <Text style={styles.head}>Shipment ID              XXXX</Text>
-      <Text>Receipient</Text>
+      <Text>Recepient</Text>
       <Text style={styles.form}>William Turner</Text>
       <Text>Contact number</Text>
       <Text style={styles.form}>0761234567</Text>
@@ -47,10 +46,6 @@ const ShipmentInfo = () => {
 <View style={styles.button}>
      <CustomButton
           text='Done'
-         // onPress={onForgotPasswordPressed}
-          //type="TERTIARY"
-          bgColor={'#28388f'}
-          fgColor= {'#ffffff'}
           onPress={onDonePressed}
         />
 
