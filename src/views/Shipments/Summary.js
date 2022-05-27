@@ -35,7 +35,7 @@ const Summary = () => {
     navigation.navigate('Settings');
   };
   const onArrowPressed = () => {
-    navigation.navigate('PrivacyPolicy');
+    navigation.navigate('shipmentInfo');
   };
 
 
@@ -73,7 +73,7 @@ const Summary = () => {
                   <Text style={styles.Itemtext}>{object.address}</Text>
                   <Icon
                     style={styles.Itemtext}
-                    name="arrow-up-sharp"
+                    name="arrow-forward"
                     size={20}
                     color="#000000"
                     onPress={onArrowPressed}

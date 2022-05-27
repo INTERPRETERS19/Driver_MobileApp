@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   View,
@@ -9,8 +8,10 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {List, ListItem} from 'react-native-elements';
+import COLORS from '../../components/colors';
 
 import Icon from 'react-native-vector-icons/Ionicons';
+import CustomInput from '../../components/CustomInput';
 const Return = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -18,21 +19,25 @@ const Return = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    {key: 1, item: '001854'},
-    {key: 2, item: '741541'},
-    {key: 3, item: '638524'},
-    {key: 4, item: '096471'},
-    {key: 5, item: '631901'},
-    {key: 6, item: '001854'},
-    {key: 7, item: '741541'},
+    {key: 1, item: '001854', name: ' '},
+    {key: 2, item: '741541', name: ' '},
+    {key: 3, item: '638524', name: ' '},
+    {key: 4, item: '096471', name: ' '},
+    {key: 5, item: '631901', name: ' '},
+    {key: 6, item: '001854', name: ' '},
+    {key: 7, item: '741541', name: ' '},
   ]);
 
   const onMenuPressed = () => {
-    navigation.navigate('Settings');
-  };
-  const onSettingsPressed = () => {
     navigation.navigate('Menu');
   };
+  const onSettingsPressed = () => {
+    navigation.navigate('Settings');
+  };
+  const onArrowPressed = () => {
+    navigation.navigate('shipmentInfo');
+  };
+
 
   return (
     <View style={styles.root}>
@@ -55,7 +60,7 @@ const Return = () => {
             />
           </View>
           <View style={[styles.Return]}>
-            <Text style={styles.ReturnTitle}>Returns</Text>
+            <Text style={styles.ReturnTitle}>Out For Delivery</Text>
           </View>
           <View>
             <Text style={styles.ShipementText}>Shipment ID</Text>
@@ -65,6 +70,13 @@ const Return = () => {
               return (
                 <View style={styles.item} key={object.key}>
                   <Text style={styles.Itemtext}>{object.item}</Text>
+                  <Icon
+                    style={styles.Itemtext}
+                    name="arrow-forward"
+                    size={20}
+                    color="#000000"
+                    onPress={onArrowPressed}
+                  />
                 </View>
               );
             })}
@@ -138,16 +150,18 @@ const styles = StyleSheet.create({
     color: '#000000',
     textAlign: 'left',
     marginLeft: 5,
+    marginTop: 8,
   },
   item: {
-    backgroundColor: '#E4EDF6',
-    justifyContent: 'center',
+    backgroundColor: '#C3E4F5',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     margin: 8,
     container: 8,
     marginLeft: 25,
     marginRight: 25,
     height: 38,
-    borderColor: '#e8e8e8',
+    borderColor:'#C3E4F5',
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 10,

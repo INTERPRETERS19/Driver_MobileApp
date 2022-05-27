@@ -35,9 +35,8 @@ const OutForDelivery = () => {
     navigation.navigate('Settings');
   };
   const onArrowPressed = () => {
-    navigation.navigate('Menu');
+    navigation.navigate('shipmentInfo');
   };
-
 
   return (
     <View style={styles.root}>
@@ -72,7 +71,7 @@ const OutForDelivery = () => {
                   <Text style={styles.Itemtext}>{object.item}</Text>
                   <Icon
                     style={styles.Itemtext}
-                    name="arrow-up-sharp"
+                    name="arrow-forward"
                     size={20}
                     color="#000000"
                     onPress={onArrowPressed}
@@ -161,7 +160,7 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     marginRight: 25,
     height: 38,
-    borderColor:'#C3E4F5',
+    borderColor: '#C3E4F5',
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 10,
