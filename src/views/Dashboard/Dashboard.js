@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
@@ -16,7 +15,7 @@ const Dashboard = () => {
   //#213571
   //#000000
   //#7E7D7D
-
+  //colo
   const onMenuPressed = () => {
     navigation.navigate('Menu');
   };
@@ -28,11 +27,7 @@ const Dashboard = () => {
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          width: '100%',
-          height: '100%',
-        }}>
+        style={{width: '100%', height: '100%'}}>
         <View style={[styles.topbar]}>
           <Icon
             name="md-menu-sharp"

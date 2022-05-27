@@ -29,76 +29,80 @@ const SignInScreen = () => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <ImageBackground
-        source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
-        <View style={{marginTop: 160}}>
-          <Text
-            style={{
-              fontFamily: 'Poppins',
-              fontSize: 29,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              color: COLORS.dark,
-            }}>
-            Welcome!
-          </Text>
-          <Text
-            style={{
-              fontFamily: 'Poppins',
-              fontSize: 17,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              color: COLORS.light,
-            }}>
-            Sign in to your account to continue
-          </Text>
-        </View>
-
-        <View style={styles.root}>
-          <CustomInput
-            placeholder="Username"
-            value={username}
-            setValue={setUsername}
-          />
-          <CustomInput
-            placeholder="Password"
-            value={password}
-            setValue={setPassword}
-            secureTextEntry
-          />
-        </View>
-        <View style={styles.container}>
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={isSelected}
-              onValueChange={setSelection}
-              style={styles.checkbox}
-            />
+    <ImageBackground
+      source={require('../../../assets/img1.jpg')}
+      style={{width: '100%', height: '100%'}}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ImageBackground
+          source={require('../../../assets/img1.jpg')}
+          style={{width: '100%', height: '100%'}}>
+          <View style={{marginTop: 160}}>
             <Text
               style={{
-                marginTop: 5,
                 fontFamily: 'Poppins',
-                fontSize: 14,
+                fontSize: 29,
                 fontWeight: 'bold',
                 textAlign: 'center',
                 color: COLORS.dark,
               }}>
-              Remember me
+              Welcome!
+            </Text>
+            <Text
+              style={{
+                fontFamily: 'Poppins',
+                fontSize: 17,
+                fontWeight: 'bold',
+                textAlign: 'center',
+                color: COLORS.light,
+              }}>
+              Sign in to your account to continue
             </Text>
           </View>
-        </View>
-        <View style={{marginTop: 20}}>
-          <CustomButton text="Sign In" onPress={onSignInPressed} />
-          <CustomButton
-            text="Forgot password?"
-            onPress={onForgotPasswordPressed}
-            type="TERTIARY"
-          />
-        </View>
-      </ImageBackground>
-    </ScrollView>
+
+          <View style={styles.root}>
+            <CustomInput
+              placeholder="Username"
+              value={username}
+              setValue={setUsername}
+            />
+            <CustomInput
+              placeholder="Password"
+              value={password}
+              setValue={setPassword}
+              secureTextEntry
+            />
+          </View>
+          <View style={styles.container}>
+            <View style={styles.checkboxContainer}>
+              <CheckBox
+                value={isSelected}
+                onValueChange={setSelection}
+                style={styles.checkbox}
+              />
+              <Text
+                style={{
+                  marginTop: 5,
+                  fontFamily: 'Poppins',
+                  fontSize: 14,
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  color: COLORS.dark,
+                }}>
+                Remember me
+              </Text>
+            </View>
+          </View>
+          <View style={{marginTop: 20}}>
+            <CustomButton text="Sign In" onPress={onSignInPressed} />
+            <CustomButton
+              text="Forgot password?"
+              onPress={onForgotPasswordPressed}
+              type="TERTIARY"
+            />
+          </View>
+        </ImageBackground>
+      </ScrollView>
+    </ImageBackground>
   );
 };
 
