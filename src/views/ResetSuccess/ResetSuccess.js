@@ -44,11 +44,22 @@ return (
                 source={require('./successimg.png')} />
     </View>
 
-        <View style={{backgroundColor: '#DFEEF5',marginLeft: 15, marginTop: 35,
+        <View style={{backgroundColor: '#ffffff',marginLeft: 15, marginTop: 35,
                                               marginRight: 15,
                                               borderRadius: 20,
                                               paddingHorizontal: 20,
-                                              paddingVertical: 17}}>
+                                              paddingVertical: 17,
+//                                               shadowColor: '#000',
+//     shadowOffset: {
+//       width: 10,
+//       height: 5,
+//     },
+// shadowOpacity:0.5,
+//     shadowRadius: 5,
+//     elevation: 6,
+  
+                                                           
+                     }}>
         <View>
            <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold',marginTop: -30, textAlign: "center",
                color: COLORS.dark}}>
@@ -57,8 +68,9 @@ return (
                      </Text>
 
 
-          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "center", color: '#656363', marginLeft: 10, marginRight: 10}}>
-            Please note that your password has been changed successfully for the account Interpreters05 {'\n'}
+          <Text style={{fontFamily: 'Poppins',fontSize: 16.5, textAlign: "center", color: '#656363', marginLeft: 10, marginRight: 10}}>
+            Please note that your password has been changed successfully for the account: 
+            <Text style={{fontWeight: "bold"}}> Eren Jeager</Text>
           </Text>
         </View>
 
