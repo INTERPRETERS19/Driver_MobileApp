@@ -108,7 +108,6 @@ const Navigation = () => {
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
 
 
-
       </Stack.Navigator>
       {/* <BottomNavigator /> */}
     </NavigationContainer>
