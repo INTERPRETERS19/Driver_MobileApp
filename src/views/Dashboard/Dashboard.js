@@ -5,8 +5,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
 
+
 const Dashboard = () => {
   const navigation = useNavigation();
+
   const widthAndHeight = 180;
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000','#213571'];
@@ -17,7 +19,7 @@ const Dashboard = () => {
 //#7E7D7D
 //colo
   const onMenuPressed = () => {
-    navigation.navigate('Menu');
+    navigation.openDrawer();
   };
   const onSettingsPressed = () => {
     navigation.navigate('Settings');
@@ -32,8 +34,8 @@ const Dashboard = () => {
         height: '100%'}}>
  
          <View style={[styles.topbar ]}>
-             <Icon name="md-menu-sharp" size={40} color="#000000"   onPress={onMenuPressed} />
-             <Icon name="settings-sharp" size={35} color="#000000"   onPress={onSettingsPressed}/>
+             <Icon name="md-menu-sharp" size={35} color="#000000"   onPress={onMenuPressed} />
+             <Icon name="settings-sharp" size={30} color="#000000"   onPress={onSettingsPressed}/>
          </View>
 
          <View style={[styles.welcomeBar]}>
@@ -125,10 +127,10 @@ const styles = StyleSheet.create({
     paddingBottom:15,
   },
   welcome: {
-    fontFamily: 'Roboto-Regular',
+    fontFamily: 'Roboto-Bold',
     fontSize: 14,
     lineHeight: 16,
-    color: '#2566AD',
+    color: '#213571',
   },
   name: {
     fontFamily: 'Roboto-Bold',
@@ -182,6 +184,10 @@ const styles = StyleSheet.create({
   pieChartPanel: {
     flex: 2.5,
     padding:20,
+    paddingTop:20,
+   
+
+    paddingBottom:0,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
