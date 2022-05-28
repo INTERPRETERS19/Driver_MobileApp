@@ -13,7 +13,7 @@ const Dashboard = () => {
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000','#213571'];
 
-nMenuPressed = () => {
+const onMenuPressed = () => {
     navigation.openDrawer();
   };
   const onSettingsPressed = () => {
@@ -23,11 +23,11 @@ nMenuPressed = () => {
   return (
     <View style={styles.root}>
 
-    <ImageBackground 
+    <ImageBackground
     source={require('../../../assets/img1.jpg')}
     style={{   width: '100%',
         height: '100%'}}>
- 
+
          <View style={[styles.topbar ]}>
              <Icon name="md-menu-sharp" size={35} color="#000000"   onPress={onMenuPressed} />
              <Icon name="settings-sharp" size={30} color="#000000"   onPress={onSettingsPressed}/>
@@ -41,20 +41,20 @@ nMenuPressed = () => {
          <View style={[styles.dashboard]}>
              <Text style={styles.dashboardTitle}>Dashboard</Text>
          </View>
-       
+
         <View style={[styles.infoPanel]}>
             <View style={[styles.infoPanelCol]}>
                 <DashButtons
-                  text="Delivered Shipments" 
+                  text="Delivered Shipments"
                   onPress={onMenuPressed}
-                  type = "1"     
+                  type = "1"
                 />
                 <DashButtons
-                     text="Re-Scheduled Shipments" 
+                     text="Re-Scheduled Shipments"
                   onPress={onMenuPressed}
-                  type = "3"     
+                  type = "3"
                 />
-        
+
             </View>
 
             <View style={[styles.infoPanelCol]}>
@@ -98,9 +98,9 @@ nMenuPressed = () => {
               <Text style={styles.PieName}><Icon name="square" size={15} color="#C3E4F5"/> Re-Scheduled</Text>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#000000"/> Return Shipments</Text>
             </View>
-           
+
         </View>
-        </ImageBackground>
+      </ImageBackground>
     </View>
   );
 };
@@ -114,18 +114,18 @@ const styles = StyleSheet.create({
     padding:20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingBottom:0,
+    paddingBottom: 0,
   },
   welcomeBar: {
     flex: 0.5,
-    paddingLeft:20,
-    paddingBottom:15,
+    paddingLeft: 20,
+    paddingBottom: 15,
   },
   welcome: {
-    fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto-Regular',
     fontSize: 14,
     lineHeight: 16,
-    color: '#213571',
+    color: '#2566AD',
   },
   name: {
     fontFamily: 'Roboto-Bold',
@@ -160,34 +160,30 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  Pie:{
-    flex:1,
-    padding:15,
-    paddingVertical:50,
+  Pie: {
+    flex: 1,
+    padding: 15,
+    paddingVertical: 50,
   },
-  Pie1:{
-    flex:1,
+  Pie1: {
+    flex: 1,
   },
-  PieName:{
+  PieName: {
     color: '#000000',
     fontFamily: 'Roboto-Medium',
     fontSize: 13,
     lineHeight: 20,
-    paddingLeft:20,
+    paddingLeft: 20,
     textAlign: "left",
   },
   pieChartPanel: {
     flex: 2.5,
-    padding:20,
-    paddingTop:20,
-   
-
-    paddingBottom:0,
+    padding: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
-    },
-    
+  },
+
 });
 
 export default Dashboard;
