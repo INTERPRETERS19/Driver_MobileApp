@@ -13,7 +13,7 @@ const Dashboard = () => {
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000','#213571'];
 
-nMenuPressed = () => {
+const onMenuPressed = () => {
     navigation.openDrawer();
   };
   const onSettingsPressed = () => {
@@ -100,7 +100,7 @@ nMenuPressed = () => {
             </View>
 
         </View>
-        </ImageBackground>
+      </ImageBackground>
     </View>
   );
 };
@@ -114,18 +114,18 @@ const styles = StyleSheet.create({
     padding:20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingBottom:0,
+    paddingBottom: 0,
   },
   welcomeBar: {
     flex: 0.5,
-    paddingLeft:20,
-    paddingBottom:15,
+    paddingLeft: 20,
+    paddingBottom: 15,
   },
   welcome: {
-    fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto-Regular',
     fontSize: 14,
     lineHeight: 16,
-    color: '#213571',
+    color: '#2566AD',
   },
   name: {
     fontFamily: 'Roboto-Bold',
@@ -160,33 +160,29 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  Pie:{
-    flex:1,
-    padding:15,
-    paddingVertical:50,
+  Pie: {
+    flex: 1,
+    padding: 15,
+    paddingVertical: 50,
   },
-  Pie1:{
-    flex:1,
+  Pie1: {
+    flex: 1,
   },
-  PieName:{
+  PieName: {
     color: '#000000',
     fontFamily: 'Roboto-Medium',
     fontSize: 13,
     lineHeight: 20,
-    paddingLeft:20,
+    paddingLeft: 20,
     textAlign: "left",
   },
   pieChartPanel: {
     flex: 2.5,
-    padding:20,
-    paddingTop:20,
-
-
-    paddingBottom:0,
+    padding: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
-    },
+  },
 
 });
 

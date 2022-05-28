@@ -19,9 +19,9 @@ const Profile = () => {
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
-//const onYourProfilePressed = () => {
-//    navigation.navigate('Settings');
-//  };
+const onbackPressed = () => {
+    navigation.navigate('Settings');
+  };
 
 return (
     <ImageBackground
@@ -34,10 +34,20 @@ return (
             >
             <ScrollView showsVerticalScrollIndicator={false}>
 
-<View style={styles.container}>
-          <Text style={{marginTop:60, fontFamily:'Roboto', fontSize: 25, color:'#FFFFFF'}}>
-            Your Profile
-          </Text>
+
+    <View style={{flex: 1,
+                      flexDirection: 'row',
+                      justifyContent: 'flex-start',
+                      marginTop:41,
+                      marginLeft:26,
+                      }}>
+            <Icon name="chevron-back" size={40} color="#FFFFFF" onPress={onbackPressed}/>
+            </View>
+    <View style={{display: "flex", justifyContent: "center", alignItems: "center", marginTop: -15}}>
+                <Text style={{fontFamily: 'Roboto', fontSize: 25, color:'#FFFFFF',}}>Your Profile </Text>
+                </View>
+
+    <View style={styles.container}>
 
                  <Image
                           style={{ display: "flex",
@@ -45,8 +55,8 @@ return (
                                     resizeMode: "contain",
                                     height: 165,
                                     width:165,
-                                    marginTop: 55,
-                                    marginBottom:35,
+                                    marginTop: 50,
+                                    marginBottom:30,
                                     borderRadius: 100,
                                     overflow: 'hidden',
                                     borderWidth: 3,
