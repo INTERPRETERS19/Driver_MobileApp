@@ -13,7 +13,7 @@ const Dashboard = () => {
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000','#213571'];
 
-nMenuPressed = () => {
+const onMenuPressed = () => {
     navigation.openDrawer();
   };
   const onSettingsPressed = () => {
@@ -24,8 +24,8 @@ nMenuPressed = () => {
     <View style={styles.root}>
 
     <ImageBackground 
-    source={require('../../../assets/img1.jpg')}
-    style={{   width: '100%',
+     source={require('../../../assets/img1.jpg')}
+     style={{   width: '100%',
         height: '100%'}}>
  
          <View style={[styles.topbar ]}>
@@ -82,7 +82,7 @@ nMenuPressed = () => {
 
 
         <View style={[styles.pieChartPanel]}>
-        <View style = {[styles.Pie1]}>
+         <View style = {[styles.Pie1]}>
              <PieChart
                 widthAndHeight={widthAndHeight}
                 series={series}
@@ -91,13 +91,13 @@ nMenuPressed = () => {
                 coverRadius={0.45}
                 coverFill={'#FFF'}
               />
-              </View>
-            <View style = {[styles.Pie]}>
+         </View>
+             <View style = {[styles.Pie]}>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#7E7D7D"/> Delivered Shipments</Text>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#213571"/> Pending Deliveries</Text>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#C3E4F5"/> Re-Scheduled</Text>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#000000"/> Return Shipments</Text>
-            </View>
+             </View>
            
         </View>
         </ImageBackground>

@@ -51,7 +51,7 @@ const Summary = () => {
               size={40}
               color="#000000"
               onPress={onMenuPressed}
-            />
+             />
             <Icon
               name="settings-sharp"
               size={35}
@@ -98,23 +98,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom: 0,
-  },
-  welcomeBar: {
-    flex: 0.5,
-    paddingLeft: 20,
-    paddingBottom: 15,
-  },
-  welcome: {
-    fontFamily: 'Roboto-Regular',
-    fontSize: 14,
-    lineHeight: 16,
-    color: '#2566AD',
-  },
-  name: {
-    fontFamily: 'Roboto-Bold',
-    fontSize: 22,
-    lineHeight: 26,
-    color: '#000000',
   },
   Summary: {
     flex: 0.5,
