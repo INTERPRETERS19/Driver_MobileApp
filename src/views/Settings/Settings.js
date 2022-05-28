@@ -50,7 +50,12 @@ const Settings = () => {
         }}>
         <ScrollView>
           <View style={[styles.topbar]}>
-            <Icon name="chevron-back" size={40} color="#000000" onPress={onbackPressed} />
+            <Icon
+              name="chevron-back"
+              size={40}
+              color="#000000"
+              onPress={onbackPressed}
+            />
           </View>
           <View style={styles.container}>
             <Image
