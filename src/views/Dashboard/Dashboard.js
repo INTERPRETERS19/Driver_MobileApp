@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
 
-
 const Dashboard = () => {
   const navigation = useNavigation();
 
@@ -84,7 +83,6 @@ const Dashboard = () => {
             </View>
 
         </View>
-
 
         <View style={[styles.pieChartPanel]}>
         <View style = {[styles.Pie1]}>
@@ -196,3 +194,4 @@ const styles = StyleSheet.create({
 });
 
 export default Dashboard;
+

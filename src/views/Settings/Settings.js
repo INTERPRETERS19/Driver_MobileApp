@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../../components/CustomButton';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 const Settings = () => {
   const navigation = useNavigation();
 
@@ -27,6 +29,9 @@ const Settings = () => {
   const pressedProfile = () => {
     navigation.navigate('Profile');
   };
+  const onbackPressed = () => {
+    navigation.navigate('Dashboard');
+  };
 
   return (
 
@@ -39,6 +44,9 @@ const Settings = () => {
           height: '100%'
         }}>
         <ScrollView>
+          <View style={[styles.topbar]}>
+            <Icon name="chevron-back" size={30} color="#9C9C9C" onPress={onbackPressed} />
+          </View>
           <View style={styles.container}>
             <Image
               style={styles.ProfilePicture}
@@ -123,14 +131,21 @@ const styles = StyleSheet.create({
     resizeMode: "center",
   },
   container: {
+    flex: 1,
     paddingLeft: 90,
-    paddingTop: 40,
+    paddingTop: 10,
     paddingBottom: 0,
     borderRadius: 180 / 2,
     flexWrap: 'wrap',
     alignItems: 'center',
   },
-
+  topbar: {
+    flex: 0.8,
+    padding: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: 0,
+  },
 });
 
 export default Settings;
