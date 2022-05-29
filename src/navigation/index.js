@@ -37,14 +37,11 @@ const DrawerNav = () => {
       }}>
       <Drawer.Screen name="Dashboard" component={Dashboard} />
       <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
-<<<<<<< HEAD
-=======
       <Drawer.Screen name="DeliveredShipment" component={DeliveredShipment} />
       <Drawer.Screen name="Summary" component={Summary} />
       <Drawer.Screen name="RescheduledShipment" component={RescheduledShipment} />
       <Drawer.Screen name="Return" component={Return} />
       <Drawer.Screen name="Collections" component={Collections} />
->>>>>>> origin
       <Drawer.Screen name="Settings" component={Settings} />
     </Drawer.Navigator>
   );

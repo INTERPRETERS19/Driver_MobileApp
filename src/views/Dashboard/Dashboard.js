@@ -35,23 +35,9 @@ const Dashboard = () => {
   };
   return (
     <View style={styles.root}>
-<<<<<<< HEAD
-
-
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{
-          width: '100%',
-          height: '100%'
-        }}>
-
-        <View style={[styles.topbar]}>
-          <Icon name="md-menu-sharp" size={35} color="#000000" onPress={onMenuPressed} />
-          <Icon name="settings-sharp" size={30} color="#000000" onPress={onSettingsPressed} />
-=======
-      <ImageBackground
-        source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
+        style={{ width: '100%', height: '100%' }}>
         <View style={[styles.topbar]}>
           <Icon
             name="md-menu-sharp"
@@ -65,77 +51,12 @@ const Dashboard = () => {
             color="#000000"
             onPress={onSettingsPressed}
           />
->>>>>>> origin
         </View>
 
         <View style={[styles.welcomeBar]}>
           <Text style={styles.welcome}>Welcome</Text>
           <Text style={styles.name}>Eren Jeager,</Text>
         </View>
-<<<<<<< HEAD
-
-        <View style={[styles.dashboard]}>
-          <Text style={styles.dashboardTitle}>Dashboard</Text>
-        </View>
-
-        <View style={[styles.infoPanel]}>
-          <View style={[styles.infoPanelCol]}>
-            <DashButtons
-              text="Delivered Shipments"
-              onPress={onMenuPressed}
-              type="1"
-            />
-            <DashButtons
-              text="Re-Scheduled Shipments"
-              onPress={onMenuPressed}
-              type="3"
-            />
-
-          </View>
-
-          <View style={[styles.infoPanelCol]}>
-            <DashButtons
-              text="Pending Deliveries"
-              onPress={onSettingsPressed}
-              type="2"
-            />
-            <DashButtons
-              text="Return Shipments"
-              onPress={onSettingsPressed}
-              type="4"
-            />
-          </View>
-
-          <View style={[styles.infoPanelCol]}>
-            <DashButtons
-              text="Collected COD Amount"
-              onPress={onSettingsPressed}
-              type="5"
-            />
-          </View>
-</View>
-
-
-        <View style={[styles.pieChartPanel]}
-        <View style = {[styles.Pie1]}>
-             <PieChart
-                widthAndHeight={widthAndHeight}
-                series={series}
-                sliceColor={sliceColor}
-                doughnut={true}
-                coverRadius={0.45}
-                coverFill={'#FFF'}
-              />
-              </View>
-            <View style = {[styles.Pie]}>
-              <Text style={styles.PieName}><Icon name="square" size={15} color="#7E7D7D"/> Delivered Shipments</Text>
-              <Text style={styles.PieName}><Icon name="square" size={15} color="#213571"/> Pending Deliveries</Text>
-              <Text style={styles.PieName}><Icon name="square" size={15} color="#C3E4F5"/> Re-Scheduled</Text>
-              <Text style={styles.PieName}><Icon name="square" size={15} color="#000000"/> Return Shipments</Text>
-            </View>
-
-
-=======
 
         <View style={[styles.dashboard]}>
           <Text style={styles.dashboardTitle}>Dashboard</Text>
@@ -204,7 +125,6 @@ const Dashboard = () => {
               <Icon name="square" size={15} color="#000000" /> Return Shipments
             </Text>
           </View>
->>>>>>> origin
         </View>
       </ImageBackground>
     </View>
