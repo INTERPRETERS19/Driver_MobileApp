@@ -7,7 +7,6 @@ ImageBackground,
   StyleSheet,
   useWindowDimensions,
   ScrollView,
-
 } from 'react-native';
 import CustomInput from '../../components/CustomInput';
 import COLORS from '../../components/colors';
@@ -15,7 +14,6 @@ import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 
 const ResetSuccess = () => {
-//  const [password, setPassword] = useState('');
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
@@ -49,16 +47,7 @@ return (
                                               borderRadius: 20,
                                               paddingHorizontal: 20,
                                               paddingVertical: 17,
-//                                               shadowColor: '#000',
-//     shadowOffset: {
-//       width: 10,
-//       height: 5,
-//     },
-// shadowOpacity:0.5,
-//     shadowRadius: 5,
-//     elevation: 6,
-  
-                                                           
+
                      }}>
         <View>
            <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold',marginTop: -30, textAlign: "center",

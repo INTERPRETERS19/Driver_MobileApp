@@ -25,8 +25,8 @@ const NewPassword = () => {
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
       style={{
+        display: "flex",
         flex: 1,
-
         height: '100%',
       }}
     >
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    //marginLeft:25,
     justifyContent: "center",
   },
 

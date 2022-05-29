@@ -75,7 +75,7 @@ return (
             FULL NAME
           </Text>
                 <Text style={styles.Info}>
-                             Robert William
+                             Eren Jeager
                 </Text>
 
           <Text style={styles.Label}>
@@ -85,7 +85,7 @@ return (
                                              0761234567
                                 </Text>
           <Text style={styles.Label}>
-            DRIVING LICENCE NUMBER
+            DRIVING LICENSE NUMBER
           </Text>
                 <Text style={styles.Info}>
                                              B1234567

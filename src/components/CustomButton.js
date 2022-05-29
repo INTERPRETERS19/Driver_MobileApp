@@ -83,6 +83,11 @@ const styles = StyleSheet.create({
   text_TERTIARY: {
     color: 'gray',
   },
+
+  text_SUB: {
+      color: '#578FD1',
+      fontSize: 15,
+    },
 });
 
 export default CustomButton;

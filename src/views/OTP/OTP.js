@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+ImageBackground,
   View,
   Text,
   StyleSheet,
@@ -25,7 +26,20 @@ const onBacktoMyAccountPressed = () => {
     navigation.navigate('SignIn');
   };
 
+const onResendPressed = () => {
+    navigation.navigate('SignIn');
+  };
+
+
   return (
+  <ImageBackground
+        source={require('../../../assets/img1.jpg')}
+        style={{
+          display: "flex",
+          flex: 1,
+          height: '100%',
+        }}
+      >
     <ScrollView showsVerticalScrollIndicator={false}>
 
         <View style={{marginTop: 160}}>
@@ -34,16 +48,47 @@ const onBacktoMyAccountPressed = () => {
             Confirm OTP
           </Text>
 
-          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "center", color: '#656363', marginTop: 50, marginBottom: 20, marginLeft: 10, marginRight: 10, backgroundColor: '#D2F3C6'}}>
-            Enter OTP we just sent to your mobile number: +94******134
-          </Text>
+
         </View>
 
-         <View style={{marginTop: 20}}>
-         <CustomButton
-         text="Verify"
-         onPress={onVerifyPressed}
-         />
+        <View style={{backgroundColor: '#ffffff',marginLeft: 15, marginTop: 35,
+                                                      marginRight: 15,
+                                                      borderRadius: 20,
+                                                      paddingHorizontal: 20,
+                                                      paddingVertical: 17,
+
+                             }}>
+                <View>
+
+
+
+                  <Text style={{fontFamily: 'Poppins',fontSize: 16, fontWeight: 'normal', textAlign: "center", color: '#656363',
+                               borderRadius: 9, marginTop:27}}>
+                              Enter OTP we just sent to your mobile {'\n'} number: +94******567
+                            </Text>
+
+
+
+                  <CustomButton
+                           text="Verify"
+                           onPress={onVerifyPressed}
+                           />
+                                        <View style={{marginLeft:231, marginTop: -10}}>
+                                            <CustomButton
+                                             text="Re send"
+                                             color="#578FD1"
+                                             onPress={onResendPressed}
+                                             type="SUB"
+                                             />
+                                        </View>
+
+                </View>
+
+
+                 </View>
+
+         <View style={{marginTop: 30}}>
+
 
          <CustomButton
                   text="Back to my Account"
@@ -53,6 +98,7 @@ const onBacktoMyAccountPressed = () => {
          </View>
 
     </ScrollView>
+    </ImageBackground>
   );
 };
 
