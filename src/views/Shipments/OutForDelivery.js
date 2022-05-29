@@ -39,10 +39,6 @@ const OutForDelivery = () => {
   const onArrowPressed = () => {
     navigation.navigate('Settings');
   };
-  const onAboutPressed = () => {
-    navigation.navigate('Settings');
-  };
-  // another pushgit ad
 
   return (
     <View style={styles.root}>
@@ -84,8 +80,8 @@ const OutForDelivery = () => {
               onPress={() => {
                 navigation.navigate('Settings');
               }}>
-              <  Avatar
-                 rounded
+              <Avatar
+                rounded
                 source={require('../../../assets/profile.jpg')}
                 size={'small'}
               />
