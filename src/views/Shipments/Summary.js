@@ -22,12 +22,12 @@ const Summary = () => {
   //#7E7D7D
   const [Items, setItems] = useState([
     {key: 1, item: '001854', address: 'Atchuvely', name: ' '},
-    {key: 2, item: '741541', addresse: 'Atchuvely', name: ' '},
-    {key: 3, item: '638524', address: 'Atchuvely', name: ' '},
-    {key: 4, item: '096471', addreess: 'Atchuvely', name: ' '},
-    {key: 5, item: '631901', address: 'Atchuvely', name: ' '},
-    {key: 6, item: '001854', addresse: 'Atchuvely', name: ' '},
-    {key: 7, item: '741541', address: 'Atchuvely', name: ' '},
+    {key: 2, item: '741541', addresse: 'Kodikamam', name: ' '},
+    {key: 3, item: '638524', address: 'Nelliyadi', name: ' '},
+    {key: 4, item: '096471', addreess: 'Chavakacheri', name: ' '},
+    {key: 5, item: '631901', address: 'Chunnakam', name: ' '},
+    {key: 6, item: '001854', addresse: 'Kantharodai', name: ' '},
+    {key: 7, item: '741541', address: 'Meesalai', name: ' '},
   ]);
 
   const onMenuPressed = () => {
@@ -161,7 +161,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     color: '#000000',
-    textAlign: 'left',
   },
   item: {
     // backgroundColor:'#006531',

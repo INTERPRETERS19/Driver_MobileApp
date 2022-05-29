@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import {
   ImageBackground,
   View,
@@ -28,8 +28,7 @@ const NewPassword = () => {
         flex: 1,
 
         height: '100%',
-      }}
-    >
+      }}>
       <ScrollView showsVerticalScrollIndicator={false}>
 
         <View style={{ marginTop: 160 }}>

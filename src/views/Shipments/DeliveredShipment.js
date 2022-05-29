@@ -21,13 +21,13 @@ const DeliveredShipment = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    {key: 1, item: '001854',time: 'Atchuvely', name: ' '},
-    {key: 2, item: '741541',time: 'Atchuvely', name: ' '},
-    {key: 3, item: '638524',time: 'Atchuvely', name: ' '},
-    {key: 4, item: '096471',time: 'Atchuvely', name: ' '},
-    {key: 5, item: '631901',time: 'Atchuvely', name: ' '},
-    {key: 6, item: '001854',time: 'Atchuvely', name: ' '},
-    {key: 7, item: '741541',time: 'Atchuvely', name: ' '},
+    {key: 1, item: '001854', time: '12.30 pm', name: ' '},
+    {key: 2, item: '741541', time: '1.00 pm', name: ' '},
+    {key: 3, item: '638524', time: '9.00 am', name: ' '},
+    {key: 4, item: '096471', time: '10.30 am', name: ' '},
+    {key: 5, item: '631901', time: '9.35 am', name: ' '},
+    {key: 6, item: '001854', time: '3.15 pm', name: ' '},
+    {key: 7, item: '741541', time: '7.05 pm', name: ' '},
   ]);
 
   const onMenuPressed = () => {
@@ -68,7 +68,9 @@ const DeliveredShipment = () => {
         </View>
         <View style={[styles.Out]}>
           <View style={[styles.DeliveredShipment]}>
-            <Text style={[styles.DeliveredShipmentText]}>Delivered Shipment</Text>
+            <Text style={[styles.DeliveredShipmentText]}>
+              Delivered Shipment
+            </Text>
           </View>
 
           <View style={styles.ShipmentSection}>
@@ -184,4 +186,4 @@ const styles = StyleSheet.create({
 });
 
 export default DeliveredShipment;
-DeliveredShipment
+DeliveredShipment;

@@ -1,16 +1,21 @@
 import React from 'react';
 //import {View, Text} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import SignInScreen from '../views/SignInScreen/SignInScreen';
-import NewPasswordScreen from '../views/Settings/NewPasswordScreen';
 import Dashboard from '../views/Dashboard/Dashboard';
 import OutForDelivery from '../views/Shipments/OutForDelivery';
+import DeliveredShipment from '../views/Shipments/DeliveredShipment';
+import Summary from '../views/Shipments/Summary';
+import RescheduledShipment from '../views/Shipments/RescheduledShipment';
+import Return from '../views/Shipments/Return';
 import Collections from '../views/Collections/Collections';
 import Settings from '../views/Settings/Settings';
 import Menu from '../shared/Menu';
+import ChangePassword from '../views/Settings/ChangePassword';
+
 import Profile from '../views/Settings/Profile';
 import PrivacyPolicy from '../views/Settings/PrivacyPolicy';
 import Help from '../views/Settings/Help';
@@ -21,25 +26,27 @@ import NewPassword from '../views/ForgotPassword/NewPassword';
 import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
 const DrawerNav = () => {
   return (
     <Drawer.Navigator initialRouteName="Dashboard"
-    screenOptions={{
-    headerShown: false
-  }}>
-      <Drawer.Screen name = "Dashboard" component={Dashboard} />
-       <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
+      screenOptions={{
+        headerShown: false
+      }}>
+      <Drawer.Screen name="Dashboard" component={Dashboard} />
+      <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
+      <Drawer.Screen name="DeliveredShipment" component={DeliveredShipment} />
+      <Drawer.Screen name="Summary" component={Summary} />
+      <Drawer.Screen name="RescheduledShipment" component={RescheduledShipment} />
+      <Drawer.Screen name="Return" component={Return} />
+      <Drawer.Screen name="Collections" component={Collections} />
       <Drawer.Screen name="Settings" component={Settings} />
     </Drawer.Navigator>
   );
 
 };
-
-
-
 const Tab = createMaterialBottomTabNavigator();
 
 const DashboardTabScreen = () => {
@@ -48,14 +55,14 @@ const DashboardTabScreen = () => {
       initialRouteName="Drawer"
       activeColor="white"
       inactiveColor="#8e999e"
-      barStyle={{padding: 10, backgroundColor: '#213571'}}
-      labelStyle={{fontSize: 12}}>
+      barStyle={{ padding: 10, backgroundColor: '#213571' }}
+      labelStyle={{ fontSize: 12 }}>
       <Tab.Screen
         name="Drawer"
         component={DrawerNav} //function there dashboard
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={28} />
           ),
         }}
@@ -63,10 +70,10 @@ const DashboardTabScreen = () => {
 
       <Tab.Screen
         name="Shipments"
-        component={OutForDelivery}
+        component={Summary}
         options={{
           tabBarLabel: 'Shipments',
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="truck-delivery"
               color={color}
@@ -80,7 +87,7 @@ const DashboardTabScreen = () => {
         component={Collections}
         options={{
           tabBarLabel: 'Collections',
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="cash-marker"
               color={color}
@@ -94,7 +101,7 @@ const DashboardTabScreen = () => {
         component={Settings}
         options={{
           tabBarLabel: 'Updates',
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="qrcode-scan"
               color={color}
@@ -112,15 +119,19 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="Dashboard" component={DashboardTabScreen} />
-        <Stack.Screen name="Shipments" component={OutForDelivery} />
+        <Stack.Screen name="OutForDelivery" component={OutForDelivery} />
+        <Stack.Screen name="DeliveredShipment" component={DeliveredShipment} />
+        <Stack.Screen name="Summary" component={Summary} />
+        <Stack.Screen name="RescheduledShipment" component={RescheduledShipment} />
+        <Stack.Screen name="Return" component={Return} />
         <Stack.Screen name="Collections" component={Collections} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Menu" component={Menu} />
         <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="ChangedPassword" component={NewPasswordScreen} />
+        <Stack.Screen name="ChangedPassword" component={ChangePassword} />
         <Stack.Screen name="Help" component={Help} />
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Terms" component={Terms} />
@@ -131,7 +142,6 @@ const Navigation = () => {
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
 
       </Stack.Navigator>
-      {/* <BottomNavigator /> */}
     </NavigationContainer>
   );
 };

@@ -1,16 +1,90 @@
 import React from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
-const Menu = () => (
-  <View style={styles.container}>
-      <ImageBackground 
-    source={require('../../../assets/img1.jpg')}
-    style={{   width: '100%',
-        height: '100%'}}></ImageBackground>
-  </View>
-);
+import Icon from 'react-native-vector-icons/Ionicons';
+const OutForDelivery = () => {
+  const navigation = useNavigation();
+  //#C3E4F5
+  //#213571
+  //#000000
+  //#7E7D7D
+
+  const onMenuPressed = () => {
+    navigation.navigate('Menu');
+  };
+  const onSettingsPressed = () => {
+    navigation.navigate('Settings');
+  };
+
+  return (
+    <View style={styles.root}>
+      <ImageBackground
+        source={require('../../../assets/img1.jpg')}
+        style={{width: '100%', height: '70%'}}>
+        <View style={[styles.topbar]}>
+          <Icon
+            name="md-menu-sharp"
+            size={40}
+            color="#000000"
+            onPress={onMenuPressed}
+          />
+          <Icon
+            name="settings-sharp"
+            size={35}
+            color="#000000"
+            onPress={onSettingsPressed}
+          />
+        </View>
+        <View style={[styles.OutForDelivery]}>
+          <Text style={styles.OutForDeliveryTitle}>Collections </Text>
+        </View>
+      </ImageBackground>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
+  topbar: {
+    flex: 0.2,
+    padding: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingBottom: 0,
+  },
+  welcomeBar: {
+    flex: 0.5,
+    paddingLeft: 20,
+    paddingBottom: 15,
+  },
+  welcome: {
+    fontFamily: 'Roboto-Regular',
+    fontSize: 14,
+    lineHeight: 16,
+    color: '#2566AD',
+  },
+  name: {
+    fontFamily: 'Roboto-Bold',
+    fontSize: 22,
+    lineHeight: 26,
+    color: '#000000',
+  },
+  OutForDelivery: {
+    flex: 0.5,
+  },
+  OutForDeliveryTitle: {
+    fontFamily: 'Montserrat-Medium',
+    fontStyle: 'normal',
+    fontSize: 18,
+    lineHeight: 22,
+    letterSpacing: 4,
+    textTransform: 'uppercase',
+    color: 'rgba(0, 0, 0, 0.3)',
+    textAlign: 'center',
+  },
   container: {
     flex: 1,
   },
@@ -18,14 +92,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  text: {
-    color: 'white',
-    fontSize: 42,
-    lineHeight: 84,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    backgroundColor: '#000000c0',
-  },
 });
 
-export default Menu;
+export default OutForDelivery;
