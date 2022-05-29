@@ -37,7 +37,7 @@ const OutForDelivery = () => {
     navigation.navigate('Settings');
   };
   const onArrowPressed = () => {
-    navigation.navigate('Settings');
+    navigation.navigate('ShipmentInfo');
   };
 
   return (
@@ -53,35 +53,13 @@ const OutForDelivery = () => {
             color="#000000"
             onPress={onMenuPressed}
           />
-          {/* <View
-            style={{
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Settings');
-              }}>
-              <AvatarSocial
-                dim={80}
-                image={{
-                  uri: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/lvQypTfeH2Gn2PTbzq6XkT2PLmn.jpg',
-                }}
-                name="Connie Nielsen"
-                type="image"
-                //iconColor={'#26C6DA'}
-                //badgeBackground={'#303030'}
-              />
-            </TouchableOpacity>
-          </View> */}
           <View>
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate('Settings');
               }}>
               <Avatar
-                rounded
+                style={[styles.Avatar]}
                 source={require('../../../assets/profile.jpg')}
                 size={'small'}
               />
@@ -135,7 +113,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   Out: {
-    flex: 5,
+    flex: 10,
     fontWeight: 'bold',
     fontSize: 25,
     justifyContent: 'space-between',
@@ -165,12 +143,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   ShipmentSection: {
-    flex: 12,
+    flex: 4,
     //backgroundColor: '#A45163',
     padding: 20,
     // paddingTop: 120,
   },
   ShipementText: {
+    flex: 1,
     fontFamily: 'Montserrat-Medium',
     fontWeight: 'bold',
     fontSize: 18,
@@ -194,6 +173,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
+  },
+  Avatar: {
+    borderRadius: 50,
+    overflow: 'hidden',
+    width: 50,
+    height: 50,
   },
 });
 
