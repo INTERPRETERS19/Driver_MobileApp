@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, ImageBackground} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
@@ -11,7 +11,7 @@ const Dashboard = () => {
 
   const widthAndHeight = 180;
   const series = [12, 10, 15, 28];
-  const sliceColor = ['#C3E4F5', '#7E7D7D', '#000','#213571'];
+  const sliceColor = ['#C3E4F5', '#7E7D7D', '#000', '#213571'];
 
 const onMenuPressed = () => {
     navigation.openDrawer();
@@ -23,65 +23,67 @@ const onMenuPressed = () => {
   return (
     <View style={styles.root}>
 
-    <ImageBackground
-    source={require('../../../assets/img1.jpg')}
-    style={{   width: '100%',
-        height: '100%'}}>
 
-         <View style={[styles.topbar ]}>
-             <Icon name="md-menu-sharp" size={35} color="#000000"   onPress={onMenuPressed} />
-             <Icon name="settings-sharp" size={30} color="#000000"   onPress={onSettingsPressed}/>
-         </View>
+      <ImageBackground
+        source={require('../../../assets/img1.jpg')}
+        style={{
+          width: '100%',
+          height: '100%'
+        }}>
 
-         <View style={[styles.welcomeBar]}>
-             <Text style={styles.welcome}>Welcome</Text>
-             <Text style={styles.name}>Eren Jeager,</Text>
-         </View>
-
-         <View style={[styles.dashboard]}>
-             <Text style={styles.dashboardTitle}>Dashboard</Text>
-         </View>
-
-        <View style={[styles.infoPanel]}>
-            <View style={[styles.infoPanelCol]}>
-                <DashButtons
-                  text="Delivered Shipments"
-                  onPress={onMenuPressed}
-                  type = "1"
-                />
-                <DashButtons
-                     text="Re-Scheduled Shipments"
-                  onPress={onMenuPressed}
-                  type = "3"
-                />
-
-            </View>
-
-            <View style={[styles.infoPanelCol]}>
-                <DashButtons
-                  text="Pending Deliveries"
-                  onPress={onSettingsPressed}
-                  type="2"
-                />
-                <DashButtons
-                  text="Return Shipments"
-                  onPress={onSettingsPressed}
-                  type="4"
-                />
-            </View>
-
-            <View style={[styles.infoPanelCol]}>
-                <DashButtons
-                  text="Collected COD Amount"
-                  onPress={onSettingsPressed}
-                  type="5"
-                />
-            </View>
-
+        <View style={[styles.topbar]}>
+          <Icon name="md-menu-sharp" size={35} color="#000000" onPress={onMenuPressed} />
+          <Icon name="settings-sharp" size={30} color="#000000" onPress={onSettingsPressed} />
         </View>
 
+        <View style={[styles.welcomeBar]}>
+          <Text style={styles.welcome}>Welcome</Text>
+          <Text style={styles.name}>Eren Jeager,</Text>
+        </View>
 
-        <View style={[styles.pieChartPanel]}>
+        <View style={[styles.dashboard]}>
+          <Text style={styles.dashboardTitle}>Dashboard</Text>
+        </View>
+
+        <View style={[styles.infoPanel]}>
+          <View style={[styles.infoPanelCol]}>
+            <DashButtons
+              text="Delivered Shipments"
+              onPress={onMenuPressed}
+              type="1"
+            />
+            <DashButtons
+              text="Re-Scheduled Shipments"
+              onPress={onMenuPressed}
+              type="3"
+            />
+
+          </View>
+
+          <View style={[styles.infoPanelCol]}>
+            <DashButtons
+              text="Pending Deliveries"
+              onPress={onSettingsPressed}
+              type="2"
+            />
+            <DashButtons
+              text="Return Shipments"
+              onPress={onSettingsPressed}
+              type="4"
+            />
+          </View>
+
+          <View style={[styles.infoPanelCol]}>
+            <DashButtons
+              text="Collected COD Amount"
+              onPress={onSettingsPressed}
+              type="5"
+            />
+          </View>
+</View>
+
+
+        <View style={[styles.pieChartPanel]}
         <View style = {[styles.Pie1]}>
              <PieChart
                 widthAndHeight={widthAndHeight}
@@ -99,6 +101,7 @@ const onMenuPressed = () => {
               <Text style={styles.PieName}><Icon name="square" size={15} color="#000000"/> Return Shipments</Text>
             </View>
 
+
         </View>
       </ImageBackground>
     </View>
@@ -111,7 +114,7 @@ const styles = StyleSheet.create({
   },
   topbar: {
     flex: 0.8,
-    padding:20,
+    padding: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingBottom: 0,
@@ -179,6 +182,8 @@ const styles = StyleSheet.create({
   pieChartPanel: {
     flex: 2.5,
     padding: 20,
+    paddingTop: 20,
+    paddingBottom: 0,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
