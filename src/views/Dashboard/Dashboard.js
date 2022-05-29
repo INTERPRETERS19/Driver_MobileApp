@@ -12,7 +12,8 @@ const Dashboard = () => {
   const widthAndHeight = 180;
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000', '#213571'];
-  const onMenuPressed = () => {
+
+const onMenuPressed = () => {
     navigation.openDrawer();
   };
   const onSettingsPressed = () => {
@@ -21,6 +22,7 @@ const Dashboard = () => {
 
   return (
     <View style={styles.root}>
+
 
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
@@ -78,27 +80,27 @@ const Dashboard = () => {
               type="5"
             />
           </View>
+</View>
 
-        </View>
 
+        <View style={[styles.pieChartPanel]}
+        <View style = {[styles.Pie1]}>
+             <PieChart
+                widthAndHeight={widthAndHeight}
+                series={series}
+                sliceColor={sliceColor}
+                doughnut={true}
+                coverRadius={0.45}
+                coverFill={'#FFF'}
+              />
+              </View>
+            <View style = {[styles.Pie]}>
+              <Text style={styles.PieName}><Icon name="square" size={15} color="#7E7D7D"/> Delivered Shipments</Text>
+              <Text style={styles.PieName}><Icon name="square" size={15} color="#213571"/> Pending Deliveries</Text>
+              <Text style={styles.PieName}><Icon name="square" size={15} color="#C3E4F5"/> Re-Scheduled</Text>
+              <Text style={styles.PieName}><Icon name="square" size={15} color="#000000"/> Return Shipments</Text>
+            </View>
 
-        <View style={[styles.pieChartPanel]}>
-          <View style={[styles.Pie1]}>
-            <PieChart
-              widthAndHeight={widthAndHeight}
-              series={series}
-              sliceColor={sliceColor}
-              doughnut={true}
-              coverRadius={0.45}
-              coverFill={'#FFF'}
-            />
-          </View>
-          <View style={[styles.Pie]}>
-            <Text style={styles.PieName}><Icon name="square" size={15} color="#7E7D7D" /> Delivered Shipments</Text>
-            <Text style={styles.PieName}><Icon name="square" size={15} color="#213571" /> Pending Deliveries</Text>
-            <Text style={styles.PieName}><Icon name="square" size={15} color="#C3E4F5" /> Re-Scheduled</Text>
-            <Text style={styles.PieName}><Icon name="square" size={15} color="#000000" /> Return Shipments</Text>
-          </View>
 
         </View>
       </ImageBackground>
@@ -123,10 +125,10 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
   },
   welcome: {
-    fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto-Regular',
     fontSize: 14,
     lineHeight: 16,
-    color: '#213571',
+    color: '#2566AD',
   },
   name: {
     fontFamily: 'Roboto-Bold',
@@ -181,8 +183,6 @@ const styles = StyleSheet.create({
     flex: 2.5,
     padding: 20,
     paddingTop: 20,
-
-
     paddingBottom: 0,
     flexDirection: 'row',
     flexWrap: 'wrap',
