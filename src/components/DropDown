@@ -1,40 +1,21 @@
-// import React, { Component } from 'react';
+import React from 'react';
+import { Text, View,Picker } from 'react-native';
+import { Component } from 'react/cjs/react.production.min';
 
-// import DropdownMenu from 'react-native-dropdown-menu';
- 
-// export default class Demo extends Component {
-//   state: { text: string; };
- 
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       text: ''
-//     };
-//   }
-  
-//   render() {
-//     var data = [["C", "Java", "JavaScript", "PHP"]];
-//     return (
-//       <View style={{flex: 1}}>
-//         <View style={{height: 64}}>
-//         <DropdownMenu
-//           style={{flex: 1}}
-//           bgColor={'white'}
-//           tintColor={'#666666'}
-//           activityTintColor={'green'}
-//           handler={(selection, row) => this.setState({text: data[selection][row]})}
-//           data={data}
-//         >
- 
-//           <View style={{flex: 1}}>
-//             <Text>
-//               {this.state.text} is the best language in the world
-//             </Text>
-//           </View>
- 
-//         </DropdownMenu>
-//       </View>
-//     );
-//   }
-  
-// }
+class Dropdown extends Component {
+    render(){
+        return (
+            <View style={StyleSheet.body}>
+                <Text></Text>
+                <Picker>
+                    <Picker.Item label = "Male" value =" Male"/>
+                    <Picker.Item label = "Male" value =" Male"/>
+                    <Picker.Item label = "Male" value =" Male"/>
+                    <Picker.Item label = "Male" value =" Male"/>                   
+                </Picker>
+            </View>
+        );
+
+    }
+}
+export default Dropdown;

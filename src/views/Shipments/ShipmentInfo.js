@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { 
   ScrollView,
   ImageBackground,
@@ -16,7 +17,10 @@ const ShipmentInfo = () => {
   const onDonePressed = () => {
     navigation.navigate('Dashboard');
   };
-  
+  const onbackPressed = () => {
+    navigation.navigate('Settings');
+};
+
 
   return (
     <View style={styles.body}>
@@ -26,10 +30,30 @@ const ShipmentInfo = () => {
           width: '100%',
           height: '100%'
         }}>
-    
+   <View style={styles.topbar}> 
+<View style={styles.topbarin}>
+  <View style={styles.topbarin1}>
+       <Icon name="chevron-back" size={40} color='rgba(0, 0, 0, 0.40)' onPress={onbackPressed} />
+  </View>
+  <View style={styles.topbarin2}>
+        <Text style={{fontSize: 22}}>Info</Text>
+  </View>
+</View>
+   </View>
+   
+
 <ScrollView showsVerticalScrollIndicator={false}>
+
 <View style={styles.content}>
-      <Text style={styles.head}>Shipment ID              XXXX</Text>
+<View style={{ flex: 1,flexDirection:"row"}}>
+  <View style={{flex:1}}>
+    <Text style={styles.head}>Shipment ID</Text>
+  </View>
+  <View style={{flex:1}}>
+    <Text style={styles.head}>XXXXXX</Text>
+  </View>
+</View>
+  <View style={styles.info}>
       <Text>Recepient</Text>
       <Text style={styles.form}>William Turner</Text>
       <Text>Contact number</Text>
@@ -42,13 +66,13 @@ const ShipmentInfo = () => {
       <Text style={styles.form}>1000</Text>
       <Text>Status</Text>
       <Text style={styles.form}>OutforDelivey</Text>
+  </View>
 </View>
 <View style={styles.button}>
      <CustomButton
           text='Done'
           onPress={onDonePressed}
         />
-
 </View>
     </ScrollView>
     </ImageBackground>
@@ -62,34 +86,60 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "flex-start",
-    //marginLeft:25,
-    //backgroundColor: '#000000'
-    fontFamily: 'Roboto-Regular',
-    fontSize: 22,
-    lineHeight: 26,
+    
+  },
+  topbar :{
+    flex:1,
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    // padding: 20,
   },
   button :{
-    marginTop: 50,
+    flex:5,
+    //backgroundColor:"#213154",
+    padding: 30,
   },
   content:{
-    marginLeft: 30,
-    marginRight:30
+   padding :20,
+   flex:1,
+   fontFamily: 'Roboto-Regular',
+   fontSize: 22,
   },
-  
   head :{
-    marginTop: 60,
-    marginLeft: 60,
-    marginBottom :20,
+    flex :1,
+    paddingTop: 20,
+    paddingBottom :20,
     alignItems:'center',
     fontFamily: 'Roboto-Bold',
     fontSize: 22,
-    lineHeight: 26,
+    textAlign: 'center',
+    //backgroundColor: 'rgba(0, 0, 0, 0.2)',
   },
+
   form :{
     backgroundColor: 'rgba(0, 0, 0, 0.02)',
-    marginTop :5,
-    marginBottom: 10,
-    }
+    paddingTop :5,
+    paddingBottom: 10,
+    },
+
+  info:{
+    flex:1,
+    //backgroundColor: '#faaaaa',
+  },
+  topbarin:{ 
+    flex: 1,
+    flexDirection:"row"
+  },
+
+  topbarin1:{flex:1},
+  topbarin2:{
+    flex:7,
+    justifyContent: "center",
+    alignItems:"flex-start",
+    fontFamily: 'Roboto-Bold',
+    fontSize: 22,
+  },
+
+  
 
 });
 export default ShipmentInfo ;
