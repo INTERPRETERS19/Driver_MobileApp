@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {Image} from 'react-native' ;
+import React, { useState } from 'react';
+import { Image } from 'react-native';
 import {
-ImageBackground,
+  ImageBackground,
   View,
   Text,
   StyleSheet,
@@ -9,68 +9,83 @@ ImageBackground,
   ScrollView,
 
 } from 'react-native';
-import CustomInput from '../../components/CustomInput';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const ResetSuccess = () => {
-//  const [password, setPassword] = useState('');
-  const {height} = useWindowDimensions();
+  //  const [password, setPassword] = useState('');
+  const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
-const onBacktoAccountPressed = () => {
+  const onBacktoAccountPressed = () => {
     navigation.navigate('SignIn');
   };
 
-return (
+  return (
     <ImageBackground
-              source={require('../../../assets/img1.jpg')}
-              style={{ flex: 1,
+      source={require('../../../assets/img1.jpg')}
+      style={{
+        flex: 1,
 
-                height: '100%',
-                }}
-            >
-            <ScrollView showsVerticalScrollIndicator={false}>
+        height: '100%',
+      }}
+    >
+      <ScrollView showsVerticalScrollIndicator={false}>
 
-    <View style={styles.container}>
-        <Image
-                 style={{
-                            flex: 1,
-                            resizeMode: "contain",
-                            marginTop:140,
-                            height:170
-                          }}
-                source={require('./successimg.png')} />
-    </View>
-
-        <View style={{backgroundColor: '#DFEEF5',marginLeft: 15, marginTop: 35,
-                                              marginRight: 15,
-                                              borderRadius: 20,
-                                              paddingHorizontal: 20,
-                                              paddingVertical: 17}}>
-        <View>
-           <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold',marginTop: -30, textAlign: "center",
-               color: COLORS.dark}}>
-                     {'\n'}  Password Reset{'\n'}Successful
-                       {'\n'}
-                     </Text>
-
-
-          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "center", color: '#656363', marginLeft: 10, marginRight: 10}}>
-            Please note that your password has been changed successfully for the account Interpreters05 {'\n'}
-          </Text>
+        <View style={styles.container}>
+          <Image
+            style={{
+              flex: 1,
+              resizeMode: "contain",
+              marginTop: 140,
+              height: 170
+            }}
+            source={require('./successimg.png')} />
         </View>
 
-         <View style={{marginTop: 15}}>
-         <CustomButton
-         text="Back to my Account"
-         onPress={onBacktoAccountPressed}
-         />
-         </View>
-         </View>
+        <View style={{
+          backgroundColor: '#ffffff', marginLeft: 15, marginTop: 35,
+          marginRight: 15,
+          borderRadius: 20,
+          paddingHorizontal: 20,
+          paddingVertical: 17,
+          //                                               shadowColor: '#000',
+          //     shadowOffset: {
+          //       width: 10,
+          //       height: 5,
+          //     },
+          // shadowOpacity:0.5,
+          //     shadowRadius: 5,
+          //     elevation: 6,
 
-    </ScrollView>
+
+        }}>
+          <View>
+            <Text style={{
+              fontFamily: 'Poppins', fontSize: 29, fontWeight: 'bold', marginTop: -30, textAlign: "center",
+              color: COLORS.dark
+            }}>
+              {'\n'}  Password Reset{'\n'}Successful
+              {'\n'}
+            </Text>
+
+
+            <Text style={{ fontFamily: 'Poppins', fontSize: 16.5, textAlign: "center", color: '#656363', marginLeft: 10, marginRight: 10 }}>
+              Please note that your password has been changed successfully for the account:
+              <Text style={{ fontWeight: "bold" }}> Eren Jeager</Text>
+            </Text>
+          </View>
+
+          <View style={{ marginTop: 15 }}>
+            <CustomButton
+              text="Back to my Account"
+              onPress={onBacktoAccountPressed}
+            />
+          </View>
+        </View>
+
+      </ScrollView>
     </ImageBackground>
   );
 };
@@ -82,17 +97,17 @@ const styles = StyleSheet.create({
   },
 
   container: {
-        display: "flex",
-        flex: 1,
-        alignItems: "center",
-      marginLeft:25,
-        justifyContent: "center",
-        borderRadius: 4,
-      },
+    display: "flex",
+    flex: 1,
+    alignItems: "center",
+    marginLeft: 25,
+    justifyContent: "center",
+    borderRadius: 4,
+  },
 
-      label: {
-        margin: 8,
-      },
+  label: {
+    margin: 8,
+  },
 });
 
 export default ResetSuccess;
