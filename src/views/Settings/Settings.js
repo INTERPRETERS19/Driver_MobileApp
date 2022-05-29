@@ -1,12 +1,19 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import CustomButton from '../../components/CustomButton';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Settings = () => {
   const navigation = useNavigation();
-
 
   const onLogoutPressed = () => {
     navigation.navigate('SignIn');
@@ -34,14 +41,12 @@ const Settings = () => {
   };
 
   return (
-
     <View style={styles.root}>
-
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{
           width: '100%',
-          height: '100%'
+          height: '100%',
         }}>
         <ScrollView>
           <View style={[styles.topbar]}>
@@ -53,7 +58,7 @@ const Settings = () => {
               source={require('../../../assets/profile.jpg')}
             />
           </View>
-          <View style={[styles.settingpanel]} >
+          <View style={[styles.settingpanel]}>
             <View style={[styles.settingpanelcol]}>
               <Text style={styles.mainText}>Profile</Text>
               <TouchableOpacity onPress={pressedProfile}>
@@ -67,7 +72,7 @@ const Settings = () => {
               </TouchableOpacity>
             </View>
 
-            <View style={[styles.settingpanelcol]} >
+            <View style={[styles.settingpanelcol]}>
               <Text style={styles.mainText}>Settings</Text>
               <TouchableOpacity onPress={pressedHelp}>
                 <Text style={styles.subText}> Help and Support</Text>
@@ -86,11 +91,8 @@ const Settings = () => {
         </ScrollView>
       </ImageBackground>
     </View>
-
   );
 };
-
-
 
 const styles = StyleSheet.create({
   root: {
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
   ProfilePicture: {
     width: 180,
     height: 180,
-    resizeMode: "center",
+    resizeMode: 'center',
   },
   container: {
     flex: 1,

@@ -103,6 +103,9 @@ const styles = StyleSheet.create({
     margin: 8,
   },
 
+  label: {
+    margin: 8,
+  },
 });
 
 export default NewPassword;

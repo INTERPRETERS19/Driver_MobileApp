@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
-
 
 const Dashboard = () => {
   const navigation = useNavigation();
@@ -13,27 +12,45 @@ const Dashboard = () => {
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000', '#213571'];
 
-const onMenuPressed = () => {
+  const onMenuPressed = () => {
     navigation.openDrawer();
   };
   const onSettingsPressed = () => {
     navigation.navigate('Settings');
   };
-
+  const onDeliveredShipmentPressed = () => {
+    navigation.navigate('DeliveredShipment');
+  };
+  const onPedingShipmentPressed = () => {
+    navigation.navigate('OutForDelivery');
+  };
+  const onRescheduledShipmentPressed = () => {
+    navigation.navigate('RescheduledShipment');
+  };
+  const onReturnPressed = () => {
+    navigation.navigate('Return');
+  };
+  const onCollectionsPressed = () => {
+    navigation.navigate('Collections');
+  };
   return (
     <View style={styles.root}>
-
-
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{
-          width: '100%',
-          height: '100%'
-        }}>
-
+        style={{width: '100%', height: '100%'}}>
         <View style={[styles.topbar]}>
-          <Icon name="md-menu-sharp" size={35} color="#000000" onPress={onMenuPressed} />
-          <Icon name="settings-sharp" size={30} color="#000000" onPress={onSettingsPressed} />
+          <Icon
+            name="md-menu-sharp"
+            size={35}
+            color="#000000"
+            onPress={onMenuPressed}
+          />
+          <Icon
+            name="settings-sharp"
+            size={30}
+            color="#000000"
+            onPress={onSettingsPressed}
+          />
         </View>
 
         <View style={[styles.welcomeBar]}>
@@ -49,26 +66,25 @@ const onMenuPressed = () => {
           <View style={[styles.infoPanelCol]}>
             <DashButtons
               text="Delivered Shipments"
-              onPress={onMenuPressed}
+              onPress={onDeliveredShipmentPressed}
               type="1"
             />
             <DashButtons
               text="Re-Scheduled Shipments"
-              onPress={onMenuPressed}
+              onPress={onRescheduledShipmentPressed}
               type="3"
             />
-
           </View>
 
           <View style={[styles.infoPanelCol]}>
             <DashButtons
               text="Pending Deliveries"
-              onPress={onSettingsPressed}
+              onPress={onPedingShipmentPressed}
               type="2"
             />
             <DashButtons
               text="Return Shipments"
-              onPress={onSettingsPressed}
+              onPress={onReturnPressed}
               type="4"
             />
           </View>
@@ -76,32 +92,39 @@ const onMenuPressed = () => {
           <View style={[styles.infoPanelCol]}>
             <DashButtons
               text="Collected COD Amount"
-              onPress={onSettingsPressed}
+              onPress={onCollectionsPressed}
               type="5"
             />
           </View>
-</View>
+        </View>
 
-
-        <View style={[styles.pieChartPanel]}
-        <View style = {[styles.Pie1]}>
-             <PieChart
-                widthAndHeight={widthAndHeight}
-                series={series}
-                sliceColor={sliceColor}
-                doughnut={true}
-                coverRadius={0.45}
-                coverFill={'#FFF'}
-              />
-              </View>
-            <View style = {[styles.Pie]}>
-              <Text style={styles.PieName}><Icon name="square" size={15} color="#7E7D7D"/> Delivered Shipments</Text>
-              <Text style={styles.PieName}><Icon name="square" size={15} color="#213571"/> Pending Deliveries</Text>
-              <Text style={styles.PieName}><Icon name="square" size={15} color="#C3E4F5"/> Re-Scheduled</Text>
-              <Text style={styles.PieName}><Icon name="square" size={15} color="#000000"/> Return Shipments</Text>
-            </View>
-
-
+        <View style={[styles.pieChartPanel]}>
+          <View style={[styles.Pie1]}>
+            <PieChart
+              widthAndHeight={widthAndHeight}
+              series={series}
+              sliceColor={sliceColor}
+              doughnut={true}
+              coverRadius={0.45}
+              coverFill={'#FFF'}
+            />
+          </View>
+          <View style={[styles.Pie]}>
+            <Text style={styles.PieName}>
+              <Icon name="square" size={15} color="#7E7D7D" /> Delivered
+              Shipments
+            </Text>
+            <Text style={styles.PieName}>
+              <Icon name="square" size={15} color="#213571" /> Pending
+              Deliveries
+            </Text>
+            <Text style={styles.PieName}>
+              <Icon name="square" size={15} color="#C3E4F5" /> Re-Scheduled
+            </Text>
+            <Text style={styles.PieName}>
+              <Icon name="square" size={15} color="#000000" /> Return Shipments
+            </Text>
+          </View>
         </View>
       </ImageBackground>
     </View>
@@ -177,18 +200,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 20,
     paddingLeft: 20,
-    textAlign: "left",
+    textAlign: 'left',
   },
   pieChartPanel: {
     flex: 2.5,
     padding: 20,
-    paddingTop: 20,
-    paddingBottom: 0,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
   },
-
 });
 
 export default Dashboard;
