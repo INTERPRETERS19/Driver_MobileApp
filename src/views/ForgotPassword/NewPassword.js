@@ -29,8 +29,7 @@ const NewPassword = () => {
         flex: 1,
 
         height: '100%',
-      }}
-    >
+      }}>
       <ScrollView showsVerticalScrollIndicator={false}>
 
         <View style={{ marginTop: 160 }}>
@@ -83,12 +82,8 @@ const NewPassword = () => {
             onPress={onChangePressed}
           />
         </View>
-<<<<<<< HEAD
-
-=======
->>>>>>> 16d223d112b9c763b6e555454a9eb5fa78bb8da7
       </ScrollView>
-    </ImageBackground >
+    </ImageBackground>
   );
 };
 

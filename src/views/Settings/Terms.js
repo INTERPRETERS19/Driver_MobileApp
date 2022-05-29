@@ -12,16 +12,19 @@ const Terms = () => {
         <View style={styles.root}>
             <ScrollView>
                 <View style={[styles.topbar]}>
-                    <Icon name="chevron-back" size={40} color="#ffffff" onPress={onbackPressed} />
+                    <Icon name="chevron-back" size={30} color="#ffffff" onPress={onbackPressed} />
                 </View>
                 <Text style={styles.title}>Terms of Service</Text>
                 <Text style={styles.subtitile}>Last updated on 23/05/2022</Text>
                 <Text style={{
+                    flex: 1,
                     fontFamily: 'Roboto-Medium',
                     fontSize: 16,
                     textAlign: 'center',
                     color: '#888E96',
                     paddingTop: 20,
+                    paddingBottom: 10,
+                    letterSpacing: 3,
                 }}>Read the conditions below </Text>
                 <View>
                     <Text style={styles.text}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
@@ -44,7 +47,7 @@ export default Terms;
 const styles = StyleSheet.create({
     root: {
         flex: 1,
-        backgroundColor: '#1B2635',
+        backgroundColor: '#082041',
     },
     title: {
         fontFamily: 'Poppins-Medium',
@@ -52,6 +55,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#ffffff',
         paddingTop: 10,
+        flex: 1,
     },
     subtitile: {
         fontFamily: 'Roboto-Medium',
@@ -59,17 +63,19 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#888E96',
         padding: 0,
+        flex: 1,
     },
     text: {
         fontFamily: 'Roboto-Regular',
         fontSize: 14,
         textAlign: 'justify',
         color: '#EFEFEF',
-        padding: 20,
+        padding: 30,
+        lineHeight: 22,
         paddingTop: 0,
     },
     topbar: {
-        flex: 0.8,
+        flex: 1,
         padding: 20,
         flexDirection: 'row',
         justifyContent: 'space-between',
