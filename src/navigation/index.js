@@ -15,16 +15,15 @@ import Collections from '../views/Collections/Collections';
 import Settings from '../views/Settings/Settings';
 import Menu from '../shared/Menu';
 import ChangePassword from '../views/Settings/ChangePassword';
-
 import Profile from '../views/Settings/Profile';
 import PrivacyPolicy from '../views/Settings/PrivacyPolicy';
 import Help from '../views/Settings/Help';
 import Terms from '../views/Settings/Terms';
 import About from '../views/Settings/About';
-
 import NewPassword from '../views/ForgotPassword/NewPassword';
 import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
+import Support from '../views/Settings/Support';
 
 //import {createDrawerNavigator} from '@react-navigation/drawer';
 import ShipmentInfo from '../views/Shipments/ShipmentInfo';
@@ -138,11 +137,11 @@ const Navigation = () => {
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Terms" component={Terms} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-
         <Stack.Screen name="NewPassword" component={NewPassword} />
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
         <Stack.Screen name="ShipmentInfo" component={ShipmentInfo} />
+        <Stack.Screen name="Support" component={Support} />
 
       </Stack.Navigator>
     </NavigationContainer>
