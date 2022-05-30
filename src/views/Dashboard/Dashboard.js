@@ -4,6 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
 
 
 const Dashboard = () => {
@@ -13,7 +14,7 @@ const Dashboard = () => {
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000','#213571'];
 
-nMenuPressed = () => {
+const onMenuPressed = () => {
     navigation.openDrawer();
   };
   const onSettingsPressed = () => {
@@ -23,24 +24,28 @@ nMenuPressed = () => {
   return (
     <View style={styles.root}>
 
-    <ImageBackground 
-    source={require('../../../assets/img1.jpg')}
-    style={{   width: '100%',
-        height: '100%'}}>
- 
-         <View style={[styles.topbar ]}>
-             <Icon name="md-menu-sharp" size={35} color="#000000"   onPress={onMenuPressed} />
-             <Icon name="settings-sharp" size={30} color="#000000"   onPress={onSettingsPressed}/>
-         </View>
 
-         <View style={[styles.welcomeBar]}>
-             <Text style={styles.welcome}>Welcome</Text>
-             <Text style={styles.name}>Eren Jeager,</Text>
-         </View>
+      <ImageBackground
+        source={require('../../../assets/img1.jpg')}
+        style={{
+          width: '100%',
+          height: '100%'
+        }}>
 
-         <View style={[styles.dashboard]}>
-             <Text style={styles.dashboardTitle}>Dashboard</Text>
-         </View>
+        <View style={[styles.topbar]}>
+          <Icon name="md-menu-sharp" size={35} color="#000000" onPress={onMenuPressed} />
+          <Icon name="settings-sharp" size={30} color="#000000" onPress={onSettingsPressed} />
+        </View>
+
+        <View style={[styles.welcomeBar]}>
+          <Text style={styles.welcome}>Welcome</Text>
+          <Text style={styles.name}>Eren Jeager,</Text>
+        </View>
+
+        <View style={[styles.dashboard]}>
+          <Text style={styles.dashboardTitle}>Dashboard</Text>
+        </View>
+
        
         <View style={[styles.infoPanel]}>
             <View style={[styles.infoPanelCol]}>
@@ -98,8 +103,8 @@ nMenuPressed = () => {
               <Text style={styles.PieName}><Icon name="square" size={15} color="#C3E4F5"/> Re-Scheduled</Text>
               <Text style={styles.PieName}><Icon name="square" size={15} color="#000000"/> Return Shipments</Text>
             </View>
-           
         </View>
+        <BottomNavigationBar />
         </ImageBackground>
     </View>
   );
@@ -180,8 +185,6 @@ const styles = StyleSheet.create({
     flex: 2.5,
     padding:20,
     paddingTop:20,
-   
-
     paddingBottom:0,
     flexDirection: 'row',
     flexWrap: 'wrap',
