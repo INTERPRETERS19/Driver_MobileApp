@@ -5,8 +5,6 @@ import Icony from 'react-native-vector-icons/FontAwesome';
 import FontAwesome, {
   SolidIcons,
   RegularIcons,
-  BrandIcons,
-  parseIconFromClassName,
 } from 'react-native-fontawesome';
 import {
   View,
@@ -28,8 +26,6 @@ const About = () => {
   };
 
   const parsedIcon = parseIconFromClassName('fab fa-truck');
-
-
   return (
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
@@ -40,6 +36,19 @@ const About = () => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
 
+<<<<<<< HEAD
+  return (
+    <ImageBackground
+      source={require('../../../assets/img1.jpg')}
+      style={{
+        flex: 1,
+        height: '100%',
+      }}>
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+
+=======
+>>>>>>> 77a8be44d26deebf8ecd3a2dde1e141a790278e6
         <View style={[styles.topbar]}>
           <Icon name="chevron-back" size={30} color="#9C9C9C" onPress={onbackPressed} />
         </View>
@@ -121,6 +130,8 @@ const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     padding: 20,
+    display: "flex",
+    flex: 1
   },
 
   container: {
@@ -141,6 +152,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingBottom: 0,
+<<<<<<< HEAD
+=======
+
+    paddingTop: 50
+>>>>>>> 77a8be44d26deebf8ecd3a2dde1e141a790278e6
   },
 });
 
