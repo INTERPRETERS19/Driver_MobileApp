@@ -3460,7 +3460,7 @@
   "version" "0.3.6"
 
 "execa@^0.7.0":
-  "integrity" "sha1-lEvs00zEHuMqY6n68nrVpl/Fl3c="
+  "integrity" "sha512-RztN09XglpYI7aBBrJCPW95jEH7YF1UEPOoX9yDhUTPdp7mK+CQvnLTuD10BNXZ3byLTu2uehZ8EcKT/4CGiFw=="
   "resolved" "https://registry.npmjs.org/execa/-/execa-0.7.0.tgz"
   "version" "0.7.0"
   dependencies:
@@ -3638,7 +3638,7 @@
     "pkg-dir" "^3.0.0"
 
 "find-up@^2.0.0":
-  "integrity" "sha1-RdG35QbHF93UgndaK3eSCjwMV6c="
+  "integrity" "sha512-NWzkk0jSJtTt08+FBFMvXoeZnOJD+jTtsRmBYbAIzJdX6l7dLgR7CTubCM5/eDdPUBvLCeVasP1brfVR/9/EZQ=="
   "resolved" "https://registry.npmjs.org/find-up/-/find-up-2.1.0.tgz"
   "version" "2.1.0"
   dependencies:
@@ -3776,7 +3776,7 @@
   "version" "6.0.0"
 
 "get-stream@^3.0.0":
-  "integrity" "sha1-jpQ9E1jcN1VQVOy+LtsFqhdO3hQ="
+  "integrity" "sha512-GlhdIUuVakc8SJ6kK0zAFbiGzRFzNnY4jUuEbV9UROo4Y+0Ny4fjvcZFVTeDA4odpFyOQzaw6hXukJSq/f28sQ=="
   "resolved" "https://registry.npmjs.org/get-stream/-/get-stream-3.0.0.tgz"
   "version" "3.0.0"
 
@@ -4099,7 +4099,7 @@
     "loose-envify" "^1.0.0"
 
 "invert-kv@^1.0.0":
-  "integrity" "sha1-EEqOSqym09jNFXqO+L+rLXo//bY="
+  "integrity" "sha512-xgs2NH9AE66ucSq4cNG1nhSFghr5l6tdL15Pk+jl46bmmBapgoaY/AacXyaDznAqmGL99TiLSQgO/XazFSKYeQ=="
   "resolved" "https://registry.npmjs.org/invert-kv/-/invert-kv-1.0.0.tgz"
   "version" "1.0.0"
 
@@ -4243,7 +4243,7 @@
   "version" "2.1.1"
 
 "is-fullwidth-code-point@^1.0.0":
-  "integrity" "sha1-754xOG8DGn8NZDr4L95QxFfvAMs="
+  "integrity" "sha512-1pqUqRjkhPJ9miNq9SwMfdvi6lBJcd6eFxvfaivQhaH3SgisfiuudvFntdKOmxuee/77l+FPjKrQjWvmPjWrRw=="
   "resolved" "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-1.0.0.tgz"
   "version" "1.0.0"
   dependencies:
@@ -5089,7 +5089,7 @@
   "version" "3.0.3"
 
 "lcid@^1.0.0":
-  "integrity" "sha1-MIrMr6C8SDo4Z7S28rlQYlHRuDU="
+  "integrity" "sha512-YiGkH6EnGrDGqLMITnGjXtGmNtjoXw9SVUzcaos8RBi7Ps0VBylkq+vOcY9QE5poLasPCR849ucFUkl0UzUyOw=="
   "resolved" "https://registry.npmjs.org/lcid/-/lcid-1.0.0.tgz"
   "version" "1.0.0"
   dependencies:
@@ -5122,7 +5122,7 @@
   "version" "1.2.4"
 
 "load-json-file@^2.0.0":
-  "integrity" "sha1-eUfkIUmvgNaWy/eXvKq8/h/inKg="
+  "integrity" "sha512-3p6ZOGNbiX4CdvEd1VcE6yi78UrGNpjHO33noGwHCnT/o2fyllJDepsm8+mFFv/DvtwFHht5HIHSyOy5a+ChVQ=="
   "resolved" "https://registry.npmjs.org/load-json-file/-/load-json-file-2.0.0.tgz"
   "version" "2.0.0"
   dependencies:
@@ -5132,7 +5132,7 @@
     "strip-bom" "^3.0.0"
 
 "locate-path@^2.0.0":
-  "integrity" "sha1-K1aLJl7slExtnA3pw9u7ygNUzY4="
+  "integrity" "sha512-NCI2kiDkyR7VeEKm27Kda/iQHyKJe1Bu0FlTbYp3CqJu+9IFe9bLyAjMxf5ZDDbEg+iMPzB5zYyUTSm8wVTKmA=="
   "resolved" "https://registry.npmjs.org/locate-path/-/locate-path-2.0.0.tgz"
   "version" "2.0.0"
   dependencies:
@@ -6386,17 +6386,6 @@
     "jscodeshift" "^0.13.1"
     "nullthrows" "^1.1.1"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-"react-native-dropdown-picker@^5.4.2":
-  "integrity" "sha512-cZBPyN+k52jA9XguFnKoF5tLf31z6gjZ8GijO/pfVNSSEtPwZ14UTUrr87JiiOnMh5K/O2kRzZ/jZN8D0MmUMA=="
-  "resolved" "https://registry.npmjs.org/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.2.tgz"
-  "version" "5.4.2"
-
-=======
->>>>>>> 0978cd094891709ff59796d9940149877c7ad3bc
-"react-native-gesture-handler@^2.4.2", "react-native-gesture-handler@>= 1.0.0":
-=======
 "react-native-elements@^3.4.2":
   "integrity" "sha512-m0eAWOn7JuR1wNTNY0WHuaqst4LI/gFE4N5Bbyfsc4DiryWsMST7aAg5w/Gos4IexWIzhLKCIkPxthND1m/8Xg=="
   "resolved" "https://registry.npmjs.org/react-native-elements/-/react-native-elements-3.4.2.tgz"
@@ -6412,7 +6401,6 @@
     "react-native-size-matters" "^0.3.1"
 
 "react-native-gesture-handler@*", "react-native-gesture-handler@^2.4.2", "react-native-gesture-handler@>= 1.0.0":
->>>>>>> f4c4c1c08b4e1ba7ea5e68564fa6048ddcf2f790
   "integrity" "sha512-K3oMiQV7NOVB5RvNlxkyJxU1Gn6m1cYu53MoFA542FVDSTR491d1eQkWDdqy4lW52rfF7IK7eE1LCi+kTJx7jw=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.4.2.tgz"
   "version" "2.4.2"
@@ -6538,9 +6526,6 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-<<<<<<< HEAD
-"react-native@*", "react-native@>= 0.50.0", "react-native@>= 0.62", "react-native@>=0.42.0", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.57.0", "react-native@>=0.58.0", "react-native@0.68.1":
-=======
 "react-native-vector-icons@^5.0.0":
   "integrity" "sha512-3ZmLGhQFk5QeHuttx0tOpghXhpVMGwXzb3pVaW/M8Qj0qkcg7koVyZmoR9vABQuxFC6KbM3l6/WLYZPh2aGfuQ=="
   "resolved" "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-5.0.0.tgz"
@@ -6550,8 +6535,7 @@
     "prop-types" "^15.5.10"
     "yargs" "^8.0.2"
 
-"react-native@*", "react-native@>= 0.50.0", "react-native@>= 0.62", "react-native@>=0.42.0", "react-native@>=0.50.0", "react-native@>=0.57.0", "react-native@>=0.58.0", "react-native@0.68.1":
->>>>>>> f4c4c1c08b4e1ba7ea5e68564fa6048ddcf2f790
+"react-native@*", "react-native@>= 0.50.0", "react-native@>= 0.62", "react-native@>=0.42.0", "react-native@>=0.50.0", "react-native@>=0.57", "react-native@>=0.57.0", "react-native@>=0.58.0", "react-native@0.68.1":
   "integrity" "sha512-5gfvslo5NO2Ece2k/q41eVOK3ca4u1QAOf+qM+auvOiUA4/QR5Yr0WfSGbRpUr2GaFgv7qP11F4+elCravg7uQ=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.68.1.tgz"
   "version" "0.68.1"
