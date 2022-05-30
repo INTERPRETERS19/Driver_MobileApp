@@ -113,6 +113,8 @@ const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     padding: 20,
+    display: "flex",
+    flex: 1
   },
 
   container: {
