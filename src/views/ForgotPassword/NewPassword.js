@@ -43,18 +43,18 @@ const NewPassword = () => {
 
           <Text style={{
             fontFamily: 'Poppins',
-            fontSize: 17,
-            fontWeight: 'bold',
+            fontSize: 16,
+            fontWeight: 'normal',
             textAlign: "left",
             color: '#656363',
             marginTop: 50,
             marginBottom: 20,
-            marginLeft: 15,
-            marginRight: 15,
+            marginLeft: 20,
+            marginRight: 20,
             backgroundColor: '#D2F3C6',
             borderRadius: 9,
             paddingHorizontal: 20,
-            paddingVertical: 17,
+            paddingVertical: 25,
           }}>
             Please create a new password that you don't use on any other site
           </Text>
