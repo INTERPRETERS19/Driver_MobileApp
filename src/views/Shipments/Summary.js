@@ -36,6 +36,7 @@ const Summary = () => {
     navigation.navigate('ShipmentInfo');
   };
 
+
   return (
     <View style={styles.root}>
       <ImageBackground
