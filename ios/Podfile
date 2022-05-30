@@ -23,7 +23,12 @@ target 'Authentication' do
 =======
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
+<<<<<<< HEAD
 >>>>>>> 156ce00d8488cb10525c95836a61f6080838c91b
+=======
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+>>>>>>> f4c4c1c08b4e1ba7ea5e68564fa6048ddcf2f790
   target 'AuthenticationTests' do
     inherit! :complete
     # Pods for testing
