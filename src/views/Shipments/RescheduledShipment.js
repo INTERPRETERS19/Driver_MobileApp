@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -8,11 +8,11 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
-import AvatarSocial from 'react-native-avatar-social';
+//import AvatarSocial from 'react-native-avatar-social';
 import Avatar from 'react-native-interactive-avatar';
 const RescheduledShipment = () => {
   const navigation = useNavigation();
@@ -21,13 +21,13 @@ const RescheduledShipment = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    {key: 1, item: '001854', name: ' '},
-    {key: 2, item: '741541', name: ' '},
-    {key: 3, item: '638524', name: ' '},
-    {key: 4, item: '096471', name: ' '},
-    {key: 5, item: '631901', name: ' '},
-    {key: 6, item: '001854', name: ' '},
-    {key: 7, item: '741541', name: ' '},
+    { key: 1, item: '001854', name: ' ' },
+    { key: 2, item: '741541', name: ' ' },
+    { key: 3, item: '638524', name: ' ' },
+    { key: 4, item: '096471', name: ' ' },
+    { key: 5, item: '631901', name: ' ' },
+    { key: 6, item: '001854', name: ' ' },
+    { key: 7, item: '741541', name: ' ' },
   ]);
 
   const onMenuPressed = () => {
@@ -44,7 +44,7 @@ const RescheduledShipment = () => {
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
+        style={{ width: '100%', height: '100%' }}>
         {/* <ScrollView> */}
         <View style={[styles.topbar]}>
           <Icon

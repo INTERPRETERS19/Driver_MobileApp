@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, ImageBackground} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
@@ -37,7 +37,7 @@ const Dashboard = () => {
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
+        style={{ width: '100%', height: '100%' }}>
         <View style={[styles.topbar]}>
           <Icon
             name="md-menu-sharp"
@@ -205,6 +205,8 @@ const styles = StyleSheet.create({
   pieChartPanel: {
     flex: 2.5,
     padding: 20,
+    paddingTop: 20,
+    paddingBottom: 0,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
