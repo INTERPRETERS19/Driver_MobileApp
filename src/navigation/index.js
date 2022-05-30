@@ -26,6 +26,8 @@ import NewPassword from '../views/ForgotPassword/NewPassword';
 import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 
+//import {createDrawerNavigator} from '@react-navigation/drawer';
+import ShipmentInfo from '../views/Shipments/ShipmentInfo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
@@ -55,14 +57,14 @@ const DashboardTabScreen = () => {
       initialRouteName="Drawer"
       activeColor="white"
       inactiveColor="#8e999e"
-      barStyle={{ padding: 10, backgroundColor: '#213571' }}
-      labelStyle={{ fontSize: 12 }}>
+      barStyle={{padding: 10, backgroundColor: '#213571'}}
+      labelStyle={{fontSize: 12}}>
       <Tab.Screen
         name="Drawer"
         component={DrawerNav} //function there dashboard
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => (
+          tabBarIcon: ({color}) => (
             <MaterialCommunityIcons name="home" color={color} size={28} />
           ),
         }}
@@ -98,7 +100,7 @@ const DashboardTabScreen = () => {
       />
       <Tab.Screen
         name="Notifications3"
-        component={Settings}
+        component={ShipmentInfo}
         options={{
           tabBarLabel: 'Updates',
           tabBarIcon: ({ color }) => (
@@ -140,6 +142,7 @@ const Navigation = () => {
         <Stack.Screen name="NewPassword" component={NewPassword} />
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
+        <Stack.Screen name="ShipmentInfo" component={ShipmentInfo} />
 
       </Stack.Navigator>
     </NavigationContainer>
