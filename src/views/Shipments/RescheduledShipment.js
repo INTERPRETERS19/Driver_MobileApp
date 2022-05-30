@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     flex: 1,
     // backgroundColor: '#236501',
   },
-
   Out: {
     flex: 10,
     fontWeight: 'bold',
