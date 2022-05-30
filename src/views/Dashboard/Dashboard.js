@@ -61,10 +61,6 @@ const Dashboard = () => {
         <View style={[styles.dashboard]}>
           <Text style={styles.dashboardTitle}>Dashboard</Text>
         </View>
-
-         <View style={[styles.dashboard]}>
-             <Text style={styles.dashboardTitle}>Dashboard</Text>
-         </View>
        
         <View style={[styles.infoPanel]}>
           <View style={[styles.infoPanelCol]}>

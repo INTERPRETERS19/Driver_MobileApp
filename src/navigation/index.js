@@ -27,7 +27,8 @@ import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 
 //import {createDrawerNavigator} from '@react-navigation/drawer';
-import ShipmentInfo from '../views/Shipments/ShipmentInfo';
+import ShipmentInfo from '../views/Information/ShipmentInfo';
+import Dropdown from '../views/Information/Dropdown';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
@@ -100,7 +101,7 @@ const DashboardTabScreen = () => {
       />
       <Tab.Screen
         name="Notifications3"
-        component={ShipmentInfo}
+        component={Dropdown}
         options={{
           tabBarLabel: 'Updates',
           tabBarIcon: ({ color }) => (
@@ -143,6 +144,7 @@ const Navigation = () => {
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
         <Stack.Screen name="ShipmentInfo" component={ShipmentInfo} />
+        <Stack.Screen name="Dropdown" component={Dropdown} />
 
       </Stack.Navigator>
     </NavigationContainer>

@@ -9,8 +9,10 @@ import {
 } from 'react-native';
 
 import CustomButton from '../../components/CustomButton';
+import Dropdown from './Dropdown';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Picker } from '@react-native-picker/picker';
 
 
 const ShipmentInfo = () => {
@@ -63,7 +65,9 @@ const ShipmentInfo = () => {
               <Text style={styles.infoIn}>COD amount</Text>
               <Text style={styles.form}>1000</Text>
               <Text style={styles.infoIn}>Status</Text>
-              <Text style={styles.form}>OutforDelivey</Text>
+              {/* <Text style={styles.form}>OutforDelivey</Text> */}
+          
+            <Dropdown></Dropdown>
             </View>
           </View>
           <View style={styles.button}>
