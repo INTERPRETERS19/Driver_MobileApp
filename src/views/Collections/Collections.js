@@ -1,20 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, ScrollView, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
+import Profilecomponent from '../../components/Profilecomponent';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Collection = () => {
   const navigation = useNavigation();
 
-  const onMenuPressed = () => {
-    navigation.navigate('Menu');
-  };
-  const onProfilePressed = () => {
-    navigation.navigate('Profile');
-  };
   const [Items, setItems] = useState([
     { key: 1, item: '001854', amount: '2300', name: ' ' },
     { key: 2, item: '741541', amount: '300', name: ' ' },
@@ -34,23 +29,7 @@ const Collection = () => {
       }}>
       <View style={styles.root}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.topbar}>
-            <Icon
-              name="md-menu-sharp"
-              size={35}
-              color="#000000"
-              onPress={onMenuPressed}
-            />
-            <TouchableOpacity style={styles.button} onPress={onProfilePressed}>
-              <Image
-                style={styles.ProfilePicture}
-                source={
-                  require('../../../assets/profile.jpg')
-                }
-              />
-            </TouchableOpacity>
-
-          </View>
+          <Profilecomponent></Profilecomponent>
           <Text style={styles.CollectionTitle}>Collections </Text>
           <View style={styles.Collection}>
             <View style={styles.infoPanel}>
@@ -81,8 +60,6 @@ const Collection = () => {
               })}
             </View>
           </View>
-
-
         </ScrollView>
       </View>
     </ImageBackground>
@@ -92,14 +69,6 @@ const Collection = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-  },
-  topbar: {
-    flex: 0.2,
-    padding: 20,
-    flexDirection: 'row',
-    paddingBottom: 0,
-    alignItems: 'center',
-    justifyContent: 'space-between',
   },
   CollectionTitle: {
     fontFamily: 'Montserrat-Medium',
@@ -189,22 +158,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
-  },
-  ProfilePicture: {
-    width: 50,
-    height: 50,
-    resizeMode: 'center',
-    borderRadius: 100,
-    overflow: 'hidden',
-    borderWidth: 2,
-    borderColor: 'white',
-  },
-  container: {
-    flex: 2.5,
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
   },
 });
 
