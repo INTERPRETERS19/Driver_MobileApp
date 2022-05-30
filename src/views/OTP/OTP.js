@@ -79,7 +79,7 @@ const onResendPressed = () => {
                            text="Verify"
                            onPress={onVerifyPressed}
                            />
-                                        <View style={{marginLeft:228, marginTop: -17}}>
+                                        <View style={{display: "flex", flex:1,  paddingLeft:228, marginTop: -17}}>
                                             <CustomButton
                                              text="Re-send"
                                              onPress={onResendPressed}
