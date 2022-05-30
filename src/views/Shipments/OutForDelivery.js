@@ -12,7 +12,6 @@ import { useNavigation } from '@react-navigation/native';
 import Profilecomponent from '../../components/Profilecomponent';
 
 import Icon2 from 'react-native-vector-icons/AntDesign';
-
 const OutForDelivery = () => {
   const navigation = useNavigation();
   //#C3E4F5

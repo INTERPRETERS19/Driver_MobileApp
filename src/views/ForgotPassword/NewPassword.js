@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import {
   ImageBackground,
   View,
@@ -25,10 +25,11 @@ const NewPassword = () => {
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
       style={{
+        display: "flex",
         flex: 1,
-
         height: '100%',
-      }}>
+      }}
+    >
       <ScrollView showsVerticalScrollIndicator={false}>
 
         <View style={{ marginTop: 160 }}>
@@ -42,18 +43,18 @@ const NewPassword = () => {
 
           <Text style={{
             fontFamily: 'Poppins',
-            fontSize: 17,
-            fontWeight: 'bold',
+            fontSize: 16,
+            fontWeight: 'normal',
             textAlign: "left",
             color: '#656363',
             marginTop: 50,
             marginBottom: 20,
-            marginLeft: 15,
-            marginRight: 15,
+            marginLeft: 20,
+            marginRight: 20,
             backgroundColor: '#D2F3C6',
             borderRadius: 9,
             paddingHorizontal: 20,
-            paddingVertical: 17,
+            paddingVertical: 25,
           }}>
             Please create a new password that you don't use on any other site
           </Text>
@@ -82,7 +83,7 @@ const NewPassword = () => {
           />
         </View>
       </ScrollView>
-    </ImageBackground>
+    </ImageBackground >
   );
 };
 
@@ -95,7 +96,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    //marginLeft:25,
     justifyContent: "center",
   },
 
@@ -103,9 +103,6 @@ const styles = StyleSheet.create({
     margin: 8,
   },
 
-  label: {
-    margin: 8,
-  },
 });
 
 export default NewPassword;
