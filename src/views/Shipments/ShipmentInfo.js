@@ -28,17 +28,15 @@ const ShipmentInfo = () => {
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{
-          width: '100%',
-          height: '100%'
+          flex: 1,
+          height: '100%',
         }}>
         <View style={styles.topbar}>
           <View style={styles.topbarin}>
             <View style={styles.topbarin1}>
-              <Icon name="keyboard-arrow-left" size={35} color='rgba(0, 0, 0, 0.40)' onPress={onbackPressed} />
+              <Icon name="keyboard-arrow-left" size={35} color='rgba(0, 0, 0, 0.8)' onPress={onbackPressed} />
             </View>
-            <View style={styles.topbarin2}>
-              <Text style={{ fontSize: 22 }}>Info</Text>
-            </View>
+            <Text style={styles.topbarin2}>Info</Text>
           </View>
         </View>
         <View style={styles.contentfull}>
@@ -91,8 +89,7 @@ const styles = StyleSheet.create({
   },
   topbar: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.01)',
-    // padding: 20,
+    padding: 20,
   },
   content: {
     padding: 20,
@@ -103,18 +100,19 @@ const styles = StyleSheet.create({
   },
   head: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop: 0,
     //paddingBottom: 10,
     alignItems: 'center',
     fontFamily: 'Roboto-Bold',
     fontSize: 22,
     textAlign: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    //backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    color: '#000',
   },
   info: {
     flex: 7,
     padding: 10,
-    // backgroundColor: '#faaaaa',
+
   },
   button: {
     flex: 1,
@@ -123,16 +121,18 @@ const styles = StyleSheet.create({
   },
   infoIn: {
     fontSize: 18,
+    color: '#000',
   },
   form: {
     backgroundColor: 'rgba(0, 0, 0, 0.02)',
     paddingTop: 5,
     paddingBottom: 10,
     fontSize: 18,
+    color: '#000',
   },
   topbarin: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
   },
   topbarin1: {
     flex: 1
@@ -142,7 +142,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     fontFamily: 'Roboto-Bold',
-    fontSize: 22,
+    fontSize: 26,
+    color: '#000',
   },
 
 

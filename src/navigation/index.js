@@ -15,6 +15,7 @@ import Collections from '../views/Collections/Collections';
 import Settings from '../views/Settings/Settings';
 import Menu from '../shared/Menu';
 import ChangePassword from '../views/Settings/ChangePassword';
+import Support from '../views/Settings/Support';
 
 import Profile from '../views/Settings/Profile';
 import PrivacyPolicy from '../views/Settings/PrivacyPolicy';
@@ -57,14 +58,14 @@ const DashboardTabScreen = () => {
       initialRouteName="Drawer"
       activeColor="white"
       inactiveColor="#8e999e"
-      barStyle={{padding: 10, backgroundColor: '#213571'}}
-      labelStyle={{fontSize: 12}}>
+      barStyle={{ padding: 10, backgroundColor: '#213571' }}
+      labelStyle={{ fontSize: 12 }}>
       <Tab.Screen
         name="Drawer"
         component={DrawerNav} //function there dashboard
         options={{
           tabBarLabel: 'Home',
-          tabBarIcon: ({color}) => (
+          tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={28} />
           ),
         }}
@@ -138,6 +139,7 @@ const Navigation = () => {
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Terms" component={Terms} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        <Stack.Screen name="Support" component={Support} />
 
         <Stack.Screen name="NewPassword" component={NewPassword} />
         <Stack.Screen name="OTP" component={OTP} />
