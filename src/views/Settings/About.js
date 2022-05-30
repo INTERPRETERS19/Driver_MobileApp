@@ -37,6 +37,7 @@ const About = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   return (
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
@@ -49,6 +50,8 @@ const About = () => {
 
 =======
 >>>>>>> 77a8be44d26deebf8ecd3a2dde1e141a790278e6
+=======
+>>>>>>> c74f4bab9304155f72e19b24207d9b581c4ede7e
         <View style={[styles.topbar]}>
           <Icon name="chevron-back" size={30} color="#9C9C9C" onPress={onbackPressed} />
         </View>
@@ -153,10 +156,15 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingBottom: 0,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
     paddingTop: 50
 >>>>>>> 77a8be44d26deebf8ecd3a2dde1e141a790278e6
+=======
+
+    paddingTop: 50
+>>>>>>> c74f4bab9304155f72e19b24207d9b581c4ede7e
   },
 });
 
