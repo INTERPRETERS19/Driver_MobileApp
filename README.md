@@ -1,6 +1,6 @@
 # Driver_MobileApp
 
-******install packages ******
+install packages..........................
 
 npm i react-native-vector-icons
 
