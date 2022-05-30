@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> c74f4bab9304155f72e19b24207d9b581c4ede7e
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -51,10 +47,6 @@ const Support = () => {
             {/* </ScrollView> */}
         </View>
     );
-<<<<<<< HEAD
-=======
-
->>>>>>> c74f4bab9304155f72e19b24207d9b581c4ede7e
 };
 export default Support;
 
@@ -112,8 +104,4 @@ const styles = StyleSheet.create({
         alignContent: 'stretch',
         justifyContent: 'flex-start',
     },
-<<<<<<< HEAD
-=======
-
->>>>>>> c74f4bab9304155f72e19b24207d9b581c4ede7e
 });
