@@ -5,8 +5,6 @@ import Icony from 'react-native-vector-icons/FontAwesome';
 import FontAwesome, {
   SolidIcons,
   RegularIcons,
-  BrandIcons,
-  parseIconFromClassName,
 } from 'react-native-fontawesome';
 import {
   View,
@@ -28,8 +26,6 @@ const About = () => {
   };
 
   const parsedIcon = parseIconFromClassName('fab fa-truck');
-
-
   return (
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
@@ -121,6 +117,8 @@ const styles = StyleSheet.create({
   root: {
     alignItems: 'center',
     padding: 20,
+    display: "flex",
+    flex: 1
   },
 
   container: {
@@ -141,6 +139,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingBottom: 0,
+
+    paddingTop: 50
   },
 });
 

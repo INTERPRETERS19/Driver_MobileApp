@@ -10,7 +10,7 @@ const Help = () => {
     };
     const onSendMesaagePressed = () => {
         navigation.navigate('Support');
-    };
+      };
 
     return (
         <View style={styles.root}>
@@ -38,6 +38,7 @@ const Help = () => {
                             />
                         </View>
                     </View>
+
                 </View>
             </ScrollView>
 
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
     SubHeadingText: {
         textAlign: 'center',
         color: '#000'
+
     },
     text: {
         fontFamily: 'Roboto-Regular',

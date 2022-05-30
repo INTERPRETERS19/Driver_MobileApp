@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Text, StyleSheet, View, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -47,6 +48,7 @@ const Support = () => {
             {/* </ScrollView> */}
         </View>
     );
+
 };
 export default Support;
 
@@ -104,4 +106,5 @@ const styles = StyleSheet.create({
         alignContent: 'stretch',
         justifyContent: 'flex-start',
     },
+
 });
