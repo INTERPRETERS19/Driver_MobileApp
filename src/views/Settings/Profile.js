@@ -9,7 +9,6 @@ import {
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
-
 import { useNavigation } from '@react-navigation/native';
 
 const Profile = () => {
@@ -25,7 +24,6 @@ const Profile = () => {
       source={require('../../../assets/Background.png')}
       style={{
         flex: 1,
-
         height: '100%',
         width: '100%',
       }}>
@@ -82,13 +80,13 @@ const Profile = () => {
               borderRadius: 20,
               paddingHorizontal: 20,
               paddingVertical: 17,
+              marginTop:35
             }}>
             <Text style={styles.Label}>FULL NAME</Text>
             <Text style={styles.Info}>Eren Jeager</Text>
-
             <Text style={styles.Label}>MOBILE NUMBER</Text>
             <Text style={styles.Info}>0761234567</Text>
-            <Text style={styles.Label}>DRIVING LICENCE NUMBER</Text>
+            <Text style={styles.Label}>DRIVING LICENSE NUMBER</Text>
             <Text style={styles.Info}>B1234567</Text>
             <Text style={styles.Label}>VEHICLE TYPE</Text>
             <Text style={styles.Info}>Motor Bike</Text>
@@ -104,6 +102,7 @@ const Profile = () => {
 const styles = StyleSheet.create({
   TopCont: {
     padding: 20,
+    marginTop: 25
   },
   container: {
     display: 'flex',
