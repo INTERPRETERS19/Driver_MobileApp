@@ -10,6 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@mdi/js": "^6.7.96",
+    "@mdi/react": "^1.6.0",
     "@nghinv/react-native-search-bar": "^0.2.0",
     "@react-native-community/art": "^1.2.0",
     "@react-native-community/checkbox": "^0.5.12",
@@ -26,6 +29,7 @@
     "react-native-avatar-social": "^0.0.3",
     "react-native-chart-kit": "^6.12.0",
     "react-native-elements": "^3.4.2",
+    "react-native-fontawesome": "^7.0.0",
     "react-native-gesture-handler": "^2.4.2",
     "react-native-interactive-avatar": "^2.0.0",
     "react-native-otp-textinput": "^0.0.9",
