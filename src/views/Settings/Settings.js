@@ -4,13 +4,13 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  ScrollView,
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../../components/CustomButton';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Settings = () => {
   const navigation = useNavigation();
@@ -40,57 +40,117 @@ const Settings = () => {
     navigation.navigate('Dashboard');
   };
 
+  const Row = ({ iconLeft, textName, onPressed }) => {
+    return (
+      <View style={[styles.sections]}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+
+          <Icon2 name={iconLeft} size={30} color="#656363" />
+
+
+
+          <TouchableOpacity onPress={onPressed}>
+            <Text style={styles.subText}> {textName}</Text>
+          </TouchableOpacity>
+        </View>
+        <Icon
+          name="keyboard-arrow-right"
+          size={30}
+          color="#7E7D7D"
+          onPress={onPressed}
+        />
+      </View>
+    );
+  };
+
   return (
-    <View style={styles.root}>
-      <ImageBackground
-        source={require('../../../assets/img1.jpg')}
-        style={{
-          width: '100%',
-          height: '100%',
-        }}>
-        <ScrollView>
-          <View style={[styles.topbar]}>
-            <Icon name="chevron-back" size={30} color="#9C9C9C" onPress={onbackPressed} />
-          </View>
-          <View style={styles.container}>
-            <Image
-              style={styles.ProfilePicture}
-              source={require('../../../assets/profile.jpg')}
+    <ImageBackground
+      source={require('../../../assets/img1.jpg')}
+      style={{
+        width: '100%',
+        height: '100%',
+      }}>
+      <View style={styles.root}>
+        <View style={styles.TopCont}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingRight: '60%',
+            }}>
+            <Icon
+              name="keyboard-arrow-left"
+              size={30}
+              color="#7E7D7D"
+              onPress={onbackPressed}
             />
+            <Text
+              style={{
+                fontFamily: 'SF-Pro-Display-Medium',
+                letterSpacing: 0.5,
+                fontSize: 23,
+                color: '#000',
+                justifyContent: 'center',
+              }}>
+              Settings
+            </Text>
+          </View>
+        </View>
+        <View style={styles.container}>
+          <Image
+            style={styles.ProfilePicture}
+            source={require('../../../assets/profile.jpg')}
+          />
+        </View>
+        <View style={[styles.ProfileCont]}>
+          <View style={[styles.settingpanel]}>
+            <View style={[styles.settingpanelcol]}>
+              <Text style={styles.mainText}>PROFILE</Text>
+              <Row
+                iconLeft="account-circle"
+                textName="View Profile"
+                onPressed={pressedProfile}
+              />
+              <Row
+                iconLeft="account-lock-open-outline"
+                textName="Change Password"
+                onPressed={pressedNewPassword}
+              />
+              <Row
+                iconLeft="shield-lock"
+                textName="Privacy Policy"
+                onPressed={pressedPrivacyPolicy}
+              />
+            </View>
           </View>
           <View style={[styles.settingpanel]}>
             <View style={[styles.settingpanelcol]}>
-              <Text style={styles.mainText}>Profile</Text>
-              <TouchableOpacity onPress={pressedProfile}>
-                <Text style={styles.subText}> View Profile</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={pressedNewPassword}>
-                <Text style={styles.subText}> Change Password</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={pressedPrivacyPolicy}>
-                <Text style={styles.subText}> Privacy Policy</Text>
-              </TouchableOpacity>
-            </View>
-
-            <View style={[styles.settingpanelcol]}>
-              <Text style={styles.mainText}>Settings</Text>
-              <TouchableOpacity onPress={pressedHelp}>
-                <Text style={styles.subText}> Help and Support</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={pressedTerms}>
-                <Text style={styles.subText}> Terms of Service</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={pressedAbout}>
-                <Text style={styles.subText}> About</Text>
-              </TouchableOpacity>
+              <Text style={styles.mainText}>SETTINGS</Text>
+              <Row
+                iconLeft="help-box"
+                textName="Help and Support"
+                onPressed={pressedHelp}
+              />
+              <Row
+                iconLeft="message-text-lock"
+                textName="Terms and Conditions"
+                onPressed={pressedTerms}
+              />
+              <Row
+                iconLeft="office-building-marker"
+                textName="About"
+                onPressed={pressedAbout}
+              />
             </View>
           </View>
-          <View>
-            <CustomButton text="LOG OUT" onPress={onLogoutPressed} />
-          </View>
-        </ScrollView>
-      </ImageBackground>
-    </View>
+        </View>
+        <View style={{ flex: 1.5 }}>
+          <CustomButton text="LOG OUT" onPress={onLogoutPressed} />
+        </View>
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -98,32 +158,55 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
+  TopCont: {
+    flex: 0.5,
+    padding: 20,
+
+  },
   mainText: {
-    fontFamily: 'Roboto-Regular',
-    fontSize: 24,
-    lineHeight: 24,
+    fontFamily: 'Montserrat-Medium',
+    fontStyle: 'normal',
+    fontSize: 15,
+    lineHeight: 22,
+    letterSpacing: 2,
+    padding: 3,
     color: 'rgba(0, 0, 0, 0.3)',
     textAlign: 'justify',
-    paddingLeft: 50,
+  },
+  ProfileCont: {
+    flex: 5,
+    padding: 10,
+    borderColor: '#F23243',
+    lineHeight: 42,
+
+  },
+  sections: {
+    backgroundColor: 'rgba(0, 0, 0, 0.04)',
+    borderRadius: 2,
+    marginBottom: 4,
+    borderColor: 'rgba(0, 0, 0, 0.3)',
+    display: 'flex',
+    flexDirection: 'row',
+    paddingLeft: 20,
+    paddingRight: 30,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   subText: {
-    fontFamily: 'Roboto-Regular',
-    fontSize: 20,
-    lineHeight: 40,
+    fontFamily: 'SF-Pro-Display-Regular',
+    letterSpacing: 0.5,
+    fontSize: 19,
+    lineHeight: 42,
     color: '#000000',
-    textAlign: 'justify',
-    paddingLeft: 65,
+    paddingLeft: 15,
   },
   settingpanel: {
-    flex: 4,
+    flex: 1,
     flexWrap: 'wrap',
     alignItems: 'flex-start',
-    paddingRight: 30,
-    paddingTop: 10,
   },
   settingpanelcol: {
-    paddingTop: 40,
-    flex: 1,
+    flex: 0.5,
     width: '100%',
     height: '100%',
   },
@@ -131,22 +214,17 @@ const styles = StyleSheet.create({
     width: 180,
     height: 180,
     resizeMode: 'center',
+    borderRadius: 100,
+    overflow: 'hidden',
+    borderWidth: 5,
+    borderColor: 'white',
   },
   container: {
-    flex: 1,
-    paddingLeft: 90,
-    paddingTop: 10,
-    paddingBottom: 0,
-    borderRadius: 180 / 2,
+    flex: 2.5,
     flexWrap: 'wrap',
     alignItems: 'center',
-  },
-  topbar: {
-    flex: 0.8,
-    padding: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingBottom: 0,
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
 });
 
