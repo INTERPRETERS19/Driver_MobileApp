@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ImageBackground,
   ScrollView,
+  Image,
   TouchableOpacity,
   Alert,
 } from 'react-native';
@@ -14,6 +15,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import AvatarSocial from 'react-native-avatar-social';
 import Avatar from 'react-native-interactive-avatar';
+import Profilecomponent from '../../components/Profilecomponent';
 const Summary = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -24,77 +26,54 @@ const Summary = () => {
     { key: 1, item: '001854', address: 'Atchuvely', name: ' ' },
     { key: 2, item: '741541', address: 'Kodikamam', name: ' ' },
     { key: 3, item: '638524', address: 'Nelliyadi', name: ' ' },
-    { key: 4, item: '096471', addrees: 'Chavakacheri', name: ' ' },
+    { key: 4, item: '096471', address: 'Chavakacheri', name: ' ' },
     { key: 5, item: '631901', address: 'Chunnakam', name: ' ' },
     { key: 6, item: '001854', address: 'Kantharodai', name: ' ' },
     { key: 7, item: '741541', address: 'Meesalai', name: ' ' },
   ]);
 
-  const onMenuPressed = () => {
-    navigation.navigate('Menu');
-  };
-  const onSettingsPressed = () => {
-    navigation.navigate('Settings');
-  };
+
   const onArrowPressed = () => {
     navigation.navigate('ShipmentInfo');
   };
+
 
   return (
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{ width: '100%', height: '100%' }}>
-        {/* <ScrollView> */}
-        <View style={[styles.topbar]}>
-          <Icon
-            name="md-menu-sharp"
-            size={40}
-            color="#000000"
-            onPress={onMenuPressed}
-          />
-          <View>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('Settings');
-              }}>
-              <Avatar
-                style={[styles.Avatar]}
-                source={require('../../../assets/profile.jpg')}
-                size={'small'}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={[styles.Out]}>
-          <View style={[styles.Summary]}>
-            <Text style={[styles.SummaryText]}>Summary</Text>
-          </View>
+        <ScrollView>
+          <View style={[styles.Out]}>
+            <Profilecomponent></Profilecomponent>
+            <View style={[styles.Summary]}>
+              <Text style={[styles.SummaryText]}>Summary</Text>
+            </View>
 
-          <View style={styles.ShipmentSection}>
-            <View style={styles.ShipementText}>
-              <Text>Shipment ID</Text>
-            </View>
-            <View>
-              {Items.map(object => {
-                return (
-                  <View style={styles.item} key={object.key}>
-                    <Text style={styles.Itemtext}>{object.item}</Text>
-                    <Text style={styles.Itemtext}>{object.address}</Text>
-                    <Icon2
-                      style={styles.Itemtext}
-                      name="right"
-                      size={20}
-                      color="#000000"
-                      onPress={onArrowPressed}
-                    />
-                  </View>
-                );
-              })}
+            <View style={styles.ShipmentSection}>
+              <View style={styles.ShipementText}>
+                <Text>Shipment ID</Text>
+              </View>
+              <View>
+                {Items.map(object => {
+                  return (
+                    <View style={styles.item} key={object.key}>
+                      <Text style={styles.Itemtext}>{object.item}</Text>
+                      <Text style={styles.Itemtext}>{object.address}</Text>
+                      <Icon2
+                        style={styles.Itemtext}
+                        name="right"
+                        size={20}
+                        color="#000000"
+                        onPress={onArrowPressed}
+                      />
+                    </View>
+                  );
+                })}
+              </View>
             </View>
           </View>
-        </View>
-        {/* </ScrollView> */}
+        </ScrollView>
       </ImageBackground>
     </View>
   );
@@ -104,14 +83,6 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     // backgroundColor: '#236501',
-  },
-  topbar: {
-    //backgroundColor:'#A75653',
-    flex: 1,
-    alignItems: 'flex-start',
-    padding: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   Out: {
     flex: 10,
@@ -173,12 +144,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
-  },
-  Avatar: {
-    borderRadius: 50,
-    overflow: 'hidden',
-    width: 50,
-    height: 50,
   },
 });
 
