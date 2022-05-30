@@ -3,9 +3,14 @@ import { View, Text, StyleSheet, ImageBackground, ScrollView, } from 'react-nati
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
-
-
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// Icon from 'react-native-vector-icons/Ionicons';
+//#C3E4F5
+//#213571
+//#000000
+//#7E7D7D
+
+
 
 const Collection = () => {
   const navigation = useNavigation();
@@ -160,5 +165,4 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 });
-
 export default Collection;
