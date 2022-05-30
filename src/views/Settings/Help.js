@@ -10,11 +10,7 @@ const Help = () => {
     };
     const onSendMesaagePressed = () => {
         navigation.navigate('Support');
-<<<<<<< HEAD
     };
-=======
-      };
->>>>>>> 77a8be44d26deebf8ecd3a2dde1e141a790278e6
 
     return (
         <View style={styles.root}>
@@ -42,10 +38,6 @@ const Help = () => {
                             />
                         </View>
                     </View>
-<<<<<<< HEAD
-=======
-
->>>>>>> 77a8be44d26deebf8ecd3a2dde1e141a790278e6
                 </View>
             </ScrollView>
 
@@ -78,10 +70,6 @@ const styles = StyleSheet.create({
     SubHeadingText: {
         textAlign: 'center',
         color: '#000'
-<<<<<<< HEAD
-=======
-
->>>>>>> 77a8be44d26deebf8ecd3a2dde1e141a790278e6
     },
     text: {
         fontFamily: 'Roboto-Regular',
