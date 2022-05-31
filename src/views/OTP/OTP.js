@@ -55,15 +55,13 @@ const onResendPressed = () => {
                                                       paddingHorizontal: 20,
                                                       paddingVertical: 17,
 
-                             }}>
-                <View>
-
-
+                     }}>
+            <View>
 
                   <Text style={{fontFamily: 'Poppins',fontSize: 16, fontWeight: 'normal', textAlign: "center", color: '#656363',
                                borderRadius: 9, marginTop:27}}>
                               Enter OTP we just sent to your mobile {'\n'} number: +94******567
-                            </Text>
+                  </Text>
 
             <View>
                 <OTPTextView
@@ -87,8 +85,8 @@ const onResendPressed = () => {
                                              />
                                         </View>
 
-                </View>
-                 </View>
+            </View>
+        </View>
 
          <View>
          <CustomButton
