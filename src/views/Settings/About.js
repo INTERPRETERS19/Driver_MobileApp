@@ -38,7 +38,7 @@ const About = () => {
         <View style={[styles.topbar]}>
           <Icon name="chevron-back" size={30} color="#9C9C9C" onPress={onbackPressed} />
         </View>
-        <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 20, color: '#000000', textAlign: 'left', marginLeft:60, marginTop: -32}}>About Us </Text>
+        <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 20, color: '#000000', textAlign: 'left', marginLeft: 60, marginTop: -32 }}>About Us </Text>
 
         <Text style={{
           fontFamily: 'Roboto-Bold', fontSize: 18, textAlign: "center", color: '#8B8B8B', paddingTop: 60,

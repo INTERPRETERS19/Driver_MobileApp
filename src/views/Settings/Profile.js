@@ -80,7 +80,7 @@ const Profile = () => {
               borderRadius: 20,
               paddingHorizontal: 20,
               paddingVertical: 17,
-              marginTop:35
+              marginTop: 35
             }}>
             <Text style={styles.Label}>FULL NAME</Text>
             <Text style={styles.Info}>Eren Jeager</Text>
