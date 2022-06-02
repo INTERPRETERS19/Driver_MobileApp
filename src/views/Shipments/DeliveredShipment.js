@@ -5,12 +5,11 @@ import {
   StyleSheet,
   ImageBackground,
   ScrollView,
-  Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import Profilecomponent from '../../components/Profilecomponent';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
 const DeliveredShipment = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -25,6 +24,9 @@ const DeliveredShipment = () => {
     {key: 5, item: '631901', time: '9.35 am', name: ' '},
     {key: 6, item: '001854', time: '3.15 pm', name: ' '},
     {key: 7, item: '741541', time: '7.05 pm', name: ' '},
+    {key: 8, item: '631801', time: '9.35 am', name: ' '},
+    {key: 9, item: '001354', time: '3.15 pm', name: ' '},
+    {key: 10, item: '741141', time: '7.05 pm', name: ' '},
   ]);
 
   const onArrowPressed = () => {
@@ -36,9 +38,9 @@ const DeliveredShipment = () => {
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
+        <Profilecomponent></Profilecomponent>
         <ScrollView>
           <View style={[styles.Out]}>
-            <Profilecomponent></Profilecomponent>
             <View style={[styles.DeliveredShipment]}>
               <Text style={[styles.DeliveredShipmentText]}>
                 Delivered Shipment
@@ -47,8 +49,8 @@ const DeliveredShipment = () => {
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text>Shipment ID</Text>
-                <Text>Time</Text>
+                <Text style={{color: '#000000'}}>Shipment ID</Text>
+                <Text style={{color: '#000000'}}>Time</Text>
                 <Text> </Text>
               </View>
               <View>
@@ -71,6 +73,7 @@ const DeliveredShipment = () => {
             </View>
           </View>
         </ScrollView>
+        <BottomNavigationBar />
       </ImageBackground>
     </View>
   );
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
   },
   DeliveredShipment: {
     flex: 1,
-    padding: 15,
+    padding: 20,
     color: '#000000',
     lineHeight: 22,
     letterSpacing: 4,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 //import Icon from 'react-native-vector-icons/Ionicons';
 import {
   ScrollView,
@@ -9,14 +9,18 @@ import {
 } from 'react-native';
 
 import CustomButton from '../../components/CustomButton';
+import Dropdown from './Dropdown';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import CheckBox from '@react-native-community/checkbox';
 
 
 const ShipmentInfo = () => {
   const navigation = useNavigation();
+  //const [COD] = useState('');
+  const [isSelected,setSelection] = useState(false);
   const onDonePressed = () => {
-    navigation.navigate('Dashboard');
+    navigation.navigate('OutForDelivery');
   };
   const onbackPressed = () => {
     navigation.navigate('OutForDelivery');
@@ -28,15 +32,17 @@ const ShipmentInfo = () => {
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{
-          flex: 1,
-          height: '100%',
+          width: '100%',
+          height: '100%'
         }}>
         <View style={styles.topbar}>
           <View style={styles.topbarin}>
             <View style={styles.topbarin1}>
-              <Icon name="keyboard-arrow-left" size={35} color='rgba(0, 0, 0, 0.8)' onPress={onbackPressed} />
+              <Icon name="keyboard-arrow-left" size={35} color='rgba(0, 0, 0, 0.40)' onPress={onbackPressed} />
             </View>
-            <Text style={styles.topbarin2}>Info</Text>
+            <View style={styles.topbarin2}>
+              <Text style={{ fontSize: 22 }}>Info</Text>
+            </View>
           </View>
         </View>
         <View style={styles.contentfull}>
@@ -59,9 +65,24 @@ const ShipmentInfo = () => {
               <Text style={styles.infoIn}>City</Text>
               <Text style={styles.form}>Moratuwa</Text>
               <Text style={styles.infoIn}>COD amount</Text>
-              <Text style={styles.form}>1000</Text>
+
+              <View style={{ flex: 1, flexDirection: "row" }}>
+                <View style={{ flex: 3 }}>
+                  <Text style={styles.form}>1000</Text>
+                </View>
+                <View style={{ flex: 1 }}>
+                  <CheckBox
+                    value={isSelected}
+                    onValueChange={setSelection}
+                    style={styles.checkbox}
+                  />
+                </View>
+              </View>
+
               <Text style={styles.infoIn}>Status</Text>
-              <Text style={styles.form}>OutforDelivey</Text>
+
+
+              <Dropdown></Dropdown>
             </View>
           </View>
           <View style={styles.button}>
@@ -89,7 +110,8 @@ const styles = StyleSheet.create({
   },
   topbar: {
     flex: 1,
-    padding: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.01)',
+    // padding: 20,
   },
   content: {
     padding: 20,
@@ -100,19 +122,18 @@ const styles = StyleSheet.create({
   },
   head: {
     flex: 1,
-    paddingTop: 0,
+    paddingTop: 10,
     //paddingBottom: 10,
     alignItems: 'center',
     fontFamily: 'Roboto-Bold',
     fontSize: 22,
     textAlign: 'center',
-    //backgroundColor: 'rgba(0, 0, 0, 0.05)',
-    color: '#000',
+    backgroundColor: 'rgba(0, 0, 0, 0.05)',
   },
   info: {
     flex: 7,
     padding: 10,
-
+    // backgroundColor: '#faaaaa',
   },
   button: {
     flex: 1,
@@ -121,18 +142,20 @@ const styles = StyleSheet.create({
   },
   infoIn: {
     fontSize: 18,
-    color: '#000',
   },
   form: {
     backgroundColor: 'rgba(0, 0, 0, 0.02)',
     paddingTop: 5,
     paddingBottom: 10,
     fontSize: 18,
-    color: '#000',
+  },
+  checkbox:{
+    backgroundColor: 'rgba(0, 0, 0, 0.02)',
+     alignSelf: 'center',
   },
   topbarin: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "row"
   },
   topbarin1: {
     flex: 1
@@ -142,8 +165,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     fontFamily: 'Roboto-Bold',
-    fontSize: 26,
-    color: '#000',
+    fontSize: 22,
   },
 
 

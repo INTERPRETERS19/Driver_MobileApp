@@ -9,10 +9,12 @@ import {
   Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
+
 import Icon2 from 'react-native-vector-icons/AntDesign';
-const OutForDelivery = () => {
+const QRScan = () => {
   const navigation = useNavigation();
   //#C3E4F5
   //#213571
@@ -26,13 +28,10 @@ const OutForDelivery = () => {
     {key: 5, item: '631901', name: ' '},
     {key: 6, item: '001854', name: ' '},
     {key: 7, item: '741541', name: ' '},
-    {key: 8, item: '741541', name: ' '},
-    {key: 9, item: '741541', name: ' '},
-    {key: 10, item: '741541', name: ' '},
   ]);
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentInfo');
+    navigation.navigate('Collection');
   };
 
   return (
@@ -40,16 +39,16 @@ const OutForDelivery = () => {
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
-        <Profilecomponent></Profilecomponent>
         <ScrollView>
           <View style={[styles.Out]}>
+            <Profilecomponent></Profilecomponent>
             <View style={[styles.OutForDelivery]}>
-              <Text style={[styles.OutForDeliveryText]}>Out For Delivery</Text>
+              <Text style={[styles.OutForDeliveryText]}>Scan</Text>
             </View>
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text style={{color:'#000000'}}>Shipment ID</Text>
+                <Text>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -144,4 +143,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OutForDelivery;
+export default QRScan;
