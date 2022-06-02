@@ -11,6 +11,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 
 import Profilecomponent from '../../components/Profilecomponent';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
 
 import Icon2 from 'react-native-vector-icons/AntDesign';
 const QRScan = () => {
@@ -68,6 +69,7 @@ const QRScan = () => {
             </View>
           </View>
         </ScrollView>
+        <BottomNavigationBar />
       </ImageBackground>
     </View>
   );

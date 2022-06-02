@@ -24,6 +24,13 @@ const Summary = () => {
     {key: 5, item: '631901', address: 'Chunnakam', name: ' '},
     {key: 6, item: '001854', address: 'Kantharodai', name: ' '},
     {key: 7, item: '741541', address: 'Meesalai', name: ' '},
+    {key: 9, item: '741541', address: 'Meesalai', name: ' '},
+    {key: 10, item: '741541', address: 'Meesalai', name: ' '},
+    {key: 11, item: '741541', address: 'Meesalai', name: ' '},
+    {key: 12, item: '741541', address: 'Meesalai', name: ' '},
+    {key: 13, item: '741541', address: 'Meesalai', name: ' '},
+    {key: 14, item: '741541', address: 'Meesalai', name: ' '},
+
   ]);
 
   const onArrowPressed = () => {
@@ -35,9 +42,9 @@ const Summary = () => {
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
+         <Profilecomponent></Profilecomponent>
         <ScrollView>
           <View style={[styles.Out]}>
-            <Profilecomponent></Profilecomponent>
             <View style={[styles.Summary]}>
               <Text style={[styles.SummaryText]}>Summary</Text>
             </View>
