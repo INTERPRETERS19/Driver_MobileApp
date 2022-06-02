@@ -22,9 +22,9 @@ const Collection = () => {
     {key: 5, item: '631901', amount: '650', name: ' '},
     {key: 6, item: '001854', amount: '1320', name: ' '},
     {key: 7, item: '741541', amount: '680', name: ' '},
-    {key: 7, item: '741541', amount: '680', name: ' '},
-    {key: 7, item: '741541', amount: '680', name: ' '},
-    {key: 7, item: '741541', amount: '680', name: ' '},
+    {key: 8, item: '741541', amount: '680', name: ' '},
+    {key: 9, item: '741541', amount: '680', name: ' '},
+    {key: 10, item: '741541', amount: '680', name: ' '},
   ]);
 
   return (
@@ -35,8 +35,8 @@ const Collection = () => {
         height: '100%',
       }}>
       <View style={styles.root}>
+      <Profilecomponent></Profilecomponent>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Profilecomponent></Profilecomponent>
           <Text style={styles.CollectionTitle}>Collections </Text>
           <View style={styles.Collection}>
             <View style={styles.infoPanel}>
@@ -68,6 +68,7 @@ const Collection = () => {
             </View>
           </View>
         </ScrollView>
+        <BottomNavigationBar />
       </View>
     </ImageBackground>
   );
