@@ -13,7 +13,6 @@ import Dropdown from './Dropdown';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CheckBox from '@react-native-community/checkbox';
-import { Picker } from '@react-native-picker/picker';
 
 
 const ShipmentInfo = () => {

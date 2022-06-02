@@ -15,15 +15,7 @@ export default class Dropdown extends Component {
         }
 
     };
-    // press=()=>{
-	// 	var data = this.state.PickerValue;
-	// 	if(data==""){
-	// 		alert("Please Select a Option");
-	// 	}else{
-	// 		alert(data);
-	// 	}
-		
-	// }
+
  
     render() {
         return (
