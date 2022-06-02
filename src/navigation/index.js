@@ -25,6 +25,7 @@ import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 //import ShipmentInfo from '../views/Shipments/ShipmentInfo';
 import QRScan from '../views/ScanPage/QRScan';
+import Support from '../views/Settings/Support';
 
 //import {createDrawerNavigator} from '@react-navigation/drawer';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
@@ -202,8 +203,8 @@ const Navigation = () => {
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
         <Stack.Screen name="ShipmentInfo" component={ShipmentInfo} />
+        <Stack.Screen name="Support" component={Support}/>
         <Stack.Screen name="Dropdown" component={Dropdown} />
-
       </Stack.Navigator>
     </NavigationContainer>
   );
