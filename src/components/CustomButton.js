@@ -22,10 +22,7 @@ const CustomButton = ({onPress, text, type = 'PRIMARY', bgColor, fgColor}) => {
   );
 };
 
-  
-
 const styles = StyleSheet.create({
-
   container: {
     width: '100%',
     padding: 25,
@@ -43,21 +40,21 @@ const styles = StyleSheet.create({
 
   container_PRIMARY: {
     width: 300,
-    height: 54,    
+    height: 54,
     //backgroundColor: "#ff3571",
-    backgroundColor: "#213571",
+    backgroundColor: '#213571',
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,
-    alignSelf: "center",
+    alignSelf: 'center',
     shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 6.68,
-        elevation: 11,
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.36,
+    shadowRadius: 6.68,
+    elevation: 11,
   },
 
   container_SECONDARY: {
@@ -73,7 +70,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Medium',
     fontSize: 17,
     lineHeight: 26,
-    textAlign: "center",
+    textAlign: 'center',
   },
 
   text_SECONDARY: {
@@ -83,7 +80,10 @@ const styles = StyleSheet.create({
   text_TERTIARY: {
     color: 'gray',
   },
+  text_SUB: {
+    color: '#213571',
+    fontSize: 15,
+  },
 });
 
 export default CustomButton;
-

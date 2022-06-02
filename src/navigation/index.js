@@ -1,20 +1,16 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  useWindowDimensions,
-  Image,
-  ImageBackground,
-} from 'react-native';
+import {View, StyleSheet, Image, ImageBackground} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-//import { Feather } from '@expo/vector-icons';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-//import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-//import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
+
 import SignInScreen from '../views/SignInScreen/SignInScreen';
 import Dashboard from '../views/Dashboard/Dashboard';
 import OutForDelivery from '../views/Shipments/OutForDelivery';
+import DeliveredShipment from '../views/Shipments/DeliveredShipment';
+import Summary from '../views/Shipments/Summary';
+import RescheduledShipment from '../views/Shipments/RescheduledShipment';
+import Returns from '../views/Shipments/Returns';
 import Collections from '../views/Collections/Collections';
 import Settings from '../views/Settings/Settings';
 import Menu from '../shared/Menu';
@@ -24,12 +20,12 @@ import PrivacyPolicy from '../views/Settings/PrivacyPolicy';
 import Help from '../views/Settings/Help';
 import Terms from '../views/Settings/Terms';
 import About from '../views/Settings/About';
-
 import NewPassword from '../views/ForgotPassword/NewPassword';
 import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
+import ShipmentInfo from '../views/Shipments/ShipmentInfo';
+import QRScan from '../views/ScanPage/QRScan';
 
-import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
@@ -40,7 +36,7 @@ function CustomDrawerContent(props) {
           <ImageBackground
             style={{
               resizeMode: 'contain',
-              height: '95%',
+              height: '100%',
               width: '100%',
               overflow: 'hidden',
               position: 'absolute',
@@ -55,14 +51,14 @@ function CustomDrawerContent(props) {
               justifyContent: 'center',
               position: 'absolute',
               alignSelf: 'center',
-              top: '27%',
+              top: '20%',
             },
           ]}>
           <Image
             style={{
               resizeMode: 'contain',
-              height: 120,
-              width: 120,
+              height: 130,
+              width: 130,
               borderRadius: 100,
               overflow: 'hidden',
               borderWidth: 3,
@@ -73,42 +69,84 @@ function CustomDrawerContent(props) {
         </View>
       </View>
       <View style={[styles.menuItemsCard]}>
-      <DrawerItem
-          label="Shipments"
-          labelStyle={[styles.NavPages]}
-          onPress={() => {
-            props.navigation.navigate('OutForDelivery');
-          }}
-        />
- 
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="Dashboard"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('Dashboard');
+            }}
+          />
+        </View>
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="Collections"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('Collections');
+            }}
+          />
+        </View>
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="Delivered Shipment"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('DeliveredShipment');
+            }}
+          />
+        </View>
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="Out For Delivery"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('OutForDelivery');
+            }}
+          />
+        </View>
 
-        <DrawerItem
-          label="Collections"
-          labelStyle={[styles.NavPages]}
-          onPress={() => {
-            props.navigation.navigate('Collections');
-          }}
-        />
-  
-        <DrawerItem
-          label="Collections"
-          labelStyle={[styles.NavPages]}
-          onPress={() => {
-            props.navigation.navigate('Collections');
-          }}
-        />
-               <DrawerItem
-          label="Dashboard"
-          labelStyle={[styles.NavPages]}
-          onPress={() => {
-            props.navigation.navigate('Dashboard');
-          }}
-        />
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="Re-Scheduled"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('RescheduledShipment');
+            }}
+          />
+        </View>
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="Returns"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('Returns');
+            }}
+          />
+        </View>
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="Summary"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('Summary');
+            }}
+          />
+        </View>
+
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="QR-Scan"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('QRScan');
+            }}
+          />
+        </View>
       </View>
     </View>
   );
 }
-
 const DrawerNav = () => {
   return (
     <Drawer.Navigator
@@ -117,8 +155,16 @@ const DrawerNav = () => {
       drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="Dashboard" component={Dashboard} />
       <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
-      <Drawer.Screen name="Settings" component={Settings} />
+      <Drawer.Screen name="DeliveredShipment" component={DeliveredShipment} />
+      <Drawer.Screen name="Summary" component={Summary} />
+      <Drawer.Screen
+        name="RescheduledShipment"
+        component={RescheduledShipment}
+      />
+      <Drawer.Screen name="Returns" component={Returns} />
       <Drawer.Screen name="Collections" component={Collections} />
+      <Drawer.Screen name="Settings" component={Settings} />
+      <Drawer.Screen name="QRScan" component={QRScan} />
     </Drawer.Navigator>
   );
 };
@@ -130,8 +176,15 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="SignIn" component={SignInScreen} />
-        <Stack.Screen name="Dashboard" component={DrawerNav} />
-        <Stack.Screen name="Shipments" component={OutForDelivery} />
+        <Stack.Screen name="DashboardNav" component={DrawerNav} />
+        <Stack.Screen name="OutForDelivery" component={OutForDelivery} />
+        <Stack.Screen name="DeliveredShipment" component={DeliveredShipment} />
+        <Stack.Screen name="Summary" component={Summary} />
+        <Stack.Screen
+          name="RescheduledShipment"
+          component={RescheduledShipment}
+        />
+        <Stack.Screen name="Returns" component={Returns} />
         <Stack.Screen name="Collections" component={Collections} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Menu" component={Menu} />
@@ -141,23 +194,31 @@ const Navigation = () => {
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Terms" component={Terms} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-
+        <Stack.Screen name="QRScan" component={QRScan} />
         <Stack.Screen name="NewPassword" component={NewPassword} />
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
+        <Stack.Screen name="ShipmentInfo" component={ShipmentInfo} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  menuCard: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    marginBottom: -4,
+    marginTop: -4,
+    borderBottomWidth: 2,
+    borderBottomColor: 'rgba(0, 0, 0, 0.2)',
+  },
   menuContainer: {
-    flex: 1,
+    flex: 1.4,
   },
   menu: {
     flex: 2,
@@ -166,12 +227,15 @@ const styles = StyleSheet.create({
     color: '#9C9C9C',
     fontFamily: 'Poppins-Regular',
     fontStyle: 'normal',
-    fontSize: 19,
-    lineHeight: 32,
+    fontSize: 18,
+    lineHeight: 25,
     letterSpacing: 1.0,
+    paddingLeft: 10,
+    borderRadius: 10,
+    padding: 5,
   },
   menuItemsCard: {
-    flex: 2.5,
+    flex: 3,
   },
   Cont: {},
 });

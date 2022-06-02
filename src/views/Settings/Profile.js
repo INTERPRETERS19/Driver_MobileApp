@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Image} from 'react-native';
+import React, { useState } from 'react';
+import { Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {
   ImageBackground,
@@ -10,14 +10,14 @@ import {
   ScrollView,
 } from 'react-native';
 
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const Profile = () => {
-  const {height} = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
   const onbackPressed = () => {
-    navigation.navigate('Settings');
+    navigation.navigate('Dashboard');
   };
 
   return (

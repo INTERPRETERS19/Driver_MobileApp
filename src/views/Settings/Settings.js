@@ -43,12 +43,9 @@ const Settings = () => {
   const Row = ({iconLeft, textName, onPressed}) => {
     return (
       <View style={[styles.sections]}>
-          <View style={{flexDirection:"row", alignItems:"center"}}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Icon2 name={iconLeft} size={30} color="#656363" />
 
-        <Icon2 name={iconLeft} size={30} color="#656363" />
-
-    
-          
           <TouchableOpacity onPress={onPressed}>
             <Text style={styles.subText}> {textName}</Text>
           </TouchableOpacity>
@@ -161,7 +158,6 @@ const styles = StyleSheet.create({
   TopCont: {
     flex: 0.5,
     padding: 20,
-
   },
   mainText: {
     fontFamily: 'Montserrat-Medium',
@@ -178,7 +174,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: '#F23243',
     lineHeight: 42,
-
   },
   sections: {
     backgroundColor: 'rgba(0, 0, 0, 0.04)',
@@ -198,7 +193,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
     lineHeight: 42,
     color: '#000000',
-    paddingLeft:15,
+    paddingLeft: 15,
   },
   settingpanel: {
     flex: 1,

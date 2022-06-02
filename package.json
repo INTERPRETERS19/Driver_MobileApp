@@ -10,9 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@expo/vector-icons": "^13.0.0",
     "@react-native-community/art": "^1.2.0",
     "@react-native-community/checkbox": "^0.5.12",
+    "@react-native-picker/picker": "^2.4.1",
     "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/drawer": "^6.4.1",
     "@react-navigation/material-bottom-tabs": "^6.2.1",
@@ -23,8 +23,13 @@
     "radio-buttons-react-native": "^1.0.4",
     "react": "17.0.2",
     "react-native": "0.68.1",
+    "react-native-avatar-social": "^0.0.3",
     "react-native-chart-kit": "^6.12.0",
+    "react-native-elements": "^3.4.2",
+    "react-native-fontawesome": "^7.0.0",
     "react-native-gesture-handler": "^2.4.2",
+    "react-native-interactive-avatar": "^2.0.0",
+    "react-native-otp-textinput": "^0.0.9",
     "react-native-paper": "^4.12.1",
     "react-native-pie-chart": "^2.0.2",
     "react-native-reanimated": "^2.8.0",
@@ -32,6 +37,7 @@
     "react-native-screens": "^3.13.1",
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-splash-screen": "^3.3.0",
+    "react-native-user-avatar": "^1.0.8",
     "react-native-vector-icons": "^9.1.0"
   },
   "devDependencies": {

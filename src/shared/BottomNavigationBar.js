@@ -15,7 +15,6 @@ const Tab = ({screen, icon, size = 28}) => {
         // <View style={styles.activeTab}>
         <View>
           <MaterialCommunityIcons name={icon} size={size} color="white" />
-          {/* <Text style={styles.activeTabText}>{screen}</Text> */}
         </View>
       ) : (
         <MaterialCommunityIcons
@@ -33,9 +32,9 @@ const BottomNavigationBar = () => {
   return (
     <View style={styles.tabContainer}>
       <Tab screen="Dashboard" icon="home" />
-      <Tab screen="Shipments" icon="truck-delivery" />
+      <Tab screen="Summary" icon="truck-delivery" />
       <Tab screen="Collections" icon="cash-marker" />
-      <Tab screen="Settings" icon="qrcode-scan" size={23} />
+      <Tab screen="QRScan" icon="qrcode-scan" size={23} />
     </View>
   );
 };

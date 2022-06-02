@@ -1,58 +1,97 @@
-import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  useWindowDimensions,
-  ScrollView,
-
-} from 'react-native';
-import CustomInput from '../../components/CustomInput';
+import React from 'react';
+import {ImageBackground, View, Text, StyleSheet} from 'react-native';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
-
+import OTPTextView from 'react-native-otp-textinput';
 
 const OTP = () => {
-
-  const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
-const onVerifyPressed = () => {
+  const onVerifyPressed = () => {
     navigation.navigate('NewPassword');
   };
-const onBacktoMyAccountPressed = () => {
+
+  const onBacktoMyAccountPressed = () => {
     navigation.navigate('SignIn');
   };
 
+  const onResendPressed = () => {
+    navigation.navigate('OTP');
+  };
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ImageBackground
+      source={require('../../../assets/img1.jpg')}
+      style={{
+        display: 'flex',
+        flex: 1,
+        height: '100%',
+      }}>
+      <View style={{flex: 1, justifyContent: 'center'}}>
+        <Text
+          style={{
+            fontFamily: 'Poppins',
+            fontSize: 29,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            justifyContent: 'center',
+            padding: 10,
+            color: COLORS.dark,
+          }}>
+          Confirm OTP
+        </Text>
+      </View>
 
-        <View style={{marginTop: 160}}>
-          <Text style={{ fontFamily: 'Poppins',fontSize: 29, fontWeight: 'bold', textAlign: "center",
-    color: COLORS.dark}}>
-            Confirm OTP
+      <View
+        style={{
+          backgroundColor: '#ffffff',
+
+          flex: 3,
+          padding: 20,
+          borderRadius: 20,
+        }}>
+        <View>
+          <Text
+            style={{
+              fontFamily: 'Poppins',
+              fontSize: 16,
+              fontWeight: 'normal',
+              textAlign: 'center',
+              color: '#656363',
+              borderRadius: 9,
+              marginTop: 27,
+            }}>
+            Enter OTP we just sent to your mobile {'\n'} number: +94******567
           </Text>
 
-          <Text style={{fontFamily: 'Poppins',fontSize: 17, fontWeight: 'bold', textAlign: "center", color: '#656363', marginTop: 50, marginBottom: 20, marginLeft: 10, marginRight: 10, backgroundColor: '#D2F3C6'}}>
-            Enter OTP we just sent to your mobile number: +94******134
-          </Text>
+          <View>
+            <OTPTextView
+              handleTextChange={e => {}}
+              containerStyle={styles.textInputContainer}
+              textInputStyle={styles.roundedTextInput}
+              inputCount={4}
+              inputCellLength={1}
+            />
+          </View>
+
+          <CustomButton text="Verify" onPress={onVerifyPressed} />
+          <View
+            style={{
+              alignSelf: 'flex-end',
+            }}>
+            <CustomButton text="Re-send" onPress={onResendPressed} type="SUB" />
+          </View>
         </View>
-
-         <View style={{marginTop: 20}}>
-         <CustomButton
-         text="Verify"
-         onPress={onVerifyPressed}
-         />
-
-         <CustomButton
-                  text="Back to my Account"
-                  onPress={onBacktoMyAccountPressed}
-                  type="TERTIARY"
-                  />
-         </View>
-
-    </ScrollView>
+      </View>
+      <View>
+        <CustomButton
+          text="Back to my Account"
+          onPress={onBacktoMyAccountPressed}
+          type="TERTIARY"
+        />
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -63,16 +102,24 @@ const styles = StyleSheet.create({
   },
 
   container: {
-        flex: 1,
-        alignItems: "flex-start",
-      marginLeft:25,
-        justifyContent: "center",
+    flex: 1,
+    alignItems: 'flex-start',
+    marginLeft: 25,
+    justifyContent: 'center',
+  },
 
-      },
+  textInputContainer: {
+    marginBottom: 20,
+    marginTop: 20,
+  },
 
-      label: {
-        margin: 8,
-      },
+  roundedTextInput: {
+    width: 70,
+    height: 70,
+    borderRadius: 11,
+    borderWidth: 5,
+    backgroundColor: '#F5F6F7',
+  },
 });
 
 export default OTP;
