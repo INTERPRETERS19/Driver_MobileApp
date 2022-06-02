@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icony from 'react-native-vector-icons/FontAwesome';
-import FontAwesome, {
-  SolidIcons,
-  RegularIcons,
-} from 'react-native-fontawesome';
+
 import {
   View,
   Text,
@@ -60,42 +56,42 @@ const About = () => {
 
         }}>
           <View>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-start', marginTop: 25 }}>
-              <Text style={{ marginTop: 65 }}>
+            <View style={styles.service}>
+              <Text style={{ marginTop: 60 }}>
                 <Icony name="undo" size={30} color="#900" />
               </Text>
-              <View style={{ marginLeft: 45 }}>
-                <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 18, color: '#000000', marginTop: 20 }}>
+              <View style={{ marginLeft: 44 }}>
+                <Text style={styles.Features}>
                   FREE RETURNS
                 </Text>
-                <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 16, color: '#3A4F5F', marginRight: 15, marginTop: 10, textAlign: 'justify' }}>
+                <Text style={styles.content}>
                   We stand behind our services and want you to be satisfied with them.So the Returns are free.
                 </Text>
               </View>
             </View>
 
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-start', }}>
+            <View style={styles.service}>
               <Text style={{ marginTop: 50 }}>
                 <Icony name="truck" size={30} color="#0F8000" />
               </Text>
               <View style={{ marginLeft: 40 }}>
-                <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 18, color: '#000000', marginTop: 25 }}>
+                <Text style={styles.Features}>
                   LOCAL DELIVERY
                 </Text>
-                <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 16, color: '#3A4F5F', marginRight: 15, marginTop: 10, textAlign: 'justify' }}>
+                <Text style={styles.content}>
                   Currently cover all over Srilanka qualify for express deliveries.
                 </Text>
               </View>
             </View>
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-start', }}>
+            <View style={styles.service}>
               <Text style={{ marginTop: 50 }}>
                 <Icony name="headphones" size={30} color="#000080" />
               </Text>
-              <View style={{ marginLeft: 43 }}>
-                <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 18, color: '#000000', marginTop: 25 }}>
+              <View style={{ marginLeft: 43, marginBottom: 45 }}>
+                <Text style={styles.Features}>
                   DEDICATED SERVICE
                 </Text>
-                <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 16, color: '#3A4F5F', marginRight: 15, marginTop: 10, textAlign: 'justify', marginBottom: 45 }}>
+                <Text style={styles.content}>
                   Consult our specialists for help with a Delivery
                 </Text>
               </View>
@@ -131,12 +127,36 @@ const styles = StyleSheet.create({
     marginTop: 30,
     color: 'black',
   },
+
   topbar: {
     flex: 1,
     padding: 20,
     paddingBottom: 0,
     paddingTop: 50
   },
+
+  Features: {
+    fontFamily: 'Roboto-Medium',
+    fontSize: 18,
+    color: '#000000',
+    marginTop: 20
+  },
+
+  content: {
+    fontFamily: 'Roboto-Regular',
+    fontSize: 16,
+    color: '#3A4F5F',
+    marginRight: 15,
+    marginTop: 10,
+    textAlign: 'justify'
+  },
+
+  service: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
+  }
+
 });
 
 export default About;

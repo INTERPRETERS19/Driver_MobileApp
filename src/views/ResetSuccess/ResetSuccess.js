@@ -8,7 +8,6 @@ import {
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
-import CustomInput from '../../components/CustomInput';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
@@ -26,7 +25,6 @@ const ResetSuccess = () => {
       source={require('../../../assets/img1.jpg')}
       style={{
         flex: 1,
-
         height: '100%',
       }}
     >
@@ -40,17 +38,10 @@ const ResetSuccess = () => {
               marginTop: 140,
               height: 170
             }}
-            source={require('./successimg.png')} />
+            source={require('../../../assets/successimg.png')} />
         </View>
 
-        <View style={{
-          backgroundColor: '#ffffff', marginLeft: 15, marginTop: 35,
-          marginRight: 15,
-          borderRadius: 20,
-          paddingHorizontal: 20,
-          paddingVertical: 17,
-
-        }}>
+        <View style={styles.Box}>
           <View>
             <Text style={{
               fontFamily: 'Poppins', fontSize: 29, fontWeight: 'bold', marginTop: -30, textAlign: "center",
@@ -60,14 +51,13 @@ const ResetSuccess = () => {
               {'\n'}
             </Text>
 
-
             <Text style={{ fontFamily: 'Poppins', fontSize: 16.5, textAlign: "center", color: '#656363', marginLeft: 10, marginRight: 10 }}>
               Please note that your password has been changed successfully for the account:
               <Text style={{ fontWeight: "bold" }}> Eren Jeager</Text>
             </Text>
           </View>
 
-          <View style={{ marginTop: 15 }}>
+          <View style={{ marginTop: 30 }}>
             <CustomButton
               text="Back to my Account"
               onPress={onBacktoAccountPressed}
@@ -81,11 +71,6 @@ const ResetSuccess = () => {
 };
 
 const styles = StyleSheet.create({
-  root: {
-    alignItems: 'center',
-    padding: 20,
-  },
-
   container: {
     display: "flex",
     flex: 1,
@@ -95,9 +80,16 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
 
-  label: {
-    margin: 8,
-  },
+  Box: {
+    backgroundColor: '#ffffff',
+    marginLeft: 15,
+    marginTop: 35,
+    marginRight: 15,
+    borderRadius: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 17,
+  }
+
 });
 
 export default ResetSuccess;

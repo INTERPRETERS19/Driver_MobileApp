@@ -7,7 +7,6 @@ import {
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
-import CustomInput from '../../components/CustomInput';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
@@ -47,23 +46,14 @@ const OTP = () => {
           }}>
             Confirm OTP
           </Text>
-
-
         </View>
 
-        <View style={{
-          backgroundColor: '#ffffff', marginLeft: 15, marginTop: 35,
-          marginRight: 15,
-          borderRadius: 20,
-          paddingHorizontal: 20,
-          paddingVertical: 17,
-
-        }}>
+        <View style={styles.Box}>
           <View>
 
             <Text style={{
-              fontFamily: 'Poppins', fontSize: 16, fontWeight: 'normal', textAlign: "center", color: '#656363',
-              borderRadius: 9, marginTop: 27
+              fontFamily: 'Poppins', fontSize: 16, fontWeight: 'normal', textAlign: "center",
+              color: '#656363', borderRadius: 9, marginTop: 27
             }}>
               Enter OTP we just sent to your mobile {'\n'} number: +94******567
             </Text>
@@ -82,7 +72,7 @@ const OTP = () => {
               text="Verify"
               onPress={onVerifyPressed}
             />
-            <View style={{ display: "flex", flex: 1, paddingLeft: 228, marginTop: -17 }}>
+            <View style={styles.sub}>
               <CustomButton
                 text="Re-send"
                 onPress={onResendPressed}
@@ -107,17 +97,11 @@ const OTP = () => {
 };
 
 const styles = StyleSheet.create({
-  root: {
-    alignItems: 'center',
-    padding: 20,
-  },
-
   container: {
     flex: 1,
     alignItems: "flex-start",
     marginLeft: 25,
     justifyContent: "center",
-
   },
 
   textInputContainer: {
@@ -132,6 +116,23 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     backgroundColor: '#F5F6F7',
   },
+
+  sub: {
+    display: "flex",
+    flex: 1,
+    paddingLeft: 228,
+    marginTop: -17
+  },
+
+  Box: {
+    backgroundColor: '#ffffff',
+    marginLeft: 15,
+    marginTop: 35,
+    marginRight: 15,
+    borderRadius: 20,
+    paddingHorizontal: 20,
+    paddingVertical: 17,
+  }
 });
 
 export default OTP;
