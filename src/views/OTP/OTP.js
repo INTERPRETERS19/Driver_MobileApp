@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   ImageBackground,
   View,
@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import OTPTextView from 'react-native-otp-textinput';
 
 const OTP = () => {
-  const { height } = useWindowDimensions();
+  const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
   const onVerifyPressed = () => {
@@ -32,35 +32,42 @@ const OTP = () => {
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
       style={{
-        display: "flex",
+        display: 'flex',
         flex: 1,
         height: '100%',
-      }}
-    >
+      }}>
       <ScrollView showsVerticalScrollIndicator={false}>
-
-        <View style={{ marginTop: 160 }}>
-          <Text style={{
-            fontFamily: 'Poppins', fontSize: 29, fontWeight: 'bold', textAlign: "center",
-            color: COLORS.dark
-          }}>
+        <View style={{marginTop: 160}}>
+          <Text
+            style={{
+              fontFamily: 'Poppins',
+              fontSize: 29,
+              fontWeight: 'bold',
+              textAlign: 'center',
+              color: COLORS.dark,
+            }}>
             Confirm OTP
           </Text>
         </View>
 
         <View style={styles.Box}>
           <View>
-
-            <Text style={{
-              fontFamily: 'Poppins', fontSize: 16, fontWeight: 'normal', textAlign: "center",
-              color: '#656363', borderRadius: 9, marginTop: 27
-            }}>
+            <Text
+              style={{
+                fontFamily: 'Poppins',
+                fontSize: 16,
+                fontWeight: 'normal',
+                textAlign: 'center',
+                color: '#656363',
+                borderRadius: 9,
+                marginTop: 27,
+              }}>
               Enter OTP we just sent to your mobile {'\n'} number: +94******567
             </Text>
 
             <View>
               <OTPTextView
-                handleTextChange={(e) => { }}
+                handleTextChange={e => {}}
                 containerStyle={styles.textInputContainer}
                 textInputStyle={styles.roundedTextInput}
                 inputCount={4}
@@ -68,10 +75,7 @@ const OTP = () => {
               />
             </View>
 
-            <CustomButton
-              text="Verify"
-              onPress={onVerifyPressed}
-            />
+            <CustomButton text="Verify" onPress={onVerifyPressed} />
             <View style={styles.sub}>
               <CustomButton
                 text="Re-send"
@@ -79,7 +83,6 @@ const OTP = () => {
                 type="SUB"
               />
             </View>
-
           </View>
         </View>
 
@@ -90,7 +93,6 @@ const OTP = () => {
             type="TERTIARY"
           />
         </View>
-
       </ScrollView>
     </ImageBackground>
   );
@@ -99,14 +101,14 @@ const OTP = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
     marginLeft: 25,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 
   textInputContainer: {
     marginBottom: 20,
-    marginTop: 20
+    marginTop: 20,
   },
 
   roundedTextInput: {
@@ -118,10 +120,10 @@ const styles = StyleSheet.create({
   },
 
   sub: {
-    display: "flex",
+    display: 'flex',
     flex: 1,
     paddingLeft: 228,
-    marginTop: -17
+    marginTop: -17,
   },
 
   Box: {
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 20,
     paddingVertical: 17,
-  }
+  },
 });
 
 export default OTP;

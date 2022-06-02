@@ -9,10 +9,11 @@ import {
   Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+
 import Profilecomponent from '../../components/Profilecomponent';
 
 import Icon2 from 'react-native-vector-icons/AntDesign';
-const OutForDelivery = () => {
+const QRScan = () => {
   const navigation = useNavigation();
   //#C3E4F5
   //#213571
@@ -29,7 +30,7 @@ const OutForDelivery = () => {
   ]);
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentInfo');
+    navigation.navigate('Collection');
   };
 
   return (
@@ -41,12 +42,12 @@ const OutForDelivery = () => {
           <View style={[styles.Out]}>
             <Profilecomponent></Profilecomponent>
             <View style={[styles.OutForDelivery]}>
-              <Text style={[styles.OutForDeliveryText]}>Out For Delivery</Text>
+              <Text style={[styles.OutForDeliveryText]}>Scan</Text>
             </View>
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text style={{color:'#000000'}}>Shipment ID</Text>
+                <Text>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -140,4 +141,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OutForDelivery;
+export default QRScan;

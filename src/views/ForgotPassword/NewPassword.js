@@ -10,13 +10,13 @@ import {
 import CustomInput from '../../components/CustomInput';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const NewPassword = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
-  const { height } = useWindowDimensions();
+  const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
   const onChangePressed = () => {
@@ -27,19 +27,20 @@ const NewPassword = () => {
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
       style={{
-        display: "flex",
+        display: 'flex',
         flex: 1,
         height: '100%',
-      }}
-    >
+      }}>
       <ScrollView showsVerticalScrollIndicator={false}>
-
-        <View style={{ marginTop: 160 }}>
-
-          <Text style={{
-            fontFamily: 'Poppins', fontSize: 29, fontWeight: 'bold', textAlign: "center",
-            color: COLORS.dark
-          }}>
+        <View style={{marginTop: 160}}>
+          <Text
+            style={{
+              fontFamily: 'Poppins',
+              fontSize: 29,
+              fontWeight: 'bold',
+              textAlign: 'center',
+              color: COLORS.dark,
+            }}>
             New Password
           </Text>
 
@@ -77,14 +78,11 @@ const NewPassword = () => {
           />
         </View>
 
-        <View style={{ marginTop: 20 }}>
-          <CustomButton
-            text="Change"
-            onPress={onChangePressed}
-          />
+        <View style={{marginTop: 20}}>
+          <CustomButton text="Change" onPress={onChangePressed} />
         </View>
       </ScrollView>
-    </ImageBackground >
+    </ImageBackground>
   );
 };
 
