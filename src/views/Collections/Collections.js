@@ -11,11 +11,7 @@ import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-// Icon from 'react-native-vector-icons/Ionicons';
-//#C3E4F5
-//#213571
-//#000000
-//#7E7D7D
+
 
 const Collection = () => {
   const [Items, setItems] = useState([
