@@ -20,7 +20,7 @@ const ShipmentInfo = () => {
   //const [COD] = useState('');
   const [isSelected,setSelection] = useState(false);
   const onDonePressed = () => {
-    navigation.navigate('Dashboard');
+    navigation.navigate('OutForDelivery');
   };
   const onbackPressed = () => {
     navigation.navigate('OutForDelivery');

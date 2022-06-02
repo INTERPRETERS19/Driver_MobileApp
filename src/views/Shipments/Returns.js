@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -8,10 +8,11 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import Profilecomponent from '../../components/Profilecomponent';
 import Icon2 from 'react-native-vector-icons/AntDesign';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
 const Returns = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -19,13 +20,13 @@ const Returns = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    {key: 1, item: '001854', name: ' '},
-    {key: 2, item: '741541', name: ' '},
-    {key: 3, item: '638524', name: ' '},
-    {key: 4, item: '096471', name: ' '},
-    {key: 5, item: '631901', name: ' '},
-    {key: 6, item: '001854', name: ' '},
-    {key: 7, item: '741541', name: ' '},
+    { key: 1, item: '001854', name: ' ' },
+    { key: 2, item: '741541', name: ' ' },
+    { key: 3, item: '638524', name: ' ' },
+    { key: 4, item: '096471', name: ' ' },
+    { key: 5, item: '631901', name: ' ' },
+    { key: 6, item: '001854', name: ' ' },
+    { key: 7, item: '741541', name: ' ' },
   ]);
 
   const onArrowPressed = () => {
@@ -36,7 +37,7 @@ const Returns = () => {
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
+        style={{ width: '100%', height: '100%' }}>
         <Profilecomponent></Profilecomponent>
         <ScrollView>
           <View style={[styles.Out]}>
@@ -46,7 +47,7 @@ const Returns = () => {
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text style={{color: '#000000'}}>Shipment ID</Text>
+                <Text style={{ color: '#000000' }}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -67,6 +68,7 @@ const Returns = () => {
             </View>
           </View>
         </ScrollView>
+        <BottomNavigationBar />
       </ImageBackground>
     </View>
   );

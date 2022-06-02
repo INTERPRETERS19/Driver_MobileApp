@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, StyleSheet, Image, ImageBackground} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
+import { View, StyleSheet, Image, ImageBackground } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 
 import SignInScreen from '../views/SignInScreen/SignInScreen';
 import Dashboard from '../views/Dashboard/Dashboard';
@@ -34,8 +34,8 @@ const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
   return (
-    <View style={[styles.menuContainer, {backgroundColor: '#102256'}]}>
-      <View style={[styles.Cont, {flex: 1.3}]}>
+    <View style={[styles.menuContainer, { backgroundColor: '#102256' }]}>
+      <View style={[styles.Cont, { flex: 1.3 }]}>
         <View style={[styles.menu]}>
           <ImageBackground
             style={{
@@ -155,7 +155,7 @@ const DrawerNav = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Dashboard"
-      screenOptions={{headerShown: false}}
+      screenOptions={{ headerShown: false }}
       drawerContent={props => <CustomDrawerContent {...props} />}>
       <Drawer.Screen name="Dashboard" component={Dashboard} />
       <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
@@ -169,6 +169,8 @@ const DrawerNav = () => {
       <Drawer.Screen name="Collections" component={Collections} />
       <Drawer.Screen name="Settings" component={Settings} />
       <Drawer.Screen name="QRScan" component={QRScan} />
+      <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
+      <Drawer.Screen name="Dropdown" component={Dropdown} />
     </Drawer.Navigator>
   );
 };
@@ -178,13 +180,13 @@ const Stack = createNativeStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="DashboardNav" component={DrawerNav} />
         <Stack.Screen name="OutForDelivery" component={OutForDelivery} />
         <Stack.Screen name="DeliveredShipment" component={DeliveredShipment} />
         <Stack.Screen name="Summary" component={Summary} />
-        <Stack.Screen name="RescheduledShipment" component={RescheduledShipment}/>
+        <Stack.Screen name="RescheduledShipment" component={RescheduledShipment} />
         <Stack.Screen name="Returns" component={Returns} />
         <Stack.Screen name="Collections" component={Collections} />
         <Stack.Screen name="Settings" component={Settings} />

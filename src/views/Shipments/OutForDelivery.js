@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Profilecomponent from '../../components/Profilecomponent';
-
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 const OutForDelivery = () => {
   const navigation = useNavigation();
@@ -67,6 +67,7 @@ const OutForDelivery = () => {
             </View>
           </View>
         </ScrollView>
+        <BottomNavigationBar />
       </ImageBackground>
     </View>
   );
