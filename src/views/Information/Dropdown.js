@@ -15,6 +15,15 @@ export default class Dropdown extends Component {
         }
 
     };
+    // press=()=>{
+	// 	var data = this.state.PickerValue;
+	// 	if(data==""){
+	// 		alert("Please Select a Option");
+	// 	}else{
+	// 		alert(data);
+	// 	}
+		
+	// }
  
     render() {
         return (
@@ -23,7 +32,9 @@ export default class Dropdown extends Component {
                     flex: 1,
                     justifyContent: 'center',
                     alignItems: 'center',
-                    backgroundColor:"#ffffff"
+                    fontFamily: 'Roboto-Bold',
+                    fontSize: 22,
+                    backgroundColor:"rgba(0, 0, 0, 0.02)"
                 }}>
                 
                 <Picker

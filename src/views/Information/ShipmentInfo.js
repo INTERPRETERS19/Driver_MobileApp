@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 //import Icon from 'react-native-vector-icons/Ionicons';
 import {
   ScrollView,
@@ -12,11 +12,14 @@ import CustomButton from '../../components/CustomButton';
 import Dropdown from './Dropdown';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import CheckBox from '@react-native-community/checkbox';
 import { Picker } from '@react-native-picker/picker';
 
 
 const ShipmentInfo = () => {
   const navigation = useNavigation();
+  //const [COD] = useState('');
+  const [isSelected,setSelection] = useState(false);
   const onDonePressed = () => {
     navigation.navigate('Dashboard');
   };
@@ -63,11 +66,24 @@ const ShipmentInfo = () => {
               <Text style={styles.infoIn}>City</Text>
               <Text style={styles.form}>Moratuwa</Text>
               <Text style={styles.infoIn}>COD amount</Text>
-              <Text style={styles.form}>1000</Text>
+
+              <View style={{ flex: 1, flexDirection: "row" }}>
+                <View style={{ flex: 3 }}>
+                  <Text style={styles.form}>1000</Text>
+                </View>
+                <View style={{ flex: 1 }}>
+                  <CheckBox
+                    value={isSelected}
+                    onValueChange={setSelection}
+                    style={styles.checkbox}
+                  />
+                </View>
+              </View>
+
               <Text style={styles.infoIn}>Status</Text>
-              {/* <Text style={styles.form}>OutforDelivey</Text> */}
-          
-            <Dropdown></Dropdown>
+
+
+              <Dropdown></Dropdown>
             </View>
           </View>
           <View style={styles.button}>
@@ -133,6 +149,10 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 10,
     fontSize: 18,
+  },
+  checkbox:{
+    backgroundColor: 'rgba(0, 0, 0, 0.02)',
+     alignSelf: 'center',
   },
   topbarin: {
     flex: 1,
