@@ -10,10 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@mdi/js": "^6.7.96",
-    "@mdi/react": "^1.6.0",
-    "@nghinv/react-native-search-bar": "^0.2.0",
     "@react-native-community/art": "^1.2.0",
     "@react-native-community/checkbox": "^0.5.12",
     "@react-native-picker/picker": "^2.4.1",

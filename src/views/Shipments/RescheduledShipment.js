@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   Alert,
 } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 import Profilecomponent from '../../components/Profilecomponent';
 import Icon2 from 'react-native-vector-icons/AntDesign';
@@ -19,16 +19,14 @@ const RescheduledShipment = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    { key: 1, item: '001854', name: ' ' },
-    { key: 2, item: '741541', name: ' ' },
-    { key: 3, item: '638524', name: ' ' },
-    { key: 4, item: '096471', name: ' ' },
-    { key: 5, item: '631901', name: ' ' },
-    { key: 6, item: '001854', name: ' ' },
-    { key: 7, item: '741541', name: ' ' },
+    {key: 1, item: '001854', name: ' '},
+    {key: 2, item: '741541', name: ' '},
+    {key: 3, item: '638524', name: ' '},
+    {key: 4, item: '096471', name: ' '},
+    {key: 5, item: '631901', name: ' '},
+    {key: 6, item: '001854', name: ' '},
+    {key: 7, item: '741541', name: ' '},
   ]);
-
-
 
   const onArrowPressed = () => {
     navigation.navigate('ShipmentInfo');
@@ -38,17 +36,19 @@ const RescheduledShipment = () => {
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{ width: '100%', height: '100%' }}>
+        style={{width: '100%', height: '100%'}}>
         <ScrollView>
           <View style={[styles.Out]}>
             <Profilecomponent></Profilecomponent>
             <View style={[styles.RescheduledShipment]}>
-              <Text style={[styles.RescheduledShipmentText]}>Rescheduled Shipment</Text>
+              <Text style={[styles.RescheduledShipmentText]}>
+                Rescheduled Shipment
+              </Text>
             </View>
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text>Shipment ID</Text>
+                <Text style={{color:'#000000'}}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {

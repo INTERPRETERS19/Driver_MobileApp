@@ -1,28 +1,34 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground, ScrollView, } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  ScrollView,
+} from 'react-native';
+// import { useNavigation } from '@react-navigation/native';
+import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
 // Icon from 'react-native-vector-icons/Ionicons';
 //#C3E4F5
 //#213571
 //#000000
 //#7E7D7D
 
-
-
 const Collection = () => {
-  const navigation = useNavigation();
-
   const [Items, setItems] = useState([
-    { key: 1, item: '001854', amount: '2300', name: ' ' },
-    { key: 2, item: '741541', amount: '300', name: ' ' },
-    { key: 3, item: '638524', amount: '5000', name: ' ' },
-    { key: 4, item: '096471', amount: '2210', name: ' ' },
-    { key: 5, item: '631901', amount: '650', name: ' ' },
-    { key: 6, item: '001854', amount: '1320', name: ' ' },
-    { key: 7, item: '741541', amount: '680', name: ' ' },
+    {key: 1, item: '001854', amount: '2300', name: ' '},
+    {key: 2, item: '741541', amount: '300', name: ' '},
+    {key: 3, item: '638524', amount: '5000', name: ' '},
+    {key: 4, item: '096471', amount: '2210', name: ' '},
+    {key: 5, item: '631901', amount: '650', name: ' '},
+    {key: 6, item: '001854', amount: '1320', name: ' '},
+    {key: 7, item: '741541', amount: '680', name: ' '},
+    {key: 7, item: '741541', amount: '680', name: ' '},
+    {key: 7, item: '741541', amount: '680', name: ' '},
+    {key: 7, item: '741541', amount: '680', name: ' '},
   ]);
 
   return (
@@ -86,11 +92,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     paddingBottom: 5,
+    backgroundColor: '#DD1',
   },
   Collection: {
     flex: 1,
     padding: 20,
-
+    backgroundColor: '#D1D1',
   },
   infoPanelCol: {
     flex: 10,
@@ -106,7 +113,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     lineHeight: 24,
-    textAlign: "left",
+    textAlign: 'left',
     padding: 10,
   },
   text2: {
@@ -114,14 +121,13 @@ const styles = StyleSheet.create({
     fontFamily: 'SF-Pro-Displa-Bold',
     fontSize: 20,
     lineHeight: 20,
-    textAlign: "left",
+    textAlign: 'left',
     padding: 10,
     paddingRight: 30,
   },
   collectionSection: {
     flex: 1,
     padding: 20,
-
   },
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
@@ -151,7 +157,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     color: '#000000',
-    textAlign: "right",
+    textAlign: 'right',
   },
   item: {
     backgroundColor: '#C3E4F5',

@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ImageBackground,
   ScrollView,
-  Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
+import {useNavigation} from '@react-navigation/native';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import Profilecomponent from '../../components/Profilecomponent';
 const DeliveredShipment = () => {
@@ -18,15 +16,14 @@ const DeliveredShipment = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    { key: 1, item: '001854', time: '12.30 pm', name: ' ' },
-    { key: 2, item: '741541', time: '1.00 pm', name: ' ' },
-    { key: 3, item: '638524', time: '9.00 am', name: ' ' },
-    { key: 4, item: '096471', time: '10.30 am', name: ' ' },
-    { key: 5, item: '631901', time: '9.35 am', name: ' ' },
-    { key: 6, item: '001854', time: '3.15 pm', name: ' ' },
-    { key: 7, item: '741541', time: '7.05 pm', name: ' ' },
+    {key: 1, item: '001854', time: '12.30 pm', name: ' '},
+    {key: 2, item: '741541', time: '1.00 pm', name: ' '},
+    {key: 3, item: '638524', time: '9.00 am', name: ' '},
+    {key: 4, item: '096471', time: '10.30 am', name: ' '},
+    {key: 5, item: '631901', time: '9.35 am', name: ' '},
+    {key: 6, item: '001854', time: '3.15 pm', name: ' '},
+    {key: 7, item: '741541', time: '7.05 pm', name: ' '},
   ]);
-
 
   const onArrowPressed = () => {
     navigation.navigate('ShipmentInfo');
@@ -36,9 +33,8 @@ const DeliveredShipment = () => {
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{ width: '100%', height: '100%' }}>
+        style={{width: '100%', height: '100%'}}>
         <ScrollView>
-
           <View style={[styles.Out]}>
             <Profilecomponent></Profilecomponent>
             <View style={[styles.DeliveredShipment]}>
@@ -49,7 +45,7 @@ const DeliveredShipment = () => {
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text>Shipment ID</Text>
+                <Text style={{color: '#000000'}}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -90,7 +86,7 @@ const styles = StyleSheet.create({
   },
   DeliveredShipment: {
     flex: 1,
-    padding: 15,
+    padding: 20,
     color: '#000000',
     lineHeight: 22,
     letterSpacing: 4,

@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ImageBackground,
   ScrollView,
-  Image,
-  TouchableOpacity,
-  Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-
-import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import Icon2 from 'react-native-vector-icons/AntDesign';
-import Avatar from 'react-native-interactive-avatar';
 import Profilecomponent from '../../components/Profilecomponent';
 const Summary = () => {
   const navigation = useNavigation();
@@ -22,26 +17,24 @@ const Summary = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    { key: 1, item: '001854', address: 'Atchuvely', name: ' ' },
-    { key: 2, item: '741541', address: 'Kodikamam', name: ' ' },
-    { key: 3, item: '638524', address: 'Nelliyadi', name: ' ' },
-    { key: 4, item: '096471', address: 'Chavakacheri', name: ' ' },
-    { key: 5, item: '631901', address: 'Chunnakam', name: ' ' },
-    { key: 6, item: '001854', address: 'Kantharodai', name: ' ' },
-    { key: 7, item: '741541', address: 'Meesalai', name: ' ' },
+    {key: 1, item: '001854', address: 'Atchuvely', name: ' '},
+    {key: 2, item: '741541', address: 'Kodikamam', name: ' '},
+    {key: 3, item: '638524', address: 'Nelliyadi', name: ' '},
+    {key: 4, item: '096471', address: 'Chavakacheri', name: ' '},
+    {key: 5, item: '631901', address: 'Chunnakam', name: ' '},
+    {key: 6, item: '001854', address: 'Kantharodai', name: ' '},
+    {key: 7, item: '741541', address: 'Meesalai', name: ' '},
   ]);
-
 
   const onArrowPressed = () => {
     navigation.navigate('ShipmentInfo');
   };
 
-
   return (
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{ width: '100%', height: '100%' }}>
+        style={{width: '100%', height: '100%'}}>
         <ScrollView>
           <View style={[styles.Out]}>
             <Profilecomponent></Profilecomponent>
@@ -50,8 +43,8 @@ const Summary = () => {
             </View>
 
             <View style={styles.ShipmentSection}>
-              <View style={styles.ShipementText}>
-                <Text>Shipment ID</Text>
+              <View style={styles.ShipmentText}>
+                <Text style={{color:'#000000'}}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -73,6 +66,7 @@ const Summary = () => {
             </View>
           </View>
         </ScrollView>
+        <BottomNavigationBar />
       </ImageBackground>
     </View>
   );
@@ -119,7 +113,7 @@ const styles = StyleSheet.create({
     padding: 20,
     // paddingTop: 120,
   },
-  ShipementText: {
+  ShipmentText: {
     flex: 1,
     fontFamily: 'Montserrat-Medium',
     fontWeight: 'bold',

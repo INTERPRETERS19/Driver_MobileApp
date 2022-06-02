@@ -9,10 +9,10 @@ import {
   Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Profilecomponent from '../../components/Profilecomponent';
 
+import Profilecomponent from '../../components/Profilecomponent';
 import Icon2 from 'react-native-vector-icons/AntDesign';
-const OutForDelivery = () => {
+const Returns = () => {
   const navigation = useNavigation();
   //#C3E4F5
   //#213571
@@ -40,13 +40,13 @@ const OutForDelivery = () => {
         <ScrollView>
           <View style={[styles.Out]}>
             <Profilecomponent></Profilecomponent>
-            <View style={[styles.OutForDelivery]}>
-              <Text style={[styles.OutForDeliveryText]}>Out For Delivery</Text>
+            <View style={[styles.Return]}>
+              <Text style={[styles.ReturnText]}>Return</Text>
             </View>
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text style={{color:'#000000'}}>Shipment ID</Text>
+                <Text style={{color: '#000000'}}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -75,6 +75,7 @@ const OutForDelivery = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    // backgroundColor: '#236501',
   },
   Out: {
     flex: 10,
@@ -83,16 +84,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     fontFamily: 'Montserrat-Medium',
   },
-  OutForDelivery: {
+  Return: {
     flex: 1,
-    padding: 30,
+    padding: 15,
     color: '#000000',
     lineHeight: 22,
     letterSpacing: 4,
     textTransform: 'uppercase',
     justifyContent: 'space-between',
   },
-  OutForDeliveryText: {
+  ReturnText: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
@@ -140,4 +141,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OutForDelivery;
+export default Returns;

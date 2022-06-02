@@ -1,17 +1,11 @@
-import React from 'react';
+import React, {Component} from 'react';
 //import Icon from 'react-native-vector-icons/Ionicons';
-import {
-  ScrollView,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
+import {ImageBackground, StyleSheet, Text, View, Button} from 'react-native';
+//import {Picker} from '@react-native-picker/picker';
 import CustomButton from '../../components/CustomButton';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+//import { Picker } from '@react-native-picker/picker';
 
 const ShipmentInfo = () => {
   const navigation = useNavigation();
@@ -21,7 +15,6 @@ const ShipmentInfo = () => {
   const onbackPressed = () => {
     navigation.navigate('OutForDelivery');
   };
-
 
   return (
     <View style={styles.body}>
@@ -41,11 +34,11 @@ const ShipmentInfo = () => {
         </View>
         <View style={styles.contentfull}>
           <View style={styles.content}>
-            <View style={{ flex: 1, flexDirection: "row" }}>
-              <View style={{ flex: 1 }}>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <View style={{flex: 1}}>
                 <Text style={styles.head}>Shipment ID</Text>
               </View>
-              <View style={{ flex: 1 }}>
+              <View style={{flex: 1}}>
                 <Text style={styles.head}>XXXXXX</Text>
               </View>
             </View>
@@ -61,28 +54,23 @@ const ShipmentInfo = () => {
               <Text style={styles.infoIn}>COD amount</Text>
               <Text style={styles.form}>1000</Text>
               <Text style={styles.infoIn}>Status</Text>
-              <Text style={styles.form}>OutforDelivey</Text>
+              <Text style={styles.form}>OutforDelivery</Text>
             </View>
           </View>
           <View style={styles.button}>
-            <CustomButton
-              text='Done'
-              onPress={onDonePressed}
-            />
+            <CustomButton text="Done" onPress={onDonePressed} />
           </View>
         </View>
       </ImageBackground>
     </View>
-
   );
 };
 
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "flex-start",
-
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
   contentfull: {
     flex: 15,
@@ -96,7 +84,6 @@ const styles = StyleSheet.create({
     flex: 6,
     fontFamily: 'Roboto-Regular',
     fontSize: 22,
-
   },
   head: {
     flex: 1,
@@ -135,18 +122,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   topbarin1: {
-    flex: 1
+    flex: 1,
   },
   topbarin2: {
     flex: 7,
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
     fontFamily: 'Roboto-Bold',
     fontSize: 26,
     color: '#000',
   },
-
-
-
 });
 export default ShipmentInfo;
