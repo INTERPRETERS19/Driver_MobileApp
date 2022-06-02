@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react'
 import {
   ImageBackground,
   View,
@@ -13,6 +13,8 @@ import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 
 const NewPassword = () => {
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
@@ -42,22 +44,20 @@ const NewPassword = () => {
             New Password
           </Text>
 
-          <Text
-            style={{
-              fontFamily: 'Poppins',
-              fontSize: 16,
-              fontWeight: 'normal',
-              textAlign: 'left',
-              color: '#656363',
-              marginTop: 50,
-              marginBottom: 20,
-              marginLeft: 20,
-              marginRight: 20,
-              backgroundColor: '#D2F3C6',
-              borderRadius: 9,
-              paddingHorizontal: 20,
-              paddingVertical: 25,
-            }}>
+          <Text style={{
+            fontFamily: 'Poppins',
+            fontSize: 16,
+            fontWeight: 'normal',
+            color: '#656363',
+            marginTop: 50,
+            marginBottom: 20,
+            marginLeft: 20,
+            marginRight: 20,
+            backgroundColor: '#D2F3C6',
+            borderRadius: 20,
+            paddingHorizontal: 20,
+            paddingVertical: 25,
+          }}>
             Please create a new password that you don't use on any other site
           </Text>
         </View>
@@ -65,15 +65,15 @@ const NewPassword = () => {
         <View style={styles.root}>
           <CustomInput
             placeholder="Create New Password"
-            value={password}
-            setValue={setPassword}
+            value={newPassword}
+            setValue={setNewPassword}
             secureTextEntry
           />
 
           <CustomInput
             placeholder="Confirm your Password"
-            value={password}
-            setValue={setPassword}
+            value={confirmPassword}
+            setValue={setConfirmPassword}
             secureTextEntry
           />
         </View>
@@ -94,13 +94,9 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    alignItems: 'center'
+  }
 
-  label: {
-    margin: 8,
-  },
 });
 
 export default NewPassword;

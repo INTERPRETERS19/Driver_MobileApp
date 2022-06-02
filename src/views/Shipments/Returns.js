@@ -28,9 +28,6 @@ const Returns = () => {
     {key: 7, item: '741541', name: ' '},
   ]);
 
-  const onMenuPressed = () => {
-    navigation.openDrawer();
-  };
   const onArrowPressed = () => {
     navigation.navigate('ShipmentInfo');
   };
@@ -49,7 +46,7 @@ const Returns = () => {
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text>Shipment ID</Text>
+                <Text style={{color: '#000000'}}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {

@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
   topbar: {
     flex: 0.3,
     padding: 20,
-    paddingTop: 30,
     flexDirection: 'row',
     paddingBottom: 0,
     alignItems: 'center',
