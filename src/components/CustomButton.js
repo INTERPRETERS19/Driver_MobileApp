@@ -32,6 +32,13 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     alignItems: 'center',
     borderRadius: 5,
+    shadowColor: '#000',
+    shadowOffset: {
+    width: 0,
+    height: 5,
+  },
+    shadowOpacity: 0.36,
+    shadowRadius: 6.68,
   },
 
   container_PRIMARY: {
@@ -68,6 +75,11 @@ const styles = StyleSheet.create({
   text_TERTIARY: {
     color: 'gray',
   },
+
+  text_SUB: {
+      color: '#578FD1',
+      fontSize: 15,
+    },
 });
 
 export default CustomButton;
