@@ -12,7 +12,6 @@ import Profilecomponent from '../../components/Profilecomponent';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
 
-
 const Collection = () => {
   const [Items, setItems] = useState([
     {key: 1, item: '001854', amount: '2300', name: ' '},
@@ -35,7 +34,7 @@ const Collection = () => {
         height: '100%',
       }}>
       <View style={styles.root}>
-      <Profilecomponent></Profilecomponent>
+        <Profilecomponent></Profilecomponent>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text style={styles.CollectionTitle}>Collections </Text>
           <View style={styles.Collection}>
@@ -89,12 +88,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     paddingBottom: 5,
-    backgroundColor: '#DD1',
+    //backgroundColor: '#DD1',
   },
   Collection: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#D1D1',
+    //backgroundColor: '#D1D1',
   },
   infoPanelCol: {
     flex: 10,
