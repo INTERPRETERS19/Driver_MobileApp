@@ -49,7 +49,7 @@ const DeliveredShipment = () => {
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text>Shipment ID</Text>
+                <Text style={{color:'#000000'}}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {

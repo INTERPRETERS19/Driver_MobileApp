@@ -50,8 +50,8 @@ const Summary = () => {
             </View>
 
             <View style={styles.ShipmentSection}>
-              <View style={styles.ShipementText}>
-                <Text>Shipment ID</Text>
+              <View style={styles.ShipmentText}>
+                <Text style={{color:'#000000'}}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     padding: 20,
     // paddingTop: 120,
   },
-  ShipementText: {
+  ShipmentText: {
     flex: 1,
     fontFamily: 'Montserrat-Medium',
     fontWeight: 'bold',
