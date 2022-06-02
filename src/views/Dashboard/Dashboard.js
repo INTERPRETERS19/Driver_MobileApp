@@ -29,7 +29,7 @@ const Dashboard = () => {
     navigation.navigate('RescheduledShipment');
   };
   const onReturnPressed = () => {
-    navigation.navigate('Return');
+    navigation.navigate('Returns');
   };
   const onCollectionsPressed = () => {
     navigation.navigate('Collections');

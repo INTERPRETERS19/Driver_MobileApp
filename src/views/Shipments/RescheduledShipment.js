@@ -37,9 +37,9 @@ const RescheduledShipment = () => {
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
+        <Profilecomponent></Profilecomponent>
         <ScrollView>
           <View style={[styles.Out]}>
-            <Profilecomponent></Profilecomponent>
             <View style={[styles.RescheduledShipment]}>
               <Text style={[styles.RescheduledShipmentText]}>
                 Rescheduled Shipment
