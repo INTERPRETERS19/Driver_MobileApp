@@ -25,19 +25,20 @@ const Help = () => {
                 }}>
 
                 </View>
-                    <Text style={styles.SubHeading}>We're here to help you with anything and everything on IndexCloud.</Text>
-                        <View>
-                            <Text style={styles.SubHeadingText} >At IndexCloud everything we expect a full customer satisfaction in our delivery service.Share your concern or check our frequently asked questions listed below</Text>
-                        </View>
+                <Text style={styles.SubHeading}>We're here to help you with anything and everything on IndexCloud.</Text>
                 <View>
-                <View>
-                <View style={styles.button}>
-                     <CustomButton
-                         text='Send Message'
-                         onPress={onSendMesaagePressed}
-                    />
-</View>
+                    <Text style={styles.SubHeadingText} >At IndexCloud everything we expect a full customer satisfaction in our delivery service.Share your concern or check our frequently asked questions listed below</Text>
                 </View>
+                <View>
+                    <View>
+                        <View style={styles.button}>
+                            <CustomButton
+                                text='Send Message'
+                                onPress={onSendMesaagePressed}
+                            />
+                        </View>
+                    </View>
+
                 </View>
             </ScrollView>
 
@@ -61,14 +62,16 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     SubHeading: {
-        textAlign:'center',
-        fontFamily:'Montserrat',
-        fontWeight:'bold',
+        textAlign: 'center',
+        fontFamily: 'Montserrat',
+        fontWeight: 'bold',
+        color: '#000',
         //fontSize:'18',
     },
-    SubHeadingText:{
-        textAlign:'center',
-        color: "#000000"
+    SubHeadingText: {
+        textAlign: 'center',
+        color: '#000'
+
     },
     text: {
         fontFamily: 'Roboto-Regular',

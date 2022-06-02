@@ -21,6 +21,7 @@ const About = () => {
     navigation.navigate('Settings');
   };
 
+  const parsedIcon = parseIconFromClassName('fab fa-truck');
   return (
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
@@ -34,15 +35,16 @@ const About = () => {
         <View style={[styles.topbar]}>
           <Icon name="chevron-back" size={30} color="#9C9C9C" onPress={onbackPressed} />
         </View>
+
         <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 20, color: '#000000', textAlign: 'left', marginLeft: 60, marginTop: -32 }}>About Us </Text>
 
         <Text style={{
-          fontFamily: 'Roboto-Bold', fontSize: 18, textAlign: "center", color: '#8B8B8B', paddingTop: 60,
+          fontFamily: 'Roboto-Bold', fontSize: 18, textAlign: "center", color: '#8B8B8B', paddingTop: 10,
         }}>
           OUR FEATURES
         </Text>
 
-        <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 15, textAlign: "center", color: '#3A4F5F', marginLeft: 10, marginRight: 10, marginTop: 30 }}>
+        <Text style={{ fontFamily: 'Roboto-Regular', fontSize: 15, textAlign: "center", color: '#3A4F5F', marginLeft: 10, marginRight: 10, marginTop: 20 }}>
           IndexCloud is one of the best delivery {'\n'} service providers in SriLanka.
 
         </Text>
@@ -132,6 +134,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingBottom: 0,
+
     paddingTop: 50
   },
 
