@@ -26,6 +26,9 @@ const OutForDelivery = () => {
     {key: 5, item: '631901', name: ' '},
     {key: 6, item: '001854', name: ' '},
     {key: 7, item: '741541', name: ' '},
+    {key: 8, item: '741541', name: ' '},
+    {key: 9, item: '741541', name: ' '},
+    {key: 10, item: '741541', name: ' '},
   ]);
 
   const onArrowPressed = () => {

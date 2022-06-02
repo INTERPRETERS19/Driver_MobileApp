@@ -27,6 +27,9 @@ const RescheduledShipment = () => {
     {key: 5, item: '631901', name: ' '},
     {key: 6, item: '001854', name: ' '},
     {key: 7, item: '741541', name: ' '},
+    {key: 8, item: '741541', name: ' '},
+    {key: 9, item: '741541', name: ' '},
+    {key: 10, item: '741541', name: ' '},
   ]);
 
   const onArrowPressed = () => {
@@ -49,7 +52,7 @@ const RescheduledShipment = () => {
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
-                <Text style={{color:'#000000'}}>Shipment ID</Text>
+                <Text style={{color: '#000000'}}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {

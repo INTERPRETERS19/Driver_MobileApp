@@ -30,7 +30,6 @@ const Summary = () => {
     {key: 12, item: '741541', address: 'Meesalai', name: ' '},
     {key: 13, item: '741541', address: 'Meesalai', name: ' '},
     {key: 14, item: '741541', address: 'Meesalai', name: ' '},
-
   ]);
 
   const onArrowPressed = () => {
@@ -42,7 +41,7 @@ const Summary = () => {
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
-         <Profilecomponent></Profilecomponent>
+        <Profilecomponent></Profilecomponent>
         <ScrollView>
           <View style={[styles.Out]}>
             <View style={[styles.Summary]}>
@@ -50,8 +49,10 @@ const Summary = () => {
             </View>
 
             <View style={styles.ShipmentSection}>
-              <View style={styles.ShipmentText}>
-                <Text style={{color:'#000000'}}>Shipment ID</Text>
+              <View style={styles.ShipementText}>
+                <Text style={{color: '#000000'}}>Shipment ID</Text>
+                <Text style={{color: '#000000'}}>Address</Text>
+                <Text></Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -122,10 +123,12 @@ const styles = StyleSheet.create({
   },
   ShipmentText: {
     flex: 1,
+    justifyContent: 'space-between',
     fontFamily: 'Montserrat-Medium',
+    flexDirection: 'row',
     fontWeight: 'bold',
     fontSize: 18,
-    color: 'rgba(0, 0, 0, 0.3)',
+    color: '#000000',
     flex: 10,
   },
   Itemtext: {

@@ -24,6 +24,9 @@ const DeliveredShipment = () => {
     {key: 5, item: '631901', time: '9.35 am', name: ' '},
     {key: 6, item: '001854', time: '3.15 pm', name: ' '},
     {key: 7, item: '741541', time: '7.05 pm', name: ' '},
+    {key: 8, item: '631801', time: '9.35 am', name: ' '},
+    {key: 9, item: '001354', time: '3.15 pm', name: ' '},
+    {key: 10, item: '741141', time: '7.05 pm', name: ' '},
   ]);
 
   const onArrowPressed = () => {
@@ -47,6 +50,8 @@ const DeliveredShipment = () => {
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipementText}>
                 <Text style={{color: '#000000'}}>Shipment ID</Text>
+                <Text style={{color: '#000000'}}>Time</Text>
+                <Text> </Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -111,12 +116,13 @@ const styles = StyleSheet.create({
   },
   ShipmentSection: {
     flex: 4,
-    //backgroundColor: '#A45163',
+
     padding: 20,
-    // paddingTop: 120,
   },
   ShipementText: {
     flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
     fontFamily: 'Montserrat-Medium',
     fontWeight: 'bold',
     fontSize: 18,
@@ -144,4 +150,3 @@ const styles = StyleSheet.create({
 });
 
 export default DeliveredShipment;
-DeliveredShipment;
