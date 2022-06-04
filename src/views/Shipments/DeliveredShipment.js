@@ -24,9 +24,12 @@ const DeliveredShipment = () => {
     {key: 5, item: '631901', time: '9.35 am', name: ' '},
     {key: 6, item: '001854', time: '3.15 pm', name: ' '},
     {key: 7, item: '741541', time: '7.05 pm', name: ' '},
-    {key: 8, item: '631801', time: '9.35 am', name: ' '},
-    {key: 9, item: '001354', time: '3.15 pm', name: ' '},
-    {key: 10, item: '741141', time: '7.05 pm', name: ' '},
+    {key: 8, item: '638524', time: '9.00 am', name: ' '},
+    {key: 9, item: '096471', time: '10.30 am', name: ' '},
+    {key: 10, item: '001854', time: '12.30 pm', name: ' '},
+    {key: 11, item: '741541', time: '1.00 pm', name: ' '},
+    {key: 12, item: '638524', time: '9.00 am', name: ' '},
+    {key: 13, item: '096471', time: '10.30 am', name: ' '},
   ]);
 
   const onArrowPressed = () => {
@@ -34,12 +37,11 @@ const DeliveredShipment = () => {
   };
 
   return (
-    <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
+        style={{height: '100%'}}>
+        <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
-        <ScrollView>
           <View style={[styles.Out]}>
             <View style={[styles.DeliveredShipment]}>
               <Text style={[styles.DeliveredShipmentText]}>
@@ -48,11 +50,11 @@ const DeliveredShipment = () => {
             </View>
 
             <View style={styles.ShipmentSection}>
-              <View style={styles.ShipementText}>
-                <Text style={{color: '#000000'}}>Shipment ID</Text>
-                <Text style={{color: '#000000'}}>Time</Text>
-                <Text> </Text>
-              </View>
+            <View style={styles.ShipementTextcont}>
+              <Text style={styles.ShipementText}>ShipmentID</Text>
+              <Text style={styles.ShipementText}>Time</Text>
+            </View>
+              <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
@@ -70,12 +72,12 @@ const DeliveredShipment = () => {
                   );
                 })}
               </View>
+              </ScrollView>
             </View>
           </View>
-        </ScrollView>
         <BottomNavigationBar />
+        </View>
       </ImageBackground>
-    </View>
   );
 };
 
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
   },
   DeliveredShipment: {
     flex: 1,
-    padding: 20,
+    padding: 15,
     color: '#000000',
     lineHeight: 22,
     letterSpacing: 4,
@@ -116,18 +118,20 @@ const styles = StyleSheet.create({
   },
   ShipmentSection: {
     flex: 4,
-
     padding: 20,
   },
-  ShipementText: {
+  ShipementTextcont: {
     flex: 1,
     justifyContent: 'space-between',
     flexDirection: 'row',
+  },
+  ShipementText: {
     fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 18,
     color: '#000000',
-    flex: 10,
+    textAlign: 'left',
+
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',

@@ -23,7 +23,7 @@ const ShipmentInfo = () => {
     navigation.navigate('OutForDelivery');
   };
   const onbackPressed = () => {
-    navigation.navigate('OutForDelivery');
+    navigation.navigate('Summary');
   };
 
 
