@@ -40,7 +40,7 @@ export default class Dropdown extends Component {
                 <Picker.Item label="Rescheduled" value="Rescheduled"></Picker.Item>
 
             </Picker>
-            </View >
+            </View>
           );
     }
 

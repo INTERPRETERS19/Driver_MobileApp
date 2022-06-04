@@ -42,16 +42,22 @@ const Returns = () => {
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
         <Profilecomponent></Profilecomponent>
-        <ScrollView>
           <View style={[styles.Out]}>
             <View style={[styles.Return]}>
               <Text style={[styles.ReturnText]}>Return</Text>
             </View>
 
             <View style={styles.ShipmentSection}>
+<<<<<<< HEAD
+            <View style={styles.ShipementTextcont}>
+              <Text style={styles.ShipementText}>ShipmentID</Text>
+            </View>
+              <ScrollView showsVerticalScrollIndicator={false}>
+=======
               <View style={styles.ShipementText}>
                 <Text style={{color: '#000000'}}>Shipment ID</Text>
               </View>
+>>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
               <View>
                 {Items.map(object => {
                   return (
@@ -68,10 +74,14 @@ const Returns = () => {
                   );
                 })}
               </View>
+              </ScrollView>
             </View>
           </View>
+<<<<<<< HEAD
+=======
         </ScrollView>
         <BottomNavigationBar />
+>>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
       </ImageBackground>
     </View>
   );
@@ -119,12 +129,11 @@ const styles = StyleSheet.create({
     // paddingTop: 120,
   },
   ShipementText: {
-    flex: 1,
     fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 18,
     color: '#000000',
-    flex: 10,
+    textAlign: 'left',
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',

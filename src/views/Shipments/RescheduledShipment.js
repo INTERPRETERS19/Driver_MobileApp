@@ -42,7 +42,6 @@ const RescheduledShipment = () => {
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
         <Profilecomponent></Profilecomponent>
-        <ScrollView>
           <View style={[styles.Out]}>
             <View style={[styles.RescheduledShipment]}>
               <Text style={[styles.RescheduledShipmentText]}>
@@ -51,9 +50,11 @@ const RescheduledShipment = () => {
             </View>
 
             <View style={styles.ShipmentSection}>
-              <View style={styles.ShipementText}>
-                <Text style={{color: '#000000'}}>Shipment ID</Text>
-              </View>
+            <View style={styles.ShipementTextcont}>
+              <Text style={styles.ShipementText}>ShipmentID</Text>
+            </View>
+              <ScrollView showsVerticalScrollIndicator={false}>
+
               <View>
                 {Items.map(object => {
                   return (
@@ -70,10 +71,9 @@ const RescheduledShipment = () => {
                   );
                 })}
               </View>
+            </ScrollView>
             </View>
           </View>
-        </ScrollView>
-        <BottomNavigationBar />
       </ImageBackground>
     </View>
   );
@@ -121,12 +121,11 @@ const styles = StyleSheet.create({
     // paddingTop: 120,
   },
   ShipementText: {
-    flex: 1,
     fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 18,
     color: '#000000',
-    flex: 10,
+    textAlign: 'left',
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',
