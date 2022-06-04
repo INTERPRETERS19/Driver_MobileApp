@@ -9,10 +9,6 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-<<<<<<< HEAD
-=======
-
->>>>>>> e3658fe105d2357c33305b5a14b40fe0c386286e
 import Icon2 from 'react-native-vector-icons/AntDesign';
 const OutForDelivery = () => {
   const navigation = useNavigation();
