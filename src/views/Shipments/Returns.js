@@ -71,6 +71,7 @@ const Returns = () => {
               </ScrollView>
             </View>
           </View>
+        <BottomNavigationBar />
       </ImageBackground>
     </View>
   );
