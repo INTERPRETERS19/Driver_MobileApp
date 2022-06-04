@@ -7,7 +7,6 @@ import {
   ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import Profilecomponent from '../../components/Profilecomponent';
 const Summary = () => {
@@ -43,16 +42,16 @@ const Summary = () => {
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
          <Profilecomponent></Profilecomponent>
-        <ScrollView>
           <View style={[styles.Out]}>
             <View style={[styles.Summary]}>
               <Text style={[styles.SummaryText]}>Summary</Text>
             </View>
 
             <View style={styles.ShipmentSection}>
-              <View style={styles.ShipmentText}>
-                <Text style={{color:'#000000'}}>Shipment ID</Text>
-              </View>
+            <View style={styles.ShipementTextcont}>
+              <Text style={styles.ShipementText}>ShipmentID</Text>
+            </View>
+              <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
@@ -70,10 +69,9 @@ const Summary = () => {
                   );
                 })}
               </View>
+              </ScrollView>
             </View>
           </View>
-        </ScrollView>
-        <BottomNavigationBar />
       </ImageBackground>
     </View>
   );
@@ -120,13 +118,12 @@ const styles = StyleSheet.create({
     padding: 20,
     // paddingTop: 120,
   },
-  ShipmentText: {
-    flex: 1,
+  ShipementText: {
     fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 18,
-    color: 'rgba(0, 0, 0, 0.3)',
-    flex: 10,
+    color: '#000000',
+    textAlign: 'left',
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',

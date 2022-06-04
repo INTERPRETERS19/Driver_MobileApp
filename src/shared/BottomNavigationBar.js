@@ -32,7 +32,7 @@ const BottomNavigationBar = () => {
   return (
     <View style={styles.tabContainer}>
       <Tab screen="Dashboard" icon="home" />
-      <Tab screen="Summary" icon="truck-delivery" />
+      <Tab screen="OutForDelivery" icon="truck-delivery" />
       <Tab screen="Collections" icon="cash-marker" />
       <Tab screen="QRScan" icon="qrcode-scan" size={23} />
     </View>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#213571',
+    backgroundColor: '#0b0b45',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
