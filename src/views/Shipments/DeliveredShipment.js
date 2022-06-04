@@ -74,12 +74,7 @@ const DeliveredShipment = () => {
               </ScrollView>
             </View>
           </View>
-<<<<<<< HEAD
           </View>
-=======
-        </ScrollView>
-        <BottomNavigationBar />
->>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
       </ImageBackground>
   );
 };

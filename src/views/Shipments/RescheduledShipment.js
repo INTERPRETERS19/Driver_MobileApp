@@ -70,11 +70,6 @@ const RescheduledShipment = () => {
             </ScrollView>
             </View>
           </View>
-<<<<<<< HEAD
-=======
-        </ScrollView>
-        <BottomNavigationBar />
->>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
       </ImageBackground>
     </View>
   );
