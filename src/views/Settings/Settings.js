@@ -11,15 +11,12 @@ import {useNavigation} from '@react-navigation/native';
 import CustomButton from '../../components/CustomButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {useLogin} from '../../context/LoginProvider';
 const Settings = () => {
   const navigation = useNavigation();
 
-  const onLogoutPressed = () => {
-    navigation.navigate('SignIn');
-  };
   const pressedNewPassword = () => {
-    navigation.navigate('ChangedPassword');
+    navigation.navigate('ChangePassword');
   };
   const pressedAbout = () => {
     navigation.navigate('About');
@@ -39,6 +36,7 @@ const Settings = () => {
   const onbackPressed = () => {
     navigation.navigate('Dashboard');
   };
+  const {setIsLoggedIn} = useLogin();
 
   const Row = ({iconLeft, textName, onPressed}) => {
     return (
@@ -144,7 +142,7 @@ const Settings = () => {
           </View>
         </View>
         <View style={{flex: 1.5}}>
-          <CustomButton text="LOG OUT" onPress={onLogoutPressed} />
+          <CustomButton text="LOG OUT" onPress={() => setIsLoggedIn(false)} />
         </View>
       </View>
     </ImageBackground>

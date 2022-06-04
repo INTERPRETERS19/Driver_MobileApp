@@ -44,7 +44,7 @@ const Summary = () => {
 
             <View style={styles.ShipmentSection}>
               <View style={styles.ShipmentText}>
-                <Text style={{color:'#000000'}}>Shipment ID</Text>
+                <Text style={{color: '#000000'}}>Shipment ID</Text>
               </View>
               <View>
                 {Items.map(object => {
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     justifyContent: 'space-between',
     fontFamily: 'Montserrat-Medium',
+    // backgroundColor: '#5757',
   },
   Summary: {
     flex: 1,
@@ -92,6 +93,7 @@ const styles = StyleSheet.create({
     letterSpacing: 4,
     textTransform: 'uppercase',
     justifyContent: 'space-between',
+    //backgroundColor: '#5757',
   },
   SummaryText: {
     fontFamily: 'Montserrat-Medium',
@@ -102,6 +104,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: 'rgba(0, 0, 0, 0.3)',
     textAlign: 'center',
+    backgroundColor: '#5757',
   },
   image: {
     flex: 1,

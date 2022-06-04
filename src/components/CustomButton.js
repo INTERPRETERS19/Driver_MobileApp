@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
   text_SUB: {
     color: '#213571',
     fontSize: 15,
+    
   },
 });
 
