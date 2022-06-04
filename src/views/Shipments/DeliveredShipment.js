@@ -74,12 +74,8 @@ const DeliveredShipment = () => {
               </ScrollView>
             </View>
           </View>
-<<<<<<< HEAD
-          </View>
-=======
-        </ScrollView>
         <BottomNavigationBar />
->>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
+        </View>
       </ImageBackground>
   );
 };
@@ -121,8 +117,6 @@ const styles = StyleSheet.create({
   },
   ShipmentSection: {
     flex: 4,
-    padding: 20,
-    // paddingTop: 120,
   },
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
@@ -153,4 +147,3 @@ const styles = StyleSheet.create({
 });
 
 export default DeliveredShipment;
-DeliveredShipment;

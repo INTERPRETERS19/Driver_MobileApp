@@ -9,11 +9,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
 import Icon2 from 'react-native-vector-icons/AntDesign';
 const OutForDelivery = () => {
   const navigation = useNavigation();
@@ -72,13 +68,9 @@ const OutForDelivery = () => {
                   );
                 })}
               </View>
-            </ScrollView>
-          </View>
-<<<<<<< HEAD
+     </ScrollView>
+         </View>
         </View>
-=======
-        </ScrollView>
->>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
         <BottomNavigationBar />
       </ImageBackground>
     </View>

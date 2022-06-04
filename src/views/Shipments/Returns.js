@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 import Profilecomponent from '../../components/Profilecomponent';
 import Icon2 from 'react-native-vector-icons/AntDesign';
@@ -20,13 +20,16 @@ const Returns = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    { key: 1, item: '001854', name: ' ' },
-    { key: 2, item: '741541', name: ' ' },
-    { key: 3, item: '638524', name: ' ' },
-    { key: 4, item: '096471', name: ' ' },
-    { key: 5, item: '631901', name: ' ' },
-    { key: 6, item: '001854', name: ' ' },
-    { key: 7, item: '741541', name: ' ' },
+    {key: 1, item: '001854', name: ' '},
+    {key: 2, item: '741541', name: ' '},
+    {key: 3, item: '638524', name: ' '},
+    {key: 4, item: '096471', name: ' '},
+    {key: 5, item: '631901', name: ' '},
+    {key: 6, item: '001854', name: ' '},
+    {key: 7, item: '741541', name: ' '},
+    {key: 8, item: '741541', name: ' '},
+    {key: 9, item: '741541', name: ' '},
+    {key: 10, item: '741541', name: ' '},
   ]);
 
   const onArrowPressed = () => {
@@ -52,7 +55,7 @@ const Returns = () => {
               <ScrollView showsVerticalScrollIndicator={false}>
 =======
               <View style={styles.ShipementText}>
-                <Text style={{ color: '#000000' }}>Shipment ID</Text>
+                <Text style={{color: '#000000'}}>Shipment ID</Text>
               </View>
 >>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
               <View>

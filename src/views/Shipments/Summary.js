@@ -29,7 +29,6 @@ const Summary = () => {
     {key: 12, item: '741541', address: 'Meesalai', name: ' '},
     {key: 13, item: '741541', address: 'Meesalai', name: ' '},
     {key: 14, item: '741541', address: 'Meesalai', name: ' '},
-
   ]);
 
   const onArrowPressed = () => {
