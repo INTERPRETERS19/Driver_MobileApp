@@ -52,6 +52,7 @@ const DeliveredShipment = () => {
             <View style={styles.ShipmentSection}>
             <View style={styles.ShipementTextcont}>
               <Text style={styles.ShipementText}>ShipmentID</Text>
+              <Text style={styles.ShipementText}>Time</Text>
             </View>
               <ScrollView showsVerticalScrollIndicator={false}>
               <View>
@@ -117,6 +118,12 @@ const styles = StyleSheet.create({
   },
   ShipmentSection: {
     flex: 4,
+    padding: 20,
+  },
+  ShipementTextcont: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
   ShipementText: {
     fontFamily: 'Montserrat-Medium',

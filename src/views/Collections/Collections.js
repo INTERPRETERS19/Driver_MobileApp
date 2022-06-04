@@ -88,7 +88,6 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 5,
     flex:1,
-  
   },
   Collection: {
     flex: 4,

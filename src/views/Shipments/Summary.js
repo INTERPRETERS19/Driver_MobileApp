@@ -49,6 +49,7 @@ const Summary = () => {
             <View style={styles.ShipmentSection}>
             <View style={styles.ShipementTextcont}>
               <Text style={styles.ShipementText}>ShipmentID</Text>
+              <Text style={styles.ShipementText}>Address</Text>
             </View>
               <ScrollView showsVerticalScrollIndicator={false}>
               <View>
@@ -117,6 +118,14 @@ const styles = StyleSheet.create({
     padding: 20,
     // paddingTop: 120,
   },
+  ShipmentTextcont: {
+    justifyContent: 'space-between',
+    fontFamily: 'Montserrat-Medium',
+    flexDirection: 'row',
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: '#000000',
+    flex: 10,
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
