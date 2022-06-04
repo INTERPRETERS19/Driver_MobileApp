@@ -12,7 +12,6 @@ import Profilecomponent from '../../components/Profilecomponent';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
 
-
 const Collection = () => {
   const [Items, setItems] = useState([
     {key: 1, item: '001854', amount: '2300', name: ' '},
@@ -96,7 +95,6 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop:0,
     paddingBottom:5,
-   
   },
   infoPanelCol: {
     alignContent:'center',

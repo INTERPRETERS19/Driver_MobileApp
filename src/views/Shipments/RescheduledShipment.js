@@ -27,6 +27,9 @@ const RescheduledShipment = () => {
     {key: 5, item: '631901', name: ' '},
     {key: 6, item: '001854', name: ' '},
     {key: 7, item: '741541', name: ' '},
+    {key: 8, item: '741541', name: ' '},
+    {key: 9, item: '741541', name: ' '},
+    {key: 10, item: '741541', name: ' '},
   ]);
 
   const onArrowPressed = () => {
@@ -51,6 +54,7 @@ const RescheduledShipment = () => {
               <Text style={styles.ShipementText}>ShipmentID</Text>
             </View>
               <ScrollView showsVerticalScrollIndicator={false}>
+
               <View>
                 {Items.map(object => {
                   return (
