@@ -11,11 +11,7 @@ import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-// Icon from 'react-native-vector-icons/Ionicons';
-//#C3E4F5
-//#213571
-//#000000
-//#7E7D7D
+
 
 const Collection = () => {
   const [Items, setItems] = useState([
@@ -118,7 +114,6 @@ const styles = StyleSheet.create({
     fontFamily: 'SF-Pro-Displa-Bold',
     fontWeight: 'bold',
     fontSize: 22,
-    //backgroundColor: '#D10101',
     textAlign:'center',
   },
   text2: {
@@ -126,7 +121,6 @@ const styles = StyleSheet.create({
     fontFamily: 'SF-Pro-Displa-Bold',
     fontSize: 20,
     textAlign:'center',
-   //backgroundColor: '#911',
   },
   collectionSection: {
     flex: 12,

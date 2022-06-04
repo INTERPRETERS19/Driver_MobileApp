@@ -62,7 +62,7 @@ const Dashboard = () => {
         <View style={[styles.dashboard]}>
           <Text style={styles.dashboardTitle}>Dashboard</Text>
         </View>
-
+       
         <View style={[styles.infoPanel]}>
           <View style={[styles.infoPanelCol]}>
             <DashButtons
@@ -139,15 +139,15 @@ const styles = StyleSheet.create({
   },
   topbar: {
     flex: 0.8,
-    padding: 20,
+    padding:20,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingBottom: 0,
+    paddingBottom:0,
   },
   welcomeBar: {
     flex: 0.5,
-    paddingLeft: 20,
-    paddingBottom: 15,
+    paddingLeft:20,
+    paddingBottom:15,
   },
   welcome: {
     fontFamily: 'Roboto-Bold',
@@ -188,15 +188,15 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  Pie: {
-    flex: 1,
-    padding: 15,
-    paddingVertical: 50,
+  Pie:{
+    flex:1,
+    padding:15,
+    paddingVertical:50,
   },
-  Pie1: {
-    flex: 1,
+  Pie1:{
+    flex:1,
   },
-  PieName: {
+  PieName:{
     color: '#000000',
     fontFamily: 'Roboto-Medium',
     fontSize: 13,
