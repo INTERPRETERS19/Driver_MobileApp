@@ -54,7 +54,6 @@ const RescheduledShipment = () => {
               <Text style={styles.ShipementText}>ShipmentID</Text>
             </View>
               <ScrollView showsVerticalScrollIndicator={false}>
-
               <View>
                 {Items.map(object => {
                   return (
