@@ -52,9 +52,6 @@ const Returns = () => {
               <Text style={styles.ShipementText}>ShipmentID</Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
-              <View style={styles.ShipementText}>
-                <Text style={{color: '#000000'}}>Shipment ID</Text>
-              </View>
               <View>
                 {Items.map(object => {
                   return (
