@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   DeliveredShipment: {
     flex: 1,
-    padding: 15,
+    padding: 20,
     color: '#000000',
     lineHeight: 22,
     letterSpacing: 4,
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000',
     textAlign: 'left',
-
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',

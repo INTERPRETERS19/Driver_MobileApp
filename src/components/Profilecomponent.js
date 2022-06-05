@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
     alignItems: 'center',
     justifyContent: 'space-between',
-    position:'relative',
+    position: 'relative',
   },
   ProfilePicture: {
     width: 50,

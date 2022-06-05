@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Image, ImageBackground } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
-
+import {View, StyleSheet, Image, ImageBackground} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
+import {useLogin} from '../context/LoginProvider';
 import SignInScreen from '../views/SignInScreen/SignInScreen';
 import Dashboard from '../views/Dashboard/Dashboard';
 import OutForDelivery from '../views/Shipments/OutForDelivery';
@@ -23,20 +23,15 @@ import About from '../views/Settings/About';
 import NewPassword from '../views/ForgotPassword/NewPassword';
 import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
-//import ShipmentInfo from '../views/Shipments/ShipmentInfo';
-import QRScan from '../views/ScanPage/QRScan';
-import Support from '../views/Settings/Support';
-
-//import {createDrawerNavigator} from '@react-navigation/drawer';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
-import Dropdown from '../views/Information/Dropdown';
-//import { createDrawerNavigator } from '@react-navigation/drawer';
+import QRScan from '../views/ScanPage/QRScan';
+
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
   return (
-    <View style={[styles.menuContainer, { backgroundColor: '#102256' }]}>
-      <View style={[styles.Cont, { flex: 1.3 }]}>
+    <View style={[styles.menuContainer, {backgroundColor: '#102256'}]}>
+      <View style={[styles.Cont, {flex: 1.3}]}>
         <View style={[styles.menu]}>
           <ImageBackground
             style={{
@@ -152,62 +147,57 @@ function CustomDrawerContent(props) {
     </View>
   );
 }
-const DrawerNav = () => {
+const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator
-      initialRouteName="Dashboard"
-      screenOptions={{ headerShown: false }}
-      drawerContent={props => <CustomDrawerContent {...props} />}>
-      <Drawer.Screen name="Dashboard" component={Dashboard} />
-      <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
-      <Drawer.Screen name="DeliveredShipment" component={DeliveredShipment} />
-      <Drawer.Screen name="Summary" component={Summary} />
-      <Drawer.Screen
-        name="RescheduledShipment"
-        component={RescheduledShipment}
-      />
-      <Drawer.Screen name="Returns" component={Returns} />
-      <Drawer.Screen name="Collections" component={Collections} />
-      <Drawer.Screen name="Settings" component={Settings} />
-      <Drawer.Screen name="QRScan" component={QRScan} />
-      <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
-      <Drawer.Screen name="Dropdown" component={Dropdown} />
-    </Drawer.Navigator>
+    <NavigationContainer>
+      <Drawer.Navigator
+        initialRouteName="Dashboard"
+        screenOptions={{headerShown: false}}
+        drawerContent={props => <CustomDrawerContent {...props} />}>
+        <Drawer.Screen name="Dashboard" component={Dashboard} />
+        <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
+        <Drawer.Screen name="DeliveredShipment" component={DeliveredShipment} />
+        <Drawer.Screen name="Summary" component={Summary} />
+        <Drawer.Screen
+          name="RescheduledShipment"
+          component={RescheduledShipment}
+        />
+        <Drawer.Screen name="Returns" component={Returns} />
+        <Drawer.Screen name="Collections" component={Collections} />
+        <Drawer.Screen name="Settings" component={Settings} />
+        <Drawer.Screen name="QRScan" component={QRScan} />
+        <Drawer.Screen name="Menu" component={Menu} />
+        <Drawer.Screen name="Profile" component={Profile} />
+
+        <Drawer.Screen name="Help" component={Help} />
+        <Drawer.Screen name="About" component={About} />
+        <Drawer.Screen name="ChangePassword" component={ChangePassword} />
+        <Drawer.Screen name="Terms" component={Terms} />
+        <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+        {/* <Drawer.Screen name="OTP" component={OTP} /> */}
+        <Drawer.Screen name="ResetSuccess" component={ResetSuccess} />
+        <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 };
 
 const Stack = createNativeStackNavigator();
-
-const Navigation = () => {
+const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="SignIn" component={SignInScreen} />
-        <Stack.Screen name="DashboardNav" component={DrawerNav} />
-        <Stack.Screen name="OutForDelivery" component={OutForDelivery} />
-        <Stack.Screen name="DeliveredShipment" component={DeliveredShipment} />
-        <Stack.Screen name="Summary" component={Summary} />
-        <Stack.Screen name="RescheduledShipment" component={RescheduledShipment} />
-        <Stack.Screen name="Returns" component={Returns} />
-        <Stack.Screen name="Collections" component={Collections} />
-        <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="Menu" component={Menu} />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="ChangedPassword" component={ChangePassword} />
-        <Stack.Screen name="Help" component={Help} />
-        <Stack.Screen name="About" component={About} />
-        <Stack.Screen name="Terms" component={Terms} />
-        <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-        <Stack.Screen name="QRScan" component={QRScan} />
-        <Stack.Screen name="NewPassword" component={NewPassword} />
         <Stack.Screen name="OTP" component={OTP} />
-        <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
-        <Stack.Screen name="ShipmentInfo" component={ShipmentInfo} />
-        <Stack.Screen name="Support" component={Support}/>
-        <Stack.Screen name="Dropdown" component={Dropdown} />
+        <Stack.Screen name="NewPassword" component={NewPassword} />
       </Stack.Navigator>
     </NavigationContainer>
   );
+};
+
+const Navigation = () => {
+  const {isLoggedIn} = useLogin();
+  return isLoggedIn ? <DrawerNavigator /> : <StackNavigator />;
 };
 const styles = StyleSheet.create({
   container: {
