@@ -68,8 +68,8 @@ const OutForDelivery = () => {
                   );
                 })}
               </View>
-     </ScrollView>
-         </View>
+            </ScrollView>
+          </View>
         </View>
         <BottomNavigationBar />
       </ImageBackground>

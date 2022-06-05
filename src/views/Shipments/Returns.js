@@ -48,16 +48,10 @@ const Returns = () => {
             </View>
 
             <View style={styles.ShipmentSection}>
-<<<<<<< HEAD
             <View style={styles.ShipementTextcont}>
               <Text style={styles.ShipementText}>ShipmentID</Text>
             </View>
               <ScrollView showsVerticalScrollIndicator={false}>
-=======
-              <View style={styles.ShipementText}>
-                <Text style={{color: '#000000'}}>Shipment ID</Text>
-              </View>
->>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
               <View>
                 {Items.map(object => {
                   return (
@@ -77,11 +71,7 @@ const Returns = () => {
               </ScrollView>
             </View>
           </View>
-<<<<<<< HEAD
-=======
-        </ScrollView>
         <BottomNavigationBar />
->>>>>>> 3ba8f899bdfbe2ca6cfe57e92f49ba85cf7235dd
       </ImageBackground>
     </View>
   );

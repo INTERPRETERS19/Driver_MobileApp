@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#000000',
     flex: 10,
+  },
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
