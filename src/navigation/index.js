@@ -23,7 +23,7 @@ import About from '../views/Settings/About';
 import NewPassword from '../views/ForgotPassword/NewPassword';
 import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
-import ShipmentInfo from '../views/Shipments/ShipmentInfo';
+import ShipmentInfo from '../views/Information/ShipmentInfo';
 import QRScan from '../views/ScanPage/QRScan';
 
 const Drawer = createDrawerNavigator();

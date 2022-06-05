@@ -9,6 +9,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import Profilecomponent from '../../components/Profilecomponent';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
 const DeliveredShipment = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -23,6 +24,12 @@ const DeliveredShipment = () => {
     {key: 5, item: '631901', time: '9.35 am', name: ' '},
     {key: 6, item: '001854', time: '3.15 pm', name: ' '},
     {key: 7, item: '741541', time: '7.05 pm', name: ' '},
+    {key: 8, item: '638524', time: '9.00 am', name: ' '},
+    {key: 9, item: '096471', time: '10.30 am', name: ' '},
+    {key: 10, item: '001854', time: '12.30 pm', name: ' '},
+    {key: 11, item: '741541', time: '1.00 pm', name: ' '},
+    {key: 12, item: '638524', time: '9.00 am', name: ' '},
+    {key: 13, item: '096471', time: '10.30 am', name: ' '},
   ]);
 
   const onArrowPressed = () => {
@@ -30,23 +37,24 @@ const DeliveredShipment = () => {
   };
 
   return (
-    <View style={styles.root}>
-      <ImageBackground
-        source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
-        <ScrollView>
-          <View style={[styles.Out]}>
-            <Profilecomponent></Profilecomponent>
-            <View style={[styles.DeliveredShipment]}>
-              <Text style={[styles.DeliveredShipmentText]}>
-                Delivered Shipment
-              </Text>
-            </View>
+    <ImageBackground
+      source={require('../../../assets/img1.jpg')}
+      style={{height: '100%'}}>
+      <View style={styles.root}>
+        <Profilecomponent></Profilecomponent>
+        <View style={[styles.Out]}>
+          <View style={[styles.DeliveredShipment]}>
+            <Text style={[styles.DeliveredShipmentText]}>
+              Delivered Shipment
+            </Text>
+          </View>
 
-            <View style={styles.ShipmentSection}>
-              <View style={styles.ShipementText}>
-                <Text style={{color: '#000000'}}>Shipment ID</Text>
-              </View>
+          <View style={styles.ShipmentSection}>
+            <View style={styles.ShipementTextcont}>
+              <Text style={styles.ShipementText}>ShipmentID</Text>
+              <Text style={styles.ShipementText}>Time</Text>
+            </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
@@ -64,11 +72,12 @@ const DeliveredShipment = () => {
                   );
                 })}
               </View>
-            </View>
+            </ScrollView>
           </View>
-        </ScrollView>
-      </ImageBackground>
-    </View>
+        </View>
+        <BottomNavigationBar />
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -109,17 +118,19 @@ const styles = StyleSheet.create({
   },
   ShipmentSection: {
     flex: 4,
-    //backgroundColor: '#A45163',
     padding: 20,
-    // paddingTop: 120,
+  },
+  ShipementTextcont: {
+    flex: 1,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
   ShipementText: {
-    flex: 1,
     fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 18,
     color: '#000000',
-    flex: 10,
+    textAlign: 'left',
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',
@@ -142,4 +153,3 @@ const styles = StyleSheet.create({
 });
 
 export default DeliveredShipment;
-DeliveredShipment;

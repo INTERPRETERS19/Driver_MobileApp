@@ -13,7 +13,6 @@ const About = () => {
     navigation.navigate('Settings');
   };
 
-  const parsedIcon = parseIconFromClassName('fab fa-truck');
   return (
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
@@ -30,7 +29,6 @@ const About = () => {
             onPress={onbackPressed}
           />
         </View>
-
         <Text
           style={{
             fontFamily: 'Roboto-Medium',
@@ -49,7 +47,7 @@ const About = () => {
             fontSize: 18,
             textAlign: 'center',
             color: '#8B8B8B',
-            paddingTop: 10,
+            paddingTop: 60,
           }}>
           OUR FEATURES
         </Text>
@@ -62,7 +60,7 @@ const About = () => {
             color: '#3A4F5F',
             marginLeft: 10,
             marginRight: 10,
-            marginTop: 20,
+            marginTop: 30,
           }}>
           IndexCloud is one of the best delivery {'\n'} service providers in
           SriLanka.

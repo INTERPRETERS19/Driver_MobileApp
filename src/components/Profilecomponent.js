@@ -34,12 +34,12 @@ const Profilecomponent = () => {
 
 const styles = StyleSheet.create({
   topbar: {
-    flex: 0.3,
     padding: 20,
     flexDirection: 'row',
     paddingBottom: 0,
     alignItems: 'center',
     justifyContent: 'space-between',
+    position: 'relative',
   },
   ProfilePicture: {
     width: 50,

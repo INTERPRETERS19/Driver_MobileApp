@@ -11,11 +11,6 @@ import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-// Icon from 'react-native-vector-icons/Ionicons';
-//#C3E4F5
-//#213571
-//#000000
-//#7E7D7D
 
 const Collection = () => {
   const [Items, setItems] = useState([
@@ -26,9 +21,9 @@ const Collection = () => {
     {key: 5, item: '631901', amount: '650', name: ' '},
     {key: 6, item: '001854', amount: '1320', name: ' '},
     {key: 7, item: '741541', amount: '680', name: ' '},
-    {key: 7, item: '741541', amount: '680', name: ' '},
-    {key: 7, item: '741541', amount: '680', name: ' '},
-    {key: 7, item: '741541', amount: '680', name: ' '},
+    {key: 8, item: '741541', amount: '680', name: ' '},
+    {key: 9, item: '741541', amount: '680', name: ' '},
+    {key: 10, item: '741541', amount: '680', name: ' '},
   ]);
 
   return (
@@ -39,27 +34,25 @@ const Collection = () => {
         height: '100%',
       }}>
       <View style={styles.root}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Profilecomponent></Profilecomponent>
-          <Text style={styles.CollectionTitle}>Collections </Text>
-          <View style={styles.Collection}>
-            <View style={styles.infoPanel}>
-              <View style={styles.infoPanelCol}>
-                <Text style={styles.text2}>Total Collections </Text>
-                <MaterialCommunityIcons
+        <Profilecomponent></Profilecomponent>
+        <Text style={styles.CollectionTitle}>Collections </Text>
+        <View style={styles.Collection}>
+          <View style={styles.infoPanelCol}>
+            <Text style={styles.text2}>Total Collections </Text>
+            {/* <MaterialCommunityIcons
                   name="cash-marker"
                   color={'#000000'}
                   size={60}
-                />
-                <Text style={styles.text1}>37890 </Text>
-              </View>
-            </View>
+                /> */}
+            <Text style={styles.text1}>LKR 37,890 </Text>
           </View>
-          <View style={styles.collectionSection}>
-            <View style={styles.ShipementTextcont}>
-              <Text style={styles.ShipementText}>Shipment ID</Text>
-              <Text style={styles.ShipementText2}>COD Amount</Text>
-            </View>
+        </View>
+        <View style={styles.collectionSection}>
+          <View style={styles.ShipementTextcont}>
+            <Text style={styles.ShipementText}>Shipment ID</Text>
+            <Text style={styles.ShipementText2}>COD Amount</Text>
+          </View>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View>
               {Items.map(object => {
                 return (
@@ -70,8 +63,9 @@ const Collection = () => {
                 );
               })}
             </View>
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View>
+        <BottomNavigationBar />
       </View>
     </ImageBackground>
   );
@@ -92,41 +86,39 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     paddingBottom: 5,
-    backgroundColor: '#DD1',
+    flex: 1,
   },
   Collection: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#D1D1',
+    flex: 4,
+    padding: 10,
+    paddingTop: 0,
+    paddingBottom: 5,
   },
   infoPanelCol: {
-    flex: 10,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    backgroundColor: '#D1D1D1',
+    alignContent: 'center',
+    backgroundColor: '#213571',
     borderRadius: 10,
     padding: 10,
+    width: 300,
+    height: 80,
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
   text1: {
-    color: '#082041',
+    color: '#fff',
     fontFamily: 'SF-Pro-Displa-Bold',
     fontWeight: 'bold',
-    fontSize: 24,
-    lineHeight: 24,
-    textAlign: 'left',
-    padding: 10,
+    fontSize: 22,
+    textAlign: 'center',
   },
   text2: {
-    color: '#000000',
+    color: '#fff',
     fontFamily: 'SF-Pro-Displa-Bold',
     fontSize: 20,
-    lineHeight: 20,
-    textAlign: 'left',
-    padding: 10,
-    paddingRight: 30,
+    textAlign: 'center',
   },
   collectionSection: {
-    flex: 1,
+    flex: 12,
     padding: 20,
   },
   ShipementText: {
@@ -146,7 +138,7 @@ const styles = StyleSheet.create({
   ShipementTextcont: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    padding: 5,
+    padding: 10,
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',

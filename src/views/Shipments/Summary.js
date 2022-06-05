@@ -5,25 +5,31 @@ import {
   StyleSheet,
   ImageBackground,
   ScrollView,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import BottomNavigationBar from '../../shared/BottomNavigationBar';
-import Icon2 from 'react-native-vector-icons/AntDesign';
+
 import Profilecomponent from '../../components/Profilecomponent';
-const Summary = () => {
+import Icon2 from 'react-native-vector-icons/AntDesign';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
+const Returns = () => {
   const navigation = useNavigation();
   //#C3E4F5
   //#213571
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    {key: 1, item: '001854', address: 'Atchuvely', name: ' '},
-    {key: 2, item: '741541', address: 'Kodikamam', name: ' '},
-    {key: 3, item: '638524', address: 'Nelliyadi', name: ' '},
-    {key: 4, item: '096471', address: 'Chavakacheri', name: ' '},
-    {key: 5, item: '631901', address: 'Chunnakam', name: ' '},
-    {key: 6, item: '001854', address: 'Kantharodai', name: ' '},
-    {key: 7, item: '741541', address: 'Meesalai', name: ' '},
+    {key: 1, item: '001854', name: ' '},
+    {key: 2, item: '741541', name: ' '},
+    {key: 3, item: '638524', name: ' '},
+    {key: 4, item: '096471', name: ' '},
+    {key: 5, item: '631901', name: ' '},
+    {key: 6, item: '001854', name: ' '},
+    {key: 7, item: '741541', name: ' '},
+    {key: 8, item: '741541', name: ' '},
+    {key: 9, item: '741541', name: ' '},
+    {key: 10, item: '741541', name: ' '},
   ]);
 
   const onArrowPressed = () => {
@@ -35,23 +41,22 @@ const Summary = () => {
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
-        <ScrollView>
-          <View style={[styles.Out]}>
-            <Profilecomponent></Profilecomponent>
-            <View style={[styles.Summary]}>
-              <Text style={[styles.SummaryText]}>Summary</Text>
-            </View>
+        <Profilecomponent></Profilecomponent>
+        <View style={[styles.Out]}>
+          <View style={[styles.Return]}>
+            <Text style={[styles.ReturnText]}>Return</Text>
+          </View>
 
-            <View style={styles.ShipmentSection}>
-              <View style={styles.ShipmentText}>
-                <Text style={{color: '#000000'}}>Shipment ID</Text>
-              </View>
+          <View style={styles.ShipmentSection}>
+            <View style={styles.ShipementTextcont}>
+              <Text style={styles.ShipementText}>ShipmentID</Text>
+            </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
                     <View style={styles.item} key={object.key}>
                       <Text style={styles.Itemtext}>{object.item}</Text>
-                      <Text style={styles.Itemtext}>{object.address}</Text>
                       <Icon2
                         style={styles.Itemtext}
                         name="right"
@@ -63,9 +68,9 @@ const Summary = () => {
                   );
                 })}
               </View>
-            </View>
+            </ScrollView>
           </View>
-        </ScrollView>
+        </View>
         <BottomNavigationBar />
       </ImageBackground>
     </View>
@@ -83,9 +88,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     justifyContent: 'space-between',
     fontFamily: 'Montserrat-Medium',
-    // backgroundColor: '#5757',
   },
-  Summary: {
+  Return: {
     flex: 1,
     padding: 15,
     color: '#000000',
@@ -93,9 +97,8 @@ const styles = StyleSheet.create({
     letterSpacing: 4,
     textTransform: 'uppercase',
     justifyContent: 'space-between',
-    //backgroundColor: '#5757',
   },
-  SummaryText: {
+  ReturnText: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
@@ -104,7 +107,6 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: 'rgba(0, 0, 0, 0.3)',
     textAlign: 'center',
-    backgroundColor: '#5757',
   },
   image: {
     flex: 1,
@@ -116,18 +118,18 @@ const styles = StyleSheet.create({
     padding: 20,
     // paddingTop: 120,
   },
-  ShipmentText: {
-    flex: 1,
+  ShipementText: {
     fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 18,
-    color: 'rgba(0, 0, 0, 0.3)',
-    flex: 10,
+    color: '#000000',
+    textAlign: 'left',
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     color: '#000000',
+    textAlign: 'left',
   },
   item: {
     // backgroundColor:'#006531',
@@ -143,4 +145,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Summary;
+export default Returns;

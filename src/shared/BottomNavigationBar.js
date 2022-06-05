@@ -41,16 +41,17 @@ const BottomNavigationBar = () => {
 
 const styles = StyleSheet.create({
   tabContainer: {
-    flex: 1,
+    position: 'relative',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#213571',
+    backgroundColor: '#0b0b45',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 5,
     },
+    height: 60,
     shadowOpacity: 0.36,
     shadowRadius: 6.68,
     elevation: 11,
