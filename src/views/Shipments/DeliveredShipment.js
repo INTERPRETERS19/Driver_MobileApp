@@ -37,24 +37,24 @@ const DeliveredShipment = () => {
   };
 
   return (
-      <ImageBackground
-        source={require('../../../assets/img1.jpg')}
-        style={{height: '100%'}}>
-        <View style={styles.root}>
+    <ImageBackground
+      source={require('../../../assets/img1.jpg')}
+      style={{height: '100%'}}>
+      <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
-          <View style={[styles.Out]}>
-            <View style={[styles.DeliveredShipment]}>
-              <Text style={[styles.DeliveredShipmentText]}>
-                Delivered Shipment
-              </Text>
-            </View>
+        <View style={[styles.Out]}>
+          <View style={[styles.DeliveredShipment]}>
+            <Text style={[styles.DeliveredShipmentText]}>
+              Delivered Shipment
+            </Text>
+          </View>
 
-            <View style={styles.ShipmentSection}>
+          <View style={styles.ShipmentSection}>
             <View style={styles.ShipementTextcont}>
               <Text style={styles.ShipementText}>ShipmentID</Text>
               <Text style={styles.ShipementText}>Time</Text>
             </View>
-              <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
@@ -72,12 +72,12 @@ const DeliveredShipment = () => {
                   );
                 })}
               </View>
-              </ScrollView>
-            </View>
+            </ScrollView>
           </View>
-        <BottomNavigationBar />
         </View>
-      </ImageBackground>
+        <BottomNavigationBar />
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   DeliveredShipment: {
     flex: 1,
-    padding: 15,
+    padding: 20,
     color: '#000000',
     lineHeight: 22,
     letterSpacing: 4,
@@ -131,7 +131,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000',
     textAlign: 'left',
-
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',

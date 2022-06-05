@@ -36,64 +36,59 @@ const OTP = () => {
         flex: 1,
         height: '100%',
       }}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{marginTop: 160}}>
+      <View style={{marginTop: 120, flex: 1}}>
+        <Text
+          style={{
+            fontFamily: 'Poppins',
+            fontSize: 29,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            color: COLORS.dark,
+          }}>
+          Confirm OTP
+        </Text>
+      </View>
+
+      <View style={styles.Box}>
+        <View>
           <Text
             style={{
               fontFamily: 'Poppins',
-              fontSize: 29,
-              fontWeight: 'bold',
+              fontSize: 16,
+              fontWeight: 'normal',
               textAlign: 'center',
-              color: COLORS.dark,
+              color: '#656363',
+              borderRadius: 9,
+              padding: 20,
             }}>
-            Confirm OTP
+            Enter OTP we just sent to your mobile {'\n'} number: +94******567
           </Text>
-        </View>
 
-        <View style={styles.Box}>
           <View>
-            <Text
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: 16,
-                fontWeight: 'normal',
-                textAlign: 'center',
-                color: '#656363',
-                borderRadius: 9,
-                marginTop: 27,
-              }}>
-              Enter OTP we just sent to your mobile {'\n'} number: +94******567
-            </Text>
-
-            <View>
-              <OTPTextView
-                handleTextChange={e => {}}
-                containerStyle={styles.textInputContainer}
-                textInputStyle={styles.roundedTextInput}
-                inputCount={4}
-                inputCellLength={1}
-              />
-            </View>
-
+            <OTPTextView
+              handleTextChange={e => {}}
+              containerStyle={styles.textInputContainer}
+              textInputStyle={styles.roundedTextInput}
+              inputCount={4}
+              inputCellLength={1}
+            />
+          </View>
+          <View style={styles.verify}>
             <CustomButton text="Verify" onPress={onVerifyPressed} />
-            <View style={styles.sub}>
-              <CustomButton
-                text="Re-send"
-                onPress={onResendPressed}
-                type="SUB"
-              />
-            </View>
+          </View>
+          <View style={styles.sub}>
+            <CustomButton text="Re-send" onPress={onResendPressed} type="SUB" />
           </View>
         </View>
+      </View>
 
-        <View>
-          <CustomButton
-            text="Back to my Account"
-            onPress={onBacktoMyAccountPressed}
-            type="TERTIARY"
-          />
-        </View>
-      </ScrollView>
+      <View style={styles.back}>
+        <CustomButton
+          text="Back to my Account"
+          onPress={onBacktoMyAccountPressed}
+          type="TERTIARY"
+        />
+      </View>
     </ImageBackground>
   );
 };
@@ -122,18 +117,20 @@ const styles = StyleSheet.create({
   sub: {
     display: 'flex',
     flex: 1,
-    paddingLeft: 228,
-    marginTop: -17,
   },
-
+  // verify: {
+  //   flex: 2,
+  // },
   Box: {
     backgroundColor: '#ffffff',
-    marginLeft: 15,
-    marginTop: 35,
-    marginRight: 15,
     borderRadius: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 17,
+    padding: 20,
+    width: 350,
+    alignSelf: 'center',
+    flex: 4.5,
+  },
+  back: {
+    flex: 2,
   },
 });
 

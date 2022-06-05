@@ -34,26 +34,25 @@ const Collection = () => {
         height: '100%',
       }}>
       <View style={styles.root}>
-      <Profilecomponent></Profilecomponent>
-          <Text style={styles.CollectionTitle}>Collections </Text>
-          <View style={styles.Collection}>
-              <View style={styles.infoPanelCol}>
-                <Text style={styles.text2}>Total Collections </Text>
-                {/* <MaterialCommunityIcons
+        <Profilecomponent></Profilecomponent>
+        <Text style={styles.CollectionTitle}>Collections </Text>
+        <View style={styles.Collection}>
+          <View style={styles.infoPanelCol}>
+            <Text style={styles.text2}>Total Collections </Text>
+            {/* <MaterialCommunityIcons
                   name="cash-marker"
                   color={'#000000'}
                   size={60}
                 /> */}
-                <Text style={styles.text1}>LKR 37,890 </Text>
-              </View>
+            <Text style={styles.text1}>LKR 37,890 </Text>
           </View>
-          <View style={styles.collectionSection}>
-            <View style={styles.ShipementTextcont}>
-              <Text style={styles.ShipementText}>Shipment ID</Text>
-              <Text style={styles.ShipementText2}>COD Amount</Text>
-            </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
-
+        </View>
+        <View style={styles.collectionSection}>
+          <View style={styles.ShipementTextcont}>
+            <Text style={styles.ShipementText}>Shipment ID</Text>
+            <Text style={styles.ShipementText2}>COD Amount</Text>
+          </View>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View>
               {Items.map(object => {
                 return (
@@ -64,8 +63,8 @@ const Collection = () => {
                 );
               })}
             </View>
-            </ScrollView>
-          </View>
+          </ScrollView>
+        </View>
         <BottomNavigationBar />
       </View>
     </ImageBackground>
@@ -87,37 +86,36 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     paddingBottom: 5,
-    flex:1,
+    flex: 1,
   },
   Collection: {
     flex: 4,
     padding: 10,
-    paddingTop:0,
-    paddingBottom:5,
+    paddingTop: 0,
+    paddingBottom: 5,
   },
   infoPanelCol: {
-    alignContent:'center',
+    alignContent: 'center',
     backgroundColor: '#213571',
     borderRadius: 10,
-    padding:10,
-    width:300,
-    height:80,
-    justifyContent:'center',
-    alignSelf:'center',
-
+    padding: 10,
+    width: 300,
+    height: 80,
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
   text1: {
     color: '#fff',
     fontFamily: 'SF-Pro-Displa-Bold',
     fontWeight: 'bold',
     fontSize: 22,
-    textAlign:'center',
+    textAlign: 'center',
   },
   text2: {
     color: '#fff',
     fontFamily: 'SF-Pro-Displa-Bold',
     fontSize: 20,
-    textAlign:'center',
+    textAlign: 'center',
   },
   collectionSection: {
     flex: 12,
@@ -136,13 +134,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000',
     textAlign: 'right',
-
   },
   ShipementTextcont: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     padding: 10,
-  
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',

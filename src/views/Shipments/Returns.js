@@ -42,16 +42,16 @@ const Returns = () => {
         source={require('../../../assets/img1.jpg')}
         style={{width: '100%', height: '100%'}}>
         <Profilecomponent></Profilecomponent>
-          <View style={[styles.Out]}>
-            <View style={[styles.Return]}>
-              <Text style={[styles.ReturnText]}>Return</Text>
-            </View>
+        <View style={[styles.Out]}>
+          <View style={[styles.Return]}>
+            <Text style={[styles.ReturnText]}>Return</Text>
+          </View>
 
-            <View style={styles.ShipmentSection}>
+          <View style={styles.ShipmentSection}>
             <View style={styles.ShipementTextcont}>
               <Text style={styles.ShipementText}>ShipmentID</Text>
             </View>
-              <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
@@ -68,9 +68,9 @@ const Returns = () => {
                   );
                 })}
               </View>
-              </ScrollView>
-            </View>
+            </ScrollView>
           </View>
+        </View>
         <BottomNavigationBar />
       </ImageBackground>
     </View>

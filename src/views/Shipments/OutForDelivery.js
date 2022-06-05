@@ -48,7 +48,7 @@ const OutForDelivery = () => {
           </View>
 
           <View style={styles.ShipmentSection}>
-          <View style={styles.ShipementTextcont}>
+            <View style={styles.ShipementTextcont}>
               <Text style={styles.ShipementText}>ShipmentID</Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
