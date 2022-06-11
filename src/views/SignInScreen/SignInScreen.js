@@ -40,7 +40,7 @@ const SignInScreen = () => {
     if (!isValidEmail(email)) return updateError('Invalid email!', setError);
 
     if (!password.trim() || password.length < 8)
-      return updateError('Password is too short!', setError);
+      return updateError('Password is invalid ', setError);
 
     return true;
   };

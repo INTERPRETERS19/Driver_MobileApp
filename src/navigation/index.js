@@ -149,36 +149,34 @@ function CustomDrawerContent(props) {
 }
 const DrawerNavigator = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Dashboard"
-        screenOptions={{headerShown: false}}
-        drawerContent={props => <CustomDrawerContent {...props} />}>
-        <Drawer.Screen name="Dashboard" component={Dashboard} />
-        <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
-        <Drawer.Screen name="DeliveredShipment" component={DeliveredShipment} />
-        <Drawer.Screen name="Summary" component={Summary} />
-        <Drawer.Screen
-          name="RescheduledShipment"
-          component={RescheduledShipment}
-        />
-        <Drawer.Screen name="Returns" component={Returns} />
-        <Drawer.Screen name="Collections" component={Collections} />
-        <Drawer.Screen name="Settings" component={Settings} />
-        <Drawer.Screen name="QRScan" component={QRScan} />
-        <Drawer.Screen name="Menu" component={Menu} />
-        <Drawer.Screen name="Profile" component={Profile} />
+    <Drawer.Navigator
+      initialRouteName="Dashboard"
+      screenOptions={{headerShown: false}}
+      drawerContent={props => <CustomDrawerContent {...props} />}>
+      <Drawer.Screen name="Dashboard" component={Dashboard} />
+      <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
+      <Drawer.Screen name="DeliveredShipment" component={DeliveredShipment} />
+      <Drawer.Screen name="Summary" component={Summary} />
+      <Drawer.Screen
+        name="RescheduledShipment"
+        component={RescheduledShipment}
+      />
+      <Drawer.Screen name="Returns" component={Returns} />
+      <Drawer.Screen name="Collections" component={Collections} />
+      <Drawer.Screen name="Settings" component={Settings} />
+      <Drawer.Screen name="QRScan" component={QRScan} />
+      <Drawer.Screen name="Menu" component={Menu} />
+      <Drawer.Screen name="Profile" component={Profile} />
 
-        <Drawer.Screen name="Help" component={Help} />
-        <Drawer.Screen name="About" component={About} />
-        <Drawer.Screen name="ChangePassword" component={ChangePassword} />
-        <Drawer.Screen name="Terms" component={Terms} />
-        <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-        {/* <Drawer.Screen name="OTP" component={OTP} /> */}
-        <Drawer.Screen name="ResetSuccess" component={ResetSuccess} />
-        <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+      <Drawer.Screen name="Help" component={Help} />
+      <Drawer.Screen name="About" component={About} />
+      <Drawer.Screen name="ChangePassword" component={ChangePassword} />
+      <Drawer.Screen name="Terms" component={Terms} />
+      <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+      {/* <Drawer.Screen name="OTP" component={OTP} /> */}
+      <Drawer.Screen name="ResetSuccess" component={ResetSuccess} />
+      <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
+    </Drawer.Navigator>
   );
 };
 
@@ -187,6 +185,7 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="dashboardnav" component={DrawerNavigator} />
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="OTP" component={OTP} />
         <Stack.Screen name="NewPassword" component={NewPassword} />
