@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ImageBackground} from 'react-native';
-import client from '../../routes/client';
+import client from '../../api/client';
 import {useLogin} from '../../context/LoginProvider';
 import {isValidEmail, isValidObjField, updateError} from '../../utils/methods';
 import CheckBox from '@react-native-community/checkbox';
@@ -19,7 +19,7 @@ import CustomInput from '../../components/CustomInput';
 import {useNavigation} from '@react-navigation/native';
 
 const SignInScreen = () => {
-  const {setIsLoggedIn, setProfile} = useLogin();
+  const {setIsLoggedIn} = useLogin();
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
@@ -52,7 +52,7 @@ const SignInScreen = () => {
 
         if (res.data.success) {
           setUserInfo({email: '', password: ''});
-          setProfile(res.data.user);
+          // setProfile(res.data.user);
           setIsLoggedIn(true);
         }
 
