@@ -11,13 +11,19 @@ import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import OTPTextView from 'react-native-otp-textinput';
+import {isValidObjField, updateError} from '../../utils/methods';
 
 const OTP = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
+  //const [error, setError] = useState('');
 
   const onVerifyPressed = () => {
-    navigation.navigate('NewPassword');
+//        return updateError('Enter 4 digits!', setError);
+//             console.log(error);
+//        }else
+          navigation.navigate('NewPassword');
+    //navigation.navigate('NewPassword');
   };
 
   const onBacktoMyAccountPressed = () => {
@@ -120,7 +126,7 @@ const styles = StyleSheet.create({
   sub: {
     display: "flex",
     flex: 1,
-    paddingLeft: 228,
+    paddingLeft: 212,
     marginTop: -17
   },
 

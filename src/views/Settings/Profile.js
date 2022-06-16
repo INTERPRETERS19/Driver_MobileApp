@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useState, useEffect } from "react";
+import Client from "../../routes/client";
+
 import {
   ImageBackground,
   View,
@@ -11,9 +14,27 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+const DriverID = "62a39c08bf454e3c5cd7d61b";
+
 const Profile = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
+
+  const [user, setUser] = useState();
+  useEffect(() => {
+    getUser(DriverID);
+  }, []);
+
+  const getUser = async (userId) => {
+    await Client.get("/profile", { _id: DriverID })
+      .then((response) => {
+        setUser(response);
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log("Unable to get profile");
+      });
+  };
 
   const onbackPressed = () => {
     navigation.navigate('Dashboard');
@@ -81,15 +102,15 @@ const Profile = () => {
               marginTop: 25
             }}>
             <Text style={styles.Label}>FULL NAME</Text>
-            <Text style={styles.Info}>Eren Jeager</Text>
+            <Text style={styles.Info}>{user.data.fullname}</Text>
             <Text style={styles.Label}>MOBILE NUMBER</Text>
-            <Text style={styles.Info}>0761234567</Text>
+            <Text style={styles.Info}>{user.data.mobile_number}</Text>
             <Text style={styles.Label}>DRIVING LICENSE NUMBER</Text>
-            <Text style={styles.Info}>B1234567</Text>
+            <Text style={styles.Info}>{user.data.driving_licence_no}</Text>
             <Text style={styles.Label}>VEHICLE TYPE</Text>
-            <Text style={styles.Info}>Motor Bike</Text>
+            <Text style={styles.Info}>{user.data.vehicle_type}</Text>
             <Text style={styles.Label}>VEHICLE REGISTRATION NUMBER</Text>
-            <Text style={styles.Info}>4554654345</Text>
+            <Text style={styles.Info}>{user.data.vehicle_reg_No}</Text>
           </View>
         </View>
       </ScrollView>
@@ -108,7 +129,7 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 28,
+    padding: 2,
   },
 
   Label: {

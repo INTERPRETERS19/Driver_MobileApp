@@ -21,7 +21,7 @@ const About = () => {
     navigation.navigate('Settings');
   };
 
-  const parsedIcon = parseIconFromClassName('fab fa-truck');
+  //const parsedIcon = parseIconFromClassName('fab fa-truck');
   return (
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
@@ -39,7 +39,7 @@ const About = () => {
         <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 20, color: '#000000', textAlign: 'left', marginLeft: 60, marginTop: -32 }}>About Us </Text>
 
         <Text style={{
-          fontFamily: 'Roboto-Bold', fontSize: 18, textAlign: "center", color: '#8B8B8B', paddingTop: 10,
+          fontFamily: 'Roboto-Bold', fontSize: 18, textAlign: "center", color: '#8B8B8B', paddingTop: 50,
         }}>
           OUR FEATURES
         </Text>
