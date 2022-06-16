@@ -5,13 +5,15 @@ import {
   StyleSheet,
   ImageBackground,
   ScrollView,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Profilecomponent from '../../components/Profilecomponent';
-import BottomNavigationBar from '../../shared/BottomNavigationBar';
 
+import Profilecomponent from '../../components/Profilecomponent';
 import Icon2 from 'react-native-vector-icons/AntDesign';
-const OutForDelivery = () => {
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
+const Returns = () => {
   const navigation = useNavigation();
   //#C3E4F5
   //#213571
@@ -26,10 +28,8 @@ const OutForDelivery = () => {
     {key: 6, item: '001854', name: ' '},
     {key: 7, item: '741541', name: ' '},
     {key: 8, item: '741541', name: ' '},
-    {key: 9, item: '638524', name: ' '},
-    {key: 10, item: '096471', name: ' '},
-    {key: 11, item: '631901', name: ' '},
-    {key: 12, item: '001854', name: ' '},
+    {key: 9, item: '741541', name: ' '},
+    {key: 10, item: '741541', name: ' '},
   ]);
 
   const onArrowPressed = () => {
@@ -43,15 +43,15 @@ const OutForDelivery = () => {
         style={{width: '100%', height: '100%'}}>
         <Profilecomponent></Profilecomponent>
         <View style={[styles.Out]}>
-          <View style={[styles.OutForDelivery]}>
-            <Text style={[styles.OutForDeliveryText]}>Out For Delivery</Text>
+          <View style={[styles.Return]}>
+            <Text style={[styles.ReturnText]}>Return</Text>
           </View>
 
-          <View style={styles.ShipmentSection}>
+            <View style={styles.ShipmentSection}>
             <View style={styles.ShipementTextcont}>
               <Text style={styles.ShipementText}>ShipmentID</Text>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
+              <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
@@ -80,6 +80,7 @@ const OutForDelivery = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    // backgroundColor: '#236501',
   },
   Out: {
     flex: 10,
@@ -88,16 +89,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     fontFamily: 'Montserrat-Medium',
   },
-  OutForDelivery: {
+  Return: {
     flex: 1,
-    padding: 30,
+    padding: 15,
     color: '#000000',
     lineHeight: 22,
     letterSpacing: 4,
     textTransform: 'uppercase',
     justifyContent: 'space-between',
   },
-  OutForDeliveryText: {
+  ReturnText: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
@@ -144,4 +145,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OutForDelivery;
+export default Returns;

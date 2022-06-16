@@ -7,19 +7,16 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import CustomButton from '../../components/CustomButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {useLogin} from '../../context/LoginProvider';
 const Settings = () => {
   const navigation = useNavigation();
 
-  const onLogoutPressed = () => {
-    navigation.navigate('SignIn');
-  };
   const pressedNewPassword = () => {
-    navigation.navigate('ChangedPassword');
+    navigation.navigate('ChangePassword');
   };
   const pressedAbout = () => {
     navigation.navigate('About');
@@ -39,15 +36,13 @@ const Settings = () => {
   const onbackPressed = () => {
     navigation.navigate('Dashboard');
   };
+  const {setIsLoggedIn} = useLogin();
 
-  const Row = ({ iconLeft, textName, onPressed }) => {
+  const Row = ({iconLeft, textName, onPressed}) => {
     return (
       <View style={[styles.sections]}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Icon2 name={iconLeft} size={30} color="#656363" />
-
-
 
           <TouchableOpacity onPress={onPressed}>
             <Text style={styles.subText}> {textName}</Text>
@@ -146,8 +141,8 @@ const Settings = () => {
             </View>
           </View>
         </View>
-        <View style={{ flex: 1.5 }}>
-          <CustomButton text="LOG OUT" onPress={onLogoutPressed} />
+        <View style={{flex: 1.5}}>
+          <CustomButton text="LOG OUT" onPress={() => setIsLoggedIn(false)} />
         </View>
       </View>
     </ImageBackground>
@@ -161,7 +156,6 @@ const styles = StyleSheet.create({
   TopCont: {
     flex: 0.5,
     padding: 20,
-
   },
   mainText: {
     fontFamily: 'Montserrat-Medium',
@@ -178,7 +172,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: '#F23243',
     lineHeight: 42,
-
   },
   sections: {
     backgroundColor: 'rgba(0, 0, 0, 0.04)',

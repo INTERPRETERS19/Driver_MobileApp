@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,10 +8,11 @@ import {
   Alert,
 } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 import Profilecomponent from '../../components/Profilecomponent';
 import Icon2 from 'react-native-vector-icons/AntDesign';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
 const RescheduledShipment = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -19,16 +20,17 @@ const RescheduledShipment = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    { key: 1, item: '001854', name: ' ' },
-    { key: 2, item: '741541', name: ' ' },
-    { key: 3, item: '638524', name: ' ' },
-    { key: 4, item: '096471', name: ' ' },
-    { key: 5, item: '631901', name: ' ' },
-    { key: 6, item: '001854', name: ' ' },
-    { key: 7, item: '741541', name: ' ' },
+    {key: 1, item: '001854', name: ' '},
+    {key: 2, item: '741541', name: ' '},
+    {key: 3, item: '638524', name: ' '},
+    {key: 4, item: '096471', name: ' '},
+    {key: 5, item: '631901', name: ' '},
+    {key: 6, item: '001854', name: ' '},
+    {key: 7, item: '741541', name: ' '},
+    {key: 8, item: '741541', name: ' '},
+    {key: 9, item: '741541', name: ' '},
+    {key: 10, item: '741541', name: ' '},
   ]);
-
-
 
   const onArrowPressed = () => {
     navigation.navigate('ShipmentInfo');
@@ -38,18 +40,20 @@ const RescheduledShipment = () => {
     <View style={styles.root}>
       <ImageBackground
         source={require('../../../assets/img1.jpg')}
-        style={{ width: '100%', height: '100%' }}>
-        <ScrollView>
-          <View style={[styles.Out]}>
-            <Profilecomponent></Profilecomponent>
-            <View style={[styles.RescheduledShipment]}>
-              <Text style={[styles.RescheduledShipmentText]}>Rescheduled Shipment</Text>
-            </View>
+        style={{width: '100%', height: '100%'}}>
+        <Profilecomponent></Profilecomponent>
+        <View style={[styles.Out]}>
+          <View style={[styles.RescheduledShipment]}>
+            <Text style={[styles.RescheduledShipmentText]}>
+              Rescheduled Shipment
+            </Text>
+          </View>
 
-            <View style={styles.ShipmentSection}>
-              <View style={styles.ShipementText}>
-                <Text style={{color:'#000000'}}>Shipment ID</Text>
-              </View>
+          <View style={styles.ShipmentSection}>
+            <View style={styles.ShipementTextcont}>
+              <Text style={styles.ShipementText}>ShipmentID</Text>
+            </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
@@ -66,9 +70,9 @@ const RescheduledShipment = () => {
                   );
                 })}
               </View>
-            </View>
+            </ScrollView>
           </View>
-        </ScrollView>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -116,12 +120,11 @@ const styles = StyleSheet.create({
     // paddingTop: 120,
   },
   ShipementText: {
-    flex: 1,
     fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 18,
     color: '#000000',
-    flex: 10,
+    textAlign: 'left',
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',
