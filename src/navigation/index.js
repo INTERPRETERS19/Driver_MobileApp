@@ -13,7 +13,6 @@ import RescheduledShipment from '../views/Shipments/RescheduledShipment';
 import Returns from '../views/Shipments/Returns';
 import Collections from '../views/Collections/Collections';
 import Settings from '../views/Settings/Settings';
-import Menu from '../shared/Menu';
 import ChangePassword from '../views/Settings/ChangePassword';
 import Profile from '../views/Settings/Profile';
 import PrivacyPolicy from '../views/Settings/PrivacyPolicy';
@@ -25,6 +24,7 @@ import OTP from '../views/OTP/OTP';
 import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
 import QRScan from '../views/ScanPage/QRScan';
+import Support from '../views/Settings/Support';
 
 const Drawer = createDrawerNavigator();
 
@@ -166,7 +166,6 @@ const DrawerNavigator = () => {
         <Drawer.Screen name="Collections" component={Collections} />
         <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="QRScan" component={QRScan} />
-        <Drawer.Screen name="Menu" component={Menu} />
         <Drawer.Screen name="Profile" component={Profile} />
 
         <Drawer.Screen name="Help" component={Help} />
@@ -177,6 +176,7 @@ const DrawerNavigator = () => {
         {/* <Drawer.Screen name="OTP" component={OTP} /> */}
         <Drawer.Screen name="ResetSuccess" component={ResetSuccess} />
         <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
+        <Drawer.Screen name="Support" component={Support} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
