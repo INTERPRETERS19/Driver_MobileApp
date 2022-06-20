@@ -13,6 +13,7 @@ import {useNavigation} from '@react-navigation/native';
 import Profilecomponent from '../../components/Profilecomponent';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
+const Driver_ID = '62a39c08bf454e3c5cd7d61b';
 const Returns = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -33,7 +34,7 @@ const Returns = () => {
   ]);
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentInfo');
+    navigation.navigate('ShipmentDetails');
   };
 
   return (
@@ -44,7 +45,7 @@ const Returns = () => {
         <Profilecomponent></Profilecomponent>
         <View style={[styles.Out]}>
           <View style={[styles.Return]}>
-            <Text style={[styles.ReturnText]}>Return</Text>
+            <Text style={[styles.ReturnText]}>Faal To Delivery</Text>
           </View>
 
           <View style={styles.ShipmentSection}>

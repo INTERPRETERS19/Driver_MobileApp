@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState ,useEffect} from 'react';
 import {
   View,
   Text,
@@ -7,18 +7,20 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-
+import Client from "../../routes/client";
 import {useNavigation} from '@react-navigation/native';
 
 import Profilecomponent from '../../components/Profilecomponent';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
+const Driver_ID = "62a39c08bf454e3c5cd7d61b";
 const RescheduledShipment = () => {
   const navigation = useNavigation();
   //#C3E4F5
   //#213571
   //#000000
   //#7E7D7D
+  
   const [Items, setItems] = useState([
     {key: 1, item: '001854', name: ' '},
     {key: 2, item: '741541', name: ' '},
@@ -33,7 +35,7 @@ const RescheduledShipment = () => {
   ]);
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentInfo');
+    navigation.navigate('ShipmentDetails');
   };
 
   return (
