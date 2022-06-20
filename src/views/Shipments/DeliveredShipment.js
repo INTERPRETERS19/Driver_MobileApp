@@ -55,24 +55,24 @@ const DeliveredShipment = () => {
   };
 
   return (
-    <ImageBackground
-      source={require('../../../assets/img1.jpg')}
-      style={{height: '100%'}}>
-      <View style={styles.root}>
+      <ImageBackground
+        source={require('../../../assets/img1.jpg')}
+        style={{height: '100%'}}>
+        <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
-        <View style={[styles.Out]}>
-          <View style={[styles.DeliveredShipment]}>
-            <Text style={[styles.DeliveredShipmentText]}>
-              Delivered Shipment
-            </Text>
-          </View>
+          <View style={[styles.Out]}>
+            <View style={[styles.DeliveredShipment]}>
+              <Text style={[styles.DeliveredShipmentText]}>
+                Delivered Shipment
+              </Text>
+            </View>
 
-          <View style={styles.ShipmentSection}>
+            <View style={styles.ShipmentSection}>
             <View style={styles.ShipementTextcont}>
               <Text style={styles.ShipementText}>ShipmentID</Text>
               <Text style={styles.ShipementText}>Time</Text>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
+              <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
@@ -90,12 +90,12 @@ const DeliveredShipment = () => {
                   );
                 })}
               </View>
-            </ScrollView>
+              </ScrollView>
+            </View>
           </View>
-        </View>
         <BottomNavigationBar />
-      </View>
-    </ImageBackground>
+        </View>
+      </ImageBackground>
   );
 };
 

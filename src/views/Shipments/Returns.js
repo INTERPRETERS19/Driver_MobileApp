@@ -48,11 +48,11 @@ const Returns = () => {
             <Text style={[styles.ReturnText]}>Faal To Delivery</Text>
           </View>
 
-          <View style={styles.ShipmentSection}>
+            <View style={styles.ShipmentSection}>
             <View style={styles.ShipementTextcont}>
               <Text style={styles.ShipementText}>ShipmentID</Text>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
+              <ScrollView showsVerticalScrollIndicator={false}>
               <View>
                 {Items.map(object => {
                   return (
