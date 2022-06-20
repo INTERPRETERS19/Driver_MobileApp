@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState ,useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,17 +8,34 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
+import Client from "../../routes/client";
 import {useNavigation} from '@react-navigation/native';
 
 import Profilecomponent from '../../components/Profilecomponent';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-const Returns = () => {
+const Driver_ID = "62a39c08bf454e3c5cd7d61b";
+const Summary = () => {
   const navigation = useNavigation();
   //#C3E4F5
   //#213571
   //#000000
   //#7E7D7D
+  const [user, setUser] = useState();
+  useEffect(() => {
+    getUser(Driver_ID);
+  }, []);
+
+  const getUser = async (userId) => {
+    await Client.get("/shipmentdetails", { _id: Driver_ID })
+      .then((response) => {
+        setUser(response);
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log("Unable to get shipmentdetails");
+      });
+  };
   const [Items, setItems] = useState([
     {key: 1, item: '001854', name: ' '},
     {key: 2, item: '741541', name: ' '},
@@ -33,7 +50,7 @@ const Returns = () => {
   ]);
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentInfo');
+    navigation.navigate('ShipmentDetails');
   };
 
   return (
@@ -44,7 +61,7 @@ const Returns = () => {
         <Profilecomponent></Profilecomponent>
         <View style={[styles.Out]}>
           <View style={[styles.Return]}>
-            <Text style={[styles.ReturnText]}>Return</Text>
+            <Text style={[styles.ReturnText]}>Summary</Text>
           </View>
 
           <View style={styles.ShipmentSection}>
@@ -145,4 +162,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Returns;
+export default Summary;
