@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 //import Icon from 'react-native-vector-icons/Ionicons';
-import {ImageBackground, StyleSheet, Text, View, Button} from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, Button } from 'react-native';
 //import {Picker} from '@react-native-picker/picker';
 import CustomButton from '../../components/CustomButton';
 import Dropdown from './Dropdown';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CheckBox from '@react-native-community/checkbox';
+import Client from "../../routes/client";
 
 const ShipmentInfo = () => {
   const navigation = useNavigation();
@@ -15,8 +16,44 @@ const ShipmentInfo = () => {
   const onDonePressed = () => {
     navigation.navigate('OutForDelivery');
   };
+  const SHIPPER_ID = "62b0b975ea359dca05630008";
+  const [shipmentInfo, setShipmentInfo] = useState(
+    {data:{
+      recipient_name:"",
+      mobile_phone_number:"",
+      r_district:"",
+      r_city: "",
+      COD: "",
+      current_status:""
+    }}
+  );
+  useEffect(() => {
+    getUser(SHIPPER_ID);
+  }, []);
+
+  // const getUser = async (userId) => {
+  //   await Client.get("/shipmentinfo", { _id: SHIPPER_ID })
+  //     .then((response) => {
+  //       setShipmentInfo(response);
+  //       console.log(shipmentInfo);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Unable to get shipment info");
+  //     });
+  // };
+  const getUser = async userId => {
+    await Client.get('/shipmentinfo', {_id: SHIPPER_ID})
+      .then(response => {
+        setShipmentInfo(response);
+        console.log(response);
+      })
+      .catch(err => {
+        console.log('Unable to get information');
+      });
+  };
+
   const onbackPressed = () => {
-    navigation.navigate('Summary');
+    navigation.navigate('OutForDelivery');
   };
 
   return (
@@ -38,36 +75,36 @@ const ShipmentInfo = () => {
               />
             </View>
             <View style={styles.topbarin2}>
-              <Text style={{fontSize: 22}}>Info</Text>
+              <Text style={{ fontSize: 22 }}>Info</Text>
             </View>
           </View>
         </View>
         <View style={styles.contentfull}>
           <View style={styles.content}>
-            <View style={{flex: 1, flexDirection: 'row'}}>
-              <View style={{flex: 1}}>
+            <View style={{ flex: 1, flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}>
                 <Text style={styles.head}>Shipment ID</Text>
               </View>
-              <View style={{flex: 1}}>
+              <View style={{ flex: 1 }}>
                 <Text style={styles.head}>XXXXXX</Text>
               </View>
             </View>
             <View style={styles.info}>
               <Text style={styles.infoIn}>Recepient</Text>
-              <Text style={styles.form}>William Turner</Text>
+              <Text style={styles.form}>{shipmentInfo.data.recipient_name}</Text>
               <Text style={styles.infoIn}>Contact number</Text>
-              <Text style={styles.form}>0761234567</Text>
+              <Text style={styles.form}>{shipmentInfo.data.mobile_phone_number}</Text>
               <Text style={styles.infoIn}>District</Text>
-              <Text style={styles.form}>Colombo</Text>
+              <Text style={styles.form}>{shipmentInfo.data.r_district}</Text>
               <Text style={styles.infoIn}>City</Text>
-              <Text style={styles.form}>Moratuwa</Text>
+              <Text style={styles.form}>{shipmentInfo.data.r_city}</Text>
               <Text style={styles.infoIn}>COD amount</Text>
 
-              <View style={{flex: 1, flexDirection: 'row'}}>
-                <View style={{flex: 3}}>
-                  <Text style={styles.form}>1000</Text>
+              <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{ flex: 3 }}>
+                  <Text style={styles.form}>{shipmentInfo.data.COD}</Text>
                 </View>
-                <View style={{flex: 1}}>
+                <View style={{ flex: 1 }}>
                   <CheckBox
                     value={isSelected}
                     onValueChange={setSelection}
@@ -77,8 +114,9 @@ const ShipmentInfo = () => {
               </View>
 
               <Text style={styles.infoIn}>Status</Text>
+              <Text style={styles.form}>{shipmentInfo.data.current_status}</Text>
 
-              <Dropdown></Dropdown>
+              {/* <Dropdown></Dropdown> */}
             </View>
           </View>
           <View style={styles.button}>
