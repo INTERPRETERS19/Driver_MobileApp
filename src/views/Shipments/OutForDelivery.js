@@ -1,78 +1,97 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ImageBackground,
   ScrollView,
+  FlatList,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
+import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-import Icon2 from 'react-native-vector-icons/AntDesign';
-
-import client from '../../routes/client';
 import {useLogin} from '../../context/LoginProvider';
+import {useNavigation} from '@react-navigation/native';
 const OutForDelivery = () => {
   const navigation = useNavigation();
-  //#C3E4F5
-  //#213571
-  //#000000
-  //#7E7D7D
-  const [Items, setItems] = useState([
-    {key: 1, item: '001854', address: 'Atchuvey', name: ' '},
-    {key: 2, item: '741541', address: 'Atchuvey', name: ' '},
-    {key: 3, item: '638524', address: 'Atchuvey', name: ' '},
-    {key: 4, item: '096471', address: 'Atchuvey', name: ' '},
-    {key: 5, item: '631901', address: 'Atchuvey', name: ' '},
-    {key: 6, item: '001854', address: 'Atchuvey', name: ' '},
-    {key: 7, item: '741541', address: 'Atchuvey', name: ' '},
-    
-  ]);
+  const [Items, setItems] = useState();
+  const {profile, setProfile} = useLogin();
+  const auth = {profile};
+  const loginperson = auth.profile.id;
+
+  const getItems = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/OutForDelivery/${loginperson}`,
+      );
+      if (res.data.success) {
+        setItems(res.data.data);
+        console.log(loginperson);
+        console.log(res.data.data);
+        
+        console.log('Success');
+        console.log(Items);
+
+      } else {
+        console.log('Failed');
+        console.log(Items);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getItems();
+  }, []);
+  const Item = ({id, r_no_street, r_city}) => (
+    <View style={styles.item}>
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
+      <Text style={styles.Itemtamount}>{r_no_street}</Text>
+      <Text style={styles.Itemtamount}>{r_city}</Text>
+    </View>
+  );
+
+  const renderItem = ({item}) => (
+    <Item id={item.id} r_no_street={item.r_no_street} r_city={item.r_city} />
+  );
 
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');
   };
-
   return (
-    <View style={styles.root}>
-      <ImageBackground
-        source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
+    <ImageBackground
+      source={require('../../../assets/img1.jpg')}
+      style={{
+        flex: 1,
+        height: '100%',
+      }}>
+      <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
-        <View style={[styles.Out]}>
-          <View style={[styles.OutForDelivery]}>
-            <Text style={[styles.OutForDeliveryText]}>Out For Delivery</Text>
+        <Text style={styles.OutForDeliveryTitle}>Out For Delivery </Text>
+        <View style={styles.OutForDelivery}>
+        </View>
+        <View style={styles.OutForDeliverySection}>
+          <View style={styles.ShipementTextcont}>
+            <Text style={styles.ShipementText}> Shipment ID</Text>
+            <Text style={styles.ShipementText}>Street No</Text>
+            <Text style={styles.ShipementText2}>Address</Text>
           </View>
-
-          <View style={styles.ShipmentSection}>
-            <View style={styles.ShipementTextcont}>
-              <Text style={styles.ShipementText}>ShipmentID</Text>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View>
+              <FlatList
+                data={Items}
+                renderItem={renderItem}
+                keyExtractor={item => item._id}
+              />
             </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <View>
-                {Items.map(object => {
-                  return (
-                    <View style={styles.item} key={object.key}>
-                      <Text style={styles.Itemtext}>{object.item}</Text>
-                      <Text style={styles.Itemtext}>{object.address}</Text>
-                      <Icon2
-                        style={styles.Itemtext}
-                        name="right"
-                        size={20}
-                        color="#000000"
-                        onPress={onArrowPressed}
-                      />
-                    </View>
-                  );
-                })}
-              </View>
-            </ScrollView>
-          </View>
+          </ScrollView>
         </View>
         <BottomNavigationBar />
-      </ImageBackground>
-    </View>
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -80,23 +99,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
-  Out: {
-    flex: 10,
-    fontWeight: 'bold',
-    fontSize: 25,
-    justifyContent: 'space-between',
-    fontFamily: 'Montserrat-Medium',
-  },
-  OutForDelivery: {
-    flex: 1,
-    padding: 30,
-    color: '#000000',
-    lineHeight: 22,
-    letterSpacing: 4,
-    textTransform: 'uppercase',
-    justifyContent: 'space-between',
-  },
-  OutForDeliveryText: {
+  OutForDeliveryTitle: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
@@ -105,16 +108,42 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: 'rgba(0, 0, 0, 0.3)',
     textAlign: 'center',
-  },
-  image: {
+    padding: 10,
+    paddingBottom: 5,
     flex: 1,
-    justifyContent: 'center',
   },
-  ShipmentSection: {
+  OutForDelivery: {
     flex: 4,
-    //backgroundColor: '#A45163',
+    padding: 10,
+    paddingTop: 0,
+    paddingBottom: 5,
+  },
+  infoPanelCol: {
+    alignContent: 'center',
+    backgroundColor: '#213571',
+    borderRadius: 10,
+    padding: 10,
+    width: 300,
+    height: 80,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  text1: {
+    color: '#fff',
+    fontFamily: 'SF-Pro-Displa-Bold',
+    fontWeight: 'bold',
+    fontSize: 22,
+    textAlign: 'center',
+  },
+  text2: {
+    color: '#fff',
+    fontFamily: 'SF-Pro-Displa-Bold',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  OutForDeliverySection: {
+    flex: 12,
     padding: 20,
-    // paddingTop: 120,
   },
   
   ShipementText: {
@@ -122,16 +151,32 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     color: '#000000',
-    textAlign: 'left',
+    flex: 1,
+  },
+  ShipementText2: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000000',
+    textAlign: 'right',
+  },
+  ShipementTextcont: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 10,
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     color: '#000000',
-    textAlign: 'left',
+  },
+  Itemtamount: {
+    fontFamily: 'Montserrat-Medium',
+    fontStyle: 'normal',
+    color: '#000000',
+    textAlign: 'right',
   },
   item: {
-    // backgroundColor:'#006531',
     backgroundColor: '#C3E4F5',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -143,5 +188,4 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 });
-
 export default OutForDelivery;

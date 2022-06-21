@@ -26,7 +26,7 @@ import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
 import ShipmentDetails from '../views/Shipments/ShipmentDetails';
 import QRScan from '../views/ScanPage/QRScan';
-import Support from '../views/Settings/Support';
+
 
 const Drawer = createDrawerNavigator();
 
@@ -187,7 +187,6 @@ const DrawerNavigator = () => {
         <Drawer.Screen name="ResetSuccess" component={ResetSuccess} />
         <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
         <Drawer.Screen name="ShipmentDetails" component={ShipmentDetails} />
-
       </Drawer.Navigator>
     </NavigationContainer>
   );

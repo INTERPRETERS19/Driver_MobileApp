@@ -17,7 +17,7 @@ const Driver_ID = "62a39c08bf454e3c5cd7d61b";
 const ShipmentDetails = () => {
   const navigation = useNavigation();
   //const [COD] = useState('');
-  const [isSelected,setSelection] = useState(false);
+  const [shipment,setShipment] = useState(false);
   const onDonePressed = () => {
     navigation.navigate('OutForDelivery');
   };
@@ -32,9 +32,10 @@ const ShipmentDetails = () => {
   const getUser = async (userId) => {
     await Client.get("/shipmentdetails", { _id: Driver_ID })
       .then((response) => {
-        setUser(response);
-        console.log(response);
+        console.log(response.data);
+        setShipment(response.data);
       })
+
       .catch((err) => {
         console.log("Unable to get shipmentdetails");
       });
@@ -65,20 +66,22 @@ const ShipmentDetails = () => {
                 <Text style={styles.head}>Shipment ID</Text>
               </View>
               <View style={{ flex: 1 }}>
-                <Text style={styles.head}>xxxxxxxxxx</Text>
+                <Text style={styles.head}>{shipment.id}</Text>
               </View>
             </View>
             <View style={styles.info}>
               <Text style={styles.infoIn}>Recepient</Text>
-              <Text style={styles.form}>willaim</Text>
+              <Text style={styles.form}>{shipment.recipient_name}</Text>
               <Text style={styles.infoIn}>Contact number</Text>
-              <Text style={styles.form}>0761234567</Text>
+              <Text style={styles.form}>{shipment.mobile_phone_number}</Text>
               <Text style={styles.infoIn}>District</Text>
-              <Text style={styles.form}>Colombo</Text>
+              <Text style={styles.form}>{shipment.r_district}</Text>
               <Text style={styles.infoIn}>City</Text>
-              <Text style={styles.form}>Moratuwa</Text>
+              <Text style={styles.form}>{shipment.r_city}</Text>
               <Text style={styles.infoIn}>COD amount</Text>
+              <Text style={styles.form}>{shipment.COD}</Text>
               <Text style={styles.infoIn}>Status</Text>
+              <Text style={styles.form}>{shipment.current_status}</Text>
             </View>
           </View>
         </View>

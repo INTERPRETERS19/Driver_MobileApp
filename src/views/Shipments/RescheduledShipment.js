@@ -1,107 +1,104 @@
-import React, { useState ,useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ImageBackground,
   ScrollView,
-  Alert,
+  FlatList,
 } from 'react-native';
-import Client from "../../routes/client";
+import axios from 'axios';
+// import { useNavigation } from '@react-navigation/native';
+import {useState} from 'react';
+import Profilecomponent from '../../components/Profilecomponent';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
+import {useLogin} from '../../context/LoginProvider';
 import {useNavigation} from '@react-navigation/native';
 
-import Profilecomponent from '../../components/Profilecomponent';
-import Icon2 from 'react-native-vector-icons/AntDesign';
-import BottomNavigationBar from '../../shared/BottomNavigationBar';
-const Driver_ID = "62a39c08bf454e3c5cd7d61b";
-const RescheduledShipment = () => {
+const Rescheduled = () => {
   const navigation = useNavigation();
-  //#C3E4F5
-  //#213571
-  //#000000
-  //#7E7D7D
-  
-  const [Items, setItems] = useState([
-    {key: 1, item: '001854', name: ' '},
-    {key: 2, item: '741541', name: ' '},
-    {key: 3, item: '638524', name: ' '},
-    {key: 4, item: '096471', name: ' '},
-    {key: 5, item: '631901', name: ' '},
-    {key: 6, item: '001854', name: ' '},
-    {key: 7, item: '741541', name: ' '},
-    {key: 8, item: '741541', name: ' '},
-    {key: 9, item: '741541', name: ' '},
-    {key: 10, item: '741541', name: ' '},
-  ]);
+  const [Items, setItems] = useState();
+  const {profile, setProfile} = useLogin();
+  const auth = {profile};
+  const loginperson = auth.profile.id;
+  // const loginperson = '62a39c08bf454e3c5cd7d61b';
+  // const [count, setCount] = useState(3000);
 
+  const getItems = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/Rescheduled/${loginperson}`);
+      if (res.data.success) {
+        setItems(res.data.data);
+        console.log(loginperson);
+        console.log(res.data.data);
+        // setCount(res.data.count);
+        console.log('Success');
+        console.log(Items);
+        // console.log(count);
+      } else {
+        console.log('Failed');
+        console.log(Items);
+        // console.log(count);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {getItems();}, []);
+  const Item = ({id}) => (
+    <View style={styles.item}>
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
+      {/* <Text style={styles.Itemtamount}>{COD}</Text> */}
+    </View>
+  );
+
+  const renderItem = ({item}) => <Item id={item.id} />;
+  
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');
   };
-
   return (
-    <View style={styles.root}>
-      <ImageBackground
-        source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
+    <ImageBackground
+      source={require('../../../assets/img1.jpg')}
+      style={{
+        flex: 1,
+        height: '100%',
+      }}>
+      <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
-        <View style={[styles.Out]}>
-          <View style={[styles.RescheduledShipment]}>
-            <Text style={[styles.RescheduledShipmentText]}>
-              Rescheduled Shipment
-            </Text>
-          </View>
-
-          <View style={styles.ShipmentSection}>
-            <View style={styles.ShipementTextcont}>
-              <Text style={styles.ShipementText}>ShipmentID</Text>
-            </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <View>
-                {Items.map(object => {
-                  return (
-                    <View style={styles.item} key={object.key}>
-                      <Text style={styles.Itemtext}>{object.item}</Text>
-                      <Icon2
-                        style={styles.Itemtext}
-                        name="right"
-                        size={20}
-                        color="#000000"
-                        onPress={onArrowPressed}
-                      />
-                    </View>
-                  );
-                })}
-              </View>
-            </ScrollView>
-          </View>
+        <Text style={styles.RescheduledTitle}>Rescheduled </Text>
+        <View style={styles.Rescheduled}>
         </View>
-      </ImageBackground>
-    </View>
+        <View style={styles.RescheduledSection}>
+          <View style={styles.ShipementTextcont}>
+            <Text style={styles.ShipementText} >Shipment ID</Text>
+            <Text style={styles.ShipementText2} >Rescheduled Date</Text>
+          </View>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View>
+              <FlatList
+                data={Items}
+                renderItem={renderItem}
+                keyExtractor={item => item._id}
+              />
+            </View>
+          </ScrollView>
+        </View>
+        <BottomNavigationBar />
+      </View>
+    </ImageBackground>
   );
 };
+
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    // backgroundColor: '#236501',
   },
-  Out: {
-    flex: 10,
-    fontWeight: 'bold',
-    fontSize: 25,
-    justifyContent: 'space-between',
-    fontFamily: 'Montserrat-Medium',
-  },
-  RescheduledShipment: {
-    flex: 1,
-    padding: 15,
-    color: '#000000',
-    lineHeight: 22,
-    letterSpacing: 4,
-    textTransform: 'uppercase',
-    justifyContent: 'space-between',
-  },
-  RescheduledShipmentText: {
+  RescheduledTitle: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
@@ -110,32 +107,74 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: 'rgba(0, 0, 0, 0.3)',
     textAlign: 'center',
-  },
-  image: {
+    padding: 10,
+    paddingBottom: 5,
     flex: 1,
-    justifyContent: 'center',
   },
-  ShipmentSection: {
+  Rescheduled: {
     flex: 4,
-    //backgroundColor: '#A45163',
+    padding: 10,
+    paddingTop: 0,
+    paddingBottom: 5,
+  },
+  infoPanelCol: {
+    alignContent: 'center',
+    backgroundColor: '#213571',
+    borderRadius: 10,
+    padding: 10,
+    width: 300,
+    height: 80,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  text1: {
+    color: '#fff',
+    fontFamily: 'SF-Pro-Displa-Bold',
+    fontWeight: 'bold',
+    fontSize: 22,
+    textAlign: 'center',
+  },
+  text2: {
+    color: '#fff',
+    fontFamily: 'SF-Pro-Displa-Bold',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  RescheduledSection: {
+    flex: 12,
     padding: 20,
-    // paddingTop: 120,
   },
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
     fontWeight: 'bold',
     color: '#000000',
-    textAlign: 'left',
+    flex: 1,
+  },
+  ShipementText2: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000000',
+    textAlign: 'right',
+  },
+  ShipementTextcont: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 10,
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     color: '#000000',
-    textAlign: 'left',
+  },
+  Itemtamount: {
+    fontFamily: 'Montserrat-Medium',
+    fontStyle: 'normal',
+    color: '#000000',
+    textAlign: 'right',
   },
   item: {
-    // backgroundColor:'#006531',
     backgroundColor: '#C3E4F5',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -147,5 +186,4 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 });
-
-export default RescheduledShipment;
+export default Rescheduled;
