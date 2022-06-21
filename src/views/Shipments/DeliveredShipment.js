@@ -8,7 +8,6 @@ import {
   FlatList,
 } from 'react-native';
 import axios from 'axios';
-// import { useNavigation } from '@react-navigation/native';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,9 +21,8 @@ const Delivered = () => {
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
-  // const loginperson = '62a39c08bf454e3c5cd7d61b';
-  // const [count, setCount] = useState(3000);
-
+  
+ 
   const getItems = async () => {
     try {
       const res = await axios.get(
@@ -33,14 +31,11 @@ const Delivered = () => {
         setItems(res.data.data);
         console.log(loginperson);
         console.log(res.data.data);
-        // setCount(res.data.count);
         console.log('Success');
         console.log(Items);
-        // console.log(count);
       } else {
         console.log('Failed');
         console.log(Items);
-        // console.log(count);
       }
     } catch (error) {
       console.log(error);
@@ -51,7 +46,6 @@ const Delivered = () => {
   const Item = ({id}) => (
     <View style={styles.item}>
       <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
-      {/* <Text style={styles.Itemtamount}>{COD}</Text> */}
     </View>
   );
 
@@ -70,15 +64,6 @@ const Delivered = () => {
         <Profilecomponent></Profilecomponent>
         <Text style={styles.DeliveredTitle}>Delivered </Text>
         <View style={styles.Delivered}>
-          {/* <View style={styles.infoPanelCol}>
-            {/* <Text style={styles.text2}>Total Collections </Text> */}
-            {/* <MaterialCommunityIcons
-                  name="cash-marker"
-                  color={'#000000'}
-                  size={60}
-                /> */}
-            {/* <Text style={styles.text1}>LKR {count} </Text>
-          </View> * */}
         </View>
         <View style={styles.DeliveredSection}>
           <View style={styles.ShipementTextcont}>

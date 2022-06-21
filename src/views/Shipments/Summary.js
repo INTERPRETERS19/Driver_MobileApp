@@ -53,12 +53,16 @@ const Summary = () => {
   }, []);
   const Item = ({id, current_status}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+        {id}
+      </Text>
       <Text style={styles.Itemtamount}>{current_status}</Text>
     </View>
   );
 
-  const renderItem = ({item}) => <Item id={item.id} current_status={item.current_status} />;
+  const renderItem = ({item}) => (
+    <Item id={item.id} current_status={item.current_status} />
+  );
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');
   };

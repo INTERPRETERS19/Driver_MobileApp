@@ -71,21 +71,11 @@ const Rescheduled = () => {
         <Profilecomponent></Profilecomponent>
         <Text style={styles.RescheduledTitle}>Rescheduled </Text>
         <View style={styles.Rescheduled}>
-          {/* <View style={styles.infoPanelCol}>
-            {/* <Text style={styles.text2}>Total Collections </Text> */}
-            {/* <MaterialCommunityIcons
-                  name="cash-marker"
-                  color={'#000000'}
-                  size={60}
-                /> */}
-            {/* <Text style={styles.text1}>LKR {count} </Text>
-          </View> * */}
         </View>
         <View style={styles.RescheduledSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText} >Shipment ID</Text>
             <Text style={styles.ShipementText2} >Rescheduled Date</Text>
-            {/* <Text style={styles.ShipementText2}>COD Amount</Text> */}
           </View>
           <ScrollView showsVerticalScrollIndicator={false}>
             <View>

@@ -17,7 +17,6 @@ import {
 import client from './../../routes/client';
 import {useNavigation} from '@react-navigation/native';
 import {useLogin} from '../../context/LoginProvider';
-
 const NewPasswordScreen = () => {
   const [userData, setUserData] = useState({
     oldpassword: '',
@@ -156,7 +155,6 @@ const NewPasswordScreen = () => {
             setValue={value =>
               setUserData({...userData, repeatnewPassword: value})
             }
-            secureTextEntry
           />
 
           <View style={{marginTop: 20}}>
