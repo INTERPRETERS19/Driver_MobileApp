@@ -1,10 +1,13 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
+import axios from 'axios';
+import {useLogin} from '../../context/LoginProvider';
 
 const Dashboard = () => {
   const navigation = useNavigation();
@@ -12,6 +15,34 @@ const Dashboard = () => {
   const widthAndHeight = 180;
   const series = [12, 10, 15, 28];
   const sliceColor = ['#C3E4F5', '#7E7D7D', '#000', '#213571'];
+  const [Items, setItems] = useState();
+  const {profile, setProfile} = useLogin();
+  const auth = {profile};
+  const loginperson = auth.profile.id;
+  const [count, setCount] = useState();
+
+  const getCollectionSum = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/collections/${loginperson}`,
+      );
+      if (res.data.success) {
+        setItems(res.data.data);
+        setCount(res.data.total);
+        console.log('heelooooo');
+      } else {
+        console.log('Failed');
+        console.log(Items);
+        console.log(count);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCollectionSum();
+  }, []);
 
   const onMenuPressed = () => {
     navigation.openDrawer();
@@ -92,7 +123,7 @@ const Dashboard = () => {
 
           <View style={[styles.infoPanelCol]}>
             <DashButtons
-              text="Collected COD Amount"
+              text={`Collected COD Amount \n\n${count}`}
               onPress={onCollectionsPressed}
               type="5"
             />

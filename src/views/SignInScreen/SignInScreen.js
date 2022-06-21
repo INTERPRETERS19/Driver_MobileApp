@@ -1,24 +1,32 @@
 import React, {useState} from 'react';
 import {ImageBackground} from 'react-native';
-import client from '../../api/client';
+import client from '../../routes/client';
 import {useLogin} from '../../context/LoginProvider';
 import {isValidEmail, isValidObjField, updateError} from '../../utils/methods';
-//import CheckBox from '@react-native-community/checkbox';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
+
+import {
+  View,
+  Text,
+  StyleSheet,
+  useWindowDimensions,
+  ScrollView,
+} from 'react-native';
+//import FormInput from '../../components/FormInput';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import CustomInput from '../../components/CustomInput';
 import {useNavigation} from '@react-navigation/native';
 
 const SignInScreen = () => {
-  const {setIsLoggedIn} = useLogin();
+  const {setIsLoggedIn, setProfile} = useLogin();
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: '',
   });
 
   const [error, setError] = useState('');
-  //const [isSelected, setSelection] = useState(false);
+  const [isSelected, setSelection] = useState(false);
   const {email, password} = userInfo;
 
   const handleOnChangeText = (value, fieldName) => {
@@ -32,7 +40,7 @@ const SignInScreen = () => {
     if (!isValidEmail(email)) return updateError('Invalid email!', setError);
 
     if (!password.trim() || password.length < 8)
-      return updateError('Password is invalid ', setError);
+      return updateError('Password is too short!', setError);
 
     return true;
   };
@@ -44,10 +52,12 @@ const SignInScreen = () => {
 
         if (res.data.success) {
           setUserInfo({email: '', password: ''});
-          // setProfile(res.data.user);
+          //   // setProfile(res.data.user);
+          //   setIsLoggedIn(true);
+          // } else {
+          //   updateError(res.data.message, setError);
+          setProfile(res.data.user);
           setIsLoggedIn(true);
-        } else {
-          updateError(res.data.message, setError);
         }
 
         console.log(res.data);
@@ -116,24 +126,7 @@ const SignInScreen = () => {
           />
         </View>
         <View style={styles.container}>
-          <View style={styles.checkboxContainer}>
-            {/* <CheckBox
-              value={isSelected}
-              onValueChange={setSelection}
-              style={styles.checkbox}
-            />
-            <Text
-              style={{
-                marginTop: 5,
-                fontFamily: 'Poppins',
-                fontSize: 14,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                color: COLORS.dark,
-              }}>
-              Remember me
-            </Text> */}
-          </View>
+          <View style={styles.checkboxContainer}></View>
         </View>
         <View style={{marginTop: 20}}>
           {/* <CustomButton text="Sign In" onPress={onSignInPressed} /> */}

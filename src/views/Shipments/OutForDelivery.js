@@ -9,8 +9,10 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-
 import Icon2 from 'react-native-vector-icons/AntDesign';
+
+import client from '../../routes/client';
+import {useLogin} from '../../context/LoginProvider';
 const OutForDelivery = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -18,22 +20,18 @@ const OutForDelivery = () => {
   //#000000
   //#7E7D7D
   const [Items, setItems] = useState([
-    {key: 1, item: '001854', name: ' '},
-    {key: 2, item: '741541', name: ' '},
-    {key: 3, item: '638524', name: ' '},
-    {key: 4, item: '096471', name: ' '},
-    {key: 5, item: '631901', name: ' '},
-    {key: 6, item: '001854', name: ' '},
-    {key: 7, item: '741541', name: ' '},
-    {key: 8, item: '741541', name: ' '},
-    {key: 9, item: '638524', name: ' '},
-    {key: 10, item: '096471', name: ' '},
-    {key: 11, item: '631901', name: ' '},
-    {key: 12, item: '001854', name: ' '},
+    {key: 1, item: '001854', address: 'Atchuvey', name: ' '},
+    {key: 2, item: '741541', address: 'Atchuvey', name: ' '},
+    {key: 3, item: '638524', address: 'Atchuvey', name: ' '},
+    {key: 4, item: '096471', address: 'Atchuvey', name: ' '},
+    {key: 5, item: '631901', address: 'Atchuvey', name: ' '},
+    {key: 6, item: '001854', address: 'Atchuvey', name: ' '},
+    {key: 7, item: '741541', address: 'Atchuvey', name: ' '},
+    
   ]);
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentInfo');
+    navigation.navigate('ShipmentDetails');
   };
 
   return (
@@ -57,6 +55,7 @@ const OutForDelivery = () => {
                   return (
                     <View style={styles.item} key={object.key}>
                       <Text style={styles.Itemtext}>{object.item}</Text>
+                      <Text style={styles.Itemtext}>{object.address}</Text>
                       <Icon2
                         style={styles.Itemtext}
                         name="right"
@@ -117,6 +116,7 @@ const styles = StyleSheet.create({
     padding: 20,
     // paddingTop: 120,
   },
+  
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
