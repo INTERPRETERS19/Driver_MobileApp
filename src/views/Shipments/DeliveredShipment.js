@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState ,useEffect} from 'react';
 import {
   View,
   Text,
@@ -6,10 +6,13 @@ import {
   ImageBackground,
   ScrollView,
 } from 'react-native';
+import Client from "../../routes/client";
 import {useNavigation} from '@react-navigation/native';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
+
+const Driver_ID = "62a39c08bf454e3c5cd7d61b";
 const DeliveredShipment = () => {
   const navigation = useNavigation();
   //#C3E4F5
@@ -33,7 +36,22 @@ const DeliveredShipment = () => {
   ]);
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentInfo');
+    navigation.navigate('ShipmentDetails');
+  };
+  const [user, setUser] = useState();
+  useEffect(() => {
+    getUser(Driver_ID);
+  }, []);
+
+  const getUser = async (userId) => {
+    await Client.get("/shipmentdetails", { _id: Driver_ID })
+      .then((response) => {
+        setUser(response);
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log("Unable to get delivered shipmentdetails");
+      });
   };
 
   return (
