@@ -58,14 +58,13 @@ const NewPasswordScreen = () => {
         setError,
       );
     return true;
-    return true;
   };
 
   const submitForm = async () => {
     if (isValidForm()) {
       try {
         console.log(loginperson);
-        console.log(userData);
+        // console.log(userData);
 
         const responce = await client.post('/changepassword', {
           newPassword,

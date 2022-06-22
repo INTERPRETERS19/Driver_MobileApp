@@ -1,19 +1,9 @@
 import React, {useEffect} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  ScrollView,
-  FlatList,
-} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, FlatList} from 'react-native';
 import axios from 'axios';
-// import { useNavigation } from '@react-navigation/native';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
-//import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-//import client from '../../routes/client';
 import {useLogin} from '../../context/LoginProvider';
 
 const Collection = () => {
@@ -21,7 +11,6 @@ const Collection = () => {
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
-  // const loginperson = '62a39c08bf454e3c5cd7d61b';
   const [count, setCount] = useState();
 
   const getItems = async () => {
@@ -39,7 +28,6 @@ const Collection = () => {
         // console.log(count);
       } else {
         console.log('Failed');
-        console.log(Items);
         console.log(count);
       }
     } catch (error) {
@@ -80,7 +68,6 @@ const Collection = () => {
             <Text style={styles.ShipementText}>Shipment ID</Text>
             <Text style={styles.ShipementText2}>COD Amount</Text>
           </View>
-          {/* <ScrollView showsVerticalScrollIndicator={false}> */}
           <View>
             <FlatList
               data={Items}
@@ -88,7 +75,6 @@ const Collection = () => {
               keyExtractor={item => item._id}
             />
           </View>
-          {/* </ScrollView> */}
         </View>
         <BottomNavigationBar />
       </View>

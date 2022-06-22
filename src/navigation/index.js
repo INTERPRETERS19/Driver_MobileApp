@@ -17,6 +17,7 @@ import ChangePassword from '../views/Settings/ChangePassword';
 import Profile from '../views/Settings/Profile';
 import PrivacyPolicy from '../views/Settings/PrivacyPolicy';
 import Help from '../views/Settings/Help';
+import Support from '../views/Settings/Support';
 import Terms from '../views/Settings/Terms';
 import About from '../views/Settings/About';
 import NewPassword from '../views/ForgotPassword/NewPassword';
@@ -25,7 +26,6 @@ import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
 import ShipmentDetails from '../views/Shipments/ShipmentDetails';
 import QRScan from '../views/ScanPage/QRScan';
-import Support from '../views/Settings/Support';
 
 const Drawer = createDrawerNavigator();
 
