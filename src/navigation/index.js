@@ -17,7 +17,6 @@ import ChangePassword from '../views/Settings/ChangePassword';
 import Profile from '../views/Settings/Profile';
 import PrivacyPolicy from '../views/Settings/PrivacyPolicy';
 import Help from '../views/Settings/Help';
-import Support from '../views/Settings/Support';
 import Terms from '../views/Settings/Terms';
 import About from '../views/Settings/About';
 import NewPassword from '../views/ForgotPassword/NewPassword';
@@ -187,7 +186,6 @@ const DrawerNavigator = () => {
         <Drawer.Screen name="ResetSuccess" component={ResetSuccess} />
         <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
         <Drawer.Screen name="ShipmentDetails" component={ShipmentDetails} />
-
       </Drawer.Navigator>
     </NavigationContainer>
   );
