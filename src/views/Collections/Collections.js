@@ -1,5 +1,12 @@
 import React, {useEffect} from 'react';
-import {View, Text, StyleSheet, ImageBackground, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  FlatList,
+  TextInput,
+} from 'react-native';
 import axios from 'axios';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
@@ -8,7 +15,24 @@ import {useLogin} from '../../context/LoginProvider';
 
 const Collection = () => {
   const [Items, setItems] = useState();
-  const {profile, setProfile} = useLogin();
+  const [filterData, setFilterData] = useState([]);
+  const [search, setSearch] = useState('');
+  const searchFilter = text => {
+    if (text) {
+      const newData = filterData.filter(item => {
+        const itemData = item.id ? item.id : '';
+        const textData = text;
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilterData(newData);
+      setSearch(text);
+    } else {
+      setFilterData(Items);
+      setSearch(text);
+    }
+  };
+
+  const {profile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
   const [count, setCount] = useState();
@@ -20,12 +44,8 @@ const Collection = () => {
       );
       if (res.data.success) {
         setItems(res.data.data);
-        // console.log(loginperson);
-        // console.log(res.data.data);
+        setFilterData(res.data.data);
         setCount(res.data.total);
-        // console.log('Success');
-        // console.log(Items);
-        // console.log(count);
       } else {
         console.log('Failed');
         console.log(count);
@@ -59,18 +79,26 @@ const Collection = () => {
         <View style={styles.Collection}>
           <View style={styles.infoPanelCol}>
             <Text style={styles.text2}>Total Collections </Text>
-
             <Text style={styles.text1}>LKR {count} </Text>
           </View>
+        </View>
+        <View>
+          <TextInput
+            style={styles.search}
+            value={search}
+            placeholder="Search"
+            underlineColorAndroid="transparent"
+            onChangeText={text => searchFilter(text)}
+          />
         </View>
         <View style={styles.collectionSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
             <Text style={styles.ShipementText2}>COD Amount</Text>
           </View>
-          <View>
+          <View tyle={styles.collectionSection}>
             <FlatList
-              data={Items}
+              data={filterData}
               renderItem={renderItem}
               keyExtractor={item => item._id}
             />
@@ -98,12 +126,14 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 5,
     flex: 1,
+    // backgroundColor: '#298',
   },
   Collection: {
-    flex: 4,
+    flex: 3,
     padding: 10,
-    paddingTop: 0,
-    paddingBottom: 5,
+    paddingTop: 5,
+    paddingBottom: 2,
+    // backgroundColor: '#333',
   },
   infoPanelCol: {
     alignContent: 'center',
@@ -114,6 +144,7 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     alignSelf: 'center',
+    position: 'absolute',
   },
   text1: {
     color: '#fff',
@@ -130,7 +161,9 @@ const styles = StyleSheet.create({
   },
   collectionSection: {
     flex: 12,
-    padding: 20,
+    padding: 15,
+    paddingTop: 0,
+    // backgroundColor: '#aaa',
   },
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
@@ -172,6 +205,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
+  },
+  search: {
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingLeft: 20,
+    margin: 10,
+    borderColor: '#0096',
+    backgroundColor: '#fff',
   },
 });
 export default Collection;
