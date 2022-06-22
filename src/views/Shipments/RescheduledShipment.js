@@ -62,15 +62,38 @@ const Rescheduled = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id}) => (
+  const Item = ({id, r_no_street, r_city, current_status,recipient_name,r_district,mobile_phone_number,COD}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+      <Text
+        style={styles.Itemtext}
+        onPress={() =>
+          navigation.navigate('ShipmentDetails', {
+            shipmentId: id,
+            name: recipient_name,
+            city: r_city,
+            status: current_status,
+            district: r_district,
+            contact: mobile_phone_number,
+            cod: COD,
+          })
+        }>
         {id}
       </Text>
     </View>
   );
 
-  const renderItem = ({item}) => <Item id={item.id} />;
+  const renderItem = ({item}) => (
+    <Item
+      id={item.id}
+      r_no_street={item.r_no_street}
+      r_city={item.r_city}
+      current_status={item.current_status}
+      r_district={item.r_district}
+      mobile_phone_number={item.mobile_phone_number}
+      COD={item.COD}
+      recipient_name={item.recipient_name}
+    />
+  );
 
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');

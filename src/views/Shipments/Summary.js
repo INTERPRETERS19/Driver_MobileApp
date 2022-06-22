@@ -62,9 +62,29 @@ const Summary = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id, current_status}) => (
+  const Item = ({
+    id,
+    r_city,
+    current_status,
+    recipient_name,
+    r_district,
+    mobile_phone_number,
+    COD,
+  }) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+      <Text
+        style={styles.Itemtext}
+        onPress={() =>
+          navigation.navigate('ShipmentDetails', {
+            shipmentId: id,
+            name: recipient_name,
+            city: r_city,
+            status: current_status,
+            district: r_district,
+            contact: mobile_phone_number,
+            cod: COD,
+          })
+        }>
         {id}
       </Text>
       <Text style={styles.Itemtamount}>{current_status}</Text>
@@ -72,7 +92,16 @@ const Summary = () => {
   );
 
   const renderItem = ({item}) => (
-    <Item id={item.id} current_status={item.current_status} />
+    <Item
+      id={item.id}
+      r_no_street={item.r_no_street}
+      r_city={item.r_city}
+      current_status={item.current_status}
+      r_district={item.r_district}
+      mobile_phone_number={item.mobile_phone_number}
+      COD={item.COD}
+      recipient_name={item.recipient_name}
+    />
   );
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');

@@ -10,7 +10,6 @@ import {
 import axios from 'axios';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import {useLogin} from '../../context/LoginProvider';
 import {useNavigation} from '@react-navigation/native';
@@ -61,9 +60,21 @@ const OutForDelivery = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id, r_no_street, r_city}) => (
+  const Item = ({id, r_no_street, r_city, current_status,recipient_name,r_district,mobile_phone_number,COD}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+      <Text
+        style={styles.Itemtext}
+        onPress={() =>
+          navigation.navigate('ShipmentInfo', {
+            shipmentId: id,
+            name: recipient_name,
+            city: r_city,
+            status: current_status,
+            district: r_district,
+            contact: mobile_phone_number,
+            cod: COD,
+          })
+        }>
         {id}
       </Text>
       <Text style={styles.Itemtamount}>{r_no_street}</Text>
@@ -72,11 +83,20 @@ const OutForDelivery = () => {
   );
 
   const renderItem = ({item}) => (
-    <Item id={item.id} r_no_street={item.r_no_street} r_city={item.r_city} />
+    <Item
+      id={item.id}
+      r_no_street={item.r_no_street}
+      r_city={item.r_city}
+      current_status={item.current_status}
+      r_district={item.r_district}
+      mobile_phone_number={item.mobile_phone_number}
+      COD={item.COD}
+      recipient_name={item.recipient_name}
+    />
   );
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentDetails');
+    navigation.navigate('ShipmentInfo');
   };
   return (
     <ImageBackground
@@ -88,8 +108,7 @@ const OutForDelivery = () => {
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
         <Text style={styles.OutForDeliveryTitle}>Out For Delivery </Text>
-        <View style={styles.OutForDelivery}>
-        </View>
+        <View style={styles.OutForDelivery}></View>
         <View>
           <TextInput
             style={styles.search}
@@ -105,13 +124,13 @@ const OutForDelivery = () => {
             <Text style={styles.ShipementText}>Street No</Text>
             <Text style={styles.ShipementText2}>Address</Text>
           </View>
-            <View>
-              <FlatList
-                data={filterData}
-                renderItem={renderItem}
-                keyExtractor={item => item._id}
-              />
-            </View>
+          <View>
+            <FlatList
+              data={filterData}
+              renderItem={renderItem}
+              keyExtractor={item => item._id}
+            />
+          </View>
         </View>
         <BottomNavigationBar />
       </View>
