@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  ScrollView,
+  TextInput,
   FlatList,
 } from 'react-native';
 import axios from 'axios';
@@ -18,6 +18,23 @@ import {useNavigation} from '@react-navigation/native';
 const Rescheduled = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
+  const [filterData, setFilterData] = useState([]);
+  const [search, setSearch] = useState('');
+  const searchFilter = text => {
+    if (text) {
+      const newData = filterData.filter(item => {
+        const itemData = item.id ? item.id : '';
+        const textData = text;
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilterData(newData);
+      setSearch(text);
+    } else {
+      setFilterData(Items);
+      setSearch(text);
+    }
+  };
+
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
@@ -25,10 +42,12 @@ const Rescheduled = () => {
   const getItems = async () => {
     try {
       const res = await axios.get(
-        `http://10.0.2.2:8000/Rescheduled/${loginperson}`);
+        `http://10.0.2.2:8000/Rescheduled/${loginperson}`,
+      );
       if (res.data.success) {
         setItems(res.data.data);
         console.log(loginperson);
+        setFilterData(res.data.data);
         console.log(res.data.data);
         console.log('Success');
         console.log(Items);
@@ -41,15 +60,19 @@ const Rescheduled = () => {
     }
   };
 
-  useEffect(() => {getItems();}, []);
+  useEffect(() => {
+    getItems();
+  }, []);
   const Item = ({id}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+        {id}
+      </Text>
     </View>
   );
 
   const renderItem = ({item}) => <Item id={item.id} />;
-  
+
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');
   };
@@ -63,27 +86,34 @@ const Rescheduled = () => {
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
         <Text style={styles.RescheduledTitle}>Rescheduled </Text>
-        <View style={styles.Rescheduled}>
+        <View style={styles.Rescheduled}></View>
+        <View>
+          <TextInput
+            style={styles.search}
+            value={search}
+            placeholder="Search"
+            underlineColorAndroid="transparent"
+            onChangeText={text => searchFilter(text)}
+          />
         </View>
         <View style={styles.RescheduledSection}>
           <View style={styles.ShipementTextcont}>
-            <Text style={styles.ShipementText} >Shipment ID</Text>
-            <Text style={styles.ShipementText2} >Rescheduled Date</Text>
+            <Text style={styles.ShipementText}>Shipment ID</Text>
+            <Text style={styles.ShipementText2}>Rescheduled Date</Text>
           </View>
-            <View>
-              <FlatList
-                data={Items}
-                renderItem={renderItem}
-                keyExtractor={item => item._id}
-              />
-            </View>
+          <View>
+            <FlatList
+              data={filterData}
+              renderItem={renderItem}
+              keyExtractor={item => item._id}
+            />
+          </View>
         </View>
         <BottomNavigationBar />
       </View>
     </ImageBackground>
   );
 };
-
 
 const styles = StyleSheet.create({
   root: {
@@ -175,6 +205,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
+  },
+  search: {
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingLeft: 20,
+    margin: 10,
+    borderColor: '#0096',
+    backgroundColor: '#fff',
   },
 });
 export default Rescheduled;

@@ -27,7 +27,6 @@ import ShipmentInfo from '../views/Information/ShipmentInfo';
 import ShipmentDetails from '../views/Shipments/ShipmentDetails';
 import QRScan from '../views/ScanPage/QRScan';
 
-
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {
-  ScrollView,
   ImageBackground,
   StyleSheet,
   Text,
@@ -14,6 +13,7 @@ const Driver_ID = '62b0b919ea359dca05630004';
 
 const ShipmentDetails = () => {
   const navigation = useNavigation();
+  // const {shipmentId} = route.params;
   const [shipment, setShipment] = useState(false);
   const onDonePressed = () => {
     navigation.navigate('OutForDelivery');
@@ -23,10 +23,10 @@ const ShipmentDetails = () => {
   };
   const [user, setUser] = useState();
   useEffect(() => {
-    getUser(Driver_ID);
+    getShipmentDetails(Driver_ID);
   }, []);
-  const getUser = async userId => {
-    await Client.get('/shipmentdetails', {_id: Driver_ID})
+  const getShipmentDetails = async userId => {
+    await Client.get('/shipmentdetails', Driver_ID)
       .then(response => {
         console.log(response.data);
         setShipment(response.data);

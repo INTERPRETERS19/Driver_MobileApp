@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  ScrollView,
+  TextInput,
   FlatList,
 } from 'react-native';
 import axios from 'axios';
@@ -18,6 +18,22 @@ import {useNavigation} from '@react-navigation/native';
 const Delivered = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
+  const [filterData, setFilterData] = useState([]);
+  const [search, setSearch] = useState('');
+  const searchFilter = text => {
+    if (text) {
+      const newData = filterData.filter(item => {
+        const itemData = item.id ? item.id : '';
+        const textData = text;
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilterData(newData);
+      setSearch(text);
+    } else {
+      setFilterData(Items);
+      setSearch(text);
+    }
+  };
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
@@ -31,6 +47,7 @@ const Delivered = () => {
         setItems(res.data.data);
         console.log(loginperson);
         console.log(res.data.data);
+        setFilterData(res.data.data);
         console.log('Success');
         console.log(Items);
       } else {
@@ -65,6 +82,15 @@ const Delivered = () => {
         <Text style={styles.DeliveredTitle}>Delivered </Text>
         <View style={styles.Delivered}>
         </View>
+        <View>
+          <TextInput
+            style={styles.search}
+            value={search}
+            placeholder="Search"
+            underlineColorAndroid="transparent"
+            onChangeText={text => searchFilter(text)}
+          />
+        </View>
         <View style={styles.DeliveredSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
@@ -72,7 +98,7 @@ const Delivered = () => {
           </View>
             <View>
               <FlatList
-                data={Items}
+                data={filterData}
                 renderItem={renderItem}
                 keyExtractor={item => item._id}
               />
@@ -175,6 +201,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
+  },
+  search: {
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingLeft: 20,
+    margin: 10,
+    borderColor: '#0096',
+    backgroundColor: '#fff',
   },
 });
 export default Delivered;
