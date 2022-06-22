@@ -8,14 +8,11 @@ import {
   FlatList,
 } from 'react-native';
 import axios from 'axios';
-// import { useNavigation } from '@react-navigation/native';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import {useLogin} from '../../context/LoginProvider';
 import {useNavigation} from '@react-navigation/native';
-const Driver_ID = '62a39c08bf454e3c5cd7d61b';
 const Returns = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
@@ -38,8 +35,6 @@ const Returns = () => {
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
-  // const loginperson = '62a39c08bf454e3c5cd7d61b';
-  // const [count, setCount] = useState(3000);
 
   const getItems = async () => {
     try {
@@ -54,11 +49,9 @@ const Returns = () => {
         // setCount(res.data.count);
         console.log('Success');
         console.log(Items);
-        // console.log(count);
       } else {
         console.log('Failed');
         console.log(Items);
-        // console.log(count);
       }
     } catch (error) {
       console.log(error);

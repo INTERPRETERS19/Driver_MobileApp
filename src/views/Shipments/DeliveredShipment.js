@@ -10,7 +10,6 @@ import {
 import axios from 'axios';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import {useLogin} from '../../context/LoginProvider';
 import {useNavigation} from '@react-navigation/native';
@@ -37,19 +36,17 @@ const Delivered = () => {
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
-  
- 
+
   const getItems = async () => {
     try {
       const res = await axios.get(
-        `http://10.0.2.2:8000/delivered/${loginperson}`);
+        `http://10.0.2.2:8000/delivered/${loginperson}`,
+      );
       if (res.data.success) {
         setItems(res.data.data);
-        console.log(loginperson);
         console.log(res.data.data);
         setFilterData(res.data.data);
         console.log('Success');
-        console.log(Items);
       } else {
         console.log('Failed');
         console.log(Items);
@@ -59,10 +56,14 @@ const Delivered = () => {
     }
   };
 
-  useEffect(() => {getItems();}, []);
+  useEffect(() => {
+    getItems();
+  }, []);
   const Item = ({id}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+        {id}
+      </Text>
     </View>
   );
 
@@ -109,7 +110,6 @@ const Delivered = () => {
     </ImageBackground>
   );
 };
-
 
 const styles = StyleSheet.create({
   root: {

@@ -46,10 +46,9 @@ const OutForDelivery = () => {
         setItems(res.data.data);
         setFilterData(res.data.data);
         console.log(res.data.data);
-        
+
         console.log('Success');
         console.log(Items);
-
       } else {
         console.log('Failed');
         console.log(Items);
@@ -64,7 +63,9 @@ const OutForDelivery = () => {
   }, []);
   const Item = ({id, r_no_street, r_city}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+        {id}
+      </Text>
       <Text style={styles.Itemtamount}>{r_no_street}</Text>
       <Text style={styles.Itemtamount}>{r_city}</Text>
     </View>
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
     flex: 12,
     padding: 20,
   },
-  
+
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,

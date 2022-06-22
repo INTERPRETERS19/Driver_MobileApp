@@ -9,7 +9,7 @@ import Client from '../../routes/client';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Driver_ID = '62b0b919ea359dca05630004';
+const Shipment_ID = '62b0b919ea359dca05630004';
 
 const ShipmentDetails = () => {
   const navigation = useNavigation();
@@ -21,12 +21,11 @@ const ShipmentDetails = () => {
   const onbackPressed = () => {
     navigation.navigate('Summary');
   };
-  const [user, setUser] = useState();
   useEffect(() => {
-    getShipmentDetails(Driver_ID);
+    getShipmentDetails(Shipment_ID);
   }, []);
   const getShipmentDetails = async userId => {
-    await Client.get('/shipmentdetails', Driver_ID)
+    await Client.get('/shipmentdetails', Shipment_ID)
       .then(response => {
         console.log(response.data);
         setShipment(response.data);
