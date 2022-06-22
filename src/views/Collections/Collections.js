@@ -1,31 +1,71 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ImageBackground,
-  ScrollView,
+  FlatList,
+  TextInput,
 } from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
+import {useLogin} from '../../context/LoginProvider';
 
 const Collection = () => {
-  const [Items, setItems] = useState([
-    {key: 1, item: '001854', amount: '2300', name: ' '},
-    {key: 2, item: '741541', amount: '300', name: ' '},
-    {key: 3, item: '638524', amount: '5000', name: ' '},
-    {key: 4, item: '096471', amount: '2210', name: ' '},
-    {key: 5, item: '631901', amount: '650', name: ' '},
-    {key: 6, item: '001854', amount: '1320', name: ' '},
-    {key: 7, item: '741541', amount: '680', name: ' '},
-    {key: 8, item: '741541', amount: '680', name: ' '},
-    {key: 9, item: '741541', amount: '680', name: ' '},
-    {key: 10, item: '741541', amount: '680', name: ' '},
-  ]);
+  const [Items, setItems] = useState();
+  const [filterData, setFilterData] = useState([]);
+  const [search, setSearch] = useState('');
+  const searchFilter = text => {
+    if (text) {
+      const newData = filterData.filter(item => {
+        const itemData = item.id ? item.id : '';
+        const textData = text;
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilterData(newData);
+      setSearch(text);
+    } else {
+      setFilterData(Items);
+      setSearch(text);
+    }
+  };
 
+  const {profile} = useLogin();
+  const auth = {profile};
+  const loginperson = auth.profile.id;
+  const [count, setCount] = useState();
+
+  const getItems = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/collections/${loginperson}`,
+      );
+      if (res.data.success) {
+        setItems(res.data.data);
+        setFilterData(res.data.data);
+        setCount(res.data.total);
+      } else {
+        console.log('Failed');
+        console.log(count);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getItems();
+  }, []);
+  const Item = ({id, COD}) => (
+    <View style={styles.item}>
+      <Text style={styles.Itemtext}>{id}</Text>
+      <Text style={styles.Itemtamount}>{COD}</Text>
+    </View>
+  );
+
+  const renderItem = ({item}) => <Item id={item.id} COD={item.COD} />;
   return (
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
@@ -39,31 +79,30 @@ const Collection = () => {
         <View style={styles.Collection}>
           <View style={styles.infoPanelCol}>
             <Text style={styles.text2}>Total Collections </Text>
-            {/* <MaterialCommunityIcons
-                  name="cash-marker"
-                  color={'#000000'}
-                  size={60}
-                /> */}
-            <Text style={styles.text1}>LKR 37,890 </Text>
+            <Text style={styles.text1}>LKR {count} </Text>
           </View>
+        </View>
+        <View>
+          <TextInput
+            style={styles.search}
+            value={search}
+            placeholder="Search"
+            underlineColorAndroid="transparent"
+            onChangeText={text => searchFilter(text)}
+          />
         </View>
         <View style={styles.collectionSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
             <Text style={styles.ShipementText2}>COD Amount</Text>
           </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View>
-              {Items.map(object => {
-                return (
-                  <View style={styles.item} key={object.key}>
-                    <Text style={styles.Itemtext}>{object.item}</Text>
-                    <Text style={styles.Itemtamount}>{object.amount}</Text>
-                  </View>
-                );
-              })}
-            </View>
-          </ScrollView>
+          <View tyle={styles.collectionSection}>
+            <FlatList
+              data={filterData}
+              renderItem={renderItem}
+              keyExtractor={item => item._id}
+            />
+          </View>
         </View>
         <BottomNavigationBar />
       </View>
@@ -87,12 +126,14 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 5,
     flex: 1,
+    // backgroundColor: '#298',
   },
   Collection: {
-    flex: 4,
+    flex: 3,
     padding: 10,
-    paddingTop: 0,
-    paddingBottom: 5,
+    paddingTop: 5,
+    paddingBottom: 2,
+    // backgroundColor: '#333',
   },
   infoPanelCol: {
     alignContent: 'center',
@@ -103,6 +144,7 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     alignSelf: 'center',
+    position: 'absolute',
   },
   text1: {
     color: '#fff',
@@ -119,7 +161,9 @@ const styles = StyleSheet.create({
   },
   collectionSection: {
     flex: 12,
-    padding: 20,
+    padding: 15,
+    paddingTop: 0,
+    // backgroundColor: '#aaa',
   },
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
@@ -161,6 +205,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
+  },
+  search: {
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingLeft: 20,
+    margin: 10,
+    borderColor: '#0096',
+    backgroundColor: '#fff',
   },
 });
 export default Collection;

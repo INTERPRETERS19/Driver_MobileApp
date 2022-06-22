@@ -17,7 +17,6 @@ import {
 import client from './../../routes/client';
 import {useNavigation} from '@react-navigation/native';
 import {useLogin} from '../../context/LoginProvider';
-
 const NewPasswordScreen = () => {
   const [userData, setUserData] = useState({
     oldpassword: '',
@@ -59,14 +58,13 @@ const NewPasswordScreen = () => {
         setError,
       );
     return true;
-    return true;
   };
 
   const submitForm = async () => {
     if (isValidForm()) {
       try {
         console.log(loginperson);
-        console.log(userData);
+        // console.log(userData);
 
         const responce = await client.post('/changepassword', {
           newPassword,
@@ -156,7 +154,6 @@ const NewPasswordScreen = () => {
             setValue={value =>
               setUserData({...userData, repeatnewPassword: value})
             }
-            secureTextEntry
           />
 
           <View style={{marginTop: 20}}>

@@ -12,7 +12,7 @@ import { Picker } from '@react-native-picker/picker';
 const ShipmentInfo = () => {
   const navigation = useNavigation();
   //const [COD] = useState('');
-  const SHIPPER_ID = "62b0b975ea359dca05630008";
+  const shipment_ID = "62b0b975ea359dca05630008";
   const [shipmentInfo, setShipmentInfo] = useState(
     {
       data: {
@@ -27,11 +27,11 @@ const ShipmentInfo = () => {
     }
   );
   useEffect(() => {
-    getUser(SHIPPER_ID);
+    getUser(shipment_ID);
   }, []);
 
   const getUser = async userId => {
-    await Client.get('/shipmentinfo', { _id: SHIPPER_ID })
+    await Client.get('/shipmentinfo', { _id: shipment_ID })
       .then(response => {
         setShipmentInfo(response);
         console.log(response.data);
@@ -41,7 +41,7 @@ const ShipmentInfo = () => {
       });
   };
   const [isSelected, setSelection] = useState(false);
-  
+
   const onDonePressed = () => {
     navigation.navigate('OutForDelivery');
   };
@@ -93,13 +93,14 @@ const ShipmentInfo = () => {
               <Text style={styles.infoIn}>City</Text>
               <Text style={styles.form}>{shipmentInfo.data.r_city}</Text>
               <Text style={styles.infoIn}>COD amount</Text>
+              <Text style={styles.form}>{shipmentInfo.data.COD}</Text>
 
               <View style={{ flex: 1, flexDirection: 'row' }}>
-                <View style={{ flex: 3 }}>
+                {/* <View style={{ flex: 3 }}>
                   <Text style={styles.form}>{shipmentInfo.data.COD}</Text>
-                </View>
+                </View> */}
 
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+                {/* <View style={{ flex: 1, flexDirection: 'row' }}>
                   <View style={{ flex: 3 }}>
                     <Text style={styles.form}>1000</Text>
                   </View>
@@ -110,7 +111,7 @@ const ShipmentInfo = () => {
                       style={styles.checkbox}
                     />
                   </View>
-                </View>
+                </View> */}
 
                 <Text style={styles.infoIn}>Status</Text>
 
@@ -120,10 +121,11 @@ const ShipmentInfo = () => {
                     selectedValue={selectedValue}
                     style={{
                       display: 'flex',
-                      height: 50,
+                      height: 20,
                       width: 200,
-                      // marginTop: 500,
-                      alignSelf: 'center',
+                       marginTop: 18,
+                       backgroundColor: 'rgba(0, 0, 0, 0.02)',
+                      //alignSelf: 'center',
                     }}
                     onValueChange={(itemValue, itemIndex) =>
                       setSelectedValue(itemValue)
@@ -140,7 +142,7 @@ const ShipmentInfo = () => {
               <CustomButton text="Done" onPress={onDonePressed} />
             </View>
           </View>
-          </View>
+        </View>
       </ImageBackground>
     </View>
   );

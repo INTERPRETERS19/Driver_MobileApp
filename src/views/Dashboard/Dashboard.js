@@ -1,17 +1,140 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
+import axios from 'axios';
+import {useLogin} from '../../context/LoginProvider';
 
 const Dashboard = () => {
   const navigation = useNavigation();
-
   const widthAndHeight = 180;
-  const series = [12, 10, 15, 28];
-  const sliceColor = ['#C3E4F5', '#7E7D7D', '#000', '#213571'];
+  const [Items, setItems] = useState();
+  const {profile, setProfile} = useLogin();
+  const auth = {profile};
+  const nameDriver = auth.profile.fullname;
+  const loginperson = auth.profile.id;
+  const [deliveredcount, setdeliveredcount] = useState();
+  const [returnscount, setreturnscount] = useState();
+  const [rescheduledcount, setrescheduledcount] = useState();
+  const [pendingcount, setpendingcount] = useState();
+  const [count, setCount] = useState();
+
+  const pendingCount = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/OutForDelivery/${loginperson}`,
+      );
+      if (res.data.success) {
+        setItems(res.data.data);
+        setpendingcount(res.data.count);
+        console.log(nameDriver);
+      } else {
+        console.log('Failed');
+        console.log(Items);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    pendingCount();
+  }, []);
+  const returnsCount = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/failtodelivery/${loginperson}`,
+      );
+      if (res.data.success) {
+        setItems(res.data.data);
+        setreturnscount(res.data.count);
+      } else {
+        console.log('Failed');
+        console.log(Items);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    returnsCount();
+  }, []);
+  const reScheduledCount = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/Rescheduled/${loginperson}`,
+      );
+      if (res.data.success) {
+        setItems(res.data.data);
+        setrescheduledcount(res.data.count);
+      } else {
+        console.log('Failed');
+        console.log(Items);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    reScheduledCount();
+  }, []);
+
+  const deliveredCount = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/delivered/${loginperson}`,
+      );
+      if (res.data.success) {
+        setItems(res.data.data);
+        setdeliveredcount(res.data.count);
+      } else {
+        console.log('Failed');
+        console.log(Items);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    deliveredCount();
+  }, []);
+
+  const getCollectionSum = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/collections/${loginperson}`,
+      );
+      if (res.data.success) {
+        setItems(res.data.data);
+        setCount(res.data.total);
+      } else {
+        console.log('Failed');
+        console.log(Items);
+        console.log(count);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCollectionSum();
+  }, []);
+
+  const a = deliveredcount;
+  const b = pendingcount;
+  const c = rescheduledcount;
+  const d = returnscount;
+  // const s = [a, b, c, d];
+  const s = [2, 8, 4, 5];
+  const sliceColor = ['#C3E4F5', '#7E7D7D', '#213571', '#000'];
 
   const onMenuPressed = () => {
     navigation.openDrawer();
@@ -56,7 +179,7 @@ const Dashboard = () => {
 
         <View style={[styles.welcomeBar]}>
           <Text style={styles.welcome}>Welcome</Text>
-          <Text style={styles.name}>Eren Jeager,</Text>
+          <Text style={styles.name}>{nameDriver},</Text>
         </View>
 
         <View style={[styles.dashboard]}>
@@ -66,12 +189,13 @@ const Dashboard = () => {
         <View style={[styles.infoPanel]}>
           <View style={[styles.infoPanelCol]}>
             <DashButtons
-              text="Delivered Shipments"
+              text={`Delivered Shipments \n\n${deliveredcount}`}
               onPress={onDeliveredShipmentPressed}
               type="1"
             />
+
             <DashButtons
-              text="Re-Scheduled Shipments"
+              text={`Re-Scheduled Shipments \n\n${rescheduledcount}`}
               onPress={onRescheduledShipmentPressed}
               type="3"
             />
@@ -79,12 +203,13 @@ const Dashboard = () => {
 
           <View style={[styles.infoPanelCol]}>
             <DashButtons
-              text="Pending Deliveries"
+              text={`Out For delivery \n\n${pendingcount}`}
               onPress={onPedingShipmentPressed}
               type="2"
             />
+
             <DashButtons
-              text="Return Shipments"
+              text={`Return Shipments \n\n${returnscount}`}
               onPress={onReturnPressed}
               type="4"
             />
@@ -92,7 +217,7 @@ const Dashboard = () => {
 
           <View style={[styles.infoPanelCol]}>
             <DashButtons
-              text="Collected COD Amount"
+              text={`Collected COD Amount \n\n${count}`}
               onPress={onCollectionsPressed}
               type="5"
             />
@@ -103,12 +228,19 @@ const Dashboard = () => {
           <View style={[styles.Pie1]}>
             <PieChart
               widthAndHeight={widthAndHeight}
-              series={series}
+              series={s}
               sliceColor={sliceColor}
               doughnut={true}
               coverRadius={0.45}
               coverFill={'#FFF'}
             />
+            {/* <PieChart
+              id="pie"
+              type="doughnut"
+              title="Shipment Summary"
+              palette="Soft Pastel"
+              dataSource={pieData}
+            /> */}
           </View>
           <View style={[styles.Pie]}>
             <Text style={styles.PieName}>
