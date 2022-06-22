@@ -25,7 +25,6 @@ import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
 import ShipmentDetails from '../views/Shipments/ShipmentDetails';
 import QRScan from '../views/ScanPage/QRScan';
-import Support from '../views/Settings/Support';
 
 const Drawer = createDrawerNavigator();
 
@@ -106,15 +105,6 @@ function CustomDrawerContent(props) {
             }}
           />
         </View>
-        {/* <View style={[styles.menuCard]}>
-          <DrawerItem
-            label="shipment Details"
-            labelStyle={[styles.NavPages]}
-            onPress={() => {
-              props.navigation.navigate('ShipmentDetails');
-            }}
-          />
-        </View> */}
         <View style={[styles.menuCard]}>
           <DrawerItem
             label="Re-Scheduled"
@@ -176,7 +166,6 @@ const DrawerNavigator = () => {
         <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="QRScan" component={QRScan} />
         <Drawer.Screen name="Profile" component={Profile} />
-
         <Drawer.Screen name="Help" component={Help} />
         <Drawer.Screen name="Support" component={Support} />
         <Drawer.Screen name="About" component={About} />
