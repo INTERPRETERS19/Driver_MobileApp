@@ -7,10 +7,10 @@ import {
   FlatList,
   TextInput,
 } from 'react-native';
-import axios from 'axios';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
+import client from '../../routes/client';
 import {useLogin} from '../../context/LoginProvider';
 
 const Collection = () => {
@@ -39,9 +39,7 @@ const Collection = () => {
 
   const getItems = async () => {
     try {
-      const res = await axios.get(
-        `http://10.0.2.2:8000/collections/${loginperson}`,
-      );
+      const res = await client.get(`collections/${loginperson}`);
       if (res.data.success) {
         setItems(res.data.data);
         setFilterData(res.data.data);
@@ -161,8 +159,9 @@ const styles = StyleSheet.create({
   },
   collectionSection: {
     flex: 12,
-    padding: 15,
+    padding: 20,
     paddingTop: 0,
+    paddingBottom: 50,
     // backgroundColor: '#aaa',
   },
   ShipementText: {
@@ -209,9 +208,9 @@ const styles = StyleSheet.create({
   search: {
     height: 40,
     borderWidth: 1,
-    borderRadius: 15,
+    borderRadius: 12,
     paddingLeft: 20,
-    margin: 10,
+    margin: 20,
     borderColor: '#0096',
     backgroundColor: '#fff',
   },
