@@ -8,10 +8,8 @@ import {
   FlatList,
 } from 'react-native';
 import axios from 'axios';
-// import { useNavigation } from '@react-navigation/native';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import {useLogin} from '../../context/LoginProvider';
 import {useNavigation} from '@react-navigation/native';
@@ -22,41 +20,40 @@ const Rescheduled = () => {
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
-  // const loginperson = '62a39c08bf454e3c5cd7d61b';
-  // const [count, setCount] = useState(3000);
 
   const getItems = async () => {
     try {
       const res = await axios.get(
-        `http://10.0.2.2:8000/Rescheduled/${loginperson}`);
+        `http://10.0.2.2:8000/Rescheduled/${loginperson}`,
+      );
       if (res.data.success) {
         setItems(res.data.data);
         console.log(loginperson);
         console.log(res.data.data);
-        // setCount(res.data.count);
         console.log('Success');
         console.log(Items);
-        // console.log(count);
       } else {
         console.log('Failed');
         console.log(Items);
-        // console.log(count);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {getItems();}, []);
+  useEffect(() => {
+    getItems();
+  }, []);
   const Item = ({id}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
-      {/* <Text style={styles.Itemtamount}>{COD}</Text> */}
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+        {id}
+      </Text>
     </View>
   );
 
   const renderItem = ({item}) => <Item id={item.id} />;
-  
+
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');
   };
@@ -70,29 +67,26 @@ const Rescheduled = () => {
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
         <Text style={styles.RescheduledTitle}>Rescheduled </Text>
-        <View style={styles.Rescheduled}>
-        </View>
+        <View style={styles.Rescheduled}></View>
         <View style={styles.RescheduledSection}>
           <View style={styles.ShipementTextcont}>
-            <Text style={styles.ShipementText} >Shipment ID</Text>
-            <Text style={styles.ShipementText2} >Rescheduled Date</Text>
+            <Text style={styles.ShipementText}>Shipment ID</Text>
+            <Text style={styles.ShipementText2}>Rescheduled Date</Text>
           </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View>
-              <FlatList
-                data={Items}
-                renderItem={renderItem}
-                keyExtractor={item => item._id}
-              />
-            </View>
-          </ScrollView>
+
+          <View>
+            <FlatList
+              data={Items}
+              renderItem={renderItem}
+              keyExtractor={item => item._id}
+            />
+          </View>
         </View>
         <BottomNavigationBar />
       </View>
     </ImageBackground>
   );
 };
-
 
 const styles = StyleSheet.create({
   root: {

@@ -48,7 +48,6 @@ const Collection = () => {
         setCount(res.data.total);
       } else {
         console.log('Failed');
-        console.log(Items);
         console.log(count);
       }
     } catch (error) {

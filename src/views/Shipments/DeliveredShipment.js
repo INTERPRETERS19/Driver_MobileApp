@@ -1,16 +1,8 @@
 import React, {useEffect} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  ScrollView,
-  FlatList,
-} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, FlatList} from 'react-native';
 import axios from 'axios';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import {useLogin} from '../../context/LoginProvider';
 import {useNavigation} from '@react-navigation/native';
@@ -21,18 +13,16 @@ const Delivered = () => {
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
-  
- 
+
   const getItems = async () => {
     try {
       const res = await axios.get(
-        `http://10.0.2.2:8000/delivered/${loginperson}`);
+        `http://10.0.2.2:8000/delivered/${loginperson}`,
+      );
       if (res.data.success) {
         setItems(res.data.data);
-        console.log(loginperson);
         console.log(res.data.data);
         console.log('Success');
-        console.log(Items);
       } else {
         console.log('Failed');
         console.log(Items);
@@ -42,10 +32,14 @@ const Delivered = () => {
     }
   };
 
-  useEffect(() => {getItems();}, []);
+  useEffect(() => {
+    getItems();
+  }, []);
   const Item = ({id}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+        {id}
+      </Text>
     </View>
   );
 
@@ -63,29 +57,26 @@ const Delivered = () => {
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
         <Text style={styles.DeliveredTitle}>Delivered </Text>
-        <View style={styles.Delivered}>
-        </View>
+        <View style={styles.Delivered}></View>
         <View style={styles.DeliveredSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
             <Text style={styles.ShipementText2}>Delivered Date</Text>
           </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View>
-              <FlatList
-                data={Items}
-                renderItem={renderItem}
-                keyExtractor={item => item._id}
-              />
-            </View>
-          </ScrollView>
+
+          <View>
+            <FlatList
+              data={Items}
+              renderItem={renderItem}
+              keyExtractor={item => item._id}
+            />
+          </View>
         </View>
         <BottomNavigationBar />
       </View>
     </ImageBackground>
   );
 };
-
 
 const styles = StyleSheet.create({
   root: {

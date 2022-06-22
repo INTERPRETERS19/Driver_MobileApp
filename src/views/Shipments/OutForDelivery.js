@@ -30,10 +30,9 @@ const OutForDelivery = () => {
         setItems(res.data.data);
         console.log(loginperson);
         console.log(res.data.data);
-        
+
         console.log('Success');
         console.log(Items);
-
       } else {
         console.log('Failed');
         console.log(Items);
@@ -48,7 +47,9 @@ const OutForDelivery = () => {
   }, []);
   const Item = ({id, r_no_street, r_city}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+        {id}
+      </Text>
       <Text style={styles.Itemtamount}>{r_no_street}</Text>
       <Text style={styles.Itemtamount}>{r_city}</Text>
     </View>
@@ -71,23 +72,21 @@ const OutForDelivery = () => {
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
         <Text style={styles.OutForDeliveryTitle}>Out For Delivery </Text>
-        <View style={styles.OutForDelivery}>
-        </View>
+        <View style={styles.OutForDelivery}></View>
         <View style={styles.OutForDeliverySection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}> Shipment ID</Text>
             <Text style={styles.ShipementText}>Street No</Text>
             <Text style={styles.ShipementText2}>Address</Text>
           </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View>
-              <FlatList
-                data={Items}
-                renderItem={renderItem}
-                keyExtractor={item => item._id}
-              />
-            </View>
-          </ScrollView>
+
+          <View>
+            <FlatList
+              data={Items}
+              renderItem={renderItem}
+              keyExtractor={item => item._id}
+            />
+          </View>
         </View>
         <BottomNavigationBar />
       </View>
@@ -145,7 +144,7 @@ const styles = StyleSheet.create({
     flex: 12,
     padding: 20,
   },
-  
+
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
