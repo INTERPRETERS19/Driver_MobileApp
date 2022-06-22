@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import Icon from 'react-native-vector-icons/Ionicons';
 import { ImageBackground, StyleSheet, Text, View, Button } from 'react-native';
 //import {Picker} from '@react-native-picker/picker';
 import CustomButton from '../../components/CustomButton';
@@ -9,38 +8,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import CheckBox from '@react-native-community/checkbox';
 import { Picker } from '@react-native-picker/picker';
 
-const ShipmentInfo = () => {
+const ShipmentInfo = ({route}) => {
   const navigation = useNavigation();
-  //const [COD] = useState('');
-  const shipment_ID = "62b0b975ea359dca05630008";
-  const [shipmentInfo, setShipmentInfo] = useState(
-    {
-      data: {
-        id: "",
-        recipient_name: "",
-        mobile_phone_number: "",
-        r_district: "",
-        r_city: "",
-        COD: "",
-        current_status: ""
-      }
-    }
-  );
-  useEffect(() => {
-    getUser(shipment_ID);
-  }, []);
 
-  const getUser = async userId => {
-    await Client.get('/shipmentinfo', { _id: shipment_ID })
-      .then(response => {
-        setShipmentInfo(response);
-        console.log(response.data);
-      })
-      .catch(err => {
-        console.log('Unable to get information');
-      });
-  };
-  const [isSelected, setSelection] = useState(false);
+  const { shipmentId,contact,cod,name,city,district}= route.params;
+
+
 
   const onDonePressed = () => {
     navigation.navigate('OutForDelivery');
@@ -80,38 +53,23 @@ const ShipmentInfo = () => {
                 <Text style={styles.head}>Shipment ID</Text>
               </View>
               <View style={{ flex: 1 }}>
-                <Text style={styles.head}>{shipmentInfo.data.id}</Text>
+                <Text style={styles.head}>{shipmentId}</Text>
               </View>
             </View>
             <View style={styles.info}>
               <Text style={styles.infoIn}>Recepient</Text>
-              <Text style={styles.form}>{shipmentInfo.data.recipient_name}</Text>
+              <Text style={styles.form}>{name}</Text>
               <Text style={styles.infoIn}>Contact number</Text>
-              <Text style={styles.form}>{shipmentInfo.data.mobile_phone_number}</Text>
+              <Text style={styles.form}>{contact}</Text>
               <Text style={styles.infoIn}>District</Text>
-              <Text style={styles.form}>{shipmentInfo.data.r_district}</Text>
+              <Text style={styles.form}>{district}</Text>
               <Text style={styles.infoIn}>City</Text>
-              <Text style={styles.form}>{shipmentInfo.data.r_city}</Text>
+              <Text style={styles.form}>{city}</Text>
               <Text style={styles.infoIn}>COD amount</Text>
-              <Text style={styles.form}>{shipmentInfo.data.COD}</Text>
+              <Text style={styles.form}>{cod}</Text>
 
               <View style={{ flex: 1, flexDirection: 'row' }}>
-                {/* <View style={{ flex: 3 }}>
-                  <Text style={styles.form}>{shipmentInfo.data.COD}</Text>
-                </View> */}
-
-                {/* <View style={{ flex: 1, flexDirection: 'row' }}>
-                  <View style={{ flex: 3 }}>
-                    <Text style={styles.form}>1000</Text>
-                  </View>
-                  <View style={{ flex: 1 }}>
-                    <CheckBox
-                      value={isSelected}
-                      onValueChange={setSelection}
-                      style={styles.checkbox}
-                    />
-                  </View>
-                </View> */}
+           
 
                 <Text style={styles.infoIn}>Status</Text>
 
@@ -171,7 +129,6 @@ const styles = StyleSheet.create({
   head: {
     flex: 1,
     paddingTop: 10,
-    //paddingBottom: 10,
     alignItems: 'center',
     fontFamily: 'Roboto-Bold',
     fontSize: 22,
@@ -181,11 +138,9 @@ const styles = StyleSheet.create({
   info: {
     flex: 7,
     padding: 10,
-    // backgroundColor: '#faaaaa',
   },
   button: {
     flex: 1,
-    //backgroundColor:"#213154",
     padding: 30,
   },
   infoIn: {

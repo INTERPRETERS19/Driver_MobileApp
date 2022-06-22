@@ -4,19 +4,34 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  ScrollView,
+  TextInput,
   FlatList,
 } from 'react-native';
 import axios from 'axios';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import {useLogin} from '../../context/LoginProvider';
 import {useNavigation} from '@react-navigation/native';
 const OutForDelivery = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
+  const [filterData, setFilterData] = useState([]);
+  const [search, setSearch] = useState('');
+  const searchFilter = text => {
+    if (text) {
+      const newData = filterData.filter(item => {
+        const itemData = item.id ? item.id : '';
+        const textData = text;
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilterData(newData);
+      setSearch(text);
+    } else {
+      setFilterData(Items);
+      setSearch(text);
+    }
+  };
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
@@ -28,7 +43,7 @@ const OutForDelivery = () => {
       );
       if (res.data.success) {
         setItems(res.data.data);
-        console.log(loginperson);
+        setFilterData(res.data.data);
         console.log(res.data.data);
 
         console.log('Success');
@@ -45,9 +60,21 @@ const OutForDelivery = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id, r_no_street, r_city}) => (
+  const Item = ({id, r_no_street, r_city, current_status,recipient_name,r_district,mobile_phone_number,COD}) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+      <Text
+        style={styles.Itemtext}
+        onPress={() =>
+          navigation.navigate('ShipmentInfo', {
+            shipmentId: id,
+            name: recipient_name,
+            city: r_city,
+            status: current_status,
+            district: r_district,
+            contact: mobile_phone_number,
+            cod: COD,
+          })
+        }>
         {id}
       </Text>
       <Text style={styles.Itemtamount}>{r_no_street}</Text>
@@ -56,11 +83,20 @@ const OutForDelivery = () => {
   );
 
   const renderItem = ({item}) => (
-    <Item id={item.id} r_no_street={item.r_no_street} r_city={item.r_city} />
+    <Item
+      id={item.id}
+      r_no_street={item.r_no_street}
+      r_city={item.r_city}
+      current_status={item.current_status}
+      r_district={item.r_district}
+      mobile_phone_number={item.mobile_phone_number}
+      COD={item.COD}
+      recipient_name={item.recipient_name}
+    />
   );
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentInfo');
+    navigation.navigate('ShipmentDetails');
   };
   return (
     <ImageBackground
@@ -73,16 +109,24 @@ const OutForDelivery = () => {
         <Profilecomponent></Profilecomponent>
         <Text style={styles.OutForDeliveryTitle}>Out For Delivery </Text>
         <View style={styles.OutForDelivery}></View>
+        <View>
+          <TextInput
+            style={styles.search}
+            value={search}
+            placeholder="Search"
+            underlineColorAndroid="transparent"
+            onChangeText={text => searchFilter(text)}
+          />
+        </View>
         <View style={styles.OutForDeliverySection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}> Shipment ID</Text>
             <Text style={styles.ShipementText}>Street No</Text>
             <Text style={styles.ShipementText2}>Address</Text>
           </View>
-
           <View>
             <FlatList
-              data={Items}
+              data={filterData}
               renderItem={renderItem}
               keyExtractor={item => item._id}
             />
@@ -185,6 +229,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
+  },
+  search: {
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingLeft: 20,
+    margin: 10,
+    borderColor: '#0096',
+    backgroundColor: '#fff',
   },
 });
 export default OutForDelivery;
