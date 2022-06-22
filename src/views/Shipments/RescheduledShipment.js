@@ -8,7 +8,6 @@ import {
   FlatList,
 } from 'react-native';
 import axios from 'axios';
-// import { useNavigation } from '@react-navigation/native';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,8 +21,6 @@ const Rescheduled = () => {
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
-  // const loginperson = '62a39c08bf454e3c5cd7d61b';
-  // const [count, setCount] = useState(3000);
 
   const getItems = async () => {
     try {
@@ -33,14 +30,11 @@ const Rescheduled = () => {
         setItems(res.data.data);
         console.log(loginperson);
         console.log(res.data.data);
-        // setCount(res.data.count);
         console.log('Success');
         console.log(Items);
-        // console.log(count);
       } else {
         console.log('Failed');
         console.log(Items);
-        // console.log(count);
       }
     } catch (error) {
       console.log(error);
@@ -51,7 +45,6 @@ const Rescheduled = () => {
   const Item = ({id}) => (
     <View style={styles.item}>
       <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
-      {/* <Text style={styles.Itemtamount}>{COD}</Text> */}
     </View>
   );
 
@@ -77,7 +70,6 @@ const Rescheduled = () => {
             <Text style={styles.ShipementText} >Shipment ID</Text>
             <Text style={styles.ShipementText2} >Rescheduled Date</Text>
           </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
             <View>
               <FlatList
                 data={Items}
@@ -85,7 +77,6 @@ const Rescheduled = () => {
                 keyExtractor={item => item._id}
               />
             </View>
-          </ScrollView>
         </View>
         <BottomNavigationBar />
       </View>

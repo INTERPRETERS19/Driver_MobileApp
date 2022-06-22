@@ -80,7 +80,6 @@ const Collection = () => {
             <Text style={styles.ShipementText}>Shipment ID</Text>
             <Text style={styles.ShipementText2}>COD Amount</Text>
           </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
             <View>
               <FlatList
                 data={Items}
@@ -88,7 +87,6 @@ const Collection = () => {
                 keyExtractor={item => item._id}
               />
             </View>
-          </ScrollView>
         </View>
         <BottomNavigationBar />
       </View>

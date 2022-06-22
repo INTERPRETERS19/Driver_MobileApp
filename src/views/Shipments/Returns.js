@@ -54,7 +54,6 @@ const Returns = () => {
   const Item = ({id}) => (
     <View style={styles.item}>
       <Text style={styles.Itemtext} onPress={onArrowPressed}>{id}</Text>
-      {/* <Text style={styles.Itemtamount}>{COD}</Text> */}
     </View>
   );
 
@@ -72,24 +71,13 @@ const Returns = () => {
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
         <Text style={styles.ReturnTitle}>Fail To Delivery </Text>
-        <View style={styles.Return}>
-          {/* <View style={styles.infoPanelCol}>
-            {/* <Text style={styles.text2}>Total Collections </Text> */}
-          {/* <MaterialCommunityIcons
-                  name="cash-marker"
-                  color={'#000000'}
-                  size={60}
-                /> */}
-          {/* <Text style={styles.text1}>LKR {count} </Text>
-          </View> * */}
+        <View style={styles.Return}> 
         </View>
         <View style={styles.ReturnSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
             <Text style={styles.ShipementText2}>Reason</Text>
-            {/* <Text style={styles.ShipementText2}>COD Amount</Text> */}
           </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
             <View>
               <FlatList
                 data={Items}
@@ -97,7 +85,6 @@ const Returns = () => {
                 keyExtractor={item => item._id}
               />
             </View>
-          </ScrollView>
         </View>
         <BottomNavigationBar />
       </View>

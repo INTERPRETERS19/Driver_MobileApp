@@ -79,7 +79,6 @@ const OutForDelivery = () => {
             <Text style={styles.ShipementText}>Street No</Text>
             <Text style={styles.ShipementText2}>Address</Text>
           </View>
-          <ScrollView showsVerticalScrollIndicator={false}>
             <View>
               <FlatList
                 data={Items}
@@ -87,7 +86,6 @@ const OutForDelivery = () => {
                 keyExtractor={item => item._id}
               />
             </View>
-          </ScrollView>
         </View>
         <BottomNavigationBar />
       </View>
