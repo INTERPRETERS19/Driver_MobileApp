@@ -154,7 +154,7 @@ const Profile = () => {
 
 const styles = StyleSheet.create({
   TopCont: {
-    padding: 20,
+    padding: 12,
     marginTop: 25,
   },
   container: {
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 38,
+    padding: 10,
   },
 
   Label: {
