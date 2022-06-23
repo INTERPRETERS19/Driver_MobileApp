@@ -12,7 +12,7 @@ import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 
-const ResetSuccess = () => {
+const Forgot = () => {
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
@@ -34,7 +34,7 @@ const ResetSuccess = () => {
               flex: 1,
               resizeMode: 'contain',
               marginTop: 140,
-              height: 170,
+              height: 230,
             }}
             source={require('../../../assets/successimg.png')}
           />
@@ -45,34 +45,20 @@ const ResetSuccess = () => {
             <Text
               style={{
                 fontFamily: 'Poppins',
-                fontSize: 29,
-                fontWeight: 'bold',
-                marginTop: -30,
-                textAlign: 'center',
-                color: COLORS.dark,
-              }}>
-              {'\n'} Password Reset{'\n'}Successful
-              {'\n'}
-            </Text>
-
-            <Text
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: 16.5,
+                fontSize: 18,
                 textAlign: 'center',
                 color: '#656363',
                 marginLeft: 10,
-                marginRight: 10,
+                marginRight: 10
               }}>
-              Please note that your password has been changed successfully for
-              the account:
-              <Text style={{fontWeight: 'bold'}}> Eren Jeager</Text>
+              Please Contact Your Service Provider To Reset Your Password !!!
+              
             </Text>
           </View>
 
-          <View style={{marginTop: 30}}>
+          <View style={{marginTop: 60}}>
             <CustomButton
-              text="Back to my Account"
+              text="Back to Sign In"
               onPress={onBacktoAccountPressed}
             />
           </View>
@@ -103,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ResetSuccess;
+export default Forgot;

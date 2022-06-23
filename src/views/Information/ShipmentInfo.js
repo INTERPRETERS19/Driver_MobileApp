@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {ImageBackground, StyleSheet, Text, View, Button} from 'react-native';
 //import {Picker} from '@react-native-picker/picker';
 import CustomButton from '../../components/CustomButton';
-import Dropdown from './Dropdown';
+//import Dropdown from './Dropdown';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CheckBox from '@react-native-community/checkbox';
