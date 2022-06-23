@@ -60,7 +60,16 @@ const OutForDelivery = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id, r_no_street, r_city, current_status,recipient_name,r_district,mobile_phone_number,COD}) => (
+  const Item = ({
+    id,
+    r_no_street,
+    r_city,
+    current_status,
+    recipient_name,
+    r_district,
+    mobile_phone_number,
+    COD,
+  }) => (
     <View style={styles.item}>
       <Text
         style={styles.Itemtext}
