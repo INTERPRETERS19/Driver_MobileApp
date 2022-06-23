@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
   topbar: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.01)',
-    // padding: 20,
   },
   content: {
     padding: 20,
