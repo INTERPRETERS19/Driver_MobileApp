@@ -83,6 +83,10 @@ const SignInScreen = () => {
 
         if (res.data.success) {
           setUserInfo({email: '', password: ''});
+          //   // setProfile(res.data.user);
+          //   setIsLoggedIn(true);
+          // } else {
+          //   updateError(res.data.message, setError);
           setProfile(res.data.user);
           setIsLoggedIn(true);
           storeUser(res.data.user);
@@ -142,7 +146,9 @@ const SignInScreen = () => {
             placeholder="Email"
             value={email}
             autoCapitalize="none"
-            setValue={value => setUserInfo({...userInfo, email: value})}
+            setValue={value =>
+              setUserInfo({...userInfo, email: value.toLowerCase()})
+            }
           />
           <CustomInput
             placeholder="Password"
@@ -150,41 +156,9 @@ const SignInScreen = () => {
             setValue={value => setUserInfo({...userInfo, password: value})}
             secureTextEntry
           />
-          {/* <FormInput
-            value={email}
-            onChangeText={value => handleOnChangeText(value, 'email')}
-            label="Email"
-            placeholder="example@email.com"
-            autoCapitalize="none"
-          />
-          <FormInput
-            value={password}
-            onChangeText={value => handleOnChangeText(value, 'password')}
-            label="Password"
-            placeholder="********"
-            autoCapitalize="none"
-            secureTextEntry
-          /> */}
         </View>
         <View style={styles.container}>
-          <View style={styles.checkboxContainer}>
-            <CheckBox
-              value={isSelected}
-              onValueChange={setSelection}
-              style={styles.checkbox}
-            />
-            <Text
-              style={{
-                marginTop: 5,
-                fontFamily: 'Poppins',
-                fontSize: 14,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                color: COLORS.dark,
-              }}>
-              Remember me
-            </Text>
-          </View>
+          <View style={styles.checkboxContainer}></View>
         </View>
         <View style={{marginTop: 20}}>
           {/* <CustomButton text="Sign In" onPress={onSignInPressed} /> */}

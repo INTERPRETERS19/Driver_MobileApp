@@ -11,7 +11,7 @@ import CheckBox from '@react-native-community/checkbox';
 const ShipmentInfo = () => {
   const navigation = useNavigation();
   //const [COD] = useState('');
-  const [isSelected, setSelection] = useState(false);
+  const [shipment,setShipment] = useState(false);
   const onDonePressed = () => {
     navigation.navigate('OutForDelivery');
   };

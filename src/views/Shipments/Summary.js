@@ -1,104 +1,126 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ImageBackground,
-  ScrollView,
-  TouchableOpacity,
-  Alert,
+  TextInput,
+  FlatList,
 } from 'react-native';
+import axios from 'axios';
+import {useState} from 'react';
+import Profilecomponent from '../../components/Profilecomponent';
+import BottomNavigationBar from '../../shared/BottomNavigationBar';
+import {useLogin} from '../../context/LoginProvider';
 import {useNavigation} from '@react-navigation/native';
 
-import Profilecomponent from '../../components/Profilecomponent';
-import Icon2 from 'react-native-vector-icons/AntDesign';
-import BottomNavigationBar from '../../shared/BottomNavigationBar';
-const Returns = () => {
+const Summary = () => {
   const navigation = useNavigation();
-  //#C3E4F5
-  //#213571
-  //#000000
-  //#7E7D7D
-  const [Items, setItems] = useState([
-    {key: 1, item: '001854', name: ' '},
-    {key: 2, item: '741541', name: ' '},
-    {key: 3, item: '638524', name: ' '},
-    {key: 4, item: '096471', name: ' '},
-    {key: 5, item: '631901', name: ' '},
-    {key: 6, item: '001854', name: ' '},
-    {key: 7, item: '741541', name: ' '},
-    {key: 8, item: '741541', name: ' '},
-    {key: 9, item: '741541', name: ' '},
-    {key: 10, item: '741541', name: ' '},
-  ]);
+  const [Items, setItems] = useState();
+  const [filterData, setFilterData] = useState([]);
+  const [search, setSearch] = useState('');
+  const searchFilter = text => {
+    if (text) {
+      const newData = filterData.filter(item => {
+        const itemData = item.id ? item.id : '';
+        const textData = text;
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilterData(newData);
+      setSearch(text);
+    } else {
+      setFilterData(Items);
+      setSearch(text);
+    }
+  };
+  const {profile, setProfile} = useLogin();
+  const auth = {profile};
+  const loginperson = auth.profile.id;
 
-  const onArrowPressed = () => {
-    navigation.navigate('ShipmentInfo');
+  const getItems = async () => {
+    try {
+      const res = await axios.get(
+        `http://10.0.2.2:8000/Summary/${loginperson}`,
+      );
+      if (res.data.success) {
+        setItems(res.data.data);
+        setFilterData(res.data.data);
+        console.log(loginperson);
+        console.log(res.data.data);
+
+        console.log('Success');
+        console.log(Items);
+      } else {
+        console.log('Failed');
+        console.log(Items);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  return (
-    <View style={styles.root}>
-      <ImageBackground
-        source={require('../../../assets/img1.jpg')}
-        style={{width: '100%', height: '100%'}}>
-        <Profilecomponent></Profilecomponent>
-        <View style={[styles.Out]}>
-          <View style={[styles.Return]}>
-            <Text style={[styles.ReturnText]}>Return</Text>
-          </View>
+  useEffect(() => {
+    getItems();
+  }, []);
+  const Item = ({id, current_status}) => (
+    <View style={styles.item}>
+      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+        {id}
+      </Text>
+      <Text style={styles.Itemtamount}>{current_status}</Text>
+    </View>
+  );
 
-          <View style={styles.ShipmentSection}>
-            <View style={styles.ShipementTextcont}>
-              <Text style={styles.ShipementText}>ShipmentID</Text>
-            </View>
-            <ScrollView showsVerticalScrollIndicator={false}>
-              <View>
-                {Items.map(object => {
-                  return (
-                    <View style={styles.item} key={object.key}>
-                      <Text style={styles.Itemtext}>{object.item}</Text>
-                      <Icon2
-                        style={styles.Itemtext}
-                        name="right"
-                        size={20}
-                        color="#000000"
-                        onPress={onArrowPressed}
-                      />
-                    </View>
-                  );
-                })}
-              </View>
-            </ScrollView>
+  const renderItem = ({item}) => (
+    <Item id={item.id} current_status={item.current_status} />
+  );
+  const onArrowPressed = () => {
+    navigation.navigate('ShipmentDetails');
+  };
+  return (
+    <ImageBackground
+      source={require('../../../assets/img1.jpg')}
+      style={{
+        flex: 1,
+        height: '100%',
+      }}>
+      <View style={styles.root}>
+        <Profilecomponent></Profilecomponent>
+        <Text style={styles.SummaryTitle}>Summary </Text>
+        <View style={styles.Summary}></View>
+        <View>
+          <TextInput
+            style={styles.search}
+            value={search}
+            placeholder="Search"
+            underlineColorAndroid="transparent"
+            onChangeText={text => searchFilter(text)}
+          />
+        </View>
+        <View style={styles.SummarySection}>
+          <View style={styles.ShipementTextcont}>
+            <Text style={styles.ShipementText}>Shipment ID</Text>
+            <Text style={styles.ShipementText2}>Status</Text>
+          </View>
+          <View>
+            <FlatList
+              data={filterData}
+              renderItem={renderItem}
+              keyExtractor={item => item._id}
+            />
           </View>
         </View>
         <BottomNavigationBar />
-      </ImageBackground>
-    </View>
+      </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    // backgroundColor: '#236501',
   },
-  Out: {
-    flex: 10,
-    fontWeight: 'bold',
-    fontSize: 25,
-    justifyContent: 'space-between',
-    fontFamily: 'Montserrat-Medium',
-  },
-  Return: {
-    flex: 1,
-    padding: 15,
-    color: '#000000',
-    lineHeight: 22,
-    letterSpacing: 4,
-    textTransform: 'uppercase',
-    justifyContent: 'space-between',
-  },
-  ReturnText: {
+  SummaryTitle: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
@@ -107,32 +129,74 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: 'rgba(0, 0, 0, 0.3)',
     textAlign: 'center',
-  },
-  image: {
+    padding: 10,
+    paddingBottom: 5,
     flex: 1,
-    justifyContent: 'center',
   },
-  ShipmentSection: {
+  Summary: {
     flex: 4,
-    //backgroundColor: '#A45163',
+    padding: 10,
+    paddingTop: 0,
+    paddingBottom: 5,
+  },
+  infoPanelCol: {
+    alignContent: 'center',
+    backgroundColor: '#213571',
+    borderRadius: 10,
+    padding: 10,
+    width: 300,
+    height: 80,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  text1: {
+    color: '#fff',
+    fontFamily: 'SF-Pro-Displa-Bold',
+    fontWeight: 'bold',
+    fontSize: 22,
+    textAlign: 'center',
+  },
+  text2: {
+    color: '#fff',
+    fontFamily: 'SF-Pro-Displa-Bold',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  SummarySection: {
+    flex: 12,
     padding: 20,
-    // paddingTop: 120,
   },
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
     fontWeight: 'bold',
     color: '#000000',
-    textAlign: 'left',
+    flex: 1,
+  },
+  ShipementText2: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000000',
+    textAlign: 'right',
+  },
+  ShipementTextcont: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    padding: 10,
   },
   Itemtext: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     color: '#000000',
-    textAlign: 'left',
+  },
+  Itemtamount: {
+    fontFamily: 'Montserrat-Medium',
+    fontStyle: 'normal',
+    color: '#000000',
+    textAlign: 'right',
   },
   item: {
-    // backgroundColor:'#006531',
     backgroundColor: '#C3E4F5',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -143,6 +207,14 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     paddingVertical: 10,
   },
+  search: {
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingLeft: 20,
+    margin: 10,
+    borderColor: '#0096',
+    backgroundColor: '#fff',
+  },
 });
-
-export default Returns;
+export default Summary;

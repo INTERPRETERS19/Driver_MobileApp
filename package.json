@@ -2,6 +2,7 @@
   "name": "authentication",
   "version": "0.0.1",
   "private": true,
+  "proxy": "http://10.0.2.2:8000",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -39,7 +40,7 @@
     "react-native-paper": "^4.12.1",
     "react-native-pie-chart": "^2.0.2",
     "react-native-reanimated": "^2.8.0",
-    "react-native-safe-area-context": "^4.2.5",
+    "react-native-safe-area-context": "^4.3.1",
     "react-native-screens": "^3.13.1",
     "react-native-select-dropdown": "^2.0.3",
     "react-native-simple-radio-button": "^2.7.4",
