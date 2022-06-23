@@ -102,7 +102,7 @@ const SignInScreen = () => {
   const navigation = useNavigation();
 
   const onForgotPasswordPressed = () => {
-    navigation.navigate('OTP');
+    navigation.navigate('Forgot');
   };
 
   return (
