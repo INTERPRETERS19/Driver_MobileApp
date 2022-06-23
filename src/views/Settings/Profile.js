@@ -1,8 +1,9 @@
 import React from 'react';
-import { Image } from 'react-native';
+import {Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { useState, useEffect } from "react";
-import Client from "../../routes/client";
+import {useState, useEffect} from 'react';
+import Client from '../../routes/client';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   ImageBackground,
@@ -12,40 +13,60 @@ import {
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
-const DriverID = "62a39c08bf454e3c5cd7d61b";
+// const DriverID = '62a9f35b74963c4338b92425';
 
 const Profile = () => {
-  const { height } = useWindowDimensions();
+  const [currentUser, setCurrentUser] = useState();
+  const {height} = useWindowDimensions();
   const navigation = useNavigation();
-
   const [user, setUser] = useState();
+  //   {
+  //     fullname: '',
+  //     mobile_number: '',
+  //     driving_licence_no: '',
+  //     vehicle_type: '',
+  //     vehicle_reg_No: '',
+  // }
   useEffect(() => {
-    getUser(DriverID);
+    getCurrentUser();
   }, []);
 
-  const getUser = async (userId) => {
-    await Client.get("/profile", { _id: DriverID })
-      .then((response) => {
-        setUser(response);
-        console.log(response);
+  const getCurrentUser = async () => {
+    try {
+      await AsyncStorage.getItem('@MyApp_user').then(res => {
+        console.log(res);
+        setCurrentUser(res != null ? JSON.parse(res) : null);
+        getUser(JSON.parse(res).id);
+      });
+    } catch (e) {
+      // console.log(e);
+    }
+  };
+
+  const getUser = async userId => {
+    await Client.get('/profile', {_id: userId})
+      .then(response => {
+        setUser(response.data);
+        // console.log(response);
       })
-      .catch((err) => {
-        console.log("Unable to get profile");
+      .catch(err => {
+        console.log('Unable to get profile');
       });
   };
 
   const onbackPressed = () => {
     navigation.navigate('Dashboard');
   };
+  // console.log(user);
 
   return (
     <ImageBackground
       source={require('../../../assets/Background.png')}
       style={{
         flex: 1,
-        height: '100%'
+        height: '100%',
       }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.root}>
@@ -88,29 +109,42 @@ const Profile = () => {
                 borderWidth: 3,
                 borderColor: 'white',
               }}
-              source={require('../../../assets/profile.jpg')}
+              // source={require('../../../assets/profile.jpg')}
             />
+            {/* <div>
+        <form action="/" method="POST" enctype="multipart/form-data"></form>
+             <div>
+                <label for="image">Upload Image</label>
+                <input type="file" id="image" 
+                       name="image" value="" required>
+            </div>
+            </div> */}
           </View>
-
           <View
             style={{
-              display: "flex",
+              display: 'flex',
               backgroundColor: '#FFFFFF',
               borderRadius: 20,
               paddingHorizontal: 20,
               paddingVertical: 17,
-              marginTop: 25
+              marginTop: 25,
             }}>
-            <Text style={styles.Label}>FULL NAME</Text>
-            <Text style={styles.Info}>{user.data.fullname}</Text>
-            <Text style={styles.Label}>MOBILE NUMBER</Text>
-            <Text style={styles.Info}>{user.data.mobile_number}</Text>
-            <Text style={styles.Label}>DRIVING LICENSE NUMBER</Text>
-            <Text style={styles.Info}>{user.data.driving_licence_no}</Text>
-            <Text style={styles.Label}>VEHICLE TYPE</Text>
-            <Text style={styles.Info}>{user.data.vehicle_type}</Text>
-            <Text style={styles.Label}>VEHICLE REGISTRATION NUMBER</Text>
-            <Text style={styles.Info}>{user.data.vehicle_reg_No}</Text>
+            {currentUser && (
+              <>
+                <Text style={styles.Label}>FULL NAME</Text>
+                <Text style={styles.Info}>{currentUser.fullname}</Text>
+                <Text style={styles.Label}>MOBILE NUMBER</Text>
+                <Text style={styles.Info}>{currentUser.mobile_number}</Text>
+                <Text style={styles.Label}>DRIVING LICENSE NUMBER</Text>
+                <Text style={styles.Info}>
+                  {currentUser.driving_licence_no}
+                </Text>
+                <Text style={styles.Label}>VEHICLE TYPE</Text>
+                <Text style={styles.Info}>{currentUser.vehicle_type}</Text>
+                <Text style={styles.Label}>VEHICLE REGISTRATION NUMBER</Text>
+                <Text style={styles.Info}>{currentUser.vehicle_reg_No}</Text>
+              </>
+            )}
           </View>
         </View>
       </ScrollView>
@@ -121,7 +155,7 @@ const Profile = () => {
 const styles = StyleSheet.create({
   TopCont: {
     padding: 20,
-    marginTop: 25
+    marginTop: 25,
   },
   container: {
     display: 'flex',
@@ -129,7 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 2,
+    padding: 38,
   },
 
   Label: {

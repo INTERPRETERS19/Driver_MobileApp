@@ -4,6 +4,7 @@ import client from '../../routes/client';
 import {useLogin} from '../../context/LoginProvider';
 import {isValidEmail, isValidObjField, updateError} from '../../utils/methods';
 import CheckBox from '@react-native-community/checkbox';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   View,
@@ -17,6 +18,15 @@ import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
 import CustomInput from '../../components/CustomInput';
 import {useNavigation} from '@react-navigation/native';
+
+const storeUser = async value => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem('@MyApp_user', jsonValue);
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 const SignInScreen = () => {
   const {setIsLoggedIn, setProfile} = useLogin();
@@ -45,6 +55,27 @@ const SignInScreen = () => {
     return true;
   };
 
+  // const storeUser = async value => {
+  //   try {
+  //     const jsonValue = JSON.stringify(value);
+  //     await AsyncStorage.setItem('@storage_Key', jsonValue);
+  //   } catch (e) {
+  //     // saving error
+  //   }
+  // };
+
+  // const getData = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem('@storage_Key');
+  //     if (value !== null) {
+  //       console.log(value);
+  //       // value previously stored
+  //     }
+  //   } catch (e) {
+  //     // error reading value
+  //   }
+  // };
+
   const submitForm = async () => {
     if (isValidForm()) {
       try {
@@ -54,9 +85,10 @@ const SignInScreen = () => {
           setUserInfo({email: '', password: ''});
           setProfile(res.data.user);
           setIsLoggedIn(true);
+          storeUser(res.data.user);
         }
 
-        console.log(res.data);
+        // console.log(res.data);
       } catch (error) {
         console.log(error);
       }
