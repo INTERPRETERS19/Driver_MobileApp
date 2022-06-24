@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@parse/react-native": "^0.0.1-alpha.18",
-    "@react-native-async-storage/async-storage": "^1.17.6",
+    "@react-native-async-storage/async-storage": "^1.17.7",
     "@react-native-community/art": "^1.2.0",
     "@react-native-community/checkbox": "^0.5.12",
     "@react-native-picker/picker": "^2.4.1",
@@ -34,9 +34,6 @@
     "react-native-fontawesome": "^7.0.0",
     "react-native-gesture-handler": "^2.4.2",
     "react-native-interactive-avatar": "^2.0.0",
-    "react-native-keyevent": "^0.2.8",
-    "react-native-otp-inputs": "^4.1.1",
-    "react-native-otp-textinput": "^0.0.9",
     "react-native-paper": "^4.12.1",
     "react-native-pie-chart": "^2.0.2",
     "react-native-reanimated": "^2.8.0",
