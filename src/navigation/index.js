@@ -17,12 +17,9 @@ import ChangePassword from '../views/Settings/ChangePassword';
 import Profile from '../views/Settings/Profile';
 import PrivacyPolicy from '../views/Settings/PrivacyPolicy';
 import Help from '../views/Settings/Help';
-import Support from '../views/Settings/Support';
 import Terms from '../views/Settings/Terms';
 import About from '../views/Settings/About';
-import NewPassword from '../views/ForgotPassword/NewPassword';
-import OTP from '../views/OTP/OTP';
-import ResetSuccess from '../views/ResetSuccess/ResetSuccess';
+import Forgot from '../views/Forgot Password/Forgot';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
 import ShipmentDetails from '../views/Shipments/ShipmentDetails';
 import QRScan from '../views/ScanPage/QRScan';
@@ -168,12 +165,10 @@ const DrawerNavigator = () => {
         <Drawer.Screen name="QRScan" component={QRScan} />
         <Drawer.Screen name="Profile" component={Profile} />
         <Drawer.Screen name="Help" component={Help} />
-        <Drawer.Screen name="Support" component={Support} />
         <Drawer.Screen name="About" component={About} />
         <Drawer.Screen name="ChangePassword" component={ChangePassword} />
         <Drawer.Screen name="Terms" component={Terms} />
         <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-        <Drawer.Screen name="ResetSuccess" component={ResetSuccess} />
         <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
         <Drawer.Screen name="ShipmentDetails" component={ShipmentDetails} />
       </Drawer.Navigator>
@@ -187,8 +182,7 @@ const StackNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="SignIn" component={SignInScreen} />
-        <Stack.Screen name="OTP" component={OTP} />
-        <Stack.Screen name="NewPassword" component={NewPassword} />
+        <Stack.Screen name="Forgot" component={Forgot} />
       </Stack.Navigator>
     </NavigationContainer>
   );

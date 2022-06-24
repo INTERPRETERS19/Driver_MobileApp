@@ -108,7 +108,8 @@ const OutForDelivery = () => {
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
         <Text style={styles.OutForDeliveryTitle}>Out For Delivery </Text>
-        <View style={styles.OutForDelivery}></View>
+        <View style={styles.OutForDelivery}>
+        </View>
         <View>
           <TextInput
             style={styles.search}
@@ -124,13 +125,13 @@ const OutForDelivery = () => {
             <Text style={styles.ShipementText}>Street No</Text>
             <Text style={styles.ShipementText2}>Address</Text>
           </View>
-          <View>
-            <FlatList
-              data={filterData}
-              renderItem={renderItem}
-              keyExtractor={item => item._id}
-            />
-          </View>
+            <View>
+              <FlatList
+                data={filterData}
+                renderItem={renderItem}
+                keyExtractor={item => item._id}
+              />
+            </View>
         </View>
         <BottomNavigationBar />
       </View>

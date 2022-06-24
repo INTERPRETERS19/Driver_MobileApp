@@ -1,5 +1,12 @@
 import React, {useEffect} from 'react';
-import {View, Text, StyleSheet, ImageBackground, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TextInput,
+  FlatList,
+} from 'react-native';
 import axios from 'axios';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
@@ -9,6 +16,22 @@ import {useNavigation} from '@react-navigation/native';
 const Returns = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
+  const [filterData, setFilterData] = useState([]);
+  const [search, setSearch] = useState('');
+  const searchFilter = text => {
+    if (text) {
+      const newData = filterData.filter(item => {
+        const itemData = item.id ? item.id : '';
+        const textData = text;
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilterData(newData);
+      setSearch(text);
+    } else {
+      setFilterData(Items);
+      setSearch(text);
+    }
+  };
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
@@ -22,6 +45,8 @@ const Returns = () => {
         setItems(res.data.data);
         console.log(loginperson);
         console.log(res.data.data);
+        setFilterData(res.data.data);
+        // setCount(res.data.count);
         console.log('Success');
         console.log(Items);
       } else {
@@ -59,14 +84,24 @@ const Returns = () => {
         <Profilecomponent></Profilecomponent>
         <Text style={styles.ReturnTitle}>Fail To Delivery </Text>
         <View style={styles.Return}></View>
+        <View>
+          <TextInput
+            style={styles.search}
+            value={search}
+            placeholder="Search"
+            underlineColorAndroid="transparent"
+            onChangeText={text => searchFilter(text)}
+          />
+        </View>
         <View style={styles.ReturnSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
             <Text style={styles.ShipementText2}>Reason</Text>
           </View>
+         
           <View>
             <FlatList
-              data={Items}
+              data={filterData}
               renderItem={renderItem}
               keyExtractor={item => item._id}
             />
@@ -168,6 +203,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
+  },
+  search: {
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 15,
+    paddingLeft: 20,
+    margin: 10,
+    borderColor: '#0096',
+    backgroundColor: '#fff',
   },
 });
 export default Returns;
