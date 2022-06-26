@@ -167,7 +167,7 @@ const DrawerNavigator = () => {
         <Drawer.Screen name="QRScan" component={QRScan} />
         <Drawer.Screen name="Profile" component={Profile} />
         <Drawer.Screen name="Help" component={Help} />
-        <Drawer.Screen name="Support" component={Support} />
+        {/* <Drawer.Screen name="Support" component={Support} /> */}
         <Drawer.Screen name="About" component={About} />
         <Drawer.Screen name="ChangePassword" component={ChangePassword} />
         <Drawer.Screen name="Terms" component={Terms} />
