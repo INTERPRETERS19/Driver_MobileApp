@@ -16,6 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 const OutForDelivery = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
+  const [loading, setLoading] = useState(true);
   const [filterData, setFilterData] = useState([]);
   const [search, setSearch] = useState('');
   const searchFilter = text => {
@@ -44,10 +45,8 @@ const OutForDelivery = () => {
       if (res.data.success) {
         setItems(res.data.data);
         setFilterData(res.data.data);
-        console.log(res.data.data);
-
+        setLoading(false);
         console.log('Success');
-        console.log(Items);
       } else {
         console.log('Failed');
         console.log(Items);
@@ -60,7 +59,16 @@ const OutForDelivery = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id, r_no_street, r_city, current_status,recipient_name,r_district,mobile_phone_number,COD}) => (
+  const Item = ({
+    id,
+    r_no_street,
+    r_city,
+    current_status,
+    recipient_name,
+    r_district,
+    mobile_phone_number,
+    COD,
+  }) => (
     <View style={styles.item}>
       <Text
         style={styles.Itemtext}
@@ -95,9 +103,9 @@ const OutForDelivery = () => {
     />
   );
 
-  const onArrowPressed = () => {
-    navigation.navigate('ShipmentDetails');
-  };
+  // const onArrowPressed = () => {
+  //   navigation.navigate('ShipmentDetails');
+  // };
   return (
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
@@ -108,8 +116,7 @@ const OutForDelivery = () => {
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
         <Text style={styles.OutForDeliveryTitle}>Out For Delivery </Text>
-        <View style={styles.OutForDelivery}>
-        </View>
+        <View style={styles.OutForDelivery}></View>
         <View>
           <TextInput
             style={styles.search}
@@ -125,13 +132,15 @@ const OutForDelivery = () => {
             <Text style={styles.ShipementText}>Street No</Text>
             <Text style={styles.ShipementText2}>Address</Text>
           </View>
-            <View>
-              <FlatList
-                data={filterData}
-                renderItem={renderItem}
-                keyExtractor={item => item._id}
-              />
-            </View>
+          <View>
+            <FlatList
+              data={filterData}
+              renderItem={renderItem}
+              keyExtractor={item => item._id}
+              onRefresh={() => getItems()}
+              refreshing={loading}
+            />
+          </View>
         </View>
         <BottomNavigationBar />
       </View>

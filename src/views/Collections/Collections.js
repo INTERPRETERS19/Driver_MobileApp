@@ -16,6 +16,7 @@ import {useLogin} from '../../context/LoginProvider';
 const Collection = () => {
   const [Items, setItems] = useState();
   const [filterData, setFilterData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const searchFilter = text => {
     if (text) {
@@ -43,7 +44,9 @@ const Collection = () => {
       if (res.data.success) {
         setItems(res.data.data);
         setFilterData(res.data.data);
+        setLoading(false);
         setCount(res.data.total);
+        console.log('Success');
       } else {
         console.log('Failed');
         console.log(count);
@@ -99,6 +102,8 @@ const Collection = () => {
               data={filterData}
               renderItem={renderItem}
               keyExtractor={item => item._id}
+              onRefresh={() => getItems()}
+              refreshing={loading}
             />
           </View>
         </View>

@@ -17,6 +17,7 @@ import {useNavigation} from '@react-navigation/native';
 const Rescheduled = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
+  const [loading, setLoading] = useState(true);
   const [filterData, setFilterData] = useState([]);
   const [search, setSearch] = useState('');
   const searchFilter = text => {
@@ -45,11 +46,9 @@ const Rescheduled = () => {
       );
       if (res.data.success) {
         setItems(res.data.data);
-        console.log(loginperson);
         setFilterData(res.data.data);
-        console.log(res.data.data);
+        setLoading(false);
         console.log('Success');
-        console.log(Items);
       } else {
         console.log('Failed');
         console.log(Items);
@@ -105,6 +104,8 @@ const Rescheduled = () => {
               data={filterData}
               renderItem={renderItem}
               keyExtractor={item => item._id}
+              onRefresh={() => getItems()}
+              refreshing={loading}
             />
           </View>
         </View>
