@@ -7,7 +7,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import client from "../../routes/client";
+import client from '../../routes/client';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
@@ -60,7 +60,15 @@ const Delivered = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id,r_city, current_status,recipient_name,r_district,mobile_phone_number,COD}) => (
+  const Item = ({
+    id,
+    r_city,
+    current_status,
+    recipient_name,
+    r_district,
+    mobile_phone_number,
+    COD,
+  }) => (
     <View style={styles.item}>
       <Text
         style={styles.Itemtext}
@@ -94,7 +102,7 @@ const Delivered = () => {
   );
 
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentDetails',);
+    navigation.navigate('ShipmentDetails');
   };
   return (
     <ImageBackground
@@ -119,7 +127,6 @@ const Delivered = () => {
         <View style={styles.DeliveredSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
-            <Text style={styles.ShipementText2}>Delivered Date</Text>
           </View>
           <View>
             <FlatList

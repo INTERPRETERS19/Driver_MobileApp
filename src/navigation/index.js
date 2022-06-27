@@ -114,7 +114,7 @@ function CustomDrawerContent(props) {
         </View>
         <View style={[styles.menuCard]}>
           <DrawerItem
-            label="Returns"
+            label="Fail To Deliver"
             labelStyle={[styles.NavPages]}
             onPress={() => {
               props.navigation.navigate('Returns');

@@ -85,7 +85,6 @@ const Summary = () => {
             district: r_district,
             contact: mobile_phone_number,
             cod: COD,
-            
           })
         }>
         {id}
@@ -197,7 +196,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   SummarySection: {
-    flex: 12,
+    flex: 25,
     padding: 20,
   },
   ShipementText: {

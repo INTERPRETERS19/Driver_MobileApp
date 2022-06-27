@@ -7,7 +7,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import client from "../../routes/client";
+import client from '../../routes/client';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   OutForDeliverySection: {
-    flex: 12,
+    flex: 21,
     padding: 20,
   },
 

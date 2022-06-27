@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   RescheduledSection: {
-    flex: 12,
+    flex: 19,
     padding: 20,
   },
   ShipementText: {

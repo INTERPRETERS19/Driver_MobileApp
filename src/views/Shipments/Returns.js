@@ -7,7 +7,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import client from "../../routes/client";
+import client from '../../routes/client';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
@@ -59,7 +59,17 @@ const Returns = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id, r_no_street, r_city, current_status,recipient_name,r_district,mobile_phone_number,COD}) => (
+  const Item = ({
+    id,
+    r_no_street,
+    r_city,
+    current_status,
+    recipient_name,
+    r_district,
+    mobile_phone_number,
+    COD,
+    reason,
+  }) => (
     <View style={styles.item}>
       <Text
         style={styles.Itemtext}
@@ -72,24 +82,28 @@ const Returns = () => {
             district: r_district,
             contact: mobile_phone_number,
             cod: COD,
+            reason: reason,
           })
         }>
         {id}
       </Text>
+      <Text>{reason}</Text>
     </View>
   );
 
-  const renderItem = ({item}) =>( <Item
-  id={item.id}
-  r_no_street={item.r_no_street}
-  r_city={item.r_city}
-  current_status={item.current_status}
-  r_district={item.r_district}
-  mobile_phone_number={item.mobile_phone_number}
-  COD={item.COD}
-  recipient_name={item.recipient_name}
-/>
-);
+  const renderItem = ({item}) => (
+    <Item
+      id={item.id}
+      r_no_street={item.r_no_street}
+      r_city={item.r_city}
+      current_status={item.current_status}
+      r_district={item.r_district}
+      mobile_phone_number={item.mobile_phone_number}
+      COD={item.COD}
+      recipient_name={item.recipient_name}
+      reason={item.reason}
+    />
+  );
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');
   };
@@ -150,7 +164,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     paddingBottom: 5,
-    flex: 1,
+    flex: 0.9,
   },
   Return: {
     flex: 4,
@@ -182,7 +196,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   ReturnSection: {
-    flex: 12,
+    flex: 18,
     padding: 20,
   },
   ShipementText: {
