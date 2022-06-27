@@ -12,14 +12,13 @@ import {
   isValidPassword,
 } from './../../utils/methods';
 
+
 const ShipmentInfo = ({ route }) => {
   const navigation = useNavigation();
   const [text, onChangeText] = React.useState();
   const { shipmentId, contact, cod, name, city, district, status } = route.params;
   const [isSelected, setSelection] = useState(false);
   const [error, setError] = useState();
-
-
 
   const onDonePressed = async () => {
     // if(text===""){
@@ -34,35 +33,41 @@ const ShipmentInfo = ({ route }) => {
     //console.log((isSelected&&!(cod==0)));
     console.log(shipmentId);
     console.log(text);
-    if (((selectedValue == "Delivered") && isSelected)||
-    ((selectedValue == "OutForDelivery") && !isSelected&&(text===""))||
-    (!((selectedValue == "Delivered")||(selectedValue == "OutForDelivery")) &&!(text===""))&&!isSelected||
-    (((selectedValue == "Delivered")||(selectedValue == "OutForDelivery")) && (cod==0))&& !isSelected)
-    {
-      const res = await client.post("/updatestatus", {
-        shipmentId,
-        selectedValue,
-        text
-      });
-      if (res.data.success) {
+    if (isFinished(selectedValue, text, cod)) {
+      try {
+        const res = await client.post("/updatestatus", {
+          shipmentId,
+          selectedValue,
+          text
+        });
+        if (res.data.success) {
 
-        setSelectedValue("OutForDelivery");
-        onChangeText("");
-        setSelection(false);
-        navigation.navigate('OutForDelivery');
+          setSelectedValue("OutForDelivery");
+          onChangeText("");
+          setSelection(false);
+          navigation.navigate('OutForDelivery');
+        }
+        else {
+          return updateError("User already exist", setError);
+        }
+      } catch (error) {
+        return updateError("Something went wrong!!!", setError);
       }
-    }else{
-      if((text==="")&&(!(selectedValue == "Delivered")&&!(selectedValue == "OutForDelivery"))){
-        //popup???
-      console.log("reason??");
-
-      }else{
-        //popup???
-        console.log("collect cod");
-      }
-      
     }
   };
+  const isFinished = (selectedValue, text, cod) => {
+    if ((selectedValue == "Delivered") && !isSelected && cod !== 0)
+      return updateError('Please confirm COD received!', setError);
+
+    if (((selectedValue === "FailToDeliver") || (selectedValue === "Rescheduled")) && (text === ""))
+      return updateError('Please state the reason!', setError);
+
+    if (((selectedValue === "FailToDeliver") || (selectedValue === "Rescheduled")) && isSelected)
+      return updateError('COD should not be selected!', setError);
+
+    return true;
+  };
+
   const onbackPressed = () => {
 
     navigation.navigate('OutForDelivery');
@@ -92,6 +97,7 @@ const ShipmentInfo = ({ route }) => {
             </View>
           </View>
         </View>
+
         <ScrollView>
           <View style={styles.contentfull}>
             <View style={styles.content}>
@@ -177,6 +183,22 @@ const ShipmentInfo = ({ route }) => {
                   </>
 
                 )}
+
+              </View>
+              <View>
+
+                {error ? (
+                  <Text
+                    style={{
+                      color: "red",
+                      fontSize: 20,
+                      textAlign: "center",
+                      marginTop:"10px"
+                    }}
+                  >
+                    {error}
+                  </Text>
+                ) : null}
 
               </View>
               <View style={styles.button}>
