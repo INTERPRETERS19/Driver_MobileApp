@@ -9,6 +9,13 @@ export const updateError = (error, stateUpdater) => {
   }, 5000);
 };
 
+export const updatesuccess = (success, stateUpdater) => {
+  stateUpdater(success);
+  setTimeout(() => {
+    stateUpdater('');
+  }, 3000);
+};
+
 export const isValidEmail = value => {
   const regx = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
   return regx.test(value);

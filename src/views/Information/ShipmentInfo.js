@@ -12,7 +12,6 @@ import {
   isValidPassword,
 } from './../../utils/methods';
 
-
 const ShipmentInfo = ({ route }) => {
   const navigation = useNavigation();
   const [text, onChangeText] = React.useState();
@@ -106,7 +105,6 @@ const ShipmentInfo = ({ route }) => {
             </View>
           </View>
         </View>
-
         <ScrollView>
           <View style={styles.contentfull}>
             <View style={styles.content}>
