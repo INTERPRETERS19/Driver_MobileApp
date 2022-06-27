@@ -37,16 +37,11 @@ const NewPasswordScreen = () => {
     if (!isValidObjField(userData))
       return updateError('Required all fields!', setError);
     // if valid newpassword with 8 or more characters
-
-    // if (!newPassword.trim() || newPassword.length < 8)
-    //   return updateError(
-    //     'Your password should contain atleast 8 charactors',
-    //     setError,
-    //   ); // if (!isValidPassword(newPassword))
-    //   return updateError(
-    //     'your new password shoud be in 8 to 24 characters.Must include uppercase and lowercase letters, a number and a special character.',
-    //     setError,
-    //   );
+    if (!isValidPassword(newPassword))
+      return updateError(
+        'your new password shoud be in 8 to 24 characters.Must include uppercase and lowercase letters, a number and a special character.',
+        setError,
+      );
     // password and confirm password must be the same
     if (newPassword != repeatnewPassword)
       return updateError(
