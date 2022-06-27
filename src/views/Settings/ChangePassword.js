@@ -13,6 +13,7 @@ import {
   isValidObjField,
   updateError,
   isValidPassword,
+  updatesuccess,
 } from './../../utils/methods';
 import client from './../../routes/client';
 import {useNavigation} from '@react-navigation/native';
@@ -24,6 +25,7 @@ const NewPasswordScreen = () => {
     repeatnewPassword: '',
   });
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const {profile, setProfile} = useLogin();
   const auth = {profile};
   const loginperson = auth.profile.id;
@@ -35,16 +37,16 @@ const NewPasswordScreen = () => {
     if (!isValidObjField(userData))
       return updateError('Required all fields!', setError);
     // if valid newpassword with 8 or more characters
-    if (!isValidPassword(newPassword))
-      return updateError(
-        'your new password shoud be in 8 to 24 characters.Must include uppercase and lowercase letters, a number and a special character.',
-        setError,
-      );
-    if (!newPassword.trim() || newPassword.length < 8)
-      return updateError(
-        'Your password should contain atleast 8 charactors',
-        setError,
-      );
+
+    // if (!newPassword.trim() || newPassword.length < 8)
+    //   return updateError(
+    //     'Your password should contain atleast 8 charactors',
+    //     setError,
+    //   ); // if (!isValidPassword(newPassword))
+    //   return updateError(
+    //     'your new password shoud be in 8 to 24 characters.Must include uppercase and lowercase letters, a number and a special character.',
+    //     setError,
+    //   );
     // password and confirm password must be the same
     if (newPassword != repeatnewPassword)
       return updateError(
@@ -78,7 +80,7 @@ const NewPasswordScreen = () => {
             oldpassword: '',
             repeatnewPassword: '',
           });
-          return updateError('Your new password is changed.', setError);
+          return updatesuccess('Your new password is changed.', setSuccess);
         } else {
           return updateError('Enterd Current password is not match', setError);
         }
@@ -129,12 +131,12 @@ const NewPasswordScreen = () => {
               }}>
               Change Password
             </Text>
-
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
+            {success ? <Text style={styles.successText}>{success}</Text> : null}
             <Text style={styles.Text1}>
               Please create a new password that you don't use on any other site
             </Text>
           </View>
-          {error ? <Text style={styles.errorText}>{error}</Text> : null}
           <CustomInput
             placeholder="Enter current password"
             value={oldpassword}
@@ -197,7 +199,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     backgroundColor: '#FFDBDB',
-    borderRadius: 9,
+    borderRadius: 10,
+    paddingHorizontal: 15,
+  },
+  successText: {
+    fontFamily: 'Poppins-Regular',
+    color: 'green',
+    fontSize: 18,
+    textAlign: 'center',
+    backgroundColor: '#D2F3C6',
+    borderRadius: 10,
+    paddingHorizontal: 15,
   },
 });
 
