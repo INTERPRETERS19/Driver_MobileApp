@@ -18,6 +18,7 @@ const Summary = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
   const [filterData, setFilterData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const searchFilter = text => {
     if (text) {
@@ -45,11 +46,12 @@ const Summary = () => {
       if (res.data.success) {
         setItems(res.data.data);
         setFilterData(res.data.data);
-        console.log(loginperson);
-        console.log(res.data.data);
+        setLoading(false);
+        // console.log(loginperson);
+        // console.log(res.data.data);
 
         console.log('Success');
-        console.log(Items);
+        // console.log(Items);
       } else {
         console.log('Failed');
         console.log(Items);
@@ -137,6 +139,8 @@ const Summary = () => {
               data={filterData}
               renderItem={renderItem}
               keyExtractor={item => item._id}
+              onRefresh={() => getItems()}
+              refreshing={loading}
             />
           </View>
         </View>

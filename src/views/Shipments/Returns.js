@@ -16,6 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 const Returns = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
+  const [loading, setLoading] = useState(true);
   const [filterData, setFilterData] = useState([]);
   const [search, setSearch] = useState('');
   const searchFilter = text => {
@@ -43,12 +44,9 @@ const Returns = () => {
       );
       if (res.data.success) {
         setItems(res.data.data);
-        console.log(loginperson);
-        console.log(res.data.data);
         setFilterData(res.data.data);
-        // setCount(res.data.count);
+        setLoading(false);
         console.log('Success');
-        console.log(Items);
       } else {
         console.log('Failed');
         console.log(Items);
@@ -120,12 +118,14 @@ const Returns = () => {
             <Text style={styles.ShipementText}>Shipment ID</Text>
             <Text style={styles.ShipementText2}>Reason</Text>
           </View>
-         
+
           <View>
             <FlatList
               data={filterData}
               renderItem={renderItem}
               keyExtractor={item => item._id}
+              onRefresh={() => getItems()}
+              refreshing={loading}
             />
           </View>
         </View>

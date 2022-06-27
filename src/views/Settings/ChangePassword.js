@@ -154,6 +154,7 @@ const NewPasswordScreen = () => {
             setValue={value =>
               setUserData({...userData, repeatnewPassword: value})
             }
+            secureTextEntry
           />
 
           <View style={{marginTop: 20}}>
