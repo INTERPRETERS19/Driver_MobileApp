@@ -11,7 +11,7 @@ export default class Dropdown extends Component {
     constructor() {
         super();
         this.state = {
-            PickerValue: ''
+            PickerValue: 'Out for delivery'
         }
 
     };
