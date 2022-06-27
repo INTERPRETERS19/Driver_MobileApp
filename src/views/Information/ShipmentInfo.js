@@ -92,14 +92,14 @@ const ShipmentInfo = ({ route }) => {
         }}>
         <View style={styles.topbar}>
           <View style={styles.topbarin}>
-            <View style={styles.topbarin1}>
+            {/* <View style={styles.topbarin1}>
               <Icon
                 name="keyboard-arrow-left"
                 size={35}
                 color="rgba(0, 0, 0, 0.40)"
                 onPress={onbackPressed}
               />
-            </View>
+            </View> */}
             <View style={styles.topbarin2}>
               <Text style={{ fontSize: 22 }}>Info</Text>
             </View>
