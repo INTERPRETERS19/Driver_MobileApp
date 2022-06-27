@@ -19,6 +19,7 @@ const ShipmentInfo = ({ route }) => {
   const { shipmentId, contact, cod, name, city, district, status } = route.params;
   const [isSelected, setSelection] = useState(false);
   const [error, setError] = useState();
+  const [deliveredDate, setDeliveredDate] = useState();
 
   const onDonePressed = async () => {
     // if(text===""){
@@ -30,6 +31,13 @@ const ShipmentInfo = ({ route }) => {
     // setSelection(true);
     // }
     console.log(selectedValue);
+    
+    if(selectedValue==="Delivered"){
+      const date= new Date();
+      setDeliveredDate(date);
+    }
+
+    console.log(deliveredDate);
     //console.log((isSelected&&!(cod==0)));
     console.log(shipmentId);
     console.log(text);
@@ -38,7 +46,8 @@ const ShipmentInfo = ({ route }) => {
         const res = await client.post("/updatestatus", {
           shipmentId,
           selectedValue,
-          text
+          text,
+          deliveredDate
         });
         if (res.data.success) {
 
@@ -62,7 +71,7 @@ const ShipmentInfo = ({ route }) => {
     if (((selectedValue === "FailToDeliver") || (selectedValue === "Rescheduled")) && (text === ""))
       return updateError('Please state the reason!', setError);
 
-    if (((selectedValue === "FailToDeliver") || (selectedValue === "Rescheduled")) && isSelected)
+    if (((selectedValue === "FailToDeliver") || (selectedValue === "Rescheduled")|| (selectedValue === "OutForDelivery")) && isSelected)
       return updateError('COD should not be selected!', setError);
 
     return true;
@@ -193,7 +202,7 @@ const ShipmentInfo = ({ route }) => {
                       color: "red",
                       fontSize: 20,
                       textAlign: "center",
-                      marginTop:"10px"
+                      
                     }}
                   >
                     {error}
