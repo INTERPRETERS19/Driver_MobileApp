@@ -7,7 +7,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import axios from 'axios';
+import client from "../../routes/client";
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
@@ -39,7 +39,7 @@ const Delivered = () => {
 
   const getItems = async () => {
     try {
-      const res = await axios.get(
+      const res = await client.get(
         `http://10.0.2.2:8000/delivered/${loginperson}`,
       );
       if (res.data.success) {

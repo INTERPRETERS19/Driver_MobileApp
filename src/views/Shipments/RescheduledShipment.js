@@ -7,7 +7,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import axios from 'axios';
+import client from '../../routes/client';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
@@ -40,7 +40,7 @@ const Rescheduled = () => {
 
   const getItems = async () => {
     try {
-      const res = await axios.get(
+      const res = await client.get(
         `http://10.0.2.2:8000/Rescheduled/${loginperson}`,
       );
       if (res.data.success) {
@@ -62,7 +62,17 @@ const Rescheduled = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id, r_no_street, r_city, current_status,recipient_name,r_district,mobile_phone_number,COD}) => (
+  const Item = ({
+    id,
+    r_no_street,
+    r_city,
+    current_status,
+    recipient_name,
+    r_district,
+    mobile_phone_number,
+    COD,
+    reason,
+  }) => (
     <View style={styles.item}>
       <Text
         style={styles.Itemtext}
@@ -75,10 +85,12 @@ const Rescheduled = () => {
             district: r_district,
             contact: mobile_phone_number,
             cod: COD,
+            reason: reason,
           })
         }>
         {id}
       </Text>
+      <Text style={styles.Itemtamount}>{reason}</Text>
     </View>
   );
 
@@ -92,6 +104,7 @@ const Rescheduled = () => {
       mobile_phone_number={item.mobile_phone_number}
       COD={item.COD}
       recipient_name={item.recipient_name}
+      reason={item.reason}
     />
   );
 
@@ -121,7 +134,7 @@ const Rescheduled = () => {
         <View style={styles.RescheduledSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
-            <Text style={styles.ShipementText2}>Rescheduled Date</Text>
+            <Text style={styles.ShipementText2}>Reason</Text>
           </View>
           <View>
             <FlatList
