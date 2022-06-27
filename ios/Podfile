@@ -1,0 +1,52 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '11.0'
+install! 'cocoapods', :deterministic_uuids => false
+
+target 'Authentication' do
+  config = use_native_modules!
+
+  # Flags change depending on the env values.
+  flags = get_default_flags()
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # to enable hermes on iOS, change `false` to `true` and then install pods
+    :hermes_enabled => flags[:hermes_enabled],
+    :fabric_enabled => flags[:fabric_enabled],
+    # An absolute path to your application root.
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+<<<<<<< HEAD
+=======
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 156ce00d8488cb10525c95836a61f6080838c91b
+=======
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+>>>>>>> f4c4c1c08b4e1ba7ea5e68564fa6048ddcf2f790
+=======
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+>>>>>>> 1fe3ce6e43bf3bcd211eb7b92187cd5bb399b782
+  target 'AuthenticationTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable the next line.
+  use_flipper!()
+
+  post_install do |installer|
+    react_native_post_install(installer)
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+  end
+end
