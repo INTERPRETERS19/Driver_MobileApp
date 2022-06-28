@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { ScrollView, ImageBackground, StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import CustomButton from '../../components/CustomButton';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import CheckBox from '@react-native-community/checkbox';
-import { Picker } from '@react-native-picker/picker';
-import client from './../../routes/client';
+import React, {useState, useEffect} from 'react';
 import {
-  isValidObjField,
-  updateError,
-  isValidPassword,
-} from './../../utils/methods';
+  ScrollView,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+} from 'react-native';
+import CustomButton from '../../components/CustomButton';
+import {useNavigation} from '@react-navigation/native';
+import CheckBox from '@react-native-community/checkbox';
+import {Picker} from '@react-native-picker/picker';
+import client from './../../routes/client';
+import {updateError} from './../../utils/methods';
 
-const ShipmentInfo = ({ route }) => {
+const ShipmentInfo = ({route}) => {
   const navigation = useNavigation();
   const [text, onChangeText] = React.useState();
-  const { shipmentId, contact, cod, name, city, district, status } = route.params;
+  const {shipmentId, contact, cod, name, city, district, status} = route.params;
   const [isSelected, setSelection] = useState(false);
   const [error, setError] = useState();
   const [deliveredDate, setDeliveredDate] = useState();
@@ -31,7 +34,7 @@ const ShipmentInfo = ({ route }) => {
     // }
     console.log(selectedValue);
 
-    if (selectedValue === "Delivered") {
+    if (selectedValue === 'Delivered') {
       const date = new Date();
       setDeliveredDate(date);
     }
@@ -42,42 +45,47 @@ const ShipmentInfo = ({ route }) => {
     console.log(text);
     if (isFinished(selectedValue, text, cod)) {
       try {
-        const res = await client.post("/updatestatus", {
+        const res = await client.post('/updatestatus', {
           shipmentId,
           selectedValue,
           text,
-          deliveredDate
+          deliveredDate,
         });
         if (res.data.success) {
-
-          setSelectedValue("OutForDelivery");
-          onChangeText("");
+          setSelectedValue('OutForDelivery');
+          onChangeText('');
           setSelection(false);
           navigation.navigate('OutForDelivery');
-        }
-        else {
-          return updateError("User already exist", setError);
+        } else {
+          return updateError('User already exist', setError);
         }
       } catch (error) {
-        return updateError("Something went wrong!!!", setError);
+        return updateError('Something went wrong!!!', setError);
       }
     }
   };
   const isFinished = (selectedValue, text, cod) => {
-    if ((selectedValue == "Delivered") && !isSelected && cod !== 0)
+    if (selectedValue == 'Delivered' && !isSelected && cod !== 0)
       return updateError('Please confirm COD received!', setError);
 
-    if (((selectedValue === "FailToDeliver") || (selectedValue === "Rescheduled")) && (text === ""))
+    if (
+      (selectedValue === 'FailToDeliver' || selectedValue === 'Rescheduled') &&
+      text === ''
+    )
       return updateError('Please state the reason!', setError);
 
-    if (((selectedValue === "FailToDeliver") || (selectedValue === "Rescheduled") || (selectedValue === "OutForDelivery")) && isSelected)
+    if (
+      (selectedValue === 'FailToDeliver' ||
+        selectedValue === 'Rescheduled' ||
+        selectedValue === 'OutForDelivery') &&
+      isSelected
+    )
       return updateError('COD should not be selected!', setError);
 
     return true;
   };
 
   const onbackPressed = () => {
-
     navigation.navigate('OutForDelivery');
   };
   const [selectedValue, setSelectedValue] = useState('OutForDelivery');
@@ -101,18 +109,18 @@ const ShipmentInfo = ({ route }) => {
               />
             </View> */}
             <View style={styles.topbarin2}>
-              <Text style={{ fontSize: 22 }}>Info</Text>
+              <Text style={{fontSize: 22}}>Info</Text>
             </View>
           </View>
         </View>
         <ScrollView>
           <View style={styles.contentfull}>
             <View style={styles.content}>
-              <View style={{ flex: 1, flexDirection: 'row' }}>
-                <View style={{ flex: 1 }}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{flex: 1}}>
                   <Text style={styles.head}>Shipment ID</Text>
                 </View>
-                <View style={{ flex: 1 }}>
+                <View style={{flex: 1}}>
                   <Text style={styles.head}>{shipmentId}</Text>
                 </View>
               </View>
@@ -126,26 +134,24 @@ const ShipmentInfo = ({ route }) => {
                 <Text style={styles.infoIn}>City</Text>
                 <Text style={styles.form}>{city}</Text>
                 {/* <Text style={styles.infoIn}>COD amount</Text> */}
-                <View style={{ flex: 1, flexDirection: 'row' }}>
-                  <View style={{ flex: 1 }}>
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                  <View style={{flex: 1}}>
                     <Text style={styles.infoIn}>COD amount</Text>
                   </View>
-                  <View style={{ flex: 1, marginLeft: 100 }}>
+                  <View style={{flex: 1, marginLeft: 100}}>
                     {!(cod === 0) && (
                       <>
                         <CheckBox
                           value={isSelected}
                           onValueChange={setSelection}
-
                         />
                       </>
-
                     )}
                   </View>
                 </View>
                 <Text style={styles.form}>{cod}</Text>
 
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{flex: 1, flexDirection: 'row'}}>
                   <Text style={styles.infoIn}>Status</Text>
                   <View style={styles.container}>
                     <Picker
@@ -162,51 +168,51 @@ const ShipmentInfo = ({ route }) => {
                         setSelectedValue(itemValue)
                       }>
                       <Picker.Item label="Rescheduled" value="Rescheduled" />
-                      <Picker.Item label="Failed to Deliver" value="FailToDeliver" />
+                      <Picker.Item
+                        label="Failed to Deliver"
+                        value="FailToDeliver"
+                      />
                       <Picker.Item label="Delivered" value="Delivered" />
-                      <Picker.Item label="Out for delivery" value="OutForDelivery" />
+                      <Picker.Item
+                        label="Out for delivery"
+                        value="OutForDelivery"
+                      />
                     </Picker>
-
                   </View>
                 </View>
               </View>
               <View>
-                {!(selectedValue == "Delivered") && !(selectedValue == "OutForDelivery") && (
-                  <>
-                    <TextInput
-                      multiline
-                      //numberOfLines={4}
-                      onChangeText={onChangeText}
-                      value={text}
-                      placeholder="State the reason"
-                      style={{
-                        padding: 1,
-                        backgroundColor: 'rgba(0, 0, 0, 0.07)',
-                        marginTop: 30, fontFamily: 'Roboto-Regular',
-                        fontSize: 18,
-                      }}
-
-                    />
-                  </>
-
-                )}
-
+                {!(selectedValue == 'Delivered') &&
+                  !(selectedValue == 'OutForDelivery') && (
+                    <>
+                      <TextInput
+                        multiline
+                        //numberOfLines={4}
+                        onChangeText={onChangeText}
+                        value={text}
+                        placeholder="State the reason"
+                        style={{
+                          padding: 1,
+                          backgroundColor: 'rgba(0, 0, 0, 0.07)',
+                          marginTop: 30,
+                          fontFamily: 'Roboto-Regular',
+                          fontSize: 18,
+                        }}
+                      />
+                    </>
+                  )}
               </View>
               <View>
-
                 {error ? (
                   <Text
                     style={{
-                      color: "red",
+                      color: 'red',
                       fontSize: 20,
-                      textAlign: "center",
-
-                    }}
-                  >
+                      textAlign: 'center',
+                    }}>
                     {error}
                   </Text>
                 ) : null}
-
               </View>
               <View style={styles.button}>
                 <CustomButton text="Done" onPress={onDonePressed} />
