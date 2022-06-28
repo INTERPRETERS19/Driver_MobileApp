@@ -6,7 +6,14 @@ export const updateError = (error, stateUpdater) => {
   stateUpdater(error);
   setTimeout(() => {
     stateUpdater('');
-  }, 2500);
+  }, 5000);
+};
+
+export const updatesuccess = (success, stateUpdater) => {
+  stateUpdater(success);
+  setTimeout(() => {
+    stateUpdater('');
+  }, 3000);
 };
 
 export const updatesuccess = (success, stateUpdater) => {
