@@ -13,7 +13,7 @@ import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import client from '../../routes/client';
 import {useLogin} from '../../context/LoginProvider';
 
-const Collection = () => {
+const DeliveryFee = () => {
   const [Items, setItems] = useState();
   const [filterData, setFilterData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -40,7 +40,7 @@ const Collection = () => {
 
   const getItems = async () => {
     try {
-      const res = await client.get(`collections/${loginperson}`);
+      const res = await client.get(`deliveryfee/${loginperson}`);
       if (res.data.success) {
         setItems(res.data.data);
         setFilterData(res.data.data);
@@ -59,14 +59,16 @@ const Collection = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id, COD}) => (
+  const Item = ({id, delivery_fee}) => (
     <View style={styles.item}>
       <Text style={styles.Itemtext}>{id}</Text>
-      <Text style={styles.Itemtamount}>{COD}</Text>
+      <Text style={styles.Itemtamount}>{delivery_fee}</Text>
     </View>
   );
 
-  const renderItem = ({item}) => <Item id={item.id} COD={item.COD} />;
+  const renderItem = ({item}) => (
+    <Item id={item.id} delivery_fee={item.delivery_fee} />
+  );
   return (
     <ImageBackground
       source={require('../../../assets/img1.jpg')}
@@ -76,10 +78,10 @@ const Collection = () => {
       }}>
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
-        <Text style={styles.CollectionTitle}>COD Collections </Text>
-        <View style={styles.Collection}>
+        <Text style={styles.deliveryfeeTitle}>Delivery Fee </Text>
+        <View style={styles.deliveryfee}>
           <View style={styles.infoPanelCol}>
-            <Text style={styles.text2}>Total COD</Text>
+            <Text style={styles.text2}>Total Delivery fee </Text>
             <Text style={styles.text1}>LKR {count} </Text>
           </View>
         </View>
@@ -92,12 +94,12 @@ const Collection = () => {
             onChangeText={text => searchFilter(text)}
           />
         </View>
-        <View style={styles.collectionSection}>
+        <View style={styles.deliveryfeeSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
-            <Text style={styles.ShipementText2}>COD Amount</Text>
+            <Text style={styles.ShipementText2}>Delivery fee</Text>
           </View>
-          <View tyle={styles.collectionSection}>
+          <View tyle={styles.deliveryfeeSection}>
             <FlatList
               data={filterData}
               renderItem={renderItem}
@@ -117,7 +119,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
-  CollectionTitle: {
+  deliveryfeeTitle: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // backgroundColor: '#298',
   },
-  Collection: {
+  deliveryfee: {
     flex: 3,
     padding: 10,
     paddingTop: 5,
@@ -162,7 +164,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
-  collectionSection: {
+  deliveryfeeSection: {
     flex: 12,
     padding: 20,
     paddingTop: 0,
@@ -220,4 +222,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-export default Collection;
+export default DeliveryFee;
