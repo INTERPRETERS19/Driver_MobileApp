@@ -22,6 +22,7 @@ import Terms from '../views/Settings/Terms';
 import About from '../views/Settings/About';
 import Forgot from '../views/Forgot Password/Forgot';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
+import PickUpInfo from '../views/Information/PickUpInfo';
 import ShipmentDetails from '../views/Shipments/ShipmentDetails';
 import QRScan from '../views/ScanPage/QRScan';
 
@@ -181,6 +182,7 @@ const DrawerNavigator = () => {
         <Drawer.Screen name="Terms" component={Terms} />
         <Drawer.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
         <Drawer.Screen name="ShipmentInfo" component={ShipmentInfo} />
+        <Drawer.Screen name="PickUpInfo" component={PickUpInfo} />
         <Drawer.Screen name="ShipmentDetails" component={ShipmentDetails} />
       </Drawer.Navigator>
     </NavigationContainer>

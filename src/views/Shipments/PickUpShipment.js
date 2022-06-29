@@ -94,20 +94,23 @@ const PickUp = () => {
     r_district,
     mobile_phone_number,
     COD,
+    delivery_fee,
+    firstName,
     //shipper_details,
   }) => (
     <View style={styles.item}>
       <Text
         style={styles.Itemtext}
         onPress={() =>
-          navigation.navigate('ShipmentDetails', {
+          navigation.navigate('PickUpInfo', {
             shipmentId: id,
-            name: recipient_name,
+            name: firstName,
+            street: r_no_street,
             city: r_city,
-            status: current_status,
             district: r_district,
+            status: current_status,
             contact: mobile_phone_number,
-            cod: COD,
+            deliveryFee: delivery_fee,
             //shipperdetails: shipper_details,
           })
         }>
@@ -121,12 +124,13 @@ const PickUp = () => {
   const renderItem = ({item}) => (
     <Item
       id={item.id}
+      firstName={item.shipper_details.firstName}
       r_no_street={item.shipper_details.street}
       r_city={item.shipper_details.city}
       current_status={item.current_status}
       r_district={item.r_district}
-      mobile_phone_number={item.mobile_phone_number}
-      COD={item.COD}
+      mobile_phone_number={item.shipper_details.mobile_no}
+      delivery_fee={item.delivery_fee}
       recipient_name={item.recipient_name}
       shipper_details={item.shipper_details}
     />
