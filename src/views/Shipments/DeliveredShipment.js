@@ -85,6 +85,7 @@ const Delivered = () => {
         }>
         {id}
       </Text>
+      <Text>{recipient_name}</Text>
     </View>
   );
 
@@ -127,6 +128,7 @@ const Delivered = () => {
         <View style={styles.DeliveredSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
+            <Text style={styles.ShipementText2}>Recipient Name</Text>
           </View>
           <View>
             <FlatList

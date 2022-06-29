@@ -89,6 +89,7 @@ const Summary = () => {
         }>
         {id}
       </Text>
+      <Text style={styles.Itemtamount}>{recipient_name}</Text>
       <Text style={styles.Itemtamount}>{current_status}</Text>
     </View>
   );
@@ -131,6 +132,7 @@ const Summary = () => {
         <View style={styles.SummarySection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
+            <Text style={styles.ShipementText}>Recipeint name</Text>
             <Text style={styles.ShipementText2}>Status</Text>
           </View>
           <View>

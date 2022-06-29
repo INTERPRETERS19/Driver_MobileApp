@@ -89,6 +89,7 @@ const Rescheduled = () => {
         }>
         {id}
       </Text>
+      <Text style={styles.Itemtamount1}>{recipient_name}</Text>
       <Text style={styles.Itemtamount}>{reason}</Text>
     </View>
   );
@@ -133,6 +134,7 @@ const Rescheduled = () => {
         <View style={styles.RescheduledSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
+            <Text style={styles.ShipementText1}>Recipent Name</Text>
             <Text style={styles.ShipementText2}>Reason</Text>
           </View>
           <View>
@@ -207,6 +209,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000',
     flex: 1,
+    textAlign: 'left',
+  },
+  ShipementText1: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000000',
+    flex: 1,
+    textAlign: 'left',
+    alignSelf: 'center',
   },
   ShipementText2: {
     fontFamily: 'Montserrat-Medium',
@@ -230,6 +242,14 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     color: '#000000',
     textAlign: 'right',
+  },
+  Itemtamount1: {
+    fontFamily: 'Montserrat-Medium',
+    fontStyle: 'normal',
+    color: '#000000',
+    textAlign: 'center',
+    alignSelf: 'center',
+    alignContent: 'center',
   },
   item: {
     backgroundColor: '#C3E4F5',

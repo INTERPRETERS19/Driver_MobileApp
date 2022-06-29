@@ -87,6 +87,7 @@ const Returns = () => {
         }>
         {id}
       </Text>
+      <Text>{recipient_name}</Text>
       <Text>{reason}</Text>
     </View>
   );
@@ -130,6 +131,7 @@ const Returns = () => {
         <View style={styles.ReturnSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
+            <Text style={styles.ShipementText}>Recipent Name</Text>
             <Text style={styles.ShipementText2}>Reason</Text>
           </View>
 
