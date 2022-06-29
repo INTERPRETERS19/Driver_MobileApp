@@ -87,7 +87,7 @@ const Delivered = () => {
         }>
         {id}
       </Text>
-      <Text>{delivered_date}</Text>
+      <Text style={styles.Itemtext}>{delivered_date.substring(0, 10)}</Text>
     </View>
   );
 
@@ -131,7 +131,7 @@ const Delivered = () => {
         <View style={styles.DeliveredSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
-            <Text style={styles.ShipementText}>Delivered date</Text>
+            <Text style={styles.ShipementText2}>Delivered date</Text>
           </View>
           <View>
             <FlatList
@@ -171,6 +171,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 0,
     paddingBottom: 5,
+    backgroundColor:""
   },
   infoPanelCol: {
     alignContent: 'center',

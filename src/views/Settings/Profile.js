@@ -99,18 +99,22 @@ const Profile = () => {
           </View>
 
           <View style={styles.container}>
-            <Image
-              style={{
-                flex: 1,
-                resizeMode: 'contain',
-                height: 170,
-                width: 170,
-                borderRadius: 100,
-                borderWidth: 3,
-                borderColor: 'white',
-              }}
-              // source={require('../../../assets/profile.jpg')}
-            />
+            {currentUser && (
+              <Image
+                style={{
+                  flex: 1,
+                  resizeMode: 'contain',
+                  height: 170,
+                  width: 170,
+                  borderRadius: 100,
+                  borderWidth: 3,
+                  borderColor: 'white',
+                }}
+                source={{
+                  uri: currentUser.photo,
+                }}
+              />
+            )}
             {/* <div>
         <form action="/" method="POST" enctype="multipart/form-data"></form>
              <div>

@@ -167,12 +167,14 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 5,
     flex: 0.9,
+    backgroundColor: '#459893',
   },
   Return: {
-    flex: 4,
+    flex: 5,
     padding: 10,
     paddingTop: 0,
     paddingBottom: 5,
+    backgroundColor: '#a49893',
   },
   infoPanelCol: {
     alignContent: 'center',
@@ -230,6 +232,7 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     color: '#000000',
     textAlign: 'right',
+    backgroundColor: '#459893',
   },
   item: {
     backgroundColor: '#C3E4F5',
@@ -241,6 +244,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
+    backgroundColor: '#459793',
   },
   search: {
     height: 40,
