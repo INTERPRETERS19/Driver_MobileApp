@@ -68,6 +68,7 @@ const Delivered = () => {
     r_district,
     mobile_phone_number,
     COD,
+    delivered_date,
   }) => (
     <View style={styles.item}>
       <Text
@@ -81,11 +82,12 @@ const Delivered = () => {
             district: r_district,
             contact: mobile_phone_number,
             cod: COD,
+            deliveredDate: delivered_date,
           })
         }>
         {id}
       </Text>
-      <Text>{recipient_name}</Text>
+      <Text>{delivered_date}</Text>
     </View>
   );
 
@@ -99,6 +101,7 @@ const Delivered = () => {
       mobile_phone_number={item.mobile_phone_number}
       COD={item.COD}
       recipient_name={item.recipient_name}
+      delivered_date={item.delivered_date}
     />
   );
 
@@ -128,7 +131,7 @@ const Delivered = () => {
         <View style={styles.DeliveredSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
-            <Text style={styles.ShipementText2}>Recipient Name</Text>
+            <Text style={styles.ShipementText}>Delivered date</Text>
           </View>
           <View>
             <FlatList

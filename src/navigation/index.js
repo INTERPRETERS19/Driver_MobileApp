@@ -7,6 +7,7 @@ import {useLogin} from '../context/LoginProvider';
 import SignInScreen from '../views/SignInScreen/SignInScreen';
 import Dashboard from '../views/Dashboard/Dashboard';
 import OutForDelivery from '../views/Shipments/OutForDelivery';
+import PickUp from '../views/Shipments/PickUpShipment';
 import DeliveredShipment from '../views/Shipments/DeliveredShipment';
 import Summary from '../views/Shipments/Summary';
 import RescheduledShipment from '../views/Shipments/RescheduledShipment';
@@ -105,6 +106,15 @@ function CustomDrawerContent(props) {
         </View>
         <View style={[styles.menuCard]}>
           <DrawerItem
+            label="Pick Up"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('PickUp');
+            }}
+          />
+        </View>
+        <View style={[styles.menuCard]}>
+          <DrawerItem
             label="Re-Scheduled"
             labelStyle={[styles.NavPages]}
             onPress={() => {
@@ -153,6 +163,7 @@ const DrawerNavigator = () => {
         drawerContent={props => <CustomDrawerContent {...props} />}>
         <Drawer.Screen name="Dashboard" component={Dashboard} />
         <Drawer.Screen name="OutForDelivery" component={OutForDelivery} />
+        <Drawer.Screen name="PickUp" component={PickUp} />
         <Drawer.Screen name="DeliveredShipment" component={DeliveredShipment} />
         <Drawer.Screen name="Summary" component={Summary} />
         <Drawer.Screen
