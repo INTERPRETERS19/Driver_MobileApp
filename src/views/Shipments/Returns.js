@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 5,
     flex: 0.9,
-    backgroundColor: '#459893',
+    // backgroundColor: '#459893',
   },
   Return: {
     flex: 5,
@@ -202,6 +202,7 @@ const styles = StyleSheet.create({
   ReturnSection: {
     flex: 18,
     padding: 20,
+    // backgroundColor: '#ab9893',
   },
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
@@ -232,7 +233,7 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     color: '#000000',
     textAlign: 'right',
-    backgroundColor: '#459893',
+    // backgroundColor: '#459893',
   },
   item: {
     backgroundColor: '#C3E4F5',
@@ -244,7 +245,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 5,
     paddingVertical: 10,
-    backgroundColor: '#459793',
+    // backgroundColor: '#459793',
   },
   search: {
     height: 40,

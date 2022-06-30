@@ -129,7 +129,7 @@ const OutForDelivery = () => {
         <View style={styles.OutForDeliverySection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}> Shipment ID</Text>
-            <Text style={styles.ShipementText}>Street No</Text>
+            <Text style={styles.ShipementText1}>Street No</Text>
             <Text style={styles.ShipementText2}>Address</Text>
           </View>
           <View>
@@ -205,6 +205,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000',
     flex: 1,
+  },
+  ShipementText1: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000000',
+    flex: 1,
+    textAlign: 'left',
+    justifyContent: 'space-evenly',
   },
   ShipementText2: {
     fontFamily: 'Montserrat-Medium',
