@@ -257,6 +257,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderColor: '#0096',
     backgroundColor: '#fff',
+    
   },
 });
 export default OutForDelivery;

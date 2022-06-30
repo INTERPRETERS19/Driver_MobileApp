@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 0,
     paddingBottom: 5,
-    backgroundColor: '#a49893',
+    //backgroundColor: '#a49893',
   },
   infoPanelCol: {
     alignContent: 'center',
