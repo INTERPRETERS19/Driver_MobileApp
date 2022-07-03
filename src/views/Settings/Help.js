@@ -140,17 +140,17 @@ const Help = () => {
             </List.Accordion>
           </List.Section>
         </View>
-        <View>
-          <Text style={styles.mailText}>Still stuck? Help is mail away</Text>
-        </View>
+        {/* <View>
+          //<Text style={styles.mailText}>Still stuck? Help is mail away</Text>
+        </View> */}
         <View>
           <View>
-            <View style={styles.button}>
+            {/* <View style={styles.button}>
               <CustomButton
                 text="Send Message"
                 onPress={onSendMesaagePressed}
               />
-            </View>
+            </View> */}
           </View>
         </View>
       </ScrollView>

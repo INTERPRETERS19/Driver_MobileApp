@@ -7,7 +7,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import axios from 'axios';
+import client from '../../routes/client';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
@@ -40,7 +40,7 @@ const Delivered = () => {
 
   const getItems = async () => {
     try {
-      const res = await axios.get(
+      const res = await client.get(
         `http://10.0.2.2:8000/delivered/${loginperson}`,
       );
       if (res.data.success) {
@@ -60,15 +60,51 @@ const Delivered = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id}) => (
+  const Item = ({
+    id,
+    r_city,
+    current_status,
+    recipient_name,
+    r_district,
+    mobile_phone_number,
+    COD,
+    delivered_date,
+  }) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+      <Text
+        style={styles.Itemtext}
+        onPress={() =>
+          navigation.navigate('ShipmentDetails', {
+            shipmentId: id,
+            name: recipient_name,
+            city: r_city,
+            status: current_status,
+            district: r_district,
+            contact: mobile_phone_number,
+            cod: COD,
+            deliveredDate: delivered_date,
+          })
+        }>
         {id}
       </Text>
+      <Text style={styles.Itemtext}>{delivered_date.substring(0, 10)}</Text>
     </View>
   );
 
-  const renderItem = ({item}) => <Item id={item.id} />;
+  const renderItem = ({item}) => (
+    <Item
+      id={item.id}
+      r_no_street={item.r_no_street}
+      r_city={item.r_city}
+      current_status={item.current_status}
+      r_district={item.r_district}
+      mobile_phone_number={item.mobile_phone_number}
+      COD={item.COD}
+      recipient_name={item.recipient_name}
+      delivered_date={item.delivered_date}
+    />
+  );
+
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');
   };
@@ -95,7 +131,7 @@ const Delivered = () => {
         <View style={styles.DeliveredSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
-            <Text style={styles.ShipementText2}>Delivered Date</Text>
+            <Text style={styles.ShipementText2}>Delivered date</Text>
           </View>
           <View>
             <FlatList
@@ -135,6 +171,7 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingTop: 0,
     paddingBottom: 5,
+    backgroundColor:""
   },
   infoPanelCol: {
     alignContent: 'center',

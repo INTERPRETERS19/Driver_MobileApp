@@ -1,40 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {
-  ImageBackground,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import Client from '../../routes/client';
+import React from 'react';
+import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Shipment_ID = '62b0b919ea359dca05630004';
-
-const ShipmentDetails = () => {
+const ShipmentDetails = ({route}) => {
+  const {shipmentId, contact, cod, name, city, district, status} = route.params;
   const navigation = useNavigation();
-  // const {shipmentId} = route.params;
-  const [shipment, setShipment] = useState(false);
-  const onDonePressed = () => {
-    navigation.navigate('OutForDelivery');
-  };
   const onbackPressed = () => {
-    navigation.navigate('Summary');
-  };
-  useEffect(() => {
-    getShipmentDetails(Shipment_ID);
-  }, []);
-  const getShipmentDetails = async userId => {
-    await Client.get('/shipmentdetails', Shipment_ID)
-      .then(response => {
-        console.log(response.data);
-        setShipment(response.data);
-      })
-
-      .catch(err => {
-        console.log('Unable to get shipmentdetails');
-      });
-  };
+    navigation.goBack()};
 
   return (
     <View style={styles.body}>
@@ -66,22 +39,23 @@ const ShipmentDetails = () => {
                 <Text style={styles.head}>Shipment ID</Text>
               </View>
               <View style={{flex: 1}}>
-                <Text style={styles.head}>{shipment.id}</Text>
+                <Text style={styles.head}>{shipmentId}</Text>
               </View>
             </View>
+
             <View style={styles.info}>
               <Text style={styles.infoIn}>Recepient</Text>
-              <Text style={styles.form}>{shipment.recipient_name}</Text>
+              <Text style={styles.form}>{name}</Text>
               <Text style={styles.infoIn}>Contact number</Text>
-              <Text style={styles.form}>{shipment.mobile_phone_number}</Text>
+              <Text style={styles.form}>{contact}</Text>
               <Text style={styles.infoIn}>District</Text>
-              <Text style={styles.form}>{shipment.r_district}</Text>
+              <Text style={styles.form}>{district}</Text>
               <Text style={styles.infoIn}>City</Text>
-              <Text style={styles.form}>{shipment.r_city}</Text>
+              <Text style={styles.form}>{city}</Text>
               <Text style={styles.infoIn}>COD amount</Text>
-              <Text style={styles.form}>{shipment.COD}</Text>
+              <Text style={styles.form}>{cod}</Text>
               <Text style={styles.infoIn}>Status</Text>
-              <Text style={styles.form}>{shipment.current_status}</Text>
+              <Text style={styles.form}>{status}</Text>
             </View>
           </View>
         </View>
