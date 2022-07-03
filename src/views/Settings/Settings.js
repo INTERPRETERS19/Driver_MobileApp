@@ -1,4 +1,5 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -12,7 +13,39 @@ import CustomButton from '../../components/CustomButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useLogin} from '../../context/LoginProvider';
+import Client from '../../routes/client';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const Settings = () => {
+  const [currentUser, setCurrentUser] = useState();
+  const [user, setUser] = useState();
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
+  const getCurrentUser = async () => {
+    try {
+      await AsyncStorage.getItem('@MyApp_user').then(res => {
+        console.log(res);
+        setCurrentUser(res != null ? JSON.parse(res) : null);
+        getUser(JSON.parse(res).id);
+      });
+    } catch (e) {
+      // console.log(e);
+    }
+  };
+
+  const getUser = async userId => {
+    await Client.get('/profile', {_id: userId})
+      .then(response => {
+        setUser(response.data);
+        // console.log(response);
+      })
+      .catch(err => {
+        console.log('Unable to get profile');
+      });
+  };
+
   const navigation = useNavigation();
 
   const pressedNewPassword = () => {
@@ -94,11 +127,24 @@ const Settings = () => {
           </View>
         </View>
         <View style={styles.container}>
-          <Image
-            style={styles.ProfilePicture}
-            source={require('../../../assets/profile.jpg')}
-          />
+          {currentUser && (
+            <Image
+              style={{
+                flex: 1,
+                resizeMode: 'contain',
+                height: 170,
+                width: 170,
+                borderRadius: 100,
+                borderWidth: 3,
+                borderColor: 'white',
+              }}
+              source={{
+                uri: currentUser.photo,
+              }}
+            />
+          )}
         </View>
+
         <View style={[styles.ProfileCont]}>
           <View style={[styles.settingpanel]}>
             <View style={[styles.settingpanelcol]}>
