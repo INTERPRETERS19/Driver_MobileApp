@@ -135,6 +135,7 @@ const PickUp = () => {
       shipper_details={item.shipper_details}
     />
   );
+
   const onArrowPressed = () => {
     navigation.navigate('ShipmentInfo');
   };

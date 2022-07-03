@@ -209,7 +209,7 @@ const Dashboard = () => {
             />
 
             <DashButtons
-              text={`Return Shipments \n\n${returnscount}`}
+              text={`Fail to deliver Shipments \n\n${returnscount}`}
               onPress={onReturnPressed}
               type="4"
             />

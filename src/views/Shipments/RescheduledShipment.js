@@ -7,7 +7,7 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import axios from 'axios';
+import client from '../../routes/client';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
@@ -41,7 +41,7 @@ const Rescheduled = () => {
 
   const getItems = async () => {
     try {
-      const res = await axios.get(
+      const res = await client.get(
         `http://10.0.2.2:8000/Rescheduled/${loginperson}`,
       );
       if (res.data.success) {
@@ -61,15 +61,52 @@ const Rescheduled = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id}) => (
+  const Item = ({
+    id,
+    r_no_street,
+    r_city,
+    current_status,
+    recipient_name,
+    r_district,
+    mobile_phone_number,
+    COD,
+    reason,
+  }) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+      <Text
+        style={styles.Itemtext}
+        onPress={() =>
+          navigation.navigate('ShipmentDetails', {
+            shipmentId: id,
+            name: recipient_name,
+            city: r_city,
+            status: current_status,
+            district: r_district,
+            contact: mobile_phone_number,
+            cod: COD,
+            reason: reason,
+          })
+        }>
         {id}
       </Text>
+      <Text style={styles.Itemtamount1}>{recipient_name}</Text>
+      <Text style={styles.Itemtamount}>{reason}</Text>
     </View>
   );
 
-  const renderItem = ({item}) => <Item id={item.id} />;
+  const renderItem = ({item}) => (
+    <Item
+      id={item.id}
+      r_no_street={item.r_no_street}
+      r_city={item.r_city}
+      current_status={item.current_status}
+      r_district={item.r_district}
+      mobile_phone_number={item.mobile_phone_number}
+      COD={item.COD}
+      recipient_name={item.recipient_name}
+      reason={item.reason}
+    />
+  );
 
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');
@@ -97,7 +134,8 @@ const Rescheduled = () => {
         <View style={styles.RescheduledSection}>
           <View style={styles.ShipementTextcont}>
             <Text style={styles.ShipementText}>Shipment ID</Text>
-            <Text style={styles.ShipementText2}>Rescheduled Date</Text>
+            <Text style={styles.ShipementText1}>Recipent Name</Text>
+            <Text style={styles.ShipementText2}>Reason</Text>
           </View>
           <View>
             <FlatList
@@ -162,7 +200,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   RescheduledSection: {
-    flex: 12,
+    flex: 19,
     padding: 20,
   },
   ShipementText: {
@@ -171,6 +209,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000',
     flex: 1,
+    textAlign: 'left',
+  },
+  ShipementText1: {
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#000000',
+    flex: 1,
+    textAlign: 'left',
+    alignSelf: 'center',
   },
   ShipementText2: {
     fontFamily: 'Montserrat-Medium',
@@ -194,6 +242,14 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
     color: '#000000',
     textAlign: 'right',
+  },
+  Itemtamount1: {
+    fontFamily: 'Montserrat-Medium',
+    fontStyle: 'normal',
+    color: '#000000',
+    textAlign: 'center',
+    alignSelf: 'center',
+    alignContent: 'center',
   },
   item: {
     backgroundColor: '#C3E4F5',
