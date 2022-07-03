@@ -1,10 +1,41 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
-
 import Icon from 'react-native-vector-icons/Ionicons';
 import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
+import Client from '../../src/routes/client';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Profilecomponent = () => {
+  const [currentUser, setCurrentUser] = useState();
+  const [user, setUser] = useState();
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
+  const getCurrentUser = async () => {
+    try {
+      await AsyncStorage.getItem('@MyApp_user').then(res => {
+        console.log(res);
+        setCurrentUser(res != null ? JSON.parse(res) : null);
+        getUser(JSON.parse(res).id);
+      });
+    } catch (e) {
+      // console.log(e);
+    }
+  };
+
+  const getUser = async userId => {
+    await Client.get('/profile', {_id: userId})
+      .then(response => {
+        setUser(response.data);
+        // console.log(response);
+      })
+      .catch(err => {
+        console.log('Unable to get profile');
+      });
+  };
+
   const navigation = useNavigation();
   const onProfilePressed = () => {
     navigation.navigate('Profile');
@@ -23,10 +54,11 @@ const Profilecomponent = () => {
         onPress={onMenuPressed}
       />
       <TouchableOpacity style={styles.button} onPress={onProfilePressed}>
+      {currentUser && (
         <Image
           style={styles.ProfilePicture}
-          source={require('../../assets/profile.jpg')}
-        />
+          source={{uri: currentUser.photo,}}
+        />)}
       </TouchableOpacity>
     </View>
   );

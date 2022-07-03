@@ -3,7 +3,10 @@ import {View, StyleSheet, Image, ImageBackground} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator, DrawerItem} from '@react-navigation/drawer';
+import { useState, useEffect } from 'react';
 import {useLogin} from '../context/LoginProvider';
+import Client from '../routes/client';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import SignInScreen from '../views/SignInScreen/SignInScreen';
 import Dashboard from '../views/Dashboard/Dashboard';
 import OutForDelivery from '../views/Shipments/OutForDelivery';
@@ -27,6 +30,34 @@ import QRScan from '../views/ScanPage/QRScan';
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
+  const [currentUser, setCurrentUser] = useState();
+  const [user, setUser] = useState();
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
+  const getCurrentUser = async () => {
+    try {
+      await AsyncStorage.getItem('@MyApp_user').then(res => {
+        console.log(res);
+        setCurrentUser(res != null ? JSON.parse(res) : null);
+        getUser(JSON.parse(res).id);
+      });
+    } catch (e) {
+      // console.log(e);
+    }
+  };
+
+  const getUser = async userId => {
+    await Client.get('/profile', {_id: userId})
+      .then(response => {
+        setUser(response.data);
+        // console.log(response);
+      })
+      .catch(err => {
+        console.log('Unable to get profile');
+      });
+  };
   return (
     <View style={[styles.menuContainer, {backgroundColor: '#102256'}]}>
       <View style={[styles.Cont, {flex: 1.3}]}>
@@ -52,18 +83,20 @@ function CustomDrawerContent(props) {
               top: '20%',
             },
           ]}>
-          <Image
-            style={{
-              resizeMode: 'contain',
-              height: 130,
-              width: 130,
-              borderRadius: 100,
-              overflow: 'hidden',
-              borderWidth: 3,
-              borderColor: 'white',
-            }}
-            source={require('../../assets/profile.jpg')}
-          />
+          {currentUser && (
+            <Image
+              style={{
+                resizeMode: 'contain',
+                height: 130,
+                width: 130,
+                borderRadius: 100,
+                overflow: 'hidden',
+                borderWidth: 3,
+                borderColor: 'white',
+              }}
+              source={{uri: currentUser.photo}}
+            />
+          )}
         </View>
       </View>
       <View style={[styles.menuItemsCard]}>

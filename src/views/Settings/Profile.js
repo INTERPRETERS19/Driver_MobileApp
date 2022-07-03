@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,20 +16,11 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-// const DriverID = '62a9f35b74963c4338b92425';
-
 const Profile = () => {
   const [currentUser, setCurrentUser] = useState();
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
   const [user, setUser] = useState();
-  //   {
-  //     fullname: '',
-  //     mobile_number: '',
-  //     driving_licence_no: '',
-  //     vehicle_type: '',
-  //     vehicle_reg_No: '',
-  // }
   useEffect(() => {
     getCurrentUser();
   }, []);
@@ -98,27 +90,24 @@ const Profile = () => {
             </View>
           </View>
 
-          <View style={styles.container}>
-            <Image
-              style={{
-                flex: 1,
-                resizeMode: 'contain',
-                height: 170,
-                width: 170,
-                borderRadius: 100,
-                borderWidth: 3,
-                borderColor: 'white',
-              }}
-              // source={require('../../../assets/profile.jpg')}
-            />
-            {/* <div>
-        <form action="/" method="POST" enctype="multipart/form-data"></form>
-             <div>
-                <label for="image">Upload Image</label>
-                <input type="file" id="image" 
-                       name="image" value="" required>
-            </div>
-            </div> */}
+<View style={styles.container}>
+            {currentUser && (
+              <Image
+                style={{
+                  flex: 1,
+                  resizeMode: 'contain',
+                  height: 170,
+                  width: 170,
+                  borderRadius: 100,
+                  borderWidth: 3,
+                  borderColor: 'white',
+                }}
+                source={{
+                  uri: currentUser.photo,
+                }}
+              />
+            )}
+            
           </View>
           <View
             style={{
