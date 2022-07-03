@@ -59,15 +59,16 @@ const Returns = () => {
   useEffect(() => {
     getItems();
   }, []);
-  const Item = ({id}) => (
+  const Item = ({id, reason}) => (
     <View style={styles.item}>
       <Text style={styles.Itemtext} onPress={onArrowPressed}>
         {id}
       </Text>
+      <Text style={styles.Itemtext}>{reason}</Text>
     </View>
   );
 
-  const renderItem = ({item}) => <Item id={item.id} />;
+  const renderItem = ({item}) => <Item id={item.id} reason={item.reason} />;
   const onArrowPressed = () => {
     navigation.navigate('ShipmentDetails');
   };

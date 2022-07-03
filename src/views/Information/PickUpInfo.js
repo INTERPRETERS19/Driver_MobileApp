@@ -10,86 +10,73 @@ import {
 } from 'react-native';
 import CustomButton from '../../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import CheckBox from '@react-native-community/checkbox';
 import {Picker} from '@react-native-picker/picker';
-import client from './../../routes/client';
-import {updateError} from './../../utils/methods';
+import client from '../../routes/client';
+import {
+  isValidObjField,
+  updateError,
+  isValidPassword,
+} from '../../utils/methods';
 
-const ShipmentInfo = ({route}) => {
+const PickUpInfo = ({route}) => {
   const navigation = useNavigation();
   const [text, onChangeText] = React.useState();
-  const {shipmentId, contact, cod, name, city, district, status} = route.params;
+
+  const {
+    shipmentId,
+    contact,
+    deliveryFee,
+    name,
+    street,
+    city,
+    district,
+    status,
+  } = route.params;
   const [isSelected, setSelection] = useState(false);
   const [error, setError] = useState();
-  const [deliveredDate, setDeliveredDate] = useState();
 
-  const onDonePressed = async () => {
-    // if(text===""){
-    //   onChangeText("Not applicable");
-    // }
-    // if((text==="Not applicable")&&(!(selectedValue == "Delivered")||!(selectedValue == "OutForDelivery"))){
-    //   //popup???
-    // console.log("reason??");
-    // setSelection(true);
-    // }
-    console.log(selectedValue);
-
-    if (selectedValue === 'Delivered') {
-      const date = new Date();
-      setDeliveredDate(date);
+  const isFinished = selectedValue => {
+    if (selectedValue == 'PickedUp' && !isSelected) {
+      console.log('hellllllooooo!!!');
+      return updateError('Please confirm delivery fee received!', setError);
     }
 
-    console.log(deliveredDate);
-    //console.log((isSelected&&!(cod==0)));
+    return true;
+  };
+
+  const onDonePressed = async () => {
+    console.log(selectedValue);
+
     console.log(shipmentId);
     console.log(text);
-    if (isFinished(selectedValue, text, cod)) {
+
+    if (isFinished(selectedValue, deliveryFee)) {
       try {
         const res = await client.post('/updatestatus', {
           shipmentId,
           selectedValue,
-          text,
-          deliveredDate,
+          text: null,
+          deliveredDate: null,
         });
         if (res.data.success) {
-          setSelectedValue('OutForDelivery');
+          setSelectedValue('PickUp');
           onChangeText('');
           setSelection(false);
-          navigation.navigate('OutForDelivery');
+          navigation.navigate('PickUp');
         } else {
-          return updateError('User already exist', setError);
+          return updateError('cannot find Shipment', setError);
         }
       } catch (error) {
         return updateError('Something went wrong!!!', setError);
       }
     }
   };
-  const isFinished = (selectedValue, text, cod) => {
-    if (selectedValue == 'Delivered' && !isSelected && cod !== 0)
-      return updateError('Please confirm COD received!', setError);
-
-    if (
-      (selectedValue === 'FailToDeliver' || selectedValue === 'Rescheduled') &&
-      text === ''
-    )
-      return updateError('Please state the reason!', setError);
-
-    if (
-      (selectedValue === 'FailToDeliver' ||
-        selectedValue === 'Rescheduled' ||
-        selectedValue === 'OutForDelivery') &&
-      isSelected
-    )
-      return updateError('COD should not be selected!', setError);
-
-    return true;
-  };
-
-  const onbackPressed = () => {
-    navigation.navigate('OutForDelivery');
-  };
-  const [selectedValue, setSelectedValue] = useState('OutForDelivery');
-
+  // const onbackPressed = () => {
+  //     navigation.navigate('OutForDelivery');
+  // };
+  const [selectedValue, setSelectedValue] = useState('PickUp');
   return (
     <View style={styles.body}>
       <ImageBackground
@@ -101,16 +88,16 @@ const ShipmentInfo = ({route}) => {
         <View style={styles.topbar}>
           <View style={styles.topbarin}>
             {/* <View style={styles.topbarin1}>
-              <Icon
-                name="keyboard-arrow-left"
-                size={35}
-                color="rgba(0, 0, 0, 0.40)"
-                onPress={onbackPressed}
-              />
-            </View> */}
-            <View style={styles.topbarin2}>
-              <Text style={{fontSize: 22}}>Info</Text>
-            </View>
+            <Icon
+              name="keyboard-arrow-left"
+              size={35}
+              color="rgba(0, 0, 0, 0.40)"
+              onPress={onbackPressed}
+            />
+          </View> */}
+            {/* <View style={styles.topbarin2}>
+            <Text style={{fontSize: 22}}>Info</Text>
+          </View> */}
           </View>
         </View>
         <ScrollView>
@@ -125,21 +112,23 @@ const ShipmentInfo = ({route}) => {
                 </View>
               </View>
               <View style={styles.info}>
-                <Text style={styles.infoIn}>Recepient</Text>
+                <Text style={styles.infoIn}>Shipper</Text>
                 <Text style={styles.form}>{name}</Text>
                 <Text style={styles.infoIn}>Contact number</Text>
                 <Text style={styles.form}>{contact}</Text>
-                <Text style={styles.infoIn}>District</Text>
-                <Text style={styles.form}>{district}</Text>
+                <Text style={styles.infoIn}>Street</Text>
+                <Text style={styles.form}>{street}</Text>
                 <Text style={styles.infoIn}>City</Text>
                 <Text style={styles.form}>{city}</Text>
+                <Text style={styles.infoIn}>District</Text>
+                <Text style={styles.form}>{district}</Text>
                 {/* <Text style={styles.infoIn}>COD amount</Text> */}
                 <View style={{flex: 1, flexDirection: 'row'}}>
                   <View style={{flex: 1}}>
-                    <Text style={styles.infoIn}>COD amount</Text>
+                    <Text style={styles.infoIn}>Delivery Fee</Text>
                   </View>
                   <View style={{flex: 1, marginLeft: 100}}>
-                    {!(cod === 0) && (
+                    {!(deliveryFee === 0) && (
                       <>
                         <CheckBox
                           value={isSelected}
@@ -149,8 +138,7 @@ const ShipmentInfo = ({route}) => {
                     )}
                   </View>
                 </View>
-                <Text style={styles.form}>{cod}</Text>
-
+                <Text style={styles.form}>{deliveryFee}</Text>
                 <View style={{flex: 1, flexDirection: 'row'}}>
                   <Text style={styles.infoIn}>Status</Text>
                   <View style={styles.container}>
@@ -167,41 +155,13 @@ const ShipmentInfo = ({route}) => {
                       onValueChange={(itemValue, itemIndex) =>
                         setSelectedValue(itemValue)
                       }>
-                      <Picker.Item label="Rescheduled" value="Rescheduled" />
-                      <Picker.Item
-                        label="Failed to Deliver"
-                        value="FailToDeliver"
-                      />
-                      <Picker.Item label="Delivered" value="Delivered" />
-                      <Picker.Item
-                        label="Out for delivery"
-                        value="OutForDelivery"
-                      />
+                      <Picker.Item label="Pickup" value="PickUp" />
+                      <Picker.Item label="Pickedup" value="PickedUp" />
                     </Picker>
                   </View>
                 </View>
               </View>
-              <View>
-                {!(selectedValue == 'Delivered') &&
-                  !(selectedValue == 'OutForDelivery') && (
-                    <>
-                      <TextInput
-                        multiline
-                        //numberOfLines={4}
-                        onChangeText={onChangeText}
-                        value={text}
-                        placeholder="State the reason"
-                        style={{
-                          padding: 1,
-                          backgroundColor: 'rgba(0, 0, 0, 0.07)',
-                          marginTop: 30,
-                          fontFamily: 'Roboto-Regular',
-                          fontSize: 18,
-                        }}
-                      />
-                    </>
-                  )}
-              </View>
+
               <View>
                 {error ? (
                   <Text
@@ -292,4 +252,4 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
 });
-export default ShipmentInfo;
+export default PickUpInfo;

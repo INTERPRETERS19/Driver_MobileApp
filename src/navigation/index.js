@@ -24,8 +24,11 @@ import Terms from '../views/Settings/Terms';
 import About from '../views/Settings/About';
 import Forgot from '../views/Forgot Password/Forgot';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
+import PickUpInfo from '../views/Information/PickUpInfo';
 import ShipmentDetails from '../views/Shipments/ShipmentDetails';
 import QRScan from '../views/ScanPage/QRScan';
+import DeliveryFee from '../views/DeliveryFee/DeliveryFee';
+import PickUp from '../views/Shipments/PickUp';
 
 const Drawer = createDrawerNavigator();
 
@@ -111,10 +114,19 @@ function CustomDrawerContent(props) {
         </View>
         <View style={[styles.menuCard]}>
           <DrawerItem
-            label="Collections"
+            label="COD Collections"
             labelStyle={[styles.NavPages]}
             onPress={() => {
               props.navigation.navigate('Collections');
+            }}
+          />
+        </View>
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="DeliveryFee"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('DeliveryFee');
             }}
           />
         </View>
@@ -133,6 +145,15 @@ function CustomDrawerContent(props) {
             labelStyle={[styles.NavPages]}
             onPress={() => {
               props.navigation.navigate('OutForDelivery');
+            }}
+          />
+        </View>
+        <View style={[styles.menuCard]}>
+          <DrawerItem
+            label="Pick Up"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('PickUp');
             }}
           />
         </View>
@@ -194,6 +215,9 @@ const DrawerNavigator = () => {
         />
         <Drawer.Screen name="Returns" component={Returns} />
         <Drawer.Screen name="Collections" component={Collections} />
+        <Drawer.Screen name="DeliveryFee" component={DeliveryFee} />
+        <Drawer.Screen name="PickUp" component={PickUp} />
+        <Drawer.Screen name="PickUpInfo" component={PickUpInfo} />
         <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="QRScan" component={QRScan} />
         <Drawer.Screen name="Profile" component={Profile} />
@@ -250,11 +274,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontStyle: 'normal',
     fontSize: 18,
-    lineHeight: 25,
+    lineHeight: 20,
     letterSpacing: 1.0,
     paddingLeft: 10,
     borderRadius: 10,
-    padding: 5,
+    padding: 2,
   },
   menuItemsCard: {
     flex: 3,
