@@ -1,7 +1,9 @@
-import React from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {View, StyleSheet} from 'react-native';
+import {TextInput} from 'react-native-paper';
 
 const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
+  const [passwordVisible, setPasswordVisible] = useState(true);
   return (
     <View style={styles.container}>
       <TextInput
@@ -10,7 +12,14 @@ const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
         onChangeText={setValue}
         placeholder={placeholder}
         style={styles.input}
-        secureTextEntry={secureTextEntry}
+        secureTextEntry={passwordVisible}
+        right={
+          <TextInput.Icon
+            color={'#c0c0c0'}
+            name={passwordVisible ? 'eye-off' : 'eye'}
+            onPress={() => setPasswordVisible(!passwordVisible)}
+          />
+        }
       />
     </View>
   );
@@ -21,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: '100%',
     fontFamily: 'Poppins-Medium',
-    borderColor: '#e8e8e8',
+    borderColor: '#c0c6c9',
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 10,
