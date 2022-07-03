@@ -21,9 +21,11 @@ import Terms from '../views/Settings/Terms';
 import About from '../views/Settings/About';
 import Forgot from '../views/Forgot Password/Forgot';
 import ShipmentInfo from '../views/Information/ShipmentInfo';
+import PickUpInfo from '../views/Information/PickUpInfo';
 import ShipmentDetails from '../views/Shipments/ShipmentDetails';
 import QRScan from '../views/ScanPage/QRScan';
 import DeliveryFee from '../views/DeliveryFee/DeliveryFee';
+import PickUp from '../views/Shipments/PickUp';
 
 const Drawer = createDrawerNavigator();
 
@@ -115,6 +117,15 @@ function CustomDrawerContent(props) {
         </View>
         <View style={[styles.menuCard]}>
           <DrawerItem
+            label="Pick Up"
+            labelStyle={[styles.NavPages]}
+            onPress={() => {
+              props.navigation.navigate('PickUp');
+            }}
+          />
+        </View>
+        <View style={[styles.menuCard]}>
+          <DrawerItem
             label="Re-Scheduled"
             labelStyle={[styles.NavPages]}
             onPress={() => {
@@ -172,6 +183,8 @@ const DrawerNavigator = () => {
         <Drawer.Screen name="Returns" component={Returns} />
         <Drawer.Screen name="Collections" component={Collections} />
         <Drawer.Screen name="DeliveryFee" component={DeliveryFee} />
+        <Drawer.Screen name="PickUp" component={PickUp} />
+        <Drawer.Screen name="PickUpInfo" component={PickUpInfo} />
         <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="QRScan" component={QRScan} />
         <Drawer.Screen name="Profile" component={Profile} />

@@ -28,6 +28,7 @@ const NewPasswordScreen = () => {
   const [success, setSuccess] = useState('');
   const {profile, setProfile} = useLogin();
   const auth = {profile};
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const loginperson = auth.profile.id;
 
   const {oldpassword, newPassword, repeatnewPassword} = userData;
@@ -120,7 +121,7 @@ const NewPasswordScreen = () => {
             <Text
               style={{
                 fontFamily: 'Poppins-Bold',
-                fontSize: 29,
+                fontSize: 25,
                 textAlign: 'center',
                 color: '#000000',
               }}>
@@ -136,14 +137,14 @@ const NewPasswordScreen = () => {
             placeholder="Enter current password"
             value={oldpassword}
             setValue={value => setUserData({...userData, oldpassword: value})}
-            secureTextEntry
+            secureTextEntry={passwordVisible}
           />
 
           <CustomInput
             placeholder="Enter new password"
             value={newPassword}
             setValue={value => setUserData({...userData, newPassword: value})}
-            secureTextEntry
+            secureTextEntry={passwordVisible}
           />
           <CustomInput
             placeholder="Confirm new password"
@@ -151,7 +152,7 @@ const NewPasswordScreen = () => {
             setValue={value =>
               setUserData({...userData, repeatnewPassword: value})
             }
-            secureTextEntry
+            secureTextEntry={passwordVisible}
           />
 
           <View style={{marginTop: 20}}>
@@ -191,7 +192,7 @@ const styles = StyleSheet.create({
   errorText: {
     fontFamily: 'Poppins-Regular',
     color: 'red',
-    fontSize: 18,
+    fontSize: 16,
     textAlign: 'center',
     backgroundColor: '#FFDBDB',
     borderRadius: 10,
@@ -200,7 +201,7 @@ const styles = StyleSheet.create({
   successText: {
     fontFamily: 'Poppins-Regular',
     color: 'green',
-    fontSize: 18,
+    fontSize: 16,
     textAlign: 'center',
     backgroundColor: '#D2F3C6',
     borderRadius: 10,

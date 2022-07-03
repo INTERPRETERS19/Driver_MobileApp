@@ -7,15 +7,16 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
-import axios from 'axios';
+import client from '../../routes/client';
 import {useState} from 'react';
 import Profilecomponent from '../../components/Profilecomponent';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
 import {useLogin} from '../../context/LoginProvider';
 import {useNavigation} from '@react-navigation/native';
-const Returns = () => {
+const PickUp = () => {
   const navigation = useNavigation();
   const [Items, setItems] = useState();
+  const [shipper, setShipper] = useState();
   const [loading, setLoading] = useState(true);
   const [filterData, setFilterData] = useState([]);
   const [search, setSearch] = useState('');
@@ -39,12 +40,37 @@ const Returns = () => {
 
   const getItems = async () => {
     try {
-      const res = await axios.get(
-        `http://10.0.2.2:8000/failtodelivery/${loginperson}`,
+      const res = await client.get(
+        `http://10.0.2.2:8000/pickup/${loginperson}`,
       );
       if (res.data.success) {
         setItems(res.data.data);
         setFilterData(res.data.data);
+        setLoading(false);
+        console.log('Success');
+        console.log(res.data.data);
+        // getShipper(res.data.data.shipper_details);
+      } else {
+        console.log('Failed');
+        console.log(Items);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getItems();
+  }, []);
+  const getShipper = async shipperId => {
+    try {
+      const res = await client.get(
+        `http://10.0.2.2:8000/shipperdetail`,
+
+        {id: shipperId},
+      );
+      console.log(res.data);
+      if (res.data.success) {
+        setShipper(res.data.data);
         setLoading(false);
         console.log('Success');
       } else {
@@ -55,22 +81,62 @@ const Returns = () => {
       console.log(error);
     }
   };
+  // useEffect(() => {
+  //   getShipper();
+  // }, []);
 
-  useEffect(() => {
-    getItems();
-  }, []);
-  const Item = ({id, reason}) => (
+  const Item = ({
+    id,
+    r_no_street,
+    r_city,
+    current_status,
+    recipient_name,
+    r_district,
+    mobile_phone_number,
+    COD,
+    delivery_fee,
+    firstName,
+    //shipper_details,
+  }) => (
     <View style={styles.item}>
-      <Text style={styles.Itemtext} onPress={onArrowPressed}>
+      <Text
+        style={styles.Itemtext}
+        onPress={() =>
+          navigation.navigate('PickUpInfo', {
+            shipmentId: id,
+            name: firstName,
+            street: r_no_street,
+            city: r_city,
+            district: r_district,
+            status: current_status,
+            contact: mobile_phone_number,
+            deliveryFee: delivery_fee,
+            //shipperdetails: shipper_details,
+          })
+        }>
         {id}
       </Text>
-      <Text style={styles.Itemtext}>{reason}</Text>
+      <Text style={styles.Itemtamount}>{r_no_street}</Text>
+      <Text style={styles.Itemtamount}>{r_city}</Text>
     </View>
   );
 
-  const renderItem = ({item}) => <Item id={item.id} reason={item.reason} />;
+  const renderItem = ({item}) => (
+    <Item
+      id={item.id}
+      firstName={item.shipper_details.firstName}
+      r_no_street={item.shipper_details.street}
+      r_city={item.shipper_details.city}
+      current_status={item.current_status}
+      r_district={item.r_district}
+      mobile_phone_number={item.shipper_details.mobile_no}
+      delivery_fee={item.delivery_fee}
+      recipient_name={item.recipient_name}
+      shipper_details={item.shipper_details}
+    />
+  );
   const onArrowPressed = () => {
-    navigation.navigate('ShipmentDetails');
+    navigation.navigate('ShipmentInfo');
   };
   return (
     <ImageBackground
@@ -81,8 +147,8 @@ const Returns = () => {
       }}>
       <View style={styles.root}>
         <Profilecomponent></Profilecomponent>
-        <Text style={styles.ReturnTitle}>Fail To Delivery </Text>
-        <View style={styles.Return}></View>
+        <Text style={styles.PickUpTitle}>Pick Up </Text>
+        <View style={styles.PickUp}></View>
         <View>
           <TextInput
             style={styles.search}
@@ -92,12 +158,12 @@ const Returns = () => {
             onChangeText={text => searchFilter(text)}
           />
         </View>
-        <View style={styles.ReturnSection}>
+        <View style={styles.PickUpSection}>
           <View style={styles.ShipementTextcont}>
-            <Text style={styles.ShipementText}>Shipment ID</Text>
-            <Text style={styles.ShipementText2}>Reason</Text>
+            <Text style={styles.ShipementText}> Shipment ID</Text>
+            <Text style={styles.ShipementText}>Street No</Text>
+            <Text style={styles.ShipementText2}>Address</Text>
           </View>
-
           <View>
             <FlatList
               data={filterData}
@@ -118,7 +184,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
-  ReturnTitle: {
+  PickUpTitle: {
     fontFamily: 'Montserrat-Medium',
     fontStyle: 'normal',
     fontSize: 18,
@@ -131,7 +197,7 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     flex: 1,
   },
-  Return: {
+  PickUp: {
     flex: 4,
     padding: 10,
     paddingTop: 0,
@@ -160,10 +226,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
-  ReturnSection: {
-    flex: 12,
+  PickUpSection: {
+    flex: 21,
     padding: 20,
   },
+
   ShipementText: {
     fontFamily: 'Montserrat-Medium',
     fontSize: 14,
@@ -215,4 +282,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-export default Returns;
+export default PickUp;
