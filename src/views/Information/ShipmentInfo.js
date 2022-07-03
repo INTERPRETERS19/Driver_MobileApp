@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { ScrollView, ImageBackground, StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import CustomButton from '../../components/CustomButton';
-import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import CheckBox from '@react-native-community/checkbox';
-import { Picker } from '@react-native-picker/picker';
-import client from './../../routes/client';
+import React, {useState, useEffect} from 'react';
 import {
-  isValidObjField,
-  updateError,
-  isValidPassword,
-} from './../../utils/methods';
+  ScrollView,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+} from 'react-native';
+import CustomButton from '../../components/CustomButton';
+import {useNavigation} from '@react-navigation/native';
+import CheckBox from '@react-native-community/checkbox';
+import {Picker} from '@react-native-picker/picker';
+import client from './../../routes/client';
+import {updateError} from './../../utils/methods';
 
-const ShipmentInfo = ({ route }) => {
+const ShipmentInfo = ({route}) => {
   const navigation = useNavigation();
   const [text, onChangeText] = React.useState();
-  const { shipmentId, contact, cod, name, city, district, status } = route.params;
+  const {shipmentId, contact, cod, name, city, district, status} = route.params;
   const [isSelected, setSelection] = useState(false);
   const [error, setError] = useState();
-
-
+  const [deliveredDate, setDeliveredDate] = useState();
 
   const onDonePressed = async () => {
     // if(text===""){
@@ -31,40 +33,59 @@ const ShipmentInfo = ({ route }) => {
     // setSelection(true);
     // }
     console.log(selectedValue);
+
+    if (selectedValue === 'Delivered') {
+      const date = new Date();
+      setDeliveredDate(date);
+    }
+
+    console.log(deliveredDate);
     //console.log((isSelected&&!(cod==0)));
     console.log(shipmentId);
     console.log(text);
-    if (((selectedValue == "Delivered") && isSelected)||
-    ((selectedValue == "OutForDelivery") && !isSelected&&(text===""))||
-    (!((selectedValue == "Delivered")||(selectedValue == "OutForDelivery")) &&!(text===""))&&!isSelected||
-    (((selectedValue == "Delivered")||(selectedValue == "OutForDelivery")) && (cod==0))&& !isSelected)
-    {
-      const res = await client.post("/updatestatus", {
-        shipmentId,
-        selectedValue,
-        text
-      });
-      if (res.data.success) {
-
-        setSelectedValue("OutForDelivery");
-        onChangeText("");
-        setSelection(false);
-        navigation.navigate('OutForDelivery');
+    if (isFinished(selectedValue, text, cod)) {
+      try {
+        const res = await client.post('/updatestatus', {
+          shipmentId,
+          selectedValue,
+          text,
+          deliveredDate,
+        });
+        if (res.data.success) {
+          setSelectedValue('OutForDelivery');
+          onChangeText('');
+          setSelection(false);
+          navigation.navigate('OutForDelivery');
+        } else {
+          return updateError('User already exist', setError);
+        }
+      } catch (error) {
+        return updateError('Something went wrong!!!', setError);
       }
-    }else{
-      if((text==="")&&(!(selectedValue == "Delivered")&&!(selectedValue == "OutForDelivery"))){
-        //popup???
-      console.log("reason??");
-
-      }else{
-        //popup???
-        console.log("collect cod");
-      }
-      
     }
   };
-  const onbackPressed = () => {
+  const isFinished = (selectedValue, text, cod) => {
+    if (selectedValue == 'Delivered' && !isSelected && cod !== 0)
+      return updateError('Please confirm COD received!', setError);
 
+    if (
+      (selectedValue === 'FailToDeliver' || selectedValue === 'Rescheduled') &&
+      text === ''
+    )
+      return updateError('Please state the reason!', setError);
+
+    if (
+      (selectedValue === 'FailToDeliver' ||
+        selectedValue === 'Rescheduled' ||
+        selectedValue === 'OutForDelivery') &&
+      isSelected
+    )
+      return updateError('COD should not be selected!', setError);
+
+    return true;
+  };
+
+  const onbackPressed = () => {
     navigation.navigate('OutForDelivery');
   };
   const [selectedValue, setSelectedValue] = useState('OutForDelivery');
@@ -79,27 +100,27 @@ const ShipmentInfo = ({ route }) => {
         }}>
         <View style={styles.topbar}>
           <View style={styles.topbarin}>
-            <View style={styles.topbarin1}>
+            {/* <View style={styles.topbarin1}>
               <Icon
                 name="keyboard-arrow-left"
                 size={35}
                 color="rgba(0, 0, 0, 0.40)"
                 onPress={onbackPressed}
               />
-            </View>
+            </View> */}
             <View style={styles.topbarin2}>
-              <Text style={{ fontSize: 22 }}>Info</Text>
+              <Text style={{fontSize: 22}}>Info</Text>
             </View>
           </View>
         </View>
         <ScrollView>
           <View style={styles.contentfull}>
             <View style={styles.content}>
-              <View style={{ flex: 1, flexDirection: 'row' }}>
-                <View style={{ flex: 1 }}>
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{flex: 1}}>
                   <Text style={styles.head}>Shipment ID</Text>
                 </View>
-                <View style={{ flex: 1 }}>
+                <View style={{flex: 1}}>
                   <Text style={styles.head}>{shipmentId}</Text>
                 </View>
               </View>
@@ -113,26 +134,24 @@ const ShipmentInfo = ({ route }) => {
                 <Text style={styles.infoIn}>City</Text>
                 <Text style={styles.form}>{city}</Text>
                 {/* <Text style={styles.infoIn}>COD amount</Text> */}
-                <View style={{ flex: 1, flexDirection: 'row' }}>
-                  <View style={{ flex: 1 }}>
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                  <View style={{flex: 1}}>
                     <Text style={styles.infoIn}>COD amount</Text>
                   </View>
-                  <View style={{ flex: 1, marginLeft: 100 }}>
+                  <View style={{flex: 1, marginLeft: 100}}>
                     {!(cod === 0) && (
                       <>
                         <CheckBox
                           value={isSelected}
                           onValueChange={setSelection}
-
                         />
                       </>
-
                     )}
                   </View>
                 </View>
                 <Text style={styles.form}>{cod}</Text>
 
-                <View style={{ flex: 1, flexDirection: 'row' }}>
+                <View style={{flex: 1, flexDirection: 'row'}}>
                   <Text style={styles.infoIn}>Status</Text>
                   <View style={styles.container}>
                     <Picker
@@ -149,35 +168,51 @@ const ShipmentInfo = ({ route }) => {
                         setSelectedValue(itemValue)
                       }>
                       <Picker.Item label="Rescheduled" value="Rescheduled" />
-                      <Picker.Item label="Failed to Deliver" value="FailToDeliver" />
+                      <Picker.Item
+                        label="Failed to Deliver"
+                        value="FailToDeliver"
+                      />
                       <Picker.Item label="Delivered" value="Delivered" />
-                      <Picker.Item label="Out for delivery" value="OutForDelivery" />
+                      <Picker.Item
+                        label="Out for delivery"
+                        value="OutForDelivery"
+                      />
                     </Picker>
-
                   </View>
                 </View>
               </View>
               <View>
-                {!(selectedValue == "Delivered") && !(selectedValue == "OutForDelivery") && (
-                  <>
-                    <TextInput
-                      multiline
-                      //numberOfLines={4}
-                      onChangeText={onChangeText}
-                      value={text}
-                      placeholder="State the reason"
-                      style={{
-                        padding: 1,
-                        backgroundColor: 'rgba(0, 0, 0, 0.07)',
-                        marginTop: 30, fontFamily: 'Roboto-Regular',
-                        fontSize: 18,
-                      }}
-
-                    />
-                  </>
-
-                )}
-
+                {!(selectedValue == 'Delivered') &&
+                  !(selectedValue == 'OutForDelivery') && (
+                    <>
+                      <TextInput
+                        multiline
+                        //numberOfLines={4}
+                        onChangeText={onChangeText}
+                        value={text}
+                        placeholder="State the reason"
+                        style={{
+                          padding: 1,
+                          backgroundColor: 'rgba(0, 0, 0, 0.07)',
+                          marginTop: 30,
+                          fontFamily: 'Roboto-Regular',
+                          fontSize: 18,
+                        }}
+                      />
+                    </>
+                  )}
+              </View>
+              <View>
+                {error ? (
+                  <Text
+                    style={{
+                      color: 'red',
+                      fontSize: 20,
+                      textAlign: 'center',
+                    }}>
+                    {error}
+                  </Text>
+                ) : null}
               </View>
               <View style={styles.button}>
                 <CustomButton text="Done" onPress={onDonePressed} />
