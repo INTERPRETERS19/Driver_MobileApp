@@ -3,22 +3,13 @@ import {ImageBackground} from 'react-native';
 import client from '../../routes/client';
 import {useLogin} from '../../context/LoginProvider';
 import {isValidEmail, isValidObjField, updateError} from '../../utils/methods';
-import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-import {
-  View,
-  Text,
-  StyleSheet,
-  useWindowDimensions,
-  ScrollView,
-} from 'react-native';
-//import FormInput from '../../components/FormInput';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import COLORS from '../../components/colors';
 import CustomButton from '../../components/CustomButton';
-import CustomInput from '../../components/CustomInput';
+import CustomInput from '../../components/CustomInput2';
 import {useNavigation} from '@react-navigation/native';
-
+import {TextInput} from 'react-native-paper';
 const storeUser = async value => {
   try {
     const jsonValue = JSON.stringify(value);
@@ -37,6 +28,8 @@ const SignInScreen = () => {
 
   const [error, setError] = useState('');
   const [isSelected, setSelection] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(true);
+
   const {email, password} = userInfo;
 
   const handleOnChangeText = (value, fieldName) => {
@@ -49,32 +42,11 @@ const SignInScreen = () => {
 
     if (!isValidEmail(email)) return updateError('Invalid email!', setError);
 
-    if (!password.trim() || password.length < 8)
-      return updateError('Password is too short!', setError);
+    // if (!password.trim() || password.length < 8)
+    //   return updateError('Password is incorrect!', setError);
 
     return true;
   };
-
-  // const storeUser = async value => {
-  //   try {
-  //     const jsonValue = JSON.stringify(value);
-  //     await AsyncStorage.setItem('@storage_Key', jsonValue);
-  //   } catch (e) {
-  //     // saving error
-  //   }
-  // };
-
-  // const getData = async () => {
-  //   try {
-  //     const value = await AsyncStorage.getItem('@storage_Key');
-  //     if (value !== null) {
-  //       console.log(value);
-  //       // value previously stored
-  //     }
-  //   } catch (e) {
-  //     // error reading value
-  //   }
-  // };
 
   const submitForm = async () => {
     if (isValidForm()) {
@@ -83,16 +55,12 @@ const SignInScreen = () => {
 
         if (res.data.success) {
           setUserInfo({email: '', password: ''});
-          //   // setProfile(res.data.user);
-          //   setIsLoggedIn(true);
-          // } else {
-          //   updateError(res.data.message, setError);
           setProfile(res.data.user);
           setIsLoggedIn(true);
           storeUser(res.data.user);
+        } else {
+          updateError(res.data.message, setError);
         }
-
-        // console.log(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -135,7 +103,6 @@ const SignInScreen = () => {
             Sign in to your account to continue
           </Text>
         </View>
-
         <View style={styles.root}>
           {error ? (
             <Text style={{color: 'red', fontSize: 18, textAlign: 'center'}}>
@@ -150,12 +117,24 @@ const SignInScreen = () => {
               setUserInfo({...userInfo, email: value.toLowerCase()})
             }
           />
-          <CustomInput
-            placeholder="Password"
-            value={password}
-            setValue={value => setUserInfo({...userInfo, password: value})}
-            secureTextEntry
-          />
+          <View style={styles.container1}>
+            <TextInput
+              placeholder="password"
+              placeholderTextColor={'#c0c6c9'}
+              value={password}
+              // setValue={value => setUserInfo({...userInfo, password: value})}
+              onChangeText={value =>
+                setUserInfo({...userInfo, password: value})
+              }
+              secureTextEntry={passwordVisible}
+              right={
+                <TextInput.Icon
+                  name={passwordVisible ? 'eye-off' : 'eye'}
+                  onPress={() => setPasswordVisible(!passwordVisible)}
+                />
+              }
+            />
+          </View>
         </View>
         <View style={styles.container}>
           <View style={styles.checkboxContainer}></View>
@@ -179,7 +158,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-
+  container1: {
+    backgroundColor: 'white',
+    width: '100%',
+    fontFamily: 'Poppins-Medium',
+    borderColor: '#e8e8e8',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginVertical: 7,
+  },
   container: {
     flex: 1,
     alignItems: 'flex-start',

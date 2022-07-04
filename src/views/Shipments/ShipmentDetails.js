@@ -7,7 +7,8 @@ const ShipmentDetails = ({route}) => {
   const {shipmentId, contact, cod, name, city, district, status} = route.params;
   const navigation = useNavigation();
   const onbackPressed = () => {
-    navigation.goBack()};
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.body}>
