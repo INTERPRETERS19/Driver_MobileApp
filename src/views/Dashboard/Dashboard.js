@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import DashButtons from '../../components/DashButtons';
 import PieChart from 'react-native-pie-chart';
 import BottomNavigationBar from '../../shared/BottomNavigationBar';
-import axios from 'axios';
+import client from '../../routes/client';
 import {useLogin} from '../../context/LoginProvider';
 
 const Dashboard = () => {
@@ -17,21 +17,21 @@ const Dashboard = () => {
   const auth = {profile};
   const nameDriver = auth.profile.fullname;
   const loginperson = auth.profile.id;
-  const [deliveredcount, setdeliveredcount] = useState();
-  const [returnscount, setreturnscount] = useState();
-  const [rescheduledcount, setrescheduledcount] = useState();
-  const [pendingcount, setpendingcount] = useState();
-  const [count, setCount] = useState();
+  const [loading, setLoading] = useState(true);
+  const [deliveredcount, setdeliveredcount] = useState(1);
+  const [returnscount, setreturnscount] = useState(1);
+  const [rescheduledcount, setrescheduledcount] = useState(1);
+  const [pendingcount, setpendingcount] = useState(1);
+  const [pickedupcount, setpickedupcount] = useState(1);
+  const [count, setCount] = useState(0);
 
   const pendingCount = async () => {
     try {
-      const res = await axios.get(
-        `http://10.0.2.2:8000/OutForDelivery/${loginperson}`,
-      );
+      const res = await client.get(`/OutForDelivery/${loginperson}`);
       if (res.data.success) {
         setItems(res.data.data);
         setpendingcount(res.data.count);
-        console.log(nameDriver);
+        setLoading(false);
       } else {
         console.log('Failed');
         console.log(Items);
@@ -46,7 +46,7 @@ const Dashboard = () => {
   }, []);
   const returnsCount = async () => {
     try {
-      const res = await axios.get(
+      const res = await client.get(
         `http://10.0.2.2:8000/failtodelivery/${loginperson}`,
       );
       if (res.data.success) {
@@ -66,9 +66,7 @@ const Dashboard = () => {
   }, []);
   const reScheduledCount = async () => {
     try {
-      const res = await axios.get(
-        `http://10.0.2.2:8000/Rescheduled/${loginperson}`,
-      );
+      const res = await client.get(`/Rescheduled/${loginperson}`);
       if (res.data.success) {
         setItems(res.data.data);
         setrescheduledcount(res.data.count);
@@ -87,9 +85,7 @@ const Dashboard = () => {
 
   const deliveredCount = async () => {
     try {
-      const res = await axios.get(
-        `http://10.0.2.2:8000/delivered/${loginperson}`,
-      );
+      const res = await client.get(`/delivered/${loginperson}`);
       if (res.data.success) {
         setItems(res.data.data);
         setdeliveredcount(res.data.count);
@@ -106,18 +102,17 @@ const Dashboard = () => {
     deliveredCount();
   }, []);
 
-  const getCollectionSum = async () => {
+  const pickedupCount = async () => {
     try {
-      const res = await axios.get(
-        `http://10.0.2.2:8000/collections/${loginperson}`,
+      const res = await client.get(
+        `http://10.0.2.2:8000/pickup/${loginperson}`,
       );
       if (res.data.success) {
         setItems(res.data.data);
-        setCount(res.data.total);
+        setpickedupcount(res.data.count);
       } else {
         console.log('Failed');
         console.log(Items);
-        console.log(count);
       }
     } catch (error) {
       console.log(error);
@@ -125,17 +120,21 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getCollectionSum();
+    pickedupCount();
   }, []);
 
-  const a = deliveredcount;
-  const b = pendingcount;
-  const c = rescheduledcount;
-  const d = returnscount;
-  // const s = [a, b, c, d];
-  const s = [2, 8, 4, 5];
-  const sliceColor = ['#C3E4F5', '#7E7D7D', '#213571', '#000'];
-
+  // const a = deliveredcount;
+  // const b = pendingcount;
+  // const c = rescheduledcount;
+  // const d = returnscount;
+  const s = [
+    deliveredcount,
+    pendingcount,
+    rescheduledcount,
+    returnscount,
+    pickedupcount,
+  ];
+  const sliceColor = ['#C3E4F5', '#213571', '#000', '#7E7D7D', '#a2d2ff'];
   const onMenuPressed = () => {
     navigation.openDrawer();
   };
@@ -155,7 +154,7 @@ const Dashboard = () => {
     navigation.navigate('Returns');
   };
   const onCollectionsPressed = () => {
-    navigation.navigate('Collections');
+    navigation.navigate('PickUp');
   };
   return (
     <View style={styles.root}>
@@ -185,13 +184,14 @@ const Dashboard = () => {
         <View style={[styles.dashboard]}>
           <Text style={styles.dashboardTitle}>Dashboard</Text>
         </View>
-
         <View style={[styles.infoPanel]}>
           <View style={[styles.infoPanelCol]}>
             <DashButtons
               text={`Delivered Shipments \n\n${deliveredcount}`}
               onPress={onDeliveredShipmentPressed}
               type="1"
+              onRefresh={() => pendingCount()}
+              refreshing={loading}
             />
 
             <DashButtons
@@ -217,7 +217,7 @@ const Dashboard = () => {
 
           <View style={[styles.infoPanelCol]}>
             <DashButtons
-              text={`Collected COD Amount \n\n${count}`}
+              text={`Pick Up Shipments \n\n${pickedupcount}`}
               onPress={onCollectionsPressed}
               type="5"
             />
@@ -228,23 +228,22 @@ const Dashboard = () => {
           <View style={[styles.Pie1]}>
             <PieChart
               widthAndHeight={widthAndHeight}
-              series={s}
+              series={[
+                deliveredcount,
+                pendingcount,
+                rescheduledcount,
+                returnscount,
+                pickedupcount,
+              ]}
               sliceColor={sliceColor}
               doughnut={true}
               coverRadius={0.45}
               coverFill={'#FFF'}
             />
-            {/* <PieChart
-              id="pie"
-              type="doughnut"
-              title="Shipment Summary"
-              palette="Soft Pastel"
-              dataSource={pieData}
-            /> */}
           </View>
           <View style={[styles.Pie]}>
             <Text style={styles.PieName}>
-              <Icon name="square" size={15} color="#7E7D7D" /> Delivered
+              <Icon name="square" size={15} color="#C3E4F5" /> Delivered
               Shipments
             </Text>
             <Text style={styles.PieName}>
@@ -252,19 +251,22 @@ const Dashboard = () => {
               Deliveries
             </Text>
             <Text style={styles.PieName}>
-              <Icon name="square" size={15} color="#C3E4F5" /> Re-Scheduled
+              <Icon name="square" size={15} color="#000000" /> Re-Scheduled
             </Text>
             <Text style={styles.PieName}>
-              <Icon name="square" size={15} color="#000000" /> Return Shipments
+              <Icon name="square" size={15} color="#7E7D7D" /> Fail to Deliver
+            </Text>
+            <Text style={styles.PieName}>
+              <Icon name="square" size={15} color="#a2d2ff" /> Pick Up
             </Text>
           </View>
         </View>
+
         <BottomNavigationBar />
       </ImageBackground>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   root: {
     flex: 1,

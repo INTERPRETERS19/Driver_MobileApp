@@ -7,7 +7,7 @@ const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
   return (
     <View style={styles.container}>
       <TextInput
-        placeholderTextColor={'#c0c6c9'}
+        placeholderTextColor={'#989898'}
         value={value}
         onChangeText={setValue}
         placeholder={placeholder}
@@ -15,7 +15,7 @@ const CustomInput = ({value, setValue, placeholder, secureTextEntry}) => {
         secureTextEntry={passwordVisible}
         right={
           <TextInput.Icon
-            color={'#c0c0c0'}
+            color={'#707070'}
             name={passwordVisible ? 'eye-off' : 'eye'}
             onPress={() => setPasswordVisible(!passwordVisible)}
           />
